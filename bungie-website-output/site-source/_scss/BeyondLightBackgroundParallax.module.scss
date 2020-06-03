@@ -1,0 +1,38 @@
+.parallaxWrapper {
+  position: relative;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: bottom;
+
+  .background {
+    background-repeat: no-repeat;
+    background-position: bottom;
+
+    .backgroundTwo {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      background-repeat: no-repeat;
+      background-position: bottom;
+    }
+
+    .backgroundThree {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      background-repeat: no-repeat;
+      background-position: bottom;
+    }
+
+    .backgroundFour {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      background-repeat: no-repeat;
+      background-position: bottom;
+    }
+  }
+}

@@ -1,0 +1,48 @@
+.videoContainer {
+  width: 100%;
+  max-width: 655px;
+  max-height: 370px;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  margin: 0 0 0 3rem;
+  position: relative;
+  background-repeat: no-repeat;
+  border-radius: 4px;
+
+  :global(.r-mobile) & {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+.right {
+  margin: 0 3rem 0 0;
+}
+
+.center {
+  margin: 0 auto;
+  width: 100%;
+}
+
+.thumbnail {
+  width: 100%;
+  height: 0;
+  cursor: pointer;
+  padding-top: 56.25%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.videoPlayButton {
+  background-image: url("/7/ca/destiny/bgs/shadowkeep/play_button.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  width: 5rem;
+  height: 5rem;
+  position: absolute;
+  top: calc(50% - 2.5rem);
+  left: calc(50% - 2.5rem);
+}

@@ -1,0 +1,42 @@
+@import "../../../../../UI/UIKit/_Base/ui_base";
+
+.hero {
+  width: 100%;
+  height: 90vh;
+  background-image: url("/7/ca/destiny/bgs/season11/S11_hero_desktop_bg.jpg");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  :global(.r-mobile) & {
+    height: 66vh;
+  }
+}
+
+.date {
+  color: rgba($color-primary, 0.85);
+  font-size: 1.75rem;
+  letter-spacing: 3px;
+
+  :global(html.r-mobile) & {
+    font-size: 1.25rem;
+  }
+}
+
+.heroLogo {
+  height: 12rem;
+  width: 43rem;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  margin-bottom: 1rem;
+
+  :global(html.r-mobile) & {
+    width: 90%;
+    margin-bottom: 0;
+  }
+}

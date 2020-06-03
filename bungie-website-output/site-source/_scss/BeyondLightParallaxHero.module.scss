@@ -1,0 +1,219 @@
+@import "../../../../../ui/uikit/_base/ui_base";
+@import "../../Components/_BLmixins.scss";
+
+@media all and (device-width: 768px) and (device-height: 1024px) and (orientation: portrait) {
+  .hero {
+    height: 100vh !important;
+  }
+}
+
+.hero {
+  height: 135vh;
+  width: 100%;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  scroll-behavior: smooth;
+
+  :global(.r-medium) & {
+    background-size: cover;
+    background-position: center top;
+    margin-top: 0;
+    height: 95vh;
+    width: 100vw;
+  }
+
+  .heroContent {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 6rem;
+    position: relative;
+    height: 100%;
+
+    :global(.r-mobile) & {
+      padding-bottom: 1rem;
+    }
+
+    .eyebrow {
+      @include eyebrow;
+      color: $color-accent2;
+      text-transform: uppercase;
+      letter-spacing: 6px;
+      margin-bottom: 1.5rem;
+
+      :global(.r-mobile) & {
+        margin-bottom: 0.75rem;
+      }
+    }
+
+    .heading {
+      @include heroHeading;
+      text-transform: uppercase;
+      padding-bottom: 0.75rem;
+      @include bottomBorder;
+
+      :global(.r-mobile) & {
+        width: 85%;
+        text-align: center;
+      }
+    }
+  }
+
+  .itemContainer {
+    position: relative;
+    height: 100%;
+    width: 100%;
+
+    > div {
+      position: absolute;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      width: 100%;
+    }
+
+    .leftItem {
+      left: 22vw;
+      bottom: 0;
+      max-width: 20vw;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .centerItem {
+      left: 35vw;
+      bottom: 0;
+      max-width: 26vw;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .rightItem {
+      left: 75vw;
+      bottom: 0;
+      max-width: 29vw;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .backgroundCandy {
+      left: 0;
+      bottom: -300px;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+  .heroTitle {
+    @include heroHeading;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: contain;
+    text-indent: -9999px;
+    overflow: hidden;
+    width: 675px;
+    height: 10rem;
+    margin-bottom: 2rem;
+
+    :global(.r-mobile) & {
+      width: 85%;
+    }
+  }
+
+  .buttons {
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+
+    div,
+    a {
+      font-weight: 600;
+
+      :global(.r-mobile) & {
+        font-size: 1.1rem;
+      }
+    }
+
+    div {
+      &:after {
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+    }
+
+    a {
+      margin-left: 1rem;
+      &:after {
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+    }
+
+    a:last-child {
+      &:after {
+        border: 1px solid #29a7ff;
+      }
+    }
+
+    :global(.r-mobile) & {
+      margin-bottom: 2rem;
+      font-size: 0.875rem;
+    }
+  }
+
+  .subtitle {
+    color: #fff;
+    margin: 1rem 0 2rem 0;
+
+    span {
+      display: block;
+      text-align: center;
+      line-height: 1.4rem;
+      @include bodyCopy;
+    }
+
+    span:first-child {
+      max-width: 40rem;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    :global(.r-mobile) & {
+      width: 90%;
+      text-align: center;
+    }
+  }
+
+  .releaseDateEyebrow {
+    letter-spacing: 0.4rem;
+    margin-bottom: 0.35rem;
+    text-transform: uppercase;
+  }
+  .releaseDate {
+    color: $_base-color-sky;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+
+  .overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.75;
+  }
+}

@@ -1,0 +1,106 @@
+@import "../../Components/_BLmixins.scss";
+
+.TextSectionWrapper {
+  display: flex;
+  flex-direction: column;
+  background-position: center;
+  background-size: cover;
+
+  .textContainerNoMedia {
+    width: 100%;
+    max-width: 35%;
+    text-align: center;
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+
+    .title {
+      border: none;
+      text-align: center;
+    }
+  }
+
+  .sectionButton {
+    margin: 6rem auto 0;
+  }
+}
+
+.textContainerNoMedia {
+  :global(.r-mobile) & {
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+  }
+}
+
+.textContainerWithMedia {
+  width: 100%;
+  max-width: 37%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: -1rem;
+
+  :global(.r-mobile) & {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+  }
+}
+
+.center {
+  text-align: center;
+  margin: 0 auto 3rem auto;
+  width: 80%;
+  max-width: 680px;
+
+  .title {
+    text-align: center;
+    margin: 0 auto;
+  }
+}
+
+.right {
+  text-align: right;
+
+  .title {
+    text-align: right;
+  }
+}
+
+.shortBorder {
+  width: 100%;
+  height: 1px;
+  @include bottomBorder;
+  display: flex;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.15rem;
+}
+
+.title {
+  @include h2Heading;
+  text-transform: uppercase;
+  padding: 1rem 0;
+  width: 100%;
+  border-bottom: none;
+  margin: 0 auto;
+
+  :global(.r-mobile) & {
+    text-align: center;
+    padding-bottom: 0.75rem;
+    margin: 0 auto 1rem auto;
+  }
+}
+
+.subtitle {
+  font-weight: 600;
+  letter-spacing: 0.15rem;
+}
+
+.bodyText {
+  @include bodyCopy;
+}

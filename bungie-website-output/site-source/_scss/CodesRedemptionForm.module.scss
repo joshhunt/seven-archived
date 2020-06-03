@@ -1,0 +1,202 @@
+@import "../../../UI/UIKit/_Base/ui_base.scss";
+
+.success {
+  font-weight: bold;
+  color: rgba($color-success, 0.7);
+  margin: 0.4em;
+}
+
+.button {
+  background-color: rgba($color-primary, 0.1);
+  text-transform: uppercase;
+  font-size: 1rem;
+
+  &.history {
+    margin: 2rem 0;
+
+    :global(.r-tiny) & {
+      margin-top: 1rem;
+    }
+  }
+
+  :global(.r-tiny) & {
+    width: 100%;
+  }
+}
+
+.margin_exempt {
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 1em auto;
+  align-items: center;
+  text-align: center;
+}
+
+.gold_line {
+  border-bottom: 2px solid $color-accent3;
+}
+
+.id {
+  margin: 0.1rem;
+}
+
+.crossSaved {
+  max-width: 39rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.errorMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba($color-error, 0.1);
+  border: 1px solid $color-error;
+  padding: 2rem;
+  margin: 0.5rem;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba($color-primary, 0.1);
+  border: 1px solid $color-primary;
+  padding: 0.75rem 2rem;
+  margin: 0.5rem 0 0 0;
+}
+
+.link {
+  color: $color-accent3-alt-3;
+}
+
+.input_box {
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+
+  :global(.r-mobile) & {
+    padding-left: 0;
+
+    input {
+      width: 24rem;
+    }
+  }
+
+  input {
+    font-family: monospace;
+    background: none;
+    border: none;
+    color: rgba($color-primary, 0.6);
+    font-size: 2.5rem;
+    display: block;
+    text-align: center;
+  }
+
+  input:focus,
+  textarea:focus {
+    outline: none;
+  }
+}
+
+.margin_exempt {
+  margin: 0;
+}
+
+.mbottom2 {
+  margin-bottom: 2em;
+}
+
+.noDestinyTitle {
+  border-bottom: 1px solid $color-primary;
+}
+
+.noDestinyText {
+  margin-top: 1rem;
+  max-width: 46rem;
+  text-align: center;
+}
+
+.pickUp {
+  font-style: italic;
+  color: rgba($color-primary, 0.8);
+  margin: 3rem auto 2rem;
+  height: auto;
+
+  &.hidden {
+    height: 0;
+    overflow: hidden;
+    margin: 0;
+  }
+}
+
+.platformSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  width: 100%;
+  height: auto;
+}
+
+.platformItems {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.platformItem {
+  display: inline-block;
+  padding: 0.5rem 0.75rem;
+  color: $color-primary;
+  border: 1px solid $color-primary;
+  font-size: $font-size-m;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0.75rem 0.25rem;
+  cursor: pointer;
+
+  &.active,
+  &:hover {
+    color: $color-background;
+    background: $color-primary;
+  }
+
+  &.selected {
+    color: $color-background;
+    background: $color-primary;
+  }
+}
+
+.signout {
+  opacity: 0.5;
+  padding: 0.2rem 1rem 1rem 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.25s;
+
+  p {
+    font-style: italic;
+    font-size: 0.8rem;
+  }
+
+  :hover {
+    text-decoration: underline;
+  }
+}
+
+.unique_name {
+  color: rgba($color-primary, 0.5);
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.white_line {
+  border-bottom: 2px solid $color-primary;
+}

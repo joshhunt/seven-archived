@@ -1,0 +1,210 @@
+@import "../../../../../ui/uikit/_base/ui_base";
+@import "../../Components/_BLmixins.scss";
+
+.modalWrapper {
+  margin: auto;
+  position: relative;
+  height: 100%;
+  width: 100%;
+
+  .videoContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+
+    video {
+      display: block;
+      position: absolute;
+      z-index: 0;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+  }
+
+  .textContainer {
+    margin: 0 auto 0 12%;
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+
+    .eyebrow {
+      text-transform: uppercase;
+      margin: 4rem 0 0 0;
+      letter-spacing: 4px;
+      position: relative;
+    }
+
+    .heading {
+      text-transform: uppercase;
+      margin: 0 0 1rem 0;
+      font-size: 4.875rem;
+      font-weight: bold;
+      line-height: 1;
+      width: 100%;
+      text-shadow: 2px 2px 29px rgba(12, 20, 75, 0.75);
+      position: relative;
+      border: none;
+      padding: 0;
+    }
+
+    .bodyCopy {
+      font-size: 1.25rem;
+      line-height: 1.5;
+      position: relative;
+      padding-bottom: 1.5rem;
+      margin: 1rem 0 0.85rem 0;
+      max-width: 27rem;
+
+      &:after {
+        content: "";
+        width: 6px;
+        height: 3px;
+        background-color: rgba(255, 255, 255, 0.5);
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+      }
+    }
+
+    .detailImage {
+      width: 100%;
+      border-radius: 0.15em;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .logoWrapper {
+      display: flex;
+      margin: 2rem 0 1rem 0.5rem;
+      border: none;
+      transition: all 1s ease;
+      z-index: 1;
+      position: relative;
+
+      .logo {
+        width: 6rem;
+        height: 6rem;
+        background-repeat: no-repeat;
+
+        :global(.r-large) & {
+          width: 8rem;
+          height: 8rem;
+        }
+      }
+
+      .active {
+        position: relative;
+
+        &:before {
+          content: "";
+          position: absolute;
+          transition: all 1s ease;
+          transform: rotate(45deg);
+          border: 1px solid rgba(255, 255, 255, 0.5);
+          width: 5rem;
+          height: 5rem;
+          top: calc(50% - 2.5rem);
+          left: calc(50% - 2.5rem);
+          animation: widthExpand 0.3s;
+          z-index: -1;
+
+          :global(.r-large) & {
+            width: 5.5rem;
+            height: 5.5rem;
+            top: calc(50% - 3.25rem);
+            left: calc(50% - 3.35rem);
+            animation: smallScreenExpand 0.3s;
+          }
+        }
+      }
+
+      & > :first-child {
+        margin-right: 1rem;
+      }
+    }
+
+    .detailsSection {
+      width: 100%;
+      position: relative;
+      max-width: 27rem;
+
+      .detailsContainer {
+        position: absolute;
+        transition: all 1s ease;
+
+        .subheading {
+          text-transform: uppercase;
+          font-size: 1.25rem;
+          font-weight: bold;
+          letter-spacing: 3.2px;
+        }
+
+        .caption {
+          @include bodyCopy;
+          margin-top: 0.3rem;
+        }
+      }
+    }
+  }
+
+  .imageContainer {
+    width: 27rem;
+    padding-bottom: 5rem;
+    position: relative;
+    min-height: 15rem;
+    div {
+      position: relative;
+
+      .detailImage {
+        position: absolute;
+      }
+    }
+  }
+}
+
+.shortBorder {
+  width: 100%;
+  max-width: 27rem;
+  height: 1px;
+  @include bottomBorder;
+  display: block;
+  position: relative;
+}
+
+@keyframes widthExpand {
+  0% {
+    width: 3rem;
+    height: 3rem;
+    top: calc(50% - 1.5rem);
+    left: calc(50% - 1.5rem);
+    position: absolute;
+  }
+
+  100% {
+    width: 5rem;
+    height: 5rem;
+    position: absolute;
+  }
+}
+
+@keyframes smallScreenExpand {
+  0% {
+    width: 1rem;
+    height: 1rem;
+    top: calc(50% - 0.5rem);
+    left: calc(50% - 0.5rem);
+    position: absolute;
+  }
+
+  100% {
+    width: 5rem;
+    height: 5rem;
+    position: absolute;
+  }
+}

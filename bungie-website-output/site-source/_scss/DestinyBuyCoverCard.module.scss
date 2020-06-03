@@ -1,0 +1,59 @@
+@import "../../../../ui/uikit/_base/ui_base";
+
+.card {
+  color: $color-primary;
+  height: 22rem;
+  width: 100%;
+  margin-right: 1.5rem;
+  border-radius: 4px;
+  background: no-repeat center center;
+  background-size: cover;
+  padding: 1rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: 0.25s;
+  cursor: pointer;
+  position: relative;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+
+  :global(.r-mobile) & {
+    margin-bottom: 2rem;
+    height: 37rem;
+  }
+
+  :global(.r-tiny) & {
+    height: 22rem;
+  }
+
+  &:hover {
+    z-index: 2;
+    transform: translateY(-2px);
+    box-shadow: 0 60px 90px -40px rgba(0, 0, 0, 0.6);
+  }
+}
+
+.tagline {
+  text-transform: uppercase;
+  font-size: 10px;
+  margin-top: 3rem;
+  font-stretch: extra-expanded;
+  letter-spacing: 1px;
+}
+
+.saleTag {
+  text-align: right;
+  padding: 0.25rem 0.5rem;
+  color: black;
+  background: $color-primary;
+  font-weight: bold;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 0 4px 0 0;
+}

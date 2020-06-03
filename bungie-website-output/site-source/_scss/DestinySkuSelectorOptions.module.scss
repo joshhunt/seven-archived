@@ -1,0 +1,93 @@
+// Need access to ui_base? Find ui_base.scss in the solution explorer, and drag it into this file to automatically import it.
+@import "../../uikit/_base/ui_base";
+
+.options {
+  display: flex;
+  flex-direction: column;
+}
+
+.regionSelect {
+  flex: 1 0;
+
+  :global(.r-medium) & {
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-weight: 600;
+    opacity: 0.5;
+  }
+
+  .regionDropdown {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+}
+
+.selectedStore {
+  background-color: #74777c;
+  opacity: 1;
+}
+
+.modalButtons {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem auto 0;
+  width: 100%;
+  text-transform: uppercase;
+}
+
+.buttonContainer {
+  width: 100%;
+}
+
+.storeButton {
+  display: flex;
+  margin-bottom: 1rem;
+  flex-direction: column;
+  padding: 1rem;
+  font-weight: bold;
+}
+
+.changeStore {
+  margin: 1rem auto;
+  cursor: pointer;
+}
+
+.modalSubtitle {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  line-height: 1.1rem;
+}
+
+.saleInfo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.endDate {
+  font-size: 0.75rem;
+  margin-top: 1rem;
+  margin-bottom: 0.45rem;
+  color: $color-primary-alt-3;
+}
+
+.saleTag {
+  text-align: center;
+  padding: 0.25rem 0.5rem;
+  margin-bottom: 0.45rem;
+  color: black;
+  background: whitesmoke;
+  font-weight: bold;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  align-self: flex-end;
+}
+
+.disclaimer {
+  color: $color-primary-alt-3;
+  position: absolute;
+  bottom: 1rem;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}

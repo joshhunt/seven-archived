@@ -1,0 +1,469 @@
+@import "../../../ui/uikit/_base/ui_base";
+@import "./Components/_BLmixins.scss";
+
+body {
+  font-family: $font-family-neue-haas;
+}
+
+.heroOverlay {
+  opacity: 1 !important;
+  top: auto !important;
+  height: 4px !important;
+}
+
+.videoSection {
+  background-color: #090e21;
+  position: relative;
+
+  .contentWrapper {
+    padding: 4rem 0 14rem 0;
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+
+    .videoSectionHeading {
+      @include h2Heading;
+      text-transform: uppercase;
+      width: 100%;
+      text-align: center;
+      border-bottom: none;
+      margin: 0 auto 1rem auto;
+      max-width: 51rem;
+    }
+
+    .bottomBorder {
+      width: 100%;
+      max-width: 55rem;
+      margin: 0 auto;
+      height: 1px;
+      @include bottomBorder;
+      display: flex;
+
+      :global(.r-mobile) & {
+        width: 90%;
+        margin: 0 auto;
+      }
+    }
+
+    :global(.r-mobile) & {
+      padding: 27rem 0 3rem 0;
+      background-size: 100%;
+    }
+  }
+}
+
+.videoWrapper {
+  margin-top: 6rem;
+  width: 100%;
+  max-width: 947px;
+  max-height: 900px;
+  background-size: 101%;
+
+  :global(.r-mobile) & {
+    width: 90%;
+    margin: 4rem auto 0 auto;
+  }
+}
+
+.carouselSpacing {
+  padding: 10rem 0 10rem 0 !important;
+  width: 100%;
+
+  :global(.r-mobile) & {
+    padding: 6rem 0 6rem 0 !important;
+  }
+
+  :global(.r-medium) & {
+    padding: 15rem 0 10rem 0 !important;
+  }
+}
+
+.carouselEyebrow {
+  :global(.r-mobile) & {
+    font-size: 0.9rem !important;
+  }
+}
+
+.underIceTextWithScreen {
+  .contentWrapper {
+    padding: 10rem 0 10rem 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+
+    a {
+      margin-top: 2rem;
+    }
+
+    > div {
+      width: 100%;
+
+      h2 {
+        @include h2Heading;
+        text-transform: uppercase;
+        margin: 0 auto 1rem auto;
+        width: 100%;
+        text-align: center;
+        border-bottom: none;
+      }
+
+      .headingSecThree {
+        max-width: 34rem;
+      }
+
+      .shortBorder {
+        margin: 0 auto 1rem auto;
+        width: 100%;
+        max-width: 30rem;
+        height: 1px;
+        @include bottomBorder;
+        display: flex;
+      }
+
+      p {
+        @include bodyCopy;
+        max-width: 40rem;
+        margin: 0 auto;
+      }
+
+      :global(.r-mobile) & {
+        width: 90%;
+        margin: 0 auto;
+
+        h2 {
+          text-align: center;
+          padding-bottom: 0.75rem;
+          margin: 0 auto;
+          font-size: 2.5rem;
+        }
+
+        .shortBorder {
+          width: 100%;
+          max-width: 90%;
+          margin: 0 auto;
+        }
+
+        p {
+          max-width: 100%;
+          margin-top: 1rem;
+        }
+      }
+    }
+
+    :global(.r-mobile) & {
+      background-size: 100%;
+      background-position: center top;
+      padding: 27rem 0 10rem 0;
+    }
+  }
+
+  .screenshotWrapper {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+
+    :global(.r-mobile) & {
+      width: 100%;
+      flex-direction: column;
+    }
+  }
+}
+
+.bannerWrapper {
+  margin: 0 auto;
+  text-align: center;
+  background-repeat: no-repeat;
+  position: relative;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+
+  img {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: auto;
+
+    :global(.r-medium) & {
+      width: 100%;
+    }
+
+    :global(.r-mobile) & {
+      width: 100%;
+    }
+
+    :global(.r-tiny) & {
+      width: 100%;
+    }
+  }
+
+  .bannerHeading {
+    text-transform: uppercase;
+    letter-spacing: 25px !important;
+    border-bottom: none;
+    font-weight: 500;
+    word-spacing: 3rem;
+    white-space: nowrap;
+    max-width: 42rem;
+    margin: 0;
+    padding: 2.335rem 0;
+    z-index: 3;
+
+    :global(.r-mobile) & {
+      max-width: 90%;
+      letter-spacing: 23px !important;
+      word-spacing: 9rem;
+      text-align: center;
+    }
+
+    :global(.r-tiny) & {
+      max-width: 90%;
+      letter-spacing: 4px !important;
+      word-spacing: 1rem;
+      text-align: center;
+    }
+  }
+}
+
+.bannerLocWrapper {
+  .bannerHeading {
+    text-transform: uppercase;
+    letter-spacing: 2px !important;
+    border-bottom: none;
+    font-weight: 500;
+    word-spacing: 0;
+    white-space: nowrap;
+    max-width: 100%;
+    text-align: center;
+    margin: 0;
+    padding: 2.335rem 0;
+    z-index: 3;
+  }
+}
+
+.parallaxBeyond {
+  padding-bottom: 80vw;
+
+  .bgContainer {
+    padding: 16rem 0 0 0 !important;
+
+    :global(.r-mobile) & {
+      padding: 10rem 0 8rem 0 !important;
+    }
+  }
+
+  :global(.r-mobile) & {
+    padding-bottom: 50vw;
+  }
+}
+
+.backgroundLayerTwoParallax {
+  bottom: auto !important;
+  height: 100%;
+  top: -43vw;
+  background-size: 100%;
+  pointer-events: none;
+
+  :global(.r-mobile) & {
+    top: -35vw;
+  }
+}
+
+.backgroundLayerThreeParallax {
+  bottom: auto !important;
+  height: 100%;
+  top: -23vw;
+  background-size: 100%;
+  pointer-events: none;
+
+  :global(.r-mobile) & {
+    top: -13vw;
+  }
+}
+
+.backgroundLayerFourParallax {
+  height: 100%;
+  background-size: 100%;
+  pointer-events: none;
+}
+
+.backgroundParallaxWrapper {
+  height: 100%;
+  background-size: 105%;
+
+  :global(.r-mobile) & {
+    background-size: 165%;
+  }
+}
+
+.goBeyond {
+  position: relative;
+
+  .bgContainer {
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+    padding: 16rem 0;
+
+    .contentWrapper {
+      display: flex;
+      margin: 0 auto;
+      flex-direction: row;
+      max-width: 70vw;
+      width: 100%;
+      flex: 1 1;
+      justify-content: center;
+
+      > div:nth-child(1) {
+        max-width: 28%;
+      }
+
+      div {
+        h2 {
+          text-shadow: 2px 2px 29px rgba(0, 0, 0, 0.35);
+        }
+      }
+
+      :global(.r-mobile) & {
+        max-width: 85%;
+        flex-direction: column;
+
+        > div:nth-child(1) {
+          max-width: 100%;
+        }
+
+        div {
+          h2 {
+            text-shadow: 2px 2px 29px rgba(0, 0, 0, 0.95);
+            max-width: 70%;
+          }
+        }
+      }
+    }
+
+    & .contentWideWrapper {
+      > div:nth-child(1) {
+        max-width: 38%;
+      }
+    }
+
+    :global(.r-mobile) & {
+      padding: 30rem 0 4rem 0;
+      background-position: top center;
+      background-size: 100%;
+    }
+  }
+}
+
+.sectionFourWrapper {
+  .sectionFourBackgroundWrapper {
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    padding: 3rem 0 60rem 0;
+    margin: 0 auto;
+    text-align: center;
+
+    h2 {
+      margin-top: 8rem;
+      @include h2Heading;
+      text-align: center;
+      border-bottom: none;
+      text-shadow: 2px 2px 29px rgba(255, 255, 255, 0.45);
+      text-transform: uppercase;
+    }
+
+    .shortBorder {
+      margin: 0 auto 1rem auto;
+      width: 100%;
+      max-width: 20rem;
+      height: 1px;
+      @include bottomBorder;
+      display: flex;
+
+      :global(.r-mobile) & {
+        max-width: 85%;
+      }
+    }
+
+    p {
+      max-width: 30rem;
+      margin: 0 auto;
+      @include bodyCopy;
+
+      :global(.r-mobile) & {
+        max-width: 90%;
+      }
+    }
+
+    :global(.r-mobile) & {
+      padding: 16rem 0 80rem 0;
+      background-size: cover;
+    }
+
+    :global(.r-tiny) & {
+      padding: 3rem 0 30rem 0;
+      background-size: 100%;
+    }
+  }
+}
+
+.preorder {
+  background: url("/7/ca/destiny/products/beyondlight/bl_editions_bg_desktop.jpg")
+    no-repeat top center #04040e;
+  min-height: 1220px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 5rem;
+
+  .contentBlock {
+    margin: 0 auto;
+
+    &.centered {
+      flex-flow: column;
+      align-content: center;
+      align-items: center;
+      text-align: center;
+      width: 575px;
+
+      h2 {
+        white-space: nowrap;
+        font-size: 3rem;
+        padding-bottom: 2rem;
+        margin-bottom: 0.5rem;
+        text-align: center;
+        border-bottom: none;
+
+        &::before {
+          content: "";
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          height: 0.5rem;
+          width: 100%;
+          position: absolute;
+          top: calc(50% - 1.3rem);
+          left: -0.25rem;
+        }
+      }
+
+      :global(.r-mobile) & {
+        width: 100%;
+        max-width: 85%;
+      }
+    }
+  }
+
+  :global(.r-mobile) & {
+    background: url("/7/ca/destiny/products/beyondlight/bl_editions_bg_mobile.jpg")
+      no-repeat top center #04040e;
+    background-size: 100% auto;
+    height: auto;
+    padding: 2rem;
+    padding-top: 19%;
+  }
+}

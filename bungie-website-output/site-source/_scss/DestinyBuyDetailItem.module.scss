@@ -1,0 +1,200 @@
+@import "../../../../ui/uikit/_base/ui_base";
+
+.thumbnailPlayButton {
+  background-image: url("/7/ca/destiny/bgs/shadowkeep/play_button.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  width: 5rem;
+  height: 5rem;
+  position: absolute;
+  top: calc(50% - 2.5rem);
+  left: calc(50% - 2.5rem);
+  z-index: 12;
+
+  :global(.r-mobile) & {
+    width: 4rem;
+    height: 4rem;
+    position: absolute;
+    top: calc(50% - 2rem);
+    left: calc(50% - 2rem);
+  }
+}
+
+.thumbnail {
+  width: 100%;
+  padding: calc(900% / 16) 0 0 0;
+  height: 0;
+  position: relative;
+  background-color: $color-background;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  border-radius: 4px;
+  border: 1px solid rgba(white, 0.2);
+
+  img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+
+  &.static {
+    cursor: unset;
+  }
+
+  :global(.r-mobile) & {
+    margin-bottom: 2rem;
+  }
+}
+
+.container {
+  display: flex;
+  flex: 1 1;
+  margin: 2rem 1.5rem 2rem 0;
+  flex-wrap: wrap;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+
+  &.textblock-media {
+    flex-direction: row-reverse;
+
+    .textSection {
+      padding-right: 4rem;
+      padding-left: 0;
+
+      :global(.r-mobile) & {
+        padding: 0;
+      }
+    }
+
+    .mediaSection {
+      padding-left: 1rem;
+      padding-right: 0;
+
+      :global(.r-mobile) & {
+        padding: 0;
+      }
+    }
+
+    :global(.r-mobile) & {
+      flex-direction: column;
+    }
+  }
+
+  &.media-textblock {
+    flex-direction: row;
+
+    .textSection {
+      padding-left: 1rem;
+      padding-right: 0;
+      width: 30%;
+
+      :global(.r-mobile) & {
+        padding: 0;
+        width: 100%;
+      }
+    }
+
+    .mediaSection {
+      padding-left: 0;
+      padding-right: 2rem;
+      width: 70%;
+
+      :global(.r-mobile) & {
+        padding: 0;
+        width: 100%;
+      }
+    }
+
+    :global(.r-mobile) & {
+      flex-direction: column-reverse;
+    }
+  }
+
+  &.vertical {
+    flex-direction: column;
+    width: unset;
+
+    .textSection {
+      width: 100%;
+
+      .textTitle {
+        font-size: 1rem;
+        text-transform: unset;
+        padding: 2rem 0;
+
+        :global(.r-mobile) & {
+          padding: 1rem 0;
+        }
+      }
+    }
+
+    .mediaSection {
+      width: 100%;
+
+      .thumbnail {
+        height: 10rem;
+      }
+    }
+  }
+}
+
+.textSection {
+  width: 50%;
+  align-items: flex-start;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+
+  .textTitle {
+    font-size: 1.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .textBlurb {
+    font-size: 1rem;
+    color: rgba($color-primary, 0.7);
+    line-height: 1.4rem;
+    padding: 0 0 1rem 0;
+
+    li {
+      list-style: disc;
+      margin-left: 1.5rem;
+      padding: 0.25rem 0;
+      opacity: 0.6;
+    }
+  }
+
+  :global(.r-mobile) & {
+    width: 100%;
+  }
+}
+
+.mediaSection {
+  width: 50%;
+
+  :global(.r-mobile) & {
+    width: 100%;
+  }
+}
+
+.videoTitle {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 1rem 0 2rem;
+}
+
+.disclaimer {
+  color: rgba($color-primary, 0.5);
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}

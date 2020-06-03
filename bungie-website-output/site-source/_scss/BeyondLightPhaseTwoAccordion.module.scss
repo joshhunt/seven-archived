@@ -1,0 +1,123 @@
+@import "../../Components/_BLmixins.scss";
+@import "../../../../../ui/uikit/_base/ui_base";
+
+.accordionWrapper {
+  display: flex;
+  width: 100%;
+  text-align: center;
+  justify-content: flex-end;
+  background-position: center;
+  background-size: cover;
+  flex-direction: column;
+  transition: all 0.5s ease;
+  border-top: 1px solid rgb(255, 255, 255);
+
+  .panel {
+    background-color: rgb(6, 8, 11);
+    cursor: pointer;
+    transition: all 0.5s ease;
+    z-index: 0;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .activePanel {
+    transition: max-height 1s ease;
+
+    .detailsWrapper {
+      transition: all 0.5s ease;
+      height: 100%;
+    }
+  }
+
+  .inactivePanel {
+    .detailsWrapper {
+      transition: all 0.5s ease;
+      height: 100%;
+    }
+  }
+
+  .titleWrapper {
+    background-size: 100%;
+    background-repeat: no-repeat;
+    padding-top: 85%;
+    position: relative;
+
+    .title {
+      position: absolute;
+      top: 2rem;
+      text-align: center;
+      width: 100%;
+    }
+
+    .iconWrapper {
+      width: 2rem;
+      height: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+      padding-bottom: 3rem;
+      position: relative;
+
+      svg {
+        rect:last-of-type {
+          transform-origin: 50% 50%;
+          transition: all 0.2s cubic-bezier(0.33, 0, 0.2, 1) 0s;
+        }
+      }
+    }
+
+    .iconWrapper:before {
+      content: "";
+      position: absolute;
+      width: 2.5rem;
+      height: 2.5rem;
+      border: 1px solid #fff;
+    }
+
+    .iconWrapperActive {
+      svg {
+        rect:last-of-type {
+          transform: rotate(90deg);
+          transition: all 0.2s cubic-bezier(0.33, 0, 0.2, 1) 0s;
+        }
+      }
+    }
+  }
+}
+
+.detailsWrapper {
+  margin: 0 auto;
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.5s ease;
+  background-image: linear-gradient(rgba(32, 46, 77, 0.76), #213146, #0a1123);
+
+  .description {
+    text-align: left;
+    @include bodyCopy;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    @include bottomBorder;
+    max-width: 90%;
+  }
+
+  img {
+    width: 100%;
+    max-width: 90%;
+    height: auto;
+    padding: 1rem 0 4rem 0;
+  }
+}
+
+.title {
+  text-transform: uppercase;
+  @include h2Heading;
+  text-shadow: 2px 2px 29px rgba(12, 20, 75, 0.65);
+  margin: 0;
+  font-weight: 600;
+}

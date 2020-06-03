@@ -1,0 +1,36 @@
+.bungieRewardsBanner {
+  min-height: 200px;
+  padding: 2rem;
+  background: url(/7/ca/bungie/bgs/registration/bg_rewardsBanner.jpg) no-repeat
+    center center;
+  background-size: cover;
+  margin: 1.8rem -1.8rem 2.8rem -1.8rem;
+  display: flex;
+  flex-flow: column nowrap;
+
+  strong {
+    background: url(/7/ca/bungie/icons/logos/bungie_rewards_logo.png) no-repeat
+      center center;
+    background-size: contain;
+    text-indent: -9999px;
+    overflow: hidden;
+    width: 30rem;
+    height: 40px;
+    display: block;
+    background-position: left;
+  }
+
+  p {
+    width: 30rem;
+    margin-bottom: 2rem;
+    color: white;
+  }
+
+  .buttons {
+    margin-top: auto;
+
+    a + a {
+      margin-left: 1rem;
+    }
+  }
+}

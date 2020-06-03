@@ -1,0 +1,108 @@
+@import "../_Base/ui_base.scss";
+
+.tooltipContainer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  font-size: 1rem;
+}
+
+.tooltip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  backdrop-filter: blur(3px);
+}
+
+.visible {
+  opacity: 1;
+}
+
+.textOnly {
+  padding: 0.5rem 1.5rem;
+  background: $color-background;
+  color: $color-primary;
+  box-shadow: 0px 10px 10px -5px rgba(0, 0, 0, 0.5);
+
+  &.t,
+  &.tr,
+  &.tl {
+    margin-top: -1rem;
+  }
+
+  &.b,
+  &.br,
+  &.bl {
+    margin-top: 1rem;
+  }
+
+  &.r,
+  &.tr,
+  &.br {
+    margin-left: 1rem;
+  }
+
+  &.l,
+  &.tl,
+  &.bl {
+    margin-left: -1rem;
+  }
+
+  &.l,
+  &.tl,
+  &.t,
+  &.tr,
+  &.r,
+  &.br,
+  &.b,
+  &.bl {
+    &:after {
+      display: none;
+      position: absolute;
+      content: "";
+      width: 0;
+      height: 0;
+      border-style: solid;
+    }
+  }
+
+  &.b:after {
+    display: block;
+    top: 0;
+    left: 50%;
+    margin-left: -7.5px;
+    border-width: 0 7.5px 10px 7.5px;
+    border-color: transparent transparent $color-background transparent;
+  }
+
+  &.l:after {
+    display: block;
+    top: 50%;
+    right: 0;
+    margin-top: -7.5px;
+    border-width: 7.5px 0 7.5px 15px;
+    border-color: transparent transparent transparent $color-background;
+  }
+
+  &.t:after {
+    display: block;
+    top: 100%;
+    left: 50%;
+    margin-left: -7.5px;
+    border-width: 15px 7.5px 0 7.5px;
+    border-color: $color-background transparent transparent transparent;
+  }
+
+  &.r:after {
+    display: block;
+    top: 50%;
+    left: -7.5px;
+    margin-top: -7.5px;
+    border-width: 7.5px 15px 7.5px 0;
+    border-color: transparent $color-background transparent transparent;
+  }
+}

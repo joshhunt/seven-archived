@@ -1,0 +1,21 @@
+@import "../uikit/_base/ui_base";
+
+.mainNavAffix[data-fixed="true"] {
+  top: $size-nav-height;
+
+  :global(html.global-bar-shown) & {
+    top: $size-nav-height + 40px;
+  }
+
+  :global(.r-medium) & {
+    top: $size-nav-height-medium;
+  }
+
+  :global(html.global-bar-shown.r-medium) & {
+    top: $size-nav-height-medium + 2.5rem;
+  }
+
+  &[data-noNav="true"] {
+    top: 0 !important;
+  }
+}

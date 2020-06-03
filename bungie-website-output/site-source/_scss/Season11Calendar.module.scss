@@ -1,0 +1,27 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background-image: url("/7/ca/destiny/bgs/season11/S11_Calendar_bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+  padding: 5rem 0 9rem;
+}
+
+.smallTitle {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 4rem;
+}
+
+.calendar {
+  display: inline-block;
+  max-width: 100%;
+
+  img {
+    max-width: 100%;
+  }
+}

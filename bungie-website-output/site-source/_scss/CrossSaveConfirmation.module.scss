@@ -1,0 +1,41 @@
+@import "../../ui/uikit/_base/ui_base";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10rem;
+  text-align: center;
+
+  .header {
+    font-weight: bold;
+    font-size: 4rem;
+    margin: 0 auto;
+  }
+
+  .subheader {
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: rgba($color-primary, 0.5);
+    margin: 0 auto 2rem auto;
+  }
+
+  a {
+    margin: 1rem 1rem 3rem 1rem;
+    width: 13.5rem;
+  }
+
+  :global(.r-tiny) & {
+    margin-top: 1rem;
+  }
+}
+
+.logo {
+  background-image: url("/7/ca/destiny/logos/crossSave.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 17rem;
+  margin-bottom: 2rem;
+}

@@ -1,0 +1,728 @@
+@import "../../../ui/uikit/_base/ui_base";
+
+body {
+  font-size: 1rem;
+  font-family: $font-family-neue-haas;
+}
+
+@media all and (device-width: 768px) and (device-height: 1024px) and (orientation: portrait) {
+  .hero {
+    height: 100vh !important;
+  }
+
+  .gobeyond {
+    min-height: 900px !important;
+
+    .contentBlock {
+      margin-top: 670px !important;
+    }
+  }
+}
+
+.hero {
+  height: 100vh;
+  width: 100%;
+  background: url("/7/ca/destiny/products/beyondlight/bl_hero_video_FPO.jpg")
+    no-repeat center center;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  /*this accounts for the sticky sidenav*/
+  margin-top: -100vh;
+
+  :global(.r-medium) & {
+    background: url("/7/ca/destiny/products/beyondlight/bl_hero_bg_mobile.jpg")
+      no-repeat top center;
+    background-size: cover;
+    height: 610px;
+    margin-top: 0;
+  }
+
+  .videoContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+
+    :global(.r-mobile) & {
+      display: none;
+    }
+
+    video {
+      display: block;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      height: 100%;
+    }
+  }
+
+  .heroContent {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 5rem;
+    position: relative;
+    height: 100%;
+
+    :global(.r-mobile) & {
+      padding-bottom: 3rem;
+    }
+  }
+
+  .heroTitle {
+    font-size: 5rem;
+    font-weight: 800;
+    background: url(/7/ca/destiny/products/beyondlight/logo_en.png) no-repeat
+      bottom center;
+    background-size: contain;
+    text-indent: -9999px;
+    overflow: hidden;
+    width: 575px;
+    height: 10rem;
+
+    :global(.r-mobile) & {
+      width: 90%;
+      margin-bottom: 96px;
+    }
+  }
+
+  .buttons {
+    margin: 2rem 0;
+
+    div,
+    a {
+      font-weight: 600;
+    }
+
+    div {
+      &:after {
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+    }
+
+    & > div {
+    }
+
+    a {
+      margin-left: 1rem;
+
+      &:after {
+        border: 1px solid #29a7ff;
+      }
+    }
+  }
+
+  .subtitle {
+    color: #fff;
+
+    span {
+      display: block;
+      text-align: center;
+      line-height: 1.4rem;
+
+      :global(.r-mobile) & {
+        font-size: 1.4rem;
+        line-height: 2.3rem;
+        font-weight: 600;
+      }
+    }
+
+    span:first-child {
+      letter-spacing: 0.4rem;
+    }
+
+    .releaseDate {
+      color: #267ebd;
+      color: $_base-color-sky;
+    }
+  }
+}
+
+h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  display: inline-block;
+  position: relative;
+  padding: 0 1rem;
+  letter-spacing: 0.5rem;
+}
+
+h5 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  white-space: nowrap;
+
+  :global(.r-gridmax) & {
+    white-space: normal;
+  }
+}
+
+.contentBlock {
+  color: #fff;
+  display: flex;
+
+  :global(.r-mobile) .hero ~ div & {
+    width: 100%;
+    padding: 0 2rem;
+    flex-flow: column;
+
+    h2 {
+      font-size: 3rem;
+      white-space: normal;
+      padding-bottom: 2rem;
+      margin-bottom: 0.5rem;
+      text-align: center;
+
+      &::before {
+        display: block;
+        content: "";
+        border: 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.5);
+        width: 30%;
+        top: auto;
+        left: 50%;
+        margin-left: -15%;
+        bottom: 0;
+        height: 0;
+        position: absolute;
+      }
+    }
+
+    p {
+      font-size: 1.6rem;
+      text-align: left;
+    }
+  }
+
+  h2 {
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.1rem;
+    line-height: 2rem;
+  }
+
+  &.centered {
+    flex-flow: column;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    width: 575px;
+
+    h2 {
+      white-space: nowrap;
+
+      &::before {
+        content: "";
+        display: block;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        height: 0.5rem;
+        width: 100%;
+        position: absolute;
+        top: calc(50% - 0.3rem);
+        left: -0.25rem;
+      }
+    }
+  }
+
+  &.sided {
+    flex-flow: row;
+    align-content: flex-start;
+    width: 65%;
+    margin: 0 auto;
+
+    h2 {
+      flex: 1 1 40%;
+      padding: 1rem;
+    }
+
+    p {
+      flex: 1 1 60%;
+      padding: 0 1rem 0;
+    }
+  }
+}
+
+.thumbnails {
+  display: flex;
+  flex-flow: row;
+  align-content: center;
+  justify-content: center;
+  margin-top: 2rem;
+
+  :global(.r-mobile) & {
+    flex-flow: column;
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .thumbnail {
+    width: 20rem;
+    padding: 0;
+    position: relative;
+    margin-right: 2rem;
+    background-color: $color-background;
+    cursor: pointer;
+    transition: 0.25s;
+    min-height: 8rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+
+    &:after {
+      border-radius: 3px;
+    }
+
+    :global(.r-mobile) & {
+      margin: 1rem auto;
+    }
+
+    :global(.r-mobile) & {
+      width: 100%;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 3px;
+    }
+
+    &:last-child {
+      margin-right: 0;
+
+      :global(.r-mobile) & {
+        margin-right: auto;
+      }
+    }
+
+    .playButton {
+      @include webPBackgroundImage(
+        "/7/ca/destiny/bgs/shadowkeep/play_button.png"
+      );
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      width: 5rem;
+      height: 5rem;
+      position: absolute;
+      top: calc(50% - 2.5rem);
+      left: calc(50% - 2.5rem);
+    }
+
+    &:after {
+      border-color: rgba($color-primary, 0.2) !important;
+    }
+
+    &:hover {
+      border: none;
+      background-color: rgba(255, 255, 255, 0);
+
+      &:after {
+        border-color: $color-primary !important;
+      }
+    }
+
+    :global(.r-mobile) & {
+      width: 100%;
+      height: 100%;
+      margin: 1rem 0;
+    }
+  }
+}
+
+.preorderBonusWrapper {
+  padding: 8rem 0;
+  margin: -8rem 0;
+  overflow: hidden;
+}
+
+.preorderBonus {
+  background: url("/7/ca/destiny/products/beyondlight/preorder_bg_desktop.jpg")
+    no-repeat top center;
+  background-size: cover;
+  position: relative;
+
+  :global(.r-mobile) & {
+    background: url("/7/ca/destiny/products/beyondlight/bl_preorder_banner_mobile.jpg")
+      no-repeat bottom center;
+    background-size: cover;
+    border-top: 2px solid #6188a3;
+  }
+
+  .preorderBonusContent {
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    max-width: 1400px;
+
+    :global(.r-mobile) & {
+      padding-bottom: 36%;
+    }
+
+    .preorderBonusText {
+      font-size: 0.6rem;
+      text-align: center;
+      display: block;
+      width: 495px;
+      margin: 0 auto;
+      padding: 2rem;
+      position: relative;
+
+      &::before {
+        content: "";
+        background: url("/7/ca/destiny/products/beyondlight/preorder_freeze_tag.png")
+          no-repeat center center;
+        background-size: cover;
+        width: 303px;
+        height: 210px;
+        display: inline-block;
+        position: absolute;
+        left: -245px;
+        bottom: 0;
+
+        :global(.r-mobile) & {
+          display: none;
+        }
+      }
+
+      &::after {
+        content: "";
+        background: url("/7/ca/destiny/products/beyondlight/preorder_ghost_emblem.png")
+          no-repeat center center;
+        background-size: cover;
+        width: 388px;
+        height: 177px;
+        display: inline-block;
+        position: absolute;
+        right: -306px;
+        bottom: 0;
+
+        :global(.r-mobile) & {
+          display: none;
+        }
+      }
+
+      :global(.r-mobile) & {
+        width: 100%;
+        font-size: 1.3rem;
+      }
+
+      p {
+        font-size: 0.7rem;
+        margin: 0;
+
+        :global(.r-mobile) & {
+          font-size: 1.3rem;
+          line-height: 1.6rem;
+          margin-top: 1rem;
+
+          &:first-child {
+            margin-top: 0;
+          }
+        }
+      }
+
+      em {
+        color: $_base-color-sky;
+      }
+
+      :first-child {
+        font-weight: 600;
+        font-size: 1rem;
+
+        :global(.r-mobile) & {
+          font-size: 1.3rem;
+        }
+      }
+    }
+  }
+}
+
+.gobeyond {
+  background: url("/7/ca/destiny/products/beyondlight/bl_overview_bg_desktop.jpg")
+    no-repeat top center;
+  background-size: cover;
+  padding-top: 5rem;
+  max-height: 2200px;
+
+  /* the psuedos are propping up this container, keeping the video below the center of the BG image for 4K display */
+  &::before {
+    content: "";
+    height: 0;
+    padding-top: 52.25%;
+    float: left;
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+  :global(.r-mobile) & {
+    background: url("/7/ca/destiny/products/beyondlight/bl_overview_bg_mobile.jpg")
+      no-repeat top center #080f1f;
+    background-size: 100% auto;
+    height: auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .contentBlock {
+    width: 575px;
+    margin: 0 auto;
+
+    :global(.r-mobile) & {
+      margin-top: 294px;
+    }
+  }
+}
+
+.gameplayReveal {
+  position: absolute;
+  width: 100%;
+
+  :global(.r-mobile) & {
+    background: #080f1f;
+    position: relative;
+    padding: 2rem 2rem 4rem;
+  }
+
+  .trailerContent {
+    width: 70%;
+    margin: 0 auto;
+
+    :global(.r-mobile) & {
+      width: 100%;
+    }
+  }
+
+  .trailerButton {
+    opacity: 1;
+
+    &::after {
+      display: none;
+    }
+
+    &:hover {
+      box-shadow: none;
+      color: whitesmoke;
+      background: none;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+
+      .playButton {
+        transform: scale(1.2);
+      }
+    }
+
+    display: block;
+    width: 100%;
+    height: 0;
+    padding-top: 46.154%;
+    margin: 0 auto;
+    margin-top: -27.07%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+
+    :global(.r-mobile) & {
+      margin: 0;
+    }
+
+    .trailerContainer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      video {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  .playButton {
+    @include webPBackgroundImage(
+      "/7/ca/destiny/bgs/shadowkeep/play_button.png"
+    );
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 5rem;
+    height: 5rem;
+    position: absolute;
+    top: calc(50% - 2.5rem);
+    left: calc(50% - 2.5rem);
+    transition: all 0.1s;
+    transform: scale(1);
+  }
+
+  p {
+    font-size: 0.8rem;
+    position: absolute;
+    bottom: -2.5rem;
+    left: 0;
+
+    :global(.r-mobile) & {
+      width: 100%;
+      text-align: center;
+    }
+  }
+}
+
+.europaAwaits {
+  background: url("/7/ca/destiny/products/beyondlight/bl_europa_bg_desktop.jpg")
+    no-repeat top center;
+  background-size: cover;
+  height: 1292px;
+  padding: 5rem 0;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-end;
+
+  :global(.r-mobile) & {
+    background: url("/7/ca/destiny/products/beyondlight/bl_europa_bg_mobile.jpg")
+      no-repeat top center #14223c;
+    height: auto;
+    background-size: 100% auto;
+    padding-top: 387px;
+  }
+
+  .contentBlock {
+    width: 50%;
+    margin: 0 auto;
+  }
+}
+
+.wieldTheDarkness {
+  padding: 5rem;
+  background: url("/7/ca/destiny/products/beyondlight/bl_stasis_bg_desktop.jpg")
+    no-repeat center;
+  background-size: cover;
+  height: 950px;
+
+  :global(.r-mobile) & {
+    padding: 2rem 0;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
+    background: url("/7/ca/destiny/products/beyondlight/bl_stasis_bg_mobile.jpg")
+      no-repeat top center #06050a;
+    background-size: 100% auto;
+    height: auto;
+    padding-top: 100%;
+  }
+
+  strong {
+    font-size: 1.4rem;
+    display: block;
+    margin-bottom: 1rem;
+    font-weight: normal;
+
+    :global(.r-mobile) & {
+      font-size: 2rem;
+      line-height: 3rem;
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+.gearsRewards {
+  padding: 5rem 0;
+  background: url("/7/ca/destiny/products/beyondlight/bl_gear_bg_desktop.jpg")
+    no-repeat center;
+  background-size: cover;
+  height: 1014px;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-end;
+
+  :global(.r-mobile) & {
+    background: url("/7/ca/destiny/products/beyondlight/bl_gear_bg_mobile.jpg")
+      no-repeat top center #0a0d12;
+    background-size: 100% auto;
+    height: auto;
+    padding-top: 70%;
+  }
+}
+
+.rewards {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  width: 70%;
+  margin: 0 auto;
+
+  .reward {
+    background: #000;
+    flex: 1 1 30%;
+    height: 4rem;
+    margin: 0.5rem;
+  }
+}
+
+.deepStoneCrypt {
+  padding: 5rem 0;
+  background: url("/7/ca/destiny/products/beyondlight/bl_crypt_bg_desktop.jpg")
+    no-repeat center center;
+  background-size: cover;
+  height: 1014px;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-end;
+
+  :global(.r-mobile) & {
+    background: url("/7/ca/destiny/products/beyondlight/bl_crypt_bg_mobile.jpg")
+      no-repeat top center #23020b;
+    background-size: 100% auto;
+    height: auto;
+    padding-top: 120%;
+  }
+
+  .contentBlock {
+    margin: 0 auto;
+  }
+}
+
+.preorder {
+  background: url("/7/ca/destiny/products/beyondlight/bl_editions_bg_desktop.jpg")
+    no-repeat top center #04040e;
+  min-height: 1220px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 5rem;
+
+  .contentBlock {
+    margin: 0 auto;
+  }
+
+  :global(.r-mobile) & {
+    background: url("/7/ca/destiny/products/beyondlight/bl_editions_bg_mobile.jpg")
+      no-repeat top center #04040e;
+    background-size: 100% auto;
+    height: auto;
+    padding: 2rem;
+    padding-top: 19%;
+  }
+}
+
+.help {
+  text-align: center;
+  background: url("/7/ca/destiny/products/beyondlight/support_banner_bg.jpg")
+    no-repeat top center;
+  background-size: cover;
+  padding: 2rem;
+
+  a {
+    font-weight: 600;
+    color: $_base-color-schoolbus;
+    margin-left: 1rem;
+  }
+}

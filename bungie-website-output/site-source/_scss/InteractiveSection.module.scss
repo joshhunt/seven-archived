@@ -1,0 +1,278 @@
+@import "../../../../../ui/uikit/_base/ui_base";
+@import "../../Components/_BLmixins.scss";
+
+.fullScreenModal {
+  width: 100%;
+  max-width: 100vw;
+  height: 100%;
+  max-height: 100vh;
+  font-family: $font-family-neue-haas;
+
+  & > :first-child {
+    top: 0.5rem;
+    right: 30px;
+  }
+
+  & > :nth-child(2) {
+    max-height: 100%;
+    height: 100%;
+  }
+}
+
+.sectionHeading {
+  letter-spacing: 7px;
+  text-transform: uppercase;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  @include eyebrow;
+}
+
+.sectionWrapper {
+  text-align: center;
+  padding: 29rem 0;
+  background-color: #000;
+  overflow: hidden;
+  position: relative;
+  background-size: cover;
+  width: 100%;
+  border-top: 1px solid white;
+}
+
+.parallaxWrapper {
+  backface-visibility: hidden;
+  position: absolute;
+  display: block;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.parallaxInner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+
+  div {
+    position: absolute;
+  }
+}
+
+// general heading styles
+.allAnchors {
+  height: 100%;
+  width: 100%;
+
+  .anchorSpan {
+    width: 33.33%;
+    height: 100%;
+    position: absolute;
+
+    div {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: flex-start;
+
+      .subheading {
+        margin-top: 4rem;
+        @include bodyCopy;
+        margin-left: 3rem;
+        letter-spacing: 1px;
+      }
+
+      span {
+        position: absolute;
+        transform: translate3d(0, 0, 0);
+        width: 100%;
+        max-width: 500px;
+        height: 100px;
+        z-index: 5;
+
+        .svgWrapperActive {
+          .subheading {
+            letter-spacing: 7px;
+            text-transform: uppercase;
+            @include eyebrow;
+          }
+        }
+
+        &:hover {
+          .svgWrapperActive {
+            .title {
+              span {
+                width: 100%;
+                position: relative;
+
+                &:before {
+                  content: "";
+                  position: absolute;
+                  display: block;
+                  top: 19px;
+                  left: -50px;
+                  border: 2px solid rgba(255, 255, 255, 0.5);
+                  width: 2.25rem;
+                  height: 2.25rem;
+                }
+              }
+            }
+          }
+        }
+
+        .svgWrapper {
+          display: flex;
+          justify-content: flex-start;
+          width: 100%;
+          height: 100%;
+
+          .title {
+            position: absolute;
+            text-transform: uppercase;
+            padding-left: 2.5rem;
+            font-weight: 600;
+            @include h2Heading;
+            text-shadow: 2px 2px 29px rgba(12, 20, 75, 0.65);
+
+            span {
+              width: 100%;
+              position: relative;
+
+              svg {
+                width: 1.25rem;
+                height: 1.25rem;
+                position: absolute;
+                top: 21px;
+                left: -40px;
+                margin-top: 0.5rem;
+              }
+
+              &:before {
+                content: "";
+                position: absolute;
+                display: block;
+                top: 21px;
+                left: -48px;
+                border: 2px solid rgba(255, 255, 255, 0.5);
+                transition: 0.001s;
+                width: 2rem;
+                height: 2rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.leftLink {
+  transform: translate(-600px, 600px);
+
+  :global(.r-large) & {
+    transform: translate(-400px, 600px);
+  }
+}
+
+.centerLink {
+  transform: translate(-200px, 100px);
+
+  :global(.r-large) & {
+    transform: translate(-200px, 50px);
+  }
+}
+
+.rightLink {
+  transform: translate(200px, 520px);
+}
+
+// placement of guardian div
+.leftPlace {
+  transform: translate(-323px, 300px);
+  width: 100%;
+  height: 100%;
+
+  .leftItemCandyWrapper {
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    transform: translate(7%, 0%);
+
+    .leftItemCandy {
+      width: 100%;
+      max-width: 1154px;
+    }
+  }
+
+  :global(.r-large) & {
+    transform: translate(-270px, 300px);
+  }
+}
+
+.centerPlace {
+  transform: translate(-280px, 0px);
+  width: 100%;
+  height: 100%;
+}
+
+.backgroundCandyPlace {
+  transform: translate(-3%, 0%);
+  width: 100%;
+  height: 100%;
+
+  .backgroundCandyWrapper {
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+
+    img {
+      width: 100%;
+      max-width: 1781px;
+    }
+  }
+}
+
+.rightPlace {
+  transform: translate(370px, 215px);
+  width: 100%;
+  height: 100%;
+}
+
+// guardian specific styles
+.leftItem {
+  position: absolute;
+  transform: translate3d(0, 0, 0);
+  width: 100%;
+  z-index: -1;
+
+  img {
+    width: 100%;
+    max-width: 770px;
+  }
+}
+
+.centerItem {
+  position: absolute;
+  transform: translate3d(0, 0, 0);
+  width: 100%;
+
+  img {
+    width: 100%;
+    max-width: 910px;
+  }
+}
+
+.rightItem {
+  position: absolute;
+  transform: translate3d(0, 0, 0);
+  width: 100%;
+  z-index: -1;
+
+  img {
+    width: 100%;
+    max-width: 540px;
+  }
+}

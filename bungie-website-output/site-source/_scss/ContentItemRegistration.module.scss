@@ -1,0 +1,401 @@
+@import "../../../ui/uikit/_base/ui_base";
+
+.container {
+  margin-bottom: 4rem;
+
+  h3 {
+    font-size: 2.2rem;
+    font-weight: 600;
+
+    &:before {
+      content: "";
+      width: 6.7rem;
+      border-top: 0.4rem #fff solid;
+      color: #fff;
+      display: block;
+      margin-bottom: 1rem;
+    }
+  }
+
+  & > p {
+    font-size: 1.2rem;
+    margin: 0.25rem 0 2rem;
+  }
+}
+
+.blocks {
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: repeat(2, 1fr);
+  /*grid-template-rows: repeat(2, 1fr);*/
+
+  :global(.r-medium) & {
+    display: flex;
+    flex-flow: column;
+    grid-gap: 0;
+
+    & > div {
+      margin-top: 2rem;
+    }
+
+    & > div:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+/* add the 3 by block row wrappers here */
+.registrationSetup .blocks {
+  grid-template-columns: repeat(3, 1fr);
+  /*grid-template-rows: 100%;*/
+}
+
+.registrationUtility .blocks {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.registrationHelp .blocks {
+  grid-template-rows: repeat(3, 1fr);
+  grid-auto-flow: column;
+}
+
+.registrationApps .blocks {
+  grid-template-rows: repeat(6, 1fr);
+  grid-auto-flow: column;
+}
+
+.content {
+  .icon {
+    display: none;
+  }
+
+  strong {
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.2rem;
+  }
+
+  p {
+    color: #838383;
+    font-size: 1rem;
+    margin: 1rem 0;
+  }
+
+  a {
+    color: $_base-color-schoolbus;
+  }
+}
+
+.registrationApps {
+  .blocks {
+    display: block;
+  }
+
+  .background {
+    display: block;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: 30rem;
+    margin-top: 4rem;
+    background-position: 70%;
+  }
+}
+
+.registrationCommunity {
+  .blocks {
+    grid-template-rows: 30rem 30rem;
+
+    :first-child {
+      grid-row-start: span 2;
+    }
+  }
+
+  .background {
+    display: block;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    background-position: center;
+    height: 100%;
+
+    :global(.r-medium) & {
+      height: 30rem;
+    }
+  }
+}
+
+.rewardBlock {
+  position: relative;
+  display: flex;
+  flex-flow: row nowrap;
+
+  .background {
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: none;
+    width: 35%;
+    flex: 1 1 35%;
+  }
+
+  .content {
+    display: block;
+    padding: 1.5rem;
+    background: rgba(33, 40, 51, 0.5);
+    flex: 1 1 65%;
+    backdrop-filter: blur(30px);
+  }
+
+  strong {
+    font-size: 1.2rem;
+  }
+
+  p {
+    margin: 1rem 0 0;
+    font-size: 1rem;
+    color: #fff;
+  }
+
+  &:first-child {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    padding: 0;
+    display: block;
+    min-height: 400px;
+
+    & .background {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      background-position: center right;
+    }
+
+    & .content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    & p {
+      margin: 0;
+    }
+  }
+}
+
+.setupBlock {
+  position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+
+  .background {
+    background-position: center center;
+    background-size: cover;
+    height: 13rem;
+  }
+
+  .content {
+    background: rgba(33, 40, 51, 0.5);
+    padding: 2rem;
+  }
+
+  strong {
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.2rem;
+  }
+
+  p {
+    color: #838383;
+    font-size: 1rem;
+    margin: 1rem 0;
+  }
+
+  a {
+    width: 100%;
+  }
+}
+
+.utilityBlock {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  background: rgba(33, 40, 51, 0.5);
+  padding: 1.5rem;
+
+  .background {
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    min-width: 3rem;
+    min-height: 3rem;
+    margin-right: 1.5rem;
+
+    :global(.r-medium) & {
+      flex: 0 1 3rem;
+      height: 3rem;
+    }
+  }
+
+  p {
+    margin: 0.5rem 0 0;
+  }
+
+  :global(.r-medium) & {
+    margin-top: 1.5rem;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+.appBenefitsBlock {
+  display: grid;
+  grid-template-columns: calc(213px + 1.5rem) auto;
+
+  &:nth-child(4),
+  &:nth-child(5) {
+    grid-row: span 3;
+    display: flex;
+    flex-flow: column nowrap;
+
+    .background {
+      flex: 1 0 40rem;
+
+      :global(.r-medium) & {
+        height: 40rem;
+      }
+    }
+
+    .content {
+      flex: 0 1 calc(35% - 2rem);
+      display: grid;
+
+      grid-template-columns: 5rem auto;
+      grid-gap: 1.5rem;
+
+      .icon {
+        display: inline-block;
+        width: 5rem;
+        height: 5rem;
+        background: no-repeat 0 0;
+        background-size: cover;
+      }
+    }
+  }
+
+  .background {
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .content {
+    background: rgba(33, 40, 51, 0.5);
+    padding: 1.5rem;
+  }
+}
+
+.helpBlock {
+  display: grid;
+  grid-template-columns: calc(213px + 1.5rem) auto;
+
+  &:first-child {
+    /*grid-template-rows: calc(328px + 3rem) auto;*/
+    grid-row: span 3;
+    display: flex;
+    flex-flow: column nowrap;
+
+    .background {
+      flex: 1 1 auto;
+    }
+
+    .content {
+      flex: 0 1 calc(35% - 2rem);
+    }
+  }
+
+  .background {
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .content {
+    background: rgba(33, 40, 51, 0.5);
+    padding: 1.5rem;
+  }
+}
+
+.helpArticleListLinks {
+  background: rgba(33, 40, 51, 0.5);
+  grid-row-end: 4;
+  grid-row-start: 2;
+
+  .helpArticlesHeader {
+    background: rgba(33, 40, 51, 0.5);
+    padding: 1.5rem;
+    display: flex;
+    flex-flow: row nowrap;
+    align-content: center;
+
+    strong {
+    }
+
+    a {
+      margin-left: auto;
+      color: $_base-color-schoolbus;
+    }
+  }
+
+  ul {
+    padding: 1.5rem;
+
+    li {
+      margin-top: 1rem;
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      a {
+        color: #fff;
+      }
+    }
+  }
+}
+
+.genericBanner {
+  height: 280px;
+  padding: 2rem;
+  background: url(/7/ca/bungie/bgs/registration/bg_rewardsBanner.png) no-repeat
+    center center;
+  background-size: cover;
+  margin: 0 0 4rem;
+  display: flex;
+  flex-flow: column nowrap;
+  text-align: right;
+  align-items: flex-end;
+  justify-content: flex-end;
+
+  .leftAligned {
+    text-align: left;
+    align-items: flex-start;
+    justify-content: flex-end;
+  }
+  /* default is right aligned */
+  strong {
+    font-size: 3rem;
+  }
+
+  p {
+    width: 30rem;
+    margin-bottom: 2rem;
+  }
+}

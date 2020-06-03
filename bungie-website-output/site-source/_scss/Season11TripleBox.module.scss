@@ -1,0 +1,57 @@
+.wrapper {
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.boxContainer {
+  display: flex;
+
+  > .box {
+    position: relative;
+    width: calc(33.33% - 1.33rem);
+    padding: 18rem 1rem 1rem;
+    font-size: 1.125rem;
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+
+    + .box {
+      margin-left: 2rem;
+    }
+
+    :global(.r-mobile) & {
+      width: 100%;
+      margin-bottom: 2rem;
+
+      + .box {
+        margin-left: 0;
+      }
+    }
+  }
+
+  :global(.r-mobile) & {
+    flex-direction: column;
+  }
+}
+
+.title {
+  font-weight: bold;
+  padding-bottom: 1rem;
+
+  :global(.r-mobile) & {
+    font-size: 1.75rem;
+  }
+}
+
+.description {
+  color: rgb(245, 245, 245);
+
+  :global(.r-mobile) & {
+    font-size: 1.6rem;
+    line-height: 1.25;
+  }
+}
+
+.box.clickable {
+  cursor: pointer;
+}

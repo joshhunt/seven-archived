@@ -1,0 +1,123 @@
+@import "../../../../../ui/uikit/_base/ui_base";
+@import "../../Components/_BLmixins.scss";
+
+.sectionWrapper {
+  overflow: hidden;
+  position: relative;
+  border-top: 2px solid #323d4d;
+}
+
+.backgroundContainer {
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 96vw;
+}
+
+.sectionWrapper:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 12rem;
+  background-image: linear-gradient(
+    rgba(6, 13, 23, 0.75) 30%,
+    rgba(40, 88, 128, 0)
+  );
+  z-index: 0;
+  top: 0;
+  left: 0;
+}
+
+.eyebrow {
+  padding: 2rem 0 1rem 0;
+  color: #479ce4;
+  @include bodyCopy;
+  @include bottomBorder;
+  max-width: 20rem;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 8px;
+}
+
+.heading {
+  @include h2Heading;
+  border: none;
+  padding-top: 1rem;
+  margin: 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.tipWrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.tipWrapper > div:nth-child(1) {
+  top: 11.08vw;
+  left: 26.5vw;
+}
+
+.tipWrapper > div:nth-child(2) {
+  top: 24.32vw;
+  left: 58.03vw;
+}
+
+.tipWrapper > div:nth-child(3) {
+  top: 30.56vw;
+  left: 28.31vw;
+}
+
+.tipWrapper > div:nth-child(4) {
+  top: 52.68vw;
+  left: 49.34vw;
+
+  :global(html.r-gridmax) & {
+    top: 42.68vw;
+  }
+
+  :global(html.r-large) & {
+    top: 42.68vw;
+  }
+
+  :global(html.r-medium) & {
+    top: 42.68vw;
+  }
+}
+
+.tipWrapper > div:nth-child(5) {
+  top: 63vw;
+  left: 42.2vw;
+
+  :global(html.r-gridmax) & {
+    top: 60vw;
+  }
+
+  :global(html.r-large) & {
+    top: 58vw;
+  }
+
+  :global(html.r-medium) & {
+    top: 53vw;
+    left: 42.2vw;
+  }
+}
+
+.tipWrapper > div:nth-child(6) {
+  top: 63.28vw;
+  left: 60.2vw;
+}
+
+.tipWrapper > div:nth-child(7) {
+  top: 72.8vw;
+  left: 20.2vw;
+}
+
+.tipWrapper > div:nth-child(8) {
+  top: 74.25vw;
+  left: 39.95vw;
+}

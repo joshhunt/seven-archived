@@ -1,0 +1,72 @@
+.rewardItem {
+  background: rgba(245, 245, 245, 0.05);
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  padding: 2rem;
+  margin-top: 0.5rem;
+
+  :global(.r-tiny) & {
+    flex-wrap: wrap;
+
+    img {
+      width: 50px;
+      height: 50px;
+      min-width: 50px;
+      min-height: 50px;
+    }
+
+    .itemContent {
+      max-width: calc(100% - 50px);
+      margin-bottom: 1rem;
+
+      h5 {
+        margin-bottom: 0;
+      }
+
+      p {
+        margin: 0;
+      }
+    }
+
+    .claimButton {
+      width: 100%;
+    }
+  }
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  img {
+    align-self: flex-start;
+    width: 60px;
+    height: 60px;
+    border: 2px solid #fff;
+    min-width: 60px;
+    min-height: 60px;
+  }
+
+  .itemContent {
+    padding: 0 1rem;
+
+    h5 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 1rem;
+      color: ghostwhite;
+      margin-top: 0rem;
+      margin-bottom: 0rem;
+      opacity: 0.85;
+    }
+  }
+
+  .claimButton {
+    margin-left: auto;
+  }
+}

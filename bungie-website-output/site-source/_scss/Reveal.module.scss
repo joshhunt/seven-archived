@@ -1,0 +1,237 @@
+@import "../../ui/uikit/_base/ui_base";
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+    transform-origin: center;
+  }
+
+  to {
+    transform: rotate(359deg);
+    transform-origin: center;
+  }
+}
+
+.container {
+  background: url("/7/ca/destiny/bgs/reveal/reveal_bg.jpg") no-repeat center
+    center;
+  background-size: cover;
+  position: relative;
+
+  &.postRevealContainer .bgs::before,
+  &.postRevealContainer .bgs::after {
+    display: none;
+  }
+
+  .containerContent {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+
+  .bgs {
+    display: block;
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    background: url("/7/ca/destiny/bgs/reveal/reveal_radial_2_static.png")
+      no-repeat center center;
+    pointer-events: none;
+    overflow: hidden;
+
+    &::before {
+      display: block;
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: url("/7/ca/destiny/bgs/reveal/reveal_radial_1a.png") no-repeat
+        center center;
+      animation: rotation 400s infinite linear;
+    }
+
+    &::after {
+      display: block;
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: url("/7/ca/destiny/bgs/reveal/reveal_radial_1b.png") no-repeat
+        center center;
+      animation: rotation 400s infinite linear reverse;
+    }
+  }
+
+  .tuneinDesc {
+    background: url("/7/ca/destiny/icons/tricorn.png") no-repeat center top;
+    background-size: 7rem auto;
+    padding-top: 8rem;
+    letter-spacing: 0.2rem;
+    width: 46%;
+    text-align: center;
+    line-height: 2.6rem;
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.6rem;
+
+    :global(.r-medium) & {
+      width: 80%;
+    }
+  }
+
+  .timeBox {
+    position: relative;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    padding: 0.5rem 7rem;
+    text-align: center;
+    margin: 3rem;
+
+    :global(.r-medium) & {
+      padding: 0.5rem 3rem;
+    }
+
+    :global(.r-moblie) & {
+      padding: 0.5rem 1rem;
+    }
+
+    &::before,
+    &::after {
+      position: absolute;
+      content: "";
+      display: block;
+      border: 4px rgba(255, 255, 255, 0.3) solid;
+      width: 2.5rem;
+      height: calc(100% + 9px);
+      top: -8px;
+      border-bottom-width: 2px;
+    }
+
+    &::before {
+      border-right: 0;
+      border-left: 0;
+      left: -1px;
+    }
+
+    &::after {
+      border-left: 0;
+      border-right: 0;
+      right: -1px;
+    }
+
+    .date {
+      font-weight: 600;
+      font-size: 5rem;
+    }
+
+    .time {
+      font-size: 1.3rem;
+      letter-spacing: 0.2rem;
+    }
+  }
+
+  .calendarLink {
+    margin-top: 1rem;
+    color: $_base-color-schoolbus;
+    cursor: pointer;
+  }
+}
+
+.postReveal {
+  width: 100%;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: 10rem 0;
+}
+
+.postRevealHeader {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  margin-bottom: 2rem;
+
+  :global(.r-mobile) & {
+    flex-flow: column;
+    align-items: center;
+  }
+
+  .destinyLogo {
+    background: url("/7/ca/destiny/logos/logo_destiny2.png") no-repeat -11px center;
+    text-indent: -9999px;
+    overflow: hidden;
+    width: 171px;
+    height: 4rem;
+    flex: 1 1 auto;
+    background-size: contain;
+
+    :global(.r-mobile) & {
+      background-position: center center;
+      width: 100%;
+    }
+  }
+
+  p {
+    margin-left: auto;
+    align-self: flex-end;
+    flex: 1 1 auto;
+    text-align: right;
+    line-height: 4rem;
+    margin: 0;
+
+    :global(.r-mobile) & {
+      text-align: center;
+      width: 100%;
+      font-size: 1.8rem;
+      line-height: 2.2rem;
+      margin: 1rem 0 2rem;
+    }
+  }
+}
+
+.revealStreamFooter {
+  text-align: center;
+  margin-top: 3rem;
+
+  span {
+    display: inline-block;
+    padding: 0.5rem 2rem;
+    color: whitesmoke;
+  }
+
+  a {
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
+    display: inline-block;
+    padding: 0.5rem 2rem;
+    color: $_base-color-schoolbus;
+  }
+}
+
+.systemCalendarButton {
+  margin-left: 1rem;
+}
+
+.streamContainer {
+  /*max-width: 1280px;
+	max-height: 720px;
+	width: 100%;
+	height: 720px;*/
+  margin: 0 auto;
+
+  padding-top: 56.25%;
+  position: relative;
+  height: 0;
+
+  iframe {
+    position: absolute;
+    top: 0;
+    border: 0;
+    width: 100%;
+    height: 100%;
+  }
+}

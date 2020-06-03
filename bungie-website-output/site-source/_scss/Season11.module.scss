@@ -1,0 +1,12 @@
+.wrapper {
+  background: #100902;
+
+  :global(.r-mobile) & {
+    width: 100vw;
+    overflow: hidden;
+  }
+}
+
+.newsMedia {
+  background: rgb(20, 23, 26);
+}

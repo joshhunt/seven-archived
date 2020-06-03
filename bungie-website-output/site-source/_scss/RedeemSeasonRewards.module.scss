@@ -1,0 +1,51 @@
+// Need access to ui_base? Find ui_base.scss in the solution explorer, and drag it into this file to automatically import it.
+
+.titleUnclaimedRewards {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.descUnclaimedRewards {
+  color: #fff;
+  font-size: 1.25rem;
+  text-align: center;
+  margin-bottom: 3.5rem;
+
+  strong {
+    color: #1cb8bb;
+  }
+}
+
+.listUnClaimed {
+  margin: 0 auto;
+  width: 70%;
+
+  :global(.r-medium) & {
+    width: calc(100% - 2rem);
+  }
+}
+
+.successClaimed {
+  background: right center no-repeat transparent;
+  background-size: auto 100%;
+  padding: 1rem 0 1rem 1rem;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+
+  p {
+    text-align: left;
+  }
+
+  .successTitle {
+    font-weight: 600;
+  }
+
+  img {
+    width: 75px;
+    height: 75px;
+    margin-right: 1rem;
+  }
+}

@@ -1,0 +1,582 @@
+@import "../../../../ui/uikit/_base/ui_base";
+
+.body {
+  overflow-x: hidden;
+}
+
+.hero {
+  @include webPBackgroundImage(
+    "/7/ca/destiny/bgs/seasons/hero_desktop_bg1.jpg"
+  );
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  margin-top: -9rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 27rem;
+  position: relative;
+
+  :global(html.r-mobile) & {
+    @include webPBackgroundImage(
+      "/7/ca/destiny/bgs/seasons/mobile/undying_hero_mobile_bg1.jpg"
+    );
+    padding-top: 18rem;
+    padding-bottom: 0;
+  }
+
+  .playButton {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .playCircle {
+    @include webPBackgroundImage(
+      "/7/ca/destiny/bgs/seasons/play_button_bg.png"
+    );
+    height: 6rem;
+    width: 6rem;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 0.655rem;
+    transition: 0.25s;
+
+    &:hover {
+      height: 6.5rem;
+      width: 6.5rem;
+      margin: -0.25rem 0;
+    }
+  }
+
+  .playIcon {
+    background-image: url("/7/ca/destiny/bgs/seasons/play_button_triangle.svg");
+    height: 3rem;
+    width: 3rem;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
+  .heroLogo {
+    height: 12rem;
+    width: 43rem;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin-bottom: 4rem;
+
+    :global(html.r-mobile) & {
+      margin-bottom: 2rem;
+      width: 90%;
+    }
+  }
+
+  .date {
+    color: rgba($color-primary, 0.85);
+    font-size: 2rem;
+    letter-spacing: 3px;
+    margin-bottom: 10rem;
+
+    :global(html.r-mobile) & {
+      margin-bottom: 14rem;
+      font-size: 1.25rem;
+    }
+  }
+}
+
+.countdownTimer {
+  color: $color-primary;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+  letter-spacing: 3px;
+
+  .time {
+    font-weight: bold;
+    margin-left: 1.5rem;
+    text-transform: uppercase;
+    background-color: rgba($color-primary, 0.05);
+    padding: 0 0.3rem 0.1rem;
+    border: 1px solid rgba($color-primary, 0.2);
+    border-top: 3px solid rgba($color-primary, 0.2);
+    margin-top: -0.2rem;
+
+    * {
+      margin: auto 0.15rem;
+    }
+  }
+}
+
+.arrowOne {
+  i {
+    opacity: 0.3;
+    color: black;
+    margin-bottom: -1.5rem;
+    animation: arrowslide 1.1s linear infinite running;
+  }
+}
+
+@keyframes arrowslide {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+
+  5% {
+    opacity: 0.85;
+    transform: translateY(0);
+  }
+
+  15% {
+    opacity: 0.85;
+    transform: translateY(0);
+  }
+
+  25% {
+    opacity: 0.85;
+    transform: translateY(100%);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}
+
+.rankRow {
+  width: 100%;
+  height: 0;
+  padding-bottom: 19.283%;
+  margin: 0.5rem;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @for $i from 1 through 10 {
+    &.rankRow#{$i} {
+      background-image: url("/7/ca/destiny/bgs/seasons/ranks_#{$i}_num.png");
+    }
+  }
+}
+
+.mobileRankRow {
+  width: 100%;
+  height: 0;
+  padding-bottom: 41.283%;
+  margin: 0.5rem;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @for $i from 1 through 20 {
+    &.mobileRankRow#{$i} {
+      background-image: url("/7/ca/destiny/bgs/seasons/mobile/ranks_#{$i}_mobile_num.png");
+    }
+  }
+}
+
+.seasonPassMarker {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-style: italic;
+  line-height: 2rem;
+
+  i {
+    margin-right: 0.5rem;
+  }
+}
+
+.itemContainer {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+
+  :global(.r-mobile) & {
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .flexContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-size: $font-size-s;
+    margin: 0 0.3rem;
+
+    .icon {
+      width: 14rem;
+      height: 12rem;
+      background-size: contain;
+      background-position: center center;
+      background-repeat: no-repeat;
+
+      :global(.r-tiny) & {
+        width: 13rem;
+        height: 15rem;
+      }
+    }
+
+    .itemName {
+      font-size: 1.25rem;
+      width: 14rem;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.largeImage {
+  width: 80vw;
+}
+
+.thumbnail {
+  width: 18rem;
+  padding: 0;
+  position: relative;
+  margin: 1rem;
+  background-color: $color-background;
+  cursor: pointer;
+  transition: 0.25s;
+  min-height: 8rem;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &:after {
+    border-color: rgba($color-primary, 0.2) !important;
+  }
+
+  &:hover {
+    &:after {
+      border-color: $color-primary !important;
+    }
+  }
+
+  :global(.r-mobile) & {
+    width: 100%;
+    height: 100%;
+    margin: 3rem 0 1rem;
+  }
+}
+
+.artifactParallax {
+  height: 74rem;
+  left: 100%;
+  position: relative;
+  width: 100%;
+
+  > div {
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .artifactBg {
+    width: 100%;
+    height: 100%;
+    z-index: 8;
+    background-image: url("/7/ca/destiny/bgs/seasons/artifact_bg.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
+  .mods {
+    z-index: 10;
+    top: 5%;
+    left: 22.5%;
+    background-image: url("/7/ca/destiny/bgs/seasons/mods.png");
+    width: 55%;
+    height: 652px;
+
+    :global(.r-large) & {
+      top: -3%;
+    }
+  }
+
+  .eye {
+    z-index: 11;
+    top: 8%;
+    left: 50%;
+    margin-left: -262px;
+    background-image: url("/7/ca/destiny/bgs/seasons/VEye.png");
+    width: 525px;
+    height: 525px;
+
+    :global(.r-large) & {
+      width: 325px;
+      height: 325px;
+      margin-left: -167px;
+      top: 10%;
+    }
+  }
+}
+
+.rewardsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  :global(.r-tiny) & {
+    div {
+      background-size: cover !important;
+    }
+  }
+}
+
+.greenRewardsBox {
+  background-color: rgba(#273d3f, 0.8);
+  border: 1px solid #476e72;
+  border-top: 4px solid #496c70;
+  max-width: 59.25rem;
+  margin: 0 auto;
+  padding: 1rem 2rem 0;
+
+  h3 {
+    letter-spacing: 7px;
+
+    :global(.r-tiny) & {
+      letter-spacing: 0;
+    }
+  }
+}
+
+.rewardsTitle {
+  font-weight: bold;
+  margin: 8rem auto 3rem;
+  display: block;
+  text-align: center;
+}
+
+.rewardsSmallTitle {
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.rewardsLists {
+  display: flex;
+
+  li {
+    list-style-image: url("/7/ca/destiny/bgs/seasons/teal_bullet.png");
+    line-height: 27px;
+    margin-left: 1rem;
+    max-width: 16rem;
+    font-size: 1rem;
+
+    :global(.r-mobile) & {
+      max-width: 100%;
+    }
+  }
+
+  :global(.r-mobile) & {
+    flex-direction: column;
+  }
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    max-width: 25rem;
+    padding: 3rem 4rem;
+    font-size: $font-size-h5;
+
+    :global(.r-mobile) & {
+      max-width: unset;
+    }
+  }
+}
+
+.passRewardsList {
+  background-image: url("/7/ca/destiny/bgs/seasons/season_pass_guide_bg.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  border-top: 0.5rem solid #1cb8bb;
+  border-bottom: 3px solid #1cb8bb;
+  position: relative;
+}
+
+.freeRewardsList {
+  background-color: rgba(#1c1c1c, 0.7);
+  border-top: 0.5rem solid #282828;
+  position: relative;
+}
+
+.cornerIcon {
+  height: 5.5rem;
+  width: 5.5rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: contain;
+  background-position: center center;
+}
+
+.gear.itemContainer {
+  .mediaBg {
+    width: 18rem;
+    min-height: 100%;
+
+    :global(.r-mobile) & {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .itemName {
+    margin: 0 1rem;
+    width: auto;
+    font-style: italic;
+    font-size: 13px;
+  }
+}
+
+.largeHeader {
+  font-size: 2rem;
+  display: block;
+  text-align: center;
+  font-weight: bold;
+}
+
+.smallHeader {
+  font-size: 1.5rem;
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  margin: 0.5rem 0 3rem;
+}
+
+.buttonSection {
+  text-align: center;
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.buyButton {
+  margin: 0 auto 6rem;
+  text-transform: uppercase;
+  font-size: 1.25rem;
+
+  :global(.r-tiny) & {
+    width: 100%;
+  }
+}
+
+.carouselContainer {
+  margin: 6rem auto 0;
+  width: 90vw;
+}
+
+.carouselText {
+  text-align: center;
+  letter-spacing: 20px;
+  font-weight: bold;
+  font-style: italic;
+  width: 100%;
+
+  :global(.r-mobile) & {
+    letter-spacing: 3px;
+  }
+}
+
+.FAQ {
+  display: flex;
+  flex-direction: column;
+
+  .largeHeader {
+    margin-top: 4rem;
+
+    :global(.r-mobile) & {
+      text-align: left;
+    }
+  }
+
+  h4 {
+    border-top: 1px #027476 solid;
+    padding-top: 2rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+
+  p {
+    line-height: 27px;
+    font-size: 1.25rem;
+  }
+
+  a {
+    color: #ffce1f;
+  }
+}
+
+.secondFAQ {
+  border-top: 1px #027476 solid;
+  padding-top: 1rem;
+  margin-top: 2rem;
+}
+
+.calendar {
+  height: 39rem;
+  width: 100%;
+  margin: 4rem auto 0;
+  align-self: center;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+
+  :global(.r-tiny) & {
+    height: 16rem;
+  }
+}
+
+.innerSectionTitle {
+  font-size: 3.375rem;
+  text-align: center;
+}
+
+.vexHeadIcon {
+  height: 2rem;
+  width: 2rem;
+  margin-top: 0.15rem;
+  background-image: url("/7/ca/destiny/bgs/seasons/vex_head_icon.svg");
+  background-size: contain;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+
+.vexHeadIconSmall {
+  height: 1.25rem;
+  width: 1.25rem;
+  background-image: url("/7/ca/destiny/bgs/seasons/vex_head_icon.svg");
+  background-size: contain;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+
+.toast {
+  border-top: 3px solid $color-season-teal;
+}
+
+.seasonsButtonMore {
+  margin: 3rem auto 6rem;
+
+  :global(.r-tiny) & {
+    width: 100%;
+  }
+}

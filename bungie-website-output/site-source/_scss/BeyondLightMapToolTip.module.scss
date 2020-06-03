@@ -1,0 +1,203 @@
+@import "../../../../../ui/uikit/_base/ui_base";
+@import "../../Components/_BLmixins.scss";
+
+.innerContentWrapper {
+  width: 28rem;
+  z-index: 1;
+  display: block;
+  background-color: rgba(26, 38, 64, 0.9);
+  position: relative;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  :global(html.r-large) & {
+    width: 20rem;
+  }
+
+  :global(html.r-medium) & {
+    width: 20rem;
+  }
+
+  :global(html.r-mobile) & {
+    width: 20rem;
+  }
+
+  :global(html.r-tiny) & {
+    width: 20rem;
+  }
+
+  h3 {
+    text-transform: uppercase;
+    padding: 0.75rem 0 0 0;
+    font-weight: bold;
+    letter-spacing: 1px;
+    max-width: 90%;
+    margin: 0 auto;
+    font-size: 1.75rem;
+  }
+
+  h3:after {
+    content: "";
+    width: 1.5rem;
+    height: 1.5rem;
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    background-image: url("/7/ca/destiny/icons/magnify_icon.svg");
+    background-repeat: no-repeat;
+    transition: all 0.2s ease;
+  }
+
+  h3:hover:after {
+    transform: scale(1.2);
+  }
+
+  p {
+    margin: 0 auto;
+    padding: 0.75rem 0;
+    max-width: 90%;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.innerContentWrapper:before {
+  content: " ";
+  border-top: 2px solid #fff;
+  position: absolute;
+  top: 0;
+  margin-bottom: -1px;
+  left: 0;
+  width: 10%;
+}
+
+.innerContentWrapper:after {
+  content: " ";
+  border-top: 1px solid #fff;
+  position: absolute;
+  top: 0;
+  margin-bottom: -1px;
+  left: 0;
+  width: 100%;
+}
+
+.innerContentWrapperActive:after {
+  animation: expandLine 0.3s linear;
+}
+
+@keyframes expandLine {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  100% {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+.contentWrapper {
+  display: flex;
+  position: absolute;
+  cursor: pointer;
+
+  .iconWrapper {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+      transform: scale(1.8);
+
+      rect:last-of-type {
+        transform-origin: 50% 50%;
+        transition: all 0.2s cubic-bezier(0.33, 0, 0.2, 1) 0s;
+      }
+    }
+  }
+
+  .iconWrapperActive {
+    margin-right: 1rem;
+
+    svg {
+      rect:last-of-type {
+        transform: rotate(90deg);
+        transition: all 0.2s cubic-bezier(0.33, 0, 0.2, 1) 0s;
+      }
+    }
+  }
+}
+
+@mixin square($squareSize) {
+  width: $squareSize;
+  height: $squareSize;
+}
+
+.iconWrapperPulse:before,
+.iconWrapperPulse:after {
+  content: "";
+  @include square(25px);
+  border: 1px solid rgba(255, 255, 255, 1);
+  background-color: rgba(255, 255, 255, 0.2);
+  position: absolute;
+  right: 0;
+  left: 3px;
+  top: 3px;
+  margin: auto 0;
+  transform: scale(1.2) rotate(45deg);
+  transform-origin: center center;
+  animation: pulse-me 2s linear infinite;
+
+  :global(html.r-large) & {
+    left: 0;
+    top: 0;
+  }
+
+  :global(html.r-medium) & {
+    left: 0;
+    top: 0;
+  }
+
+  :global(html.r-mobile) & {
+    left: -2px;
+    top: -2px;
+  }
+
+  :global(html.r-tiny) & {
+    left: 3px;
+    top: 3px;
+  }
+}
+
+@keyframes pulse-me {
+  0% {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.2) rotate(45deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  70% {
+    opacity: 0.09;
+  }
+  100% {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(2) rotate(45deg);
+    opacity: 0;
+  }
+}

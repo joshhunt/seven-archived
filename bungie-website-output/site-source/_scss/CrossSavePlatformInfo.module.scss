@@ -1,0 +1,93 @@
+@import "../../../../UI/UIKit/_Base/ui_base.scss";
+
+.platformInfo {
+  display: flex;
+  padding: 1rem;
+  margin: -1rem -1rem 0 -1rem;
+  font-weight: bold;
+  font-size: $font-size-s;
+  transform: translateZ(0);
+  color: $color-primary;
+
+  @mixin logo($platform) {
+    .platformLogoIcon {
+      background-image: url("/7/ca/bungie/icons/logos/#{$platform}/icon.png");
+    }
+
+    .platformLogoText {
+      background-image: url("/7/ca/bungie/icons/logos/#{$platform}/logo.png");
+    }
+  }
+
+  .platformLogoText {
+    flex: 1 0 auto;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center right;
+  }
+
+  .platformLogoIcon {
+    flex: 1 0 auto;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center left;
+  }
+
+  &.TigerBlizzard,
+  &.TigerSteam {
+    background: linear-gradient(
+      to left,
+      rgb(29, 44, 64) 0%,
+      rgb(41, 67, 90) 100%
+    );
+
+    @include logo("steam");
+  }
+
+  &.TigerPsn {
+    background: linear-gradient(to left, #013682 0%, #3a87ba 100%);
+
+    @include logo("playstation");
+  }
+
+  &.TigerXbox {
+    background: linear-gradient(to left, rgb(23, 122, 24) 0%, #2a9917 100%);
+
+    @include logo("xbox");
+  }
+
+  &.TigerStadia {
+    background: linear-gradient(to left, #f34c23 0%, #a31561 100%);
+
+    @include logo("stadia");
+  }
+}
+
+.flexRow {
+  display: flex;
+
+  .silverContainer {
+    flex: 1 0;
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    padding-top: 1rem;
+    font-size: $font-size-s;
+    min-width: 6rem;
+  }
+}
+
+.accountInfo {
+  padding: 1.75rem 0 1rem 0;
+  min-height: 6rem;
+  align-self: flex-start;
+
+  .displayName {
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+
+  .clan {
+    font-size: $font-size-s;
+  }
+}

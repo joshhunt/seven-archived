@@ -1,0 +1,38 @@
+.playButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.playCircle {
+  background-image: url("/7/ca/destiny/bgs/seasons/play_button_bg.png");
+  height: 6rem;
+  width: 6rem;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 0.655rem;
+  transition: 0.25s;
+
+  &:hover {
+    height: 6.5rem;
+    width: 6.5rem;
+    margin: -0.25rem 0;
+  }
+}
+
+.playIcon {
+  background-image: url("/7/ca/destiny/bgs/seasons/play_button_triangle.svg");
+  height: 3rem;
+  width: 3rem;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+}

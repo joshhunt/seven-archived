@@ -1,0 +1,39 @@
+@import "../../../../../ui/uikit/_base/ui_base";
+
+.mediaSectionContainer {
+  .bgContainer {
+    padding: 16rem 0;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+
+    .contentWrapper {
+      width: 100%;
+      max-width: 70vw;
+      display: flex;
+      flex-direction: row;
+      flex: 1 1;
+      justify-content: space-around;
+      margin: 0 auto;
+
+      :global(.r-mobile) & {
+        max-width: 85%;
+        flex-direction: column;
+      }
+    }
+    // default with video
+    // when alignment is set to video on left, text on right
+    &.right {
+      flex-direction: row-reverse;
+    }
+    // when alignment is set center
+    &.center {
+      flex-direction: column;
+    }
+
+    :global(.r-mobile) & {
+      flex-direction: column;
+      padding: 12rem 0 6rem 0;
+    }
+  }
+}

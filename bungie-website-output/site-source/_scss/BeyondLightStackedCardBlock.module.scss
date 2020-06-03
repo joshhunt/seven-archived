@@ -1,0 +1,48 @@
+@import "../../../../../ui/uikit/_base/ui_base";
+@import "../../Components/_BLmixins.scss";
+
+.cardWrapper {
+  max-width: 371px;
+
+  .upperCard {
+    text-align: center;
+    padding-bottom: 2rem;
+    @include bottomBorder;
+    background-color: rgba(10, 16, 50, 0.9);
+
+    .logo {
+      width: 100%;
+      margin-top: -4.5rem;
+      margin-bottom: 0.25rem;
+      max-width: 142px;
+
+      :global(.r-mobile) & {
+        margin-top: -4.5rem;
+        margin-bottom: 2rem;
+      }
+    }
+
+    .heading {
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      @include h3Heading;
+      font-weight: bold;
+    }
+
+    p {
+      width: 100%;
+      max-width: 78%;
+      margin: auto;
+      font-size: 0.85rem;
+      @include bodyCopy;
+
+      :global(.r-mobile) & {
+        font-size: 1.25rem;
+      }
+    }
+  }
+
+  .cardImage {
+    width: 100%;
+  }
+}

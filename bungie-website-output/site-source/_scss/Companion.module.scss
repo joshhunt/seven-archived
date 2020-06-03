@@ -1,0 +1,89 @@
+@import "../../../UI/UIKit/_Base/ui_base.scss";
+
+.background {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-image: url("/7/ca/destiny/bgs/destiny_space.jpg");
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  margin-top: 5rem;
+
+  img {
+    width: 20rem;
+    height: 20rem;
+    border-radius: 1rem;
+  }
+
+  h3 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-top: 2.5rem;
+    display: inline-block;
+    width: auto;
+
+    &:before {
+      content: "";
+      width: 6.7rem;
+      border-top: 0.4rem $color-primary solid;
+      color: $color-primary;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+  }
+
+  p {
+    max-width: 60%;
+    line-height: 1.4rem;
+  }
+}
+
+.appLinks {
+  max-width: 1000px;
+  margin: 1rem auto 3rem;
+
+  .btnAppStore,
+  .btnGooglePlay {
+    text-indent: -9999px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+  }
+
+  .btnAppStore {
+    width: 13rem;
+    height: 4rem;
+    margin-right: 10px;
+  }
+
+  .btnGooglePlay {
+    width: 14rem;
+    height: 4rem;
+  }
+}
+
+.feature {
+  height: 9rem;
+
+  :global(.r-mobile) & {
+    height: auto;
+    margin: 0.5rem auto;
+  }
+
+  &:last-of-type {
+    margin-bottom: 8rem;
+  }
+}

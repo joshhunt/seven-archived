@@ -1,0 +1,32 @@
+// Need access to ui_base? Find ui_base.scss in the solution explorer, and drag it into this file to automatically import it.
+@import "../../../ui/uikit/_base/ui_base";
+
+.header {
+  height: 18rem;
+  background: no-repeat center top;
+  background-size: cover;
+  background-color: slategray;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+
+  h1 {
+    font-size: 4rem;
+    font-weight: bold;
+    text-shadow: 0 0 15px rgba(33, 40, 51, 0.8);
+    margin-left: $grid-margin;
+    width: 74rem;
+    display: block;
+
+    :global(r-mobile) & {
+      margin-left: $grid-margin-mobile;
+    }
+  }
+}
+
+.activityModeSelector {
+  margin-left: 1rem;
+}

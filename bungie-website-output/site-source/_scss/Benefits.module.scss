@@ -1,0 +1,141 @@
+@import "../../ui/uikit/_base/ui_base";
+
+.header {
+  background: url(/7/ca/bungie/bgs/header_benefits.png) no-repeat center center;
+  background-size: cover;
+  height: 400px;
+  margin: 0 auto;
+  padding-bottom: 2rem;
+  text-align: center;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+
+  :global(.r-medium) & {
+    height: 31rem;
+  }
+
+  .avatar {
+    border-radius: 50%;
+    width: 7rem;
+    height: 7rem;
+    background-size: cover;
+    align-self: center;
+  }
+
+  .displayName {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0.8rem 0;
+  }
+
+  .linkToSettings {
+    font-size: 1rem;
+    font-weight: 600;
+    color: $_base-color-schoolbus;
+
+    &:visited {
+      color: $_base-color-schoolbus;
+    }
+  }
+
+  p {
+    font-size: 1.2rem;
+  }
+}
+
+.buttons {
+  a + a {
+    margin-left: 1rem;
+  }
+}
+
+.profileCallout {
+  position: absolute;
+  right: 1rem;
+  top: 128px;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 1.5rem;
+  color: #fff;
+  max-width: 22rem;
+  display: flex;
+  flex-flow: column nowrap;
+  backdrop-filter: blur(30px);
+
+  :global(.r-medium) & {
+    top: 104px;
+  }
+
+  &:before {
+    display: block;
+    content: "";
+    position: absolute;
+    top: -1rem;
+    right: 7rem;
+    width: 0;
+    height: 0;
+    border-left: 1rem solid transparent;
+    border-right: 1rem solid transparent;
+    border-bottom: 1rem solid rgba(0, 0, 0, 0.28);
+    backdrop-filter: blur(30px);
+
+    :global(.r-medium) & {
+      right: 11rem;
+    }
+  }
+
+  strong {
+  }
+}
+
+.containerVerifyEmail {
+  background: rgba(33, 40, 51, 0.5);
+  padding: 1rem 0rem 1rem 0rem;
+  margin-top: 1.5rem;
+  margin-left: 1rem;
+  width: calc(100% - 2rem);
+}
+
+.verifyEmail {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  margin: 0 auto;
+  color: #fff;
+
+  :global(.r-medium) & {
+    flex-flow: column nowrap;
+  }
+
+  i {
+    color: $_base-color-schoolbus;
+    font-size: 2.7rem;
+  }
+
+  .text {
+    margin: 0 2rem;
+
+    :global(.r-medium) & {
+      margin: 2rem 0;
+    }
+
+    strong {
+      font-size: 1.1rem;
+    }
+
+    p {
+      font-size: 1rem;
+      margin: 0.25rem 0;
+    }
+  }
+
+  .buttons {
+    flex: 1 1 auto;
+    text-align: right;
+    white-space: nowrap;
+  }
+}
+
+.bodyContent {
+  max-width: 1200px;
+}

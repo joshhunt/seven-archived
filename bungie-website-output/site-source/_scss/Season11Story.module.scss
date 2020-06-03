@@ -1,0 +1,71 @@
+@import "../Season11Mixins";
+
+.wrapper {
+  position: relative;
+  padding-top: 5rem;
+  padding-bottom: 3rem;
+
+  :global(.r-mobile) & {
+    padding-top: 0;
+  }
+}
+
+.story1Overlap {
+  @include barTag();
+}
+
+.story1 {
+  position: relative;
+  z-index: 5;
+}
+
+.tree {
+  position: relative;
+  width: 1920px;
+  height: 67.5rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: -17rem;
+  margin-bottom: -10rem;
+  z-index: 1;
+
+  :global(.r-mobile) & {
+    height: 60vh;
+    margin-top: -17vh;
+    margin-bottom: -5rem;
+    background-size: cover;
+    width: 100vw;
+  }
+}
+
+.storyBox {
+  border: 2px solid #24ca44;
+
+  &:after,
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 27.7%;
+    height: 4px;
+    background: #24ca44;
+  }
+
+  &:after {
+    bottom: -6px;
+    right: -2px;
+  }
+
+  &:before {
+    top: -6px;
+    left: -2px;
+  }
+}
+
+.story2 {
+  position: relative;
+  z-index: 5;
+}

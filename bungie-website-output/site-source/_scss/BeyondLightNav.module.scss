@@ -1,0 +1,63 @@
+@import "../../../ui/uikit/_base/ui_base";
+
+.sideNav {
+  position: sticky;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  z-index: 3;
+  width: 0;
+
+  :global(.r-medium) & {
+    display: none;
+  }
+
+  .sideNavContent {
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 1rem 1rem 1rem 6rem;
+  }
+
+  a {
+    position: relative;
+    color: rgba(245, 245, 245, 0.75);
+    margin-top: 1rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    width: 200px;
+
+    &[href*="hero"] {
+      display: none;
+    }
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      background: rgba(245, 245, 245, 0.75);
+      position: absolute;
+      height: 1px;
+      width: 1rem;
+      left: -4rem;
+      top: 50%;
+      transition: all 0.25s;
+    }
+
+    &:hover,
+    &.current {
+      color: rgba(245, 245, 245, 1);
+    }
+
+    &:hover::before,
+    &.current::before {
+      width: 3rem;
+      background: rgba(245, 245, 245, 1);
+    }
+  }
+}

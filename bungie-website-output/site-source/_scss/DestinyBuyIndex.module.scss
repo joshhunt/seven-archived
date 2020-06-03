@@ -1,0 +1,141 @@
+@import "../../../UI/UIKit/_Base/ui_base.scss";
+
+.carousel {
+  height: 30rem;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  :global(html.r-tiny) & {
+    height: 20rem;
+  }
+}
+
+.contents {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0 6rem 1rem;
+
+  :global(html.r-tiny) & {
+    padding-bottom: 1rem;
+  }
+}
+
+.contentFrame {
+  width: 80vw;
+  max-width: 80rem;
+  margin: 0 auto;
+
+  :global(.r-medium) & {
+    width: 100%;
+  }
+}
+
+.borderTop {
+  border-top: 1px solid rgba(245, 245, 245, 0.1);
+  margin: 2rem auto 1rem;
+  font-weight: bold;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  width: calc(100% - 2rem);
+  margin: 2rem auto 1rem;
+}
+
+.sectionTitle {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  background: whitesmoke;
+  color: $color-text-dark;
+}
+
+.spacer {
+  height: 6rem;
+}
+
+.banner {
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  height: 170px;
+  margin: 0 1rem;
+  width: 100%;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 8%;
+  transition: 0.25s;
+  text-decoration: none;
+  color: $color-primary;
+  position: relative;
+
+  &:before {
+    :global(.r-medium) & {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(
+        to right,
+        rgba(5, 5, 5, 0.5),
+        rgba(#ffffff, 0.1) 60%,
+        rgba(5, 5, 5, 0.5)
+      );
+    }
+  }
+
+  &:hover {
+    z-index: 2;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.6);
+    text-decoration: none;
+    color: $color-primary;
+  }
+}
+
+.floatOverGradient {
+  position: absolute;
+  left: 2rem;
+  top: calc(50% - 1rem);
+}
+
+.coverCards {
+  width: 100%;
+  margin-bottom: 8rem;
+}
+
+.carouselTitle {
+  font-size: 2.25rem;
+  font-weight: bold;
+
+  :global(html.r-mobile) & {
+    font-size: 2rem;
+  }
+}
+
+.carouselBlurb {
+  font-size: 1rem;
+}
+
+.title {
+  text-transform: uppercase;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.subtitle {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  opacity: 0.9;
+}
+
+.button {
+  width: 13rem;
+  margin-top: 1rem;
+}

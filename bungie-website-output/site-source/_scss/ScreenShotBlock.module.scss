@@ -1,0 +1,81 @@
+@import "../../../../../ui/uikit/_base/ui_base";
+
+.thumbnails {
+  display: flex;
+  flex-flow: row;
+  align-content: center;
+  justify-content: center;
+  margin: 2rem 1rem 0 0;
+
+  :global(.r-mobile) & {
+    flex-flow: column;
+    margin: 0 auto;
+  }
+
+  .playButton {
+    position: relative;
+    &:before {
+      content: "";
+      @include webPBackgroundImage(
+        "/7/ca/destiny/bgs/shadowkeep/play_button.png"
+      );
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      width: 5rem;
+      height: 5rem;
+      position: absolute;
+      top: calc(50% - 2.5rem);
+      left: calc(50% - 2.5rem);
+    }
+  }
+
+  .thumbnail {
+    width: 20rem;
+    padding: 0;
+    position: relative;
+    margin-right: 2rem;
+    background-color: $color-background;
+    cursor: pointer;
+    transition: 0.25s;
+    min-height: 8rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+
+    &:after {
+      border-radius: 3px;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 3px;
+    }
+
+    &:last-child {
+      margin-right: 0;
+
+      :global(.r-mobile) & {
+        margin-right: auto;
+      }
+    }
+
+    &:after {
+      border-color: rgba($color-primary, 0.2) !important;
+    }
+
+    &:hover {
+      border: none;
+      background-color: rgba(255, 255, 255, 0);
+
+      &:after {
+        border-color: rgba($color-primary, 0.5) !important;
+      }
+    }
+
+    :global(.r-mobile) & {
+      width: 100%;
+      height: 100%;
+      margin: 1rem 0;
+    }
+  }
+}

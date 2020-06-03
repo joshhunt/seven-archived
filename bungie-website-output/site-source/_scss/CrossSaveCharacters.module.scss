@@ -1,0 +1,277 @@
+@import "../../../ui/uikit/_base/ui_base";
+@import "buttoncontainer";
+
+.characterAccounts {
+  position: relative;
+  display: flex;
+
+  :global(.r-mobile) & {
+    display: block;
+    max-width: none;
+  }
+}
+
+.characterChoice {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1 0;
+  max-width: 75%;
+  padding: 0 2.5rem 1rem;
+  color: $color-primary;
+  font-size: 1.25rem;
+
+  .title {
+    display: inline-block;
+    margin-bottom: 1rem;
+
+    :global(.r-mobile) & {
+      margin-top: 1.5rem;
+    }
+  }
+
+  .subtitle {
+    display: inline-block;
+    padding-bottom: 1rem;
+
+    a {
+      @extend %basic-link;
+    }
+  }
+
+  :global(.r-medium) & {
+    max-width: 50%;
+  }
+
+  :global(.r-mobile) & {
+    max-width: none;
+    padding: 0 0 1rem;
+  }
+
+  -webkit-animation: fadein 1s;
+  animation: fadein 1s;
+}
+
+.unselectable {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.accountItemWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1 0;
+  transition: opacity 0.5s, flex 0.5s, transform 0.25s, margin 0.5s;
+  max-width: 25%;
+  margin-left: 0;
+
+  &:before {
+    position: absolute;
+    content: "";
+    pointer-events: none;
+    display: block;
+    border: 0 solid $color-primary;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    opacity: 0;
+    transition: 0.25s;
+    transform: scale(0.95);
+  }
+
+  &:after {
+    position: absolute;
+    content: "";
+    pointer-events: none;
+    display: block;
+    border: 1px solid $color-primary;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    animation: choice 0.25s forwards linear;
+    transform: scale(1);
+  }
+
+  :global(.r-medium) & {
+    flex: none;
+    width: 50%;
+    max-width: none;
+  }
+
+  :global(.r-mobile) & {
+    flex: none;
+    width: 100%;
+    max-width: none;
+    margin: 0 0 1rem 0 !important;
+    max-height: 100vh;
+  }
+
+  $class: "&";
+
+  @for $i from 1 through 10 {
+    $delay: ($i - 1) * 0.1;
+
+    #{$class}:after {
+      animation-delay: #{$delay}s;
+    }
+
+    $class: "#{$class} + .accountItemWrapper";
+  }
+
+  &:not(.unselectedAccount):not(.unselectedCharacters) + .accountItemWrapper {
+    margin-left: 1rem;
+  }
+
+  &.hoveredAccount {
+    transform: scale(1.005);
+
+    &:before {
+      border: 1px solid $color-primary;
+      border-width: 1px 0 1px 1px;
+      top: -8px;
+      left: -8px;
+      right: -8px;
+      bottom: -8px;
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    + .hoveredAccount:before {
+      border: 1px solid $color-primary;
+      border-width: 1px 1px 1px 0;
+      top: -8px;
+      left: -8px;
+      right: -8px;
+      bottom: -8px;
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  &.hoveredCharacters {
+    transform: scale(1.005);
+    border-width: 1px;
+
+    &:before {
+      border: 1px solid $color-primary;
+      top: -8px;
+      left: -8px;
+      right: -8px;
+      bottom: -8px;
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  &.unhoveredAccount {
+    opacity: 0.5;
+    transform: scale(0.99);
+  }
+
+  &.unselectedAccount,
+  &.unselectedCharacters {
+    opacity: 0;
+    overflow: hidden;
+    flex: 0;
+    transform: scale(0.99);
+    white-space: nowrap;
+
+    :global(.r-mobile) & {
+      max-height: 0;
+    }
+  }
+
+  &.animateAway {
+    opacity: 0.5;
+  }
+
+  &.unavailableAccount {
+    animation: unavailableAccount 0.5s forwards;
+    transform: scale(0.9);
+  }
+
+  &.selectedAccount {
+    transform: scale(1.01);
+    border-width: 1px;
+
+    &:before {
+      border: 1px solid $color-primary;
+      top: -8px;
+      left: -8px;
+      right: -8px;
+      bottom: -8px;
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+}
+
+.alertTopLine {
+  border-top: $color-primary 0.4rem solid;
+  padding-top: 1rem;
+}
+
+.alertBox {
+  border-top: 10px solid $color-error;
+  background-color: $color-primary;
+  margin-top: 2rem;
+  padding: 0 1rem 1rem 1rem;
+  width: 100%;
+
+  .alertHeader {
+    display: flex;
+
+    .alertIcon {
+      color: $color-error;
+      font-size: 3rem;
+      margin-top: 0.75rem;
+    }
+
+    .alertTitle {
+      color: $color-text-dark;
+      font-weight: bold;
+      margin: 1.5rem 0 0 0.5rem;
+      font-size: 16px;
+    }
+  }
+
+  .alertContent {
+    color: $color-text-dark;
+    margin: 0 1rem 0.5rem 3.5rem;
+    font-size: 16px;
+
+    span {
+      font-weight: bold;
+    }
+  }
+}
+
+.characterConfirmation {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.buttonContainer {
+  :global(.r-mobile) & {
+    margin-bottom: 0;
+  }
+}

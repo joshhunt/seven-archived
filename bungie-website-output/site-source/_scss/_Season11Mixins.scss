@@ -1,0 +1,13 @@
+@mixin barTag($width: 30px, $top: 0, $height: 5px) {
+  position: relative;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: $top - $height;
+    width: $width;
+    height: $height;
+    left: 0;
+    background: rgb(245, 245, 245);
+  }
+}

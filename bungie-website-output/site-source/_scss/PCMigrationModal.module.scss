@@ -1,0 +1,646 @@
+.wizardContainer {
+  max-width: 630px;
+  height: 100%;
+
+  :global(.r-medium) & {
+    max-width: 550px;
+  }
+
+  .wizardContent {
+    height: 85vh;
+    max-height: 780px;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+
+    :global(.r-medium) & {
+      height: 87vh;
+    }
+
+    h4:first-child {
+      margin-top: 1.25rem;
+    }
+  }
+}
+
+.wizardHeader {
+  margin: -2rem -2rem 0;
+  min-height: 220px;
+  flex: 0 0 auto;
+  padding: 2rem;
+  background: url(/7/ca/destiny/bgs/pcmigration/wizardHeaderBackground.jpg);
+  background-size: cover;
+  background-color: #3c4452;
+  text-align: center;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+
+  :global(.r-medium) & {
+    min-height: 150px;
+  }
+
+  :global(.material-icons.successCheckIcon) {
+    font-size: 6rem;
+  }
+
+  &.linkHeader {
+    img {
+      margin-bottom: 1rem;
+      height: 4.2rem;
+    }
+  }
+
+  &.transferDetailsHeader {
+    img {
+      margin-bottom: 1rem;
+      width: 5rem;
+      border: 3px solid #fff;
+      padding: 0.5rem;
+      border-radius: 10rem;
+    }
+  }
+
+  img {
+    height: 5rem;
+  }
+
+  h2 + p {
+    margin-top: 1rem;
+  }
+
+  p {
+    opacity: 0.9;
+    padding: 0 2rem;
+    margin-bottom: 0;
+  }
+
+  :global(.emailIcon) {
+    border: 3px solid #fff;
+    border-radius: 10rem;
+    display: inline-flex;
+    position: relative;
+    width: 5rem;
+    height: 5rem;
+    margin-bottom: 1.5rem;
+    justify-content: center;
+    align-content: center;
+  }
+
+  :global(.notes) {
+    border: 3px solid #fff;
+    border-radius: 10rem;
+    display: inline-flex;
+    position: relative;
+    width: 4.5rem;
+    height: 4.5rem;
+    margin-bottom: 1.5rem;
+    justify-content: center;
+    align-content: center;
+  }
+
+  :global(.warning) {
+    border: 3px solid #fff;
+    border-radius: 10rem;
+    display: inline-flex;
+    position: relative;
+    width: 4.5rem;
+    height: 4.5rem;
+    margin-bottom: 1.5rem;
+    justify-content: center;
+    align-content: center;
+
+    i {
+      font-size: 2.7rem;
+      margin-bottom: 2px;
+    }
+  }
+
+  :global(.check) {
+    border: 3px solid #fff;
+    border-radius: 10rem;
+    display: inline-flex;
+    position: relative;
+    width: 4.5rem;
+    height: 4.5rem;
+    margin-bottom: 1.5rem;
+    justify-content: center;
+    align-content: center;
+  }
+
+  :global(.playlist_add) {
+    border: 3px solid #fff;
+    border-radius: 10rem;
+    display: inline-flex;
+    position: relative;
+    width: 4.5rem;
+    height: 4.5rem;
+    margin-bottom: 1.5rem;
+    justify-content: center;
+    align-content: center;
+
+    i {
+      font-size: 3.1rem;
+      margin-left: 5px;
+    }
+  }
+
+  :global(.link) {
+    border: 3px solid #fff;
+    border-radius: 10rem;
+    display: inline-flex;
+    position: relative;
+    width: 4.4rem;
+    height: 4.4rem;
+    margin-bottom: 1.5rem;
+    justify-content: center;
+    align-content: center;
+    transform: rotate(45deg);
+
+    i {
+      font-size: 2.5rem;
+    }
+  }
+
+  :global(.material-icons) {
+    font-size: 3.5rem;
+    flex: 0 0 auto;
+    align-self: center;
+  }
+}
+
+.buttonContainer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(24, 29, 37, 0.96);
+  margin-left: -2rem;
+  margin-right: -2rem;
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem 2rem 1rem 2rem;
+  border-top: 3px solid rgba(0, 0, 0, 0.1803921568627451);
+  transform: translate3d(0, 0, 0);
+
+  :global(.button) {
+    width: 100%;
+  }
+
+  :global(.button):nth-child(2) {
+    margin-left: 1.5rem;
+  }
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.85;
+  margin-bottom: 1rem;
+}
+
+.steamLinkContainer {
+  .steamContainer {
+    border: 2px dashed rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+
+    &:hover {
+      border: 2px solid rgba(255, 255, 255, 0.6);
+      background-color: rgba(0, 0, 0, 0.350784);
+      cursor: pointer;
+    }
+  }
+
+  :global(.button) {
+    width: 100%;
+    margin-top: 1rem;
+  }
+}
+
+.blizzardContainer {
+  border-radius: 5px;
+}
+
+.blizzardContainer:after,
+.blizzardContainer:before {
+  bottom: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.blizzardContainer:after {
+  border-color: rgba(136, 183, 213, 0);
+  border-bottom-color: #88b7d5;
+  border-width: 30px;
+  margin-left: -30px;
+}
+
+.blizzardContainer:before {
+  border-color: rgba(194, 225, 245, 0);
+  border-bottom-color: #c2e1f5;
+  border-width: 36px;
+  margin-left: -36px;
+}
+
+.transferArrow {
+  width: 100%;
+  text-align: center;
+  padding-top: 1.25rem;
+  padding-bottom: 0.5rem;
+
+  :global(.r-mobile) & {
+    padding-top: 1rem;
+    padding-bottom: 0rem;
+
+    i {
+      font-size: 40px;
+    }
+  }
+
+  i {
+    font-size: 60px;
+  }
+}
+
+.transferArrow.animate {
+  animation: bounce 3s infinite;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+
+  70% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.wizardBody {
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+
+  margin-top: 0.75rem;
+
+  &.steam {
+    cursor: pointer;
+  }
+
+  &.linkAccount {
+    padding-bottom: 0rem;
+
+    .buttonContainer :global(.button):first-child {
+      margin-right: 0px;
+    }
+  }
+}
+
+.wizardBody:after {
+  content: "";
+  height: 95px;
+  margin-top: 1rem;
+}
+
+.agreeinputContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(144, 144, 144, 0.09);
+  padding: 2rem;
+  margin-left: -2rem;
+  margin-right: -2rem;
+  text-align: center;
+
+  input {
+    height: 32px;
+    padding: 0.5rem;
+  }
+
+  input[type="text"] {
+    font-size: 1.25rem;
+  }
+
+  p {
+    font-size: 0.8rem;
+    margin-top: 0px;
+  }
+}
+
+.agreementTitle {
+  margin-top: 1rem;
+}
+
+.wizardBody [name="agree-system-notifications"] > div:nth-child(2) span {
+  color: #ea5526;
+  font-weight: bold;
+  clear: both;
+  display: inline-block;
+  width: 100%;
+  margin-top: 5px;
+}
+
+.emailContainer {
+  display: flex;
+  border: 1px solid rgba(255, 255, 255, 0.1411764705882353);
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  background-color: rgba(57, 64, 78, 0.2);
+  font-size: 0.85rem;
+
+  div {
+    flex: 1 1;
+    justify-content: center;
+    align-content: center;
+    display: flex;
+    padding: 1rem;
+    font-weight: 600;
+  }
+
+  div:nth-child(2) {
+    border-left: 2px solid rgba(255, 255, 255, 0.0392156862745098);
+  }
+}
+
+.emailInfo {
+  border: 1px solid rgba(255, 255, 255, 0.1411764705882353);
+  margin-top: 0.7rem;
+  margin-bottom: 0.5rem;
+  background-color: rgba(57, 64, 78, 0.2);
+  padding: 1rem;
+  font-size: 0.9rem;
+
+  p:first-child {
+    padding-top: 0px;
+    margin-top: 0px;
+  }
+  p {
+    margin-bottom: 0px;
+  }
+}
+
+.checkboxContainer {
+  background-color: rgba(57, 64, 78, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 1rem;
+
+  :global(.checkboxWrapper) {
+    margin-top: 0.5rem;
+  }
+
+  div:first-child + div {
+    margin-top: 0.25rem;
+  }
+}
+
+.detailContainer {
+  background-color: rgba(57, 64, 78, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 0rem 1rem 0.5rem 1rem;
+  margin-top: 1rem;
+}
+
+.detailContainer.blizzard {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+  padding-bottom: 0;
+  background-color: rgba(30, 36, 46, 0.6705882352941176);
+  align-items: center;
+
+  strong {
+    font-size: 1rem;
+  }
+}
+
+.detailContainer.characterDetail {
+  margin-top: 0;
+  border-top: 0;
+  padding-top: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.detailContainer.licenseDetail {
+  margin-top: 0;
+  border-top: 0;
+  padding-top: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.detailContainer.eververseDetail {
+  margin-top: 0;
+  border-top: 0;
+  padding-top: 0.5rem;
+}
+
+.confirmLinkContainer {
+  background-color: #181d25;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  padding: 2rem;
+  text-align: center;
+
+  p {
+    margin-bottom: 2rem;
+  }
+
+  :global(.button) {
+    min-width: 250px;
+    margin-bottom: 2rem;
+  }
+
+  i {
+    font-size: 6rem;
+  }
+
+  .transferStatus {
+    width: 100%;
+    margin-bottom: 2rem;
+
+    & > div:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+.warningContainer {
+  & > div {
+    margin-top: 1.25rem;
+  }
+}
+
+.agreementContainer {
+  & > div > div {
+    background: none;
+    padding: 1rem 0 0;
+    color: #f5f5f5;
+    word-break: break-word;
+
+    h3 {
+      border-bottom: 0;
+      padding-bottom: 0;
+      text-shadow: none;
+      color: inherit;
+      font-size: 1rem;
+      display: none;
+    }
+
+    h3 time {
+      margin-left: 0 !important;
+      font-weight: inherit;
+      font-size: 0.75rem;
+      opacity: 0.75;
+      display: none;
+    }
+
+    h3 span {
+      display: none;
+    }
+
+    h3 + div {
+      padding-top: 0;
+    }
+
+    p {
+      margin-top: 0px;
+      font-weight: 600;
+    }
+
+    li {
+      font-size: 1rem;
+      line-height: 25px;
+      color: rgba(255, 255, 255, 0.9);
+      list-style-type: circle;
+      padding-left: 15px;
+    }
+  }
+}
+
+.shadowPreOrder {
+  background-image: url("/7/ca/destiny/bgs/shadowkeep/luna_bg.jpg");
+  background-size: cover;
+  margin-top: 1.2rem;
+  margin-bottom: -0.5rem;
+  border-radius: 5px;
+  box-shadow: 0 7px 7px rgba(0, 0, 0, 0.1), 0 2px 5px rgba(0, 0, 0, 0.1);
+  white-space: initial !important;
+  display: flex;
+  flex-direction: row;
+  padding: 1rem;
+  transition: 0.25s;
+
+  &:hover {
+    z-index: 2;
+    transform: translateY(-2px);
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  h5 {
+    margin-top: 0px;
+  }
+
+  p {
+    font-size: 0.85rem;
+    line-height: 18px;
+    margin-top: 0.2rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 0;
+  }
+
+  img {
+    height: 60px;
+    width: 60px;
+  }
+
+  .textContainer {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+    justify-content: center;
+  }
+}
+
+.detailContainer .detailContainer {
+  border: none;
+  padding: 1rem;
+}
+
+.steamCharactersTitle ~ div {
+  text-decoration: line-through;
+}
+
+.agreeContainer {
+  margin-right: -2rem;
+  margin-left: -2rem;
+  margin-bottom: -1.9rem;
+  padding: 0.65rem 2rem 1.25rem 2rem;
+  background-color: #0f101061;
+  /* border: 1px solid white; */
+  border-top: 2px solid rgba(0, 0, 0, 0.14901960784313725);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2901960784313726);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  i {
+    font-size: 3rem;
+    margin-right: 2rem;
+  }
+
+  .agreeInputContainer {
+    padding-top: 0rem;
+    width: 100%;
+
+    .agreeInput {
+      color: #fff;
+      padding: 0.25rem 0rem;
+      font-size: 2.5rem;
+      border: none;
+      background: transparent;
+      width: 100%;
+      /* border: 1px solid #0e0f10; */
+    }
+
+    .agreeInput:focus {
+      outline: none;
+    }
+
+    .agreeInput::placeholder {
+      color: #5a5e63;
+      padding-bottom: 20px;
+    }
+
+    p {
+      padding-left: 0rem;
+      padding-bottom: 0rem;
+      margin-bottom: 5px;
+      margin-top: 0.7rem;
+      padding-top: 0rem;
+      font-size: 1rem;
+      opacity: 0.85;
+      font-weight: 600;
+    }
+  }
+}
+
+p.supportMessage {
+  padding: 1rem;
+  border: 1px solid #3e434c;
+  background-color: #1e242e;
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+}

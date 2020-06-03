@@ -1,0 +1,27 @@
+@import "../../../../UI/UIKit/_Base/ui_base.scss";
+
+.stepInfo {
+  margin: 0 0 2rem;
+
+  .title {
+    font-weight: bold;
+    color: $color-primary;
+    font-size: 2.5rem;
+  }
+
+  .desc {
+    font-weight: 500;
+    margin: 0 0 0.5rem 0;
+    color: rgba($color-primary, 0.6);
+    font-size: 1.25rem;
+
+    span {
+      font-weight: bold;
+      color: $color-primary;
+    }
+  }
+
+  a:not(.button) {
+    @extend %basic-link;
+  }
+}

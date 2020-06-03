@@ -1,0 +1,89 @@
+@import "../UIKit/_Base/ui_base.scss";
+
+.character {
+  display: flex;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: left center;
+  height: 4rem;
+  color: $color-primary;
+}
+
+.avatar {
+  position: relative;
+  @extend %responsive-square;
+  flex: 1 0;
+
+  .avatarImage {
+    position: absolute;
+    top: 12.5%;
+    left: 12.5%;
+    right: 12.5%;
+    bottom: 12.5%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left center;
+  }
+}
+
+.text {
+  display: flex;
+  flex: 5 0;
+  padding-left: 1rem;
+}
+
+.identity {
+  flex: 1 0 auto;
+}
+
+.identity,
+.stats {
+  display: flex;
+  flex-direction: column;
+
+  > div {
+    display: flex;
+    flex: 1 0;
+  }
+}
+
+.stats {
+  padding-right: 1rem;
+}
+
+.class {
+  flex: 2 0;
+  align-items: flex-end;
+}
+
+.class,
+.light {
+  align-items: flex-start;
+  font-size: $font-size-l;
+  font-weight: bold;
+  padding-top: 0.5rem;
+}
+
+.level,
+.light {
+  justify-content: flex-end;
+}
+
+.about,
+.level {
+  font-size: 0.9rem;
+  opacity: 0.75;
+  align-items: center;
+  padding-bottom: 0.5rem;
+}
+
+.light {
+  color: $color-destiny-power;
+  font-size: 1.5rem;
+
+  span {
+    display: inline-block;
+    margin-right: 0.2rem;
+    line-height: 1;
+  }
+}

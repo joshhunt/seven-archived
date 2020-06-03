@@ -1,0 +1,28 @@
+@import "../../ui/uikit/_base/ui_base";
+
+.headerBungie {
+  height: 18rem;
+  background: url("/7/ca/destiny/bgs/codes/code_redemption_bg_desktop.jpg")
+    no-repeat center center;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 1rem;
+
+  h2 {
+    color: $color-primary;
+    font-size: 4em;
+    font-weight: bold;
+    text-shadow: 0 0 15px $color-text-body-link-dark;
+
+    :global(.r-mobile) & {
+      font-size: 2.5em;
+    }
+  }
+
+  :global(.r-tiny) & {
+    background: url("/7/ca/destiny/bgs/codes/code_redemption_bg_mobile.jpg")
+      no-repeat center center;
+  }
+}

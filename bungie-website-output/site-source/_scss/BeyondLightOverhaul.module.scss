@@ -1,0 +1,417 @@
+@import "../../../ui/uikit/_base/ui_base";
+@import "./Components/_BLmixins.scss";
+
+.textWithButton {
+  text-align: center;
+  max-height: 960px;
+
+  div {
+    margin: 0 auto;
+    padding: 16rem 0 4rem 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+
+    .textWrapper {
+      h2 {
+        text-align: center;
+        text-transform: uppercase;
+        @include h2Heading;
+        @include bottomBorder;
+        width: 100%;
+        max-width: 45rem;
+        padding-bottom: 1rem;
+        margin: 0 auto 1rem auto;
+      }
+
+      p {
+        @include bodyCopy;
+        max-width: 40rem;
+        margin: 0 auto;
+      }
+
+      .subhead {
+        font-weight: bold;
+        margin: 1rem auto;
+      }
+
+      a {
+        margin-top: 2rem;
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+
+      :global(.r-mobile) & {
+        background-position: center;
+        max-width: 85%;
+
+        h2 {
+          font-size: 2.55rem;
+        }
+        p {
+          text-align: left;
+        }
+      }
+    }
+
+    :global(.r-mobile) & {
+      padding: 14rem 0 3rem 0;
+    }
+
+    :global(.r-mobile) & {
+      background-size: 100%;
+    }
+  }
+}
+
+.goBeyond {
+  .bgContainer {
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+    padding: 16rem 0;
+
+    .contentWrapper {
+      display: flex;
+      margin: 0 auto;
+      flex-direction: row;
+      max-width: 70vw;
+      width: 100%;
+      flex: 1 1;
+      justify-content: space-around;
+
+      :global(.r-mobile) & {
+        max-width: 85%;
+        flex-direction: column;
+      }
+    }
+
+    :global(.r-mobile) & {
+      padding: 30rem 0 4rem 0;
+      background-position: top center;
+      background-size: 100%;
+    }
+  }
+}
+
+.textWithScreenShots {
+  .arsenalWrapper {
+    :global(.r-mobile) & {
+      padding: 23rem 0 6rem 0;
+    }
+  }
+
+  .contentWrapper {
+    padding: 30rem 0 6rem 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+
+    a {
+      margin-top: 2rem;
+    }
+
+    > div {
+      width: 100%;
+
+      h2 {
+        @include h2Heading;
+        text-transform: uppercase;
+        margin: 0 auto 1rem auto;
+        width: 100%;
+        text-align: center;
+        border-bottom: none;
+      }
+
+      &.europaTitle {
+        max-width: 45rem;
+      }
+
+      &.arsenalTitle {
+        max-width: 100%;
+      }
+
+      .shortBorder {
+        margin: 0 auto 1rem auto;
+        width: 100%;
+        max-width: 30rem;
+        height: 1px;
+        @include bottomBorder;
+        display: flex;
+      }
+
+      p {
+        @include bodyCopy;
+        max-width: 40rem;
+        margin: 0 auto;
+      }
+
+      :global(.r-mobile) & {
+        width: 90%;
+        margin: 0 auto;
+
+        h2 {
+          text-align: center;
+          padding-bottom: 0.75rem;
+          margin: 0 auto;
+          font-size: 2.5rem;
+        }
+
+        .shortBorder {
+          width: 100%;
+          max-width: 90%;
+          margin: 0 auto;
+        }
+
+        p {
+          max-width: 100%;
+          margin-top: 1rem;
+        }
+      }
+    }
+
+    :global(.r-mobile) & {
+      background-size: 100%;
+      background-position: center top;
+    }
+  }
+
+  .screenshotWrapper {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+
+    :global(.r-mobile) & {
+      width: 100%;
+      flex-direction: column;
+    }
+  }
+}
+
+.preorderBonusWrapper {
+  padding: 8rem 0;
+  margin: -8rem 0;
+  overflow: hidden;
+}
+
+.preorderBonus {
+  background: url("/7/ca/destiny/products/beyondlight/preorder_bg_desktop.jpg")
+    no-repeat top center;
+  background-size: cover;
+  position: relative;
+
+  :global(.r-mobile) & {
+    background: url("/7/ca/destiny/products/beyondlight/bl_preorder_banner_mobile.jpg")
+      no-repeat bottom center;
+    background-size: cover;
+    border-top: 2px solid #6188a3;
+  }
+
+  .preorderBonusContent {
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    max-width: 1400px;
+
+    :global(.r-mobile) & {
+      padding-bottom: 36%;
+    }
+
+    .preorderBonusText {
+      font-size: 0.6rem;
+      text-align: center;
+      display: block;
+      width: 495px;
+      margin: 0 auto;
+      padding: 2rem;
+      position: relative;
+
+      &::before {
+        content: "";
+        background: url("/7/ca/destiny/products/beyondlight/preorder_freeze_tag.png")
+          no-repeat center center;
+        background-size: cover;
+        width: 303px;
+        height: 210px;
+        display: inline-block;
+        position: absolute;
+        left: -245px;
+        bottom: 0;
+
+        :global(.r-mobile) & {
+          display: none;
+        }
+      }
+
+      &::after {
+        content: "";
+        background: url("/7/ca/destiny/products/beyondlight/preorder_ghost_emblem.png")
+          no-repeat center center;
+        background-size: cover;
+        width: 388px;
+        height: 177px;
+        display: inline-block;
+        position: absolute;
+        right: -306px;
+        bottom: 0;
+
+        :global(.r-mobile) & {
+          display: none;
+        }
+      }
+
+      :global(.r-mobile) & {
+        width: 100%;
+        font-size: 1.3rem;
+      }
+
+      p {
+        font-size: 0.7rem;
+        margin: 0;
+
+        :global(.r-mobile) & {
+          font-size: 1.3rem;
+          line-height: 1.6rem;
+          margin-top: 1rem;
+
+          &:first-child {
+            margin-top: 0;
+          }
+        }
+      }
+
+      em {
+        color: $_base-color-sky;
+      }
+
+      :first-child {
+        font-weight: 600;
+        font-size: 1rem;
+
+        :global(.r-mobile) & {
+          font-size: 1.3rem;
+        }
+      }
+    }
+  }
+}
+
+.deepStoneCrypt {
+  padding: 20rem 0;
+  background: url("/7/ca/destiny/products/beyondlight/bl_crypt_bg_desktop.jpg")
+    no-repeat center top;
+  background-size: cover;
+
+  div {
+    margin: 0 auto 0 15%;
+    width: 100%;
+    max-width: 27rem;
+
+    h2 {
+      @include h2Heading;
+      text-transform: uppercase;
+      margin: 0 0 1rem 0;
+      padding: 0 0 0 0;
+      width: 100%;
+      max-width: 45rem;
+      border-bottom: none;
+
+      :global(.r-mobile) & {
+        text-align: center;
+        padding-bottom: 0.75rem;
+        margin-bottom: 1rem;
+        max-width: 100%;
+      }
+    }
+
+    .shortBorder {
+      width: 100%;
+      max-width: 30rem;
+      height: 1px;
+      @include bottomBorder;
+      display: flex;
+
+      :global(.r-mobile) & {
+        width: 100%;
+        max-width: 90%;
+      }
+    }
+
+    p {
+      @include bodyCopy;
+      max-width: 40rem;
+
+      :global(.r-mobile) & {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+  }
+
+  :global(.r-mobile) & {
+    background: url("/7/ca/destiny/products/beyondlight/bl_crypt_bg_mobile.jpg")
+      no-repeat top center #23020b;
+    background-size: 100% auto;
+    padding: 35rem 0 4rem 0;
+
+    div {
+      width: 90%;
+      margin: 0 auto;
+    }
+  }
+}
+
+.preorder {
+  background: url("/7/ca/destiny/products/beyondlight/bl_editions_bg_desktop.jpg")
+    no-repeat top center #04040e;
+  min-height: 1220px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 5rem;
+
+  .contentBlock {
+    margin: 0 auto;
+
+    &.centered {
+      flex-flow: column;
+      align-content: center;
+      align-items: center;
+      text-align: center;
+      width: 575px;
+
+      h2 {
+        white-space: nowrap;
+        font-size: 3rem;
+        padding-bottom: 2rem;
+        margin-bottom: 0.5rem;
+        text-align: center;
+        border-bottom: none;
+
+        &::before {
+          content: "";
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          height: 0.5rem;
+          width: 100%;
+          position: absolute;
+          top: calc(50% - 1.3rem);
+          left: -0.25rem;
+        }
+      }
+
+      :global(.r-mobile) & {
+        width: 100%;
+        max-width: 85%;
+      }
+    }
+  }
+
+  :global(.r-mobile) & {
+    background: url("/7/ca/destiny/products/beyondlight/bl_editions_bg_mobile.jpg")
+      no-repeat top center #04040e;
+    background-size: 100% auto;
+    height: auto;
+    padding: 2rem;
+    padding-top: 19%;
+  }
+}

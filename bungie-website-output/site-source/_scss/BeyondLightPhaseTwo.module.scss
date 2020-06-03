@@ -1,0 +1,235 @@
+@import "../../../ui/uikit/_base/ui_base";
+@import "./Components/_BLmixins.scss";
+
+body {
+  font-family: $font-family-neue-haas;
+}
+
+.sectionOne {
+  background-color: #090e21;
+
+  .contentWrapper {
+    padding: 18rem 0;
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+
+    :global(.r-mobile) & {
+      background-size: 100%;
+      background-position: center top;
+      background-repeat: no-repeat;
+      padding-top: 42rem;
+      padding-bottom: 2rem;
+    }
+
+    div:first-child {
+      max-width: 37rem;
+      margin: 0 auto 0 20%;
+
+      :global(.r-gridmax) & {
+        margin: 0 auto 0 13%;
+      }
+
+      :global(.r-large) & {
+        margin: 0 auto 0 9%;
+      }
+
+      :global(.r-medium) & {
+        margin: 0 auto 0 1%;
+      }
+
+      :global(.r-mobile) & {
+        width: 90%;
+        margin: 0 auto;
+      }
+    }
+  }
+}
+
+.videoSection {
+  background-color: #090e21;
+  position: relative;
+
+  .contentWrapper {
+    padding: 4rem 0 14rem 0;
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+
+    .videoSectionHeading {
+      @include h2Heading;
+      text-transform: uppercase;
+      width: 100%;
+      text-align: center;
+      border-bottom: none;
+      margin: 0 auto 1rem auto;
+      max-width: 51rem;
+    }
+
+    .bottomBorder {
+      width: 100%;
+      max-width: 55rem;
+      margin: 0 auto;
+      height: 1px;
+      @include bottomBorder;
+      display: flex;
+
+      :global(.r-mobile) & {
+        width: 90%;
+        margin: 0 auto;
+      }
+    }
+
+    :global(.r-mobile) & {
+      padding: 27rem 0 3rem 0;
+      background-size: 100%;
+    }
+  }
+}
+
+.videoWrapper {
+  margin-top: 6rem;
+  width: 100%;
+  max-width: 947px;
+  max-height: 900px;
+  background-size: 101%;
+
+  :global(.r-mobile) & {
+    width: 90%;
+    margin: 4rem auto 0 auto;
+  }
+}
+
+@mixin arrowDown($size, $color) {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: $size $size 0 $size;
+  border-color: $color transparent transparent transparent;
+}
+
+.arrowEyebrow {
+  color: #479ce4;
+  letter-spacing: 6px;
+  @include bodyCopy;
+  text-transform: uppercase;
+  text-align: center;
+  padding-top: 3rem;
+  padding-bottom: 1rem;
+}
+.arrows {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-block;
+  height: 1.25rem;
+
+  .baseArrows {
+    height: 1.25rem;
+    display: flex;
+    flex-direction: column;
+
+    &:after {
+      content: "";
+      @include arrowDown(0.85rem, white);
+      opacity: 0.5;
+    }
+
+    &:before {
+      content: "";
+      @include arrowDown(0.85rem, white);
+      opacity: 0.25;
+    }
+  }
+
+  .animatedArrow {
+    @include arrowDown(0.85em, white);
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    animation: to-bottom 1.25s infinite ease-out;
+  }
+}
+
+@keyframes to-bottom {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+
+  5% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  20% {
+    opacity: 1;
+    transform: translateY(100%);
+  }
+
+  40%,
+  100% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}
+
+.preorder {
+  background: url("/7/ca/destiny/products/beyondlight/bl_editions_bg_desktop.jpg")
+    no-repeat top center #04040e;
+  min-height: 1220px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 5rem;
+
+  .contentBlock {
+    margin: 0 auto;
+
+    &.centered {
+      flex-flow: column;
+      align-content: center;
+      align-items: center;
+      text-align: center;
+      width: 575px;
+
+      h2 {
+        white-space: nowrap;
+        font-size: 3rem;
+        padding-bottom: 2rem;
+        margin-bottom: 0.5rem;
+        text-align: center;
+        border-bottom: none;
+
+        &::before {
+          content: "";
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          height: 0.5rem;
+          width: 100%;
+          position: absolute;
+          top: calc(50% - 1.3rem);
+          left: -0.25rem;
+        }
+      }
+
+      :global(.r-mobile) & {
+        width: 100%;
+        max-width: 85%;
+      }
+    }
+  }
+
+  :global(.r-mobile) & {
+    background: url("/7/ca/destiny/products/beyondlight/bl_editions_bg_mobile.jpg")
+      no-repeat top center #04040e;
+    background-size: 100% auto;
+    height: auto;
+    padding: 2rem;
+    padding-top: 19%;
+  }
+}

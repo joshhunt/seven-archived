@@ -1,0 +1,104 @@
+.mediaContainer {
+  background: url("/7/ca/destiny/products/beyondlight/media_bg_top_desktop.jpg")
+    no-repeat top center #0a111b;
+  background-size: 100% auto;
+  min-height: 100vh;
+  padding-top: 300px;
+
+  :global(.r-medium) & {
+    background: url("/7/ca/destiny/products/beyondlight/media_bg_top_mobile.jpg")
+      no-repeat top center #0a111b;
+    background-size: 100% auto;
+    padding-top: 190px;
+  }
+
+  & > div > div:nth-child(2) {
+    /* inside the DestinyNewsAndMedia_sectionContent */
+    h2 {
+      :global(.r-medium) & {
+        margin: 2rem 0 0;
+        width: 100%;
+      }
+    }
+
+    h2:nth-of-type(1) + div {
+      /* Video tab */
+      & > div > div:nth-of-type(1) {
+        margin-bottom: 0.5rem;
+
+        &:after {
+          border-radius: 3px;
+        }
+      }
+
+      & > div > div:nth-of-type(2) {
+        text-align: left;
+        padding: 0;
+        margin-bottom: 1rem;
+      }
+
+      & div > div {
+        background-color: rgba(255, 255, 255, 0);
+      }
+
+      & > div > div > img {
+        border-radius: 3px;
+      }
+    }
+
+    h2:nth-of-type(2) {
+      /* hide  Lore tab */
+      display: none;
+
+      & + div {
+        display: none;
+      }
+    }
+
+    h2:nth-of-type(1) ~ h2 + div {
+      /* All tab content after the Video tab */
+      & > div {
+        width: calc(25% - 2rem);
+        margin: 1rem 1rem;
+        display: flex;
+        flex-direction: column;
+        background-color: rgba(255, 255, 255, 0);
+
+        &:after {
+          border-radius: 3px;
+        }
+
+        img {
+          border-radius: 3px;
+        }
+
+        :global(.r-medium) & {
+          width: 100%;
+          margin: 0;
+          margin-top: 2rem;
+        }
+      }
+    }
+
+    h2 + div {
+      /* All tab content */
+      flex-flow: row wrap;
+      justify-content: flex-start;
+
+      :global(.r-medium) & {
+        flex-flow: column;
+
+        & > div {
+          width: 100%;
+          margin: 0;
+          margin-top: 2rem;
+
+          & > div {
+            width: 100%;
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+}

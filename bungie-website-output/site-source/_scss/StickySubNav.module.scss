@@ -1,0 +1,48 @@
+@import "../uikit/_base/ui_base";
+
+.spacer {
+  position: relative;
+  height: 96px;
+  width: 100%;
+  display: none;
+
+  &.menuFixed {
+    display: block;
+  }
+}
+
+.wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: #1e1c1a;
+  transition: 0.25s;
+  white-space: nowrap;
+  z-index: 99;
+  padding: 0 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes showMenu {
+  0% {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.contentFrame {
+  width: 80vw;
+  max-width: 80rem;
+  margin: 0 auto;
+
+  :global(.r-medium) & {
+    width: 100%;
+  }
+}
