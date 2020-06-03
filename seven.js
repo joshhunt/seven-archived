@@ -244,7 +244,6 @@ async function downloadImage(toDownload) {
   }
 
   const downloadUrl = bungieUrl(toDownload);
-  console.log("Downloading", downloadUrl);
 
   const urlPath = urlLib.parse(downloadUrl).path;
   const folder = path.parse(urlPath).dir;
@@ -263,6 +262,8 @@ async function downloadImage(toDownload) {
   if (fileAlreadyExists) {
     return;
   }
+
+  console.log("Downloading", downloadUrl);
 
   await mkdirp(outFolder);
   try {
@@ -298,19 +299,24 @@ async function getContentByTagAndType(callObj) {
     },
   });
 
-  resp.data.Response.properties.ContentItems.forEach((contentItem) => {
-    DOWNLOADABLE_PROPERTIES.forEach((prop) => {
-      if (contentItem.properties[prop]) {
-        console.log("  pushing downloadable", contentItem.properties[prop]);
-        downloadQueue.push(contentItem.properties[prop]);
+  if (resp.data.Response.properties.Path) {
+    downloadQueue.push(resp.data.Response.properties.Path);
+  }
+
+  resp.data.Response.properties.ContentItems &&
+    resp.data.Response.properties.ContentItems.forEach((contentItem) => {
+      DOWNLOADABLE_PROPERTIES.forEach((prop) => {
+        if (contentItem.properties[prop]) {
+          console.log("  pushing downloadable", contentItem.properties[prop]);
+          downloadQueue.push(contentItem.properties[prop]);
+        }
+      });
+
+      if (contentItem.properties.VideoId) {
+        const youtubeUrl = `https://www.youtube.com/watch?v=${contentItem.properties.VideoId}`;
+        console.log("  Youtube:", youtubeUrl);
       }
     });
-
-    if (contentItem.properties.VideoId) {
-      const youtubeUrl = `https://www.youtube.com/watch?v=${contentItem.properties.VideoId}`;
-      console.log("  Youtube:", youtubeUrl);
-    }
-  });
 }
 
 async function downloadWorker(toDownload) {
@@ -339,10 +345,6 @@ async function run() {
     extractFilesFromSourceMapUrl(
       sourceMapUrl,
       (filePath, fileContents, outFilePath) => {
-        if (!outFilePath.includes("SeasonOfDawn.tsx")) {
-          return;
-        }
-
         const foundUrls = extractFromTypescript(outFilePath, fileContents);
 
         if (foundUrls.length > 0) {
