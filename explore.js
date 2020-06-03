@@ -24,22 +24,32 @@ function extractUrlsFromNode(node, collectionArr) {
       break;
 
     case ts.SyntaxKind.CallExpression:
-      if (
-        node.expression.name &&
-        node.expression.name.text === "GetContentByTagAndType"
-      ) {
-        const args = node.arguments.map(
-          (n) => n.kind === ts.SyntaxKind.StringLiteral && n.text
-        );
+      const fnName =
+        node.expression.text ??
+        (node.expression.name && node.expression.name.text) ??
+        "";
 
+      const args = node.arguments.map(
+        (n) => n.kind === ts.SyntaxKind.StringLiteral && n.text
+      );
+
+      if (fnName === "GetContentByTagAndType") {
+        console.log("$$$$$ GetContentByTagAndType call");
         if (_.isString(args[0]) && _.isString(args[1])) {
           collectionArr.push({
             type: "fn",
-            fnName: node.expression.name.text,
+            fnName,
             args,
           });
         }
       }
+
+      if (fnName === "Img") {
+        console.log("$$$$$ found Img call");
+
+        if (args[0]) collectionArr.push(`/7/ca/${args[0]}`);
+      }
+
       break;
   }
 

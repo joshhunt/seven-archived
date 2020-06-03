@@ -24,6 +24,7 @@ const CHUNK_HASHES_RE = /\.chunk\.js\?v=" \+ ([{}"\w:,-]+)/;
 const CSS_CHUNKS_RE = /var cssChunks = ([{}"\w:,-]+)/;
 const NAMED_CSS_CHUNKS_RE = /"static\/css\/" \+ \(([{}"\w:,-]+)/;
 const LIMIT = 1;
+const DEBUG = false;
 
 mkdirp.sync(path.join(IMAGES_ROOT, "_flat"));
 
@@ -243,7 +244,7 @@ async function downloadImage(toDownload) {
   }
 
   const downloadUrl = bungieUrl(toDownload);
-  // console.log("Downloading", downloadUrl);
+  console.log("Downloading", downloadUrl);
 
   const urlPath = urlLib.parse(downloadUrl).path;
   const folder = path.parse(urlPath).dir;
@@ -313,6 +314,10 @@ async function getContentByTagAndType(callObj) {
 }
 
 async function downloadWorker(toDownload) {
+  if (DEBUG) {
+    return;
+  }
+
   if (toDownload.type === "fn") {
     if (toDownload.fnName == "GetContentByTagAndType") {
       await getContentByTagAndType(toDownload);
@@ -334,11 +339,15 @@ async function run() {
     extractFilesFromSourceMapUrl(
       sourceMapUrl,
       (filePath, fileContents, outFilePath) => {
+        if (!outFilePath.includes("SeasonOfDawn.tsx")) {
+          return;
+        }
+
         const foundUrls = extractFromTypescript(outFilePath, fileContents);
 
         if (foundUrls.length > 0) {
-          // console.log("  " + outFilePath);
-          // foundUrls.forEach((f) => console.log("   ", f));
+          console.log("  " + outFilePath);
+          foundUrls.forEach((f) => console.log("   ", f));
           foundUrls.forEach((f) => downloadQueue.push(f));
         }
       }
@@ -360,8 +369,8 @@ async function run() {
         const foundUrls = extractFromCss(resp.data);
 
         if (foundUrls.length > 0) {
-          // console.log("  " + cssUrl);
-          // foundUrls.forEach((f) => console.log("   ", f));
+          console.log("  " + cssUrl);
+          foundUrls.forEach((f) => console.log("   ", f));
           foundUrls.forEach((f) => downloadQueue.push(f));
         }
       })
