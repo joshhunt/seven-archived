@@ -1,0 +1,1446 @@
+@import "../../../../ui/uikit/_base/ui_base";
+
+.contentWrapper {
+  overflow: hidden;
+  max-width: 100vw;
+}
+
+.hero {
+  background-image: url("/7/ca/destiny/bgs/season10/hero_desktop_bg.jpg");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 27rem;
+
+  :global(html.r-mobile) & {
+    padding-top: 24rem;
+    padding-bottom: 4rem;
+    width: 100%;
+    background-image: url("/7/ca/destiny/bgs/season10/hero_mobile_bg.jpg");
+  }
+
+  .playButton {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .playCircle {
+    background-image: url("/7/ca/destiny/bgs/seasons/play_button_bg.png");
+    height: 6rem;
+    width: 6rem;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 0.655rem;
+    transition: 0.25s;
+
+    &:hover {
+      height: 6.5rem;
+      width: 6.5rem;
+      margin: -0.25rem 0;
+    }
+  }
+
+  .playIcon {
+    background-image: url("/7/ca/destiny/bgs/seasons/play_button_triangle.svg");
+    height: 3rem;
+    width: 3rem;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
+  .heroLogo {
+    height: 12rem;
+    width: 43rem;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin-bottom: 1rem;
+
+    :global(html.r-mobile) & {
+      width: 90%;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.date {
+  color: rgba($color-primary, 0.85);
+  font-size: 1.75rem;
+  letter-spacing: 3px;
+  margin-bottom: 14rem;
+
+  :global(html.r-mobile) & {
+    font-size: 1.25rem;
+  }
+}
+
+.titleSection {
+  display: flex;
+  flex-direction: column;
+  max-width: 90vw;
+  height: auto;
+  width: 75rem;
+  font-size: 1.3rem;
+  padding-left: 7rem;
+
+  h1 {
+    font-size: 5.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.centerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+
+  .titleSection {
+    position: absolute;
+    bottom: -9.5rem;
+    z-index: 10;
+
+    :global(.r-mobile) & {
+      position: relative;
+    }
+  }
+}
+
+.separator {
+  color: $color-accent3;
+}
+
+.verticalSubtitle {
+  transform: rotate(270deg) translateX(10rem);
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  position: absolute;
+  width: 60rem;
+  z-index: 12;
+  top: 24rem;
+  left: -27rem;
+
+  &.stackedText {
+    top: -13rem;
+  }
+
+  .verticalContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .verticalText {
+    margin-right: 1rem;
+  }
+
+  :global(html.r-mobile) & {
+    display: none;
+  }
+}
+
+.stackedText .verticalContent {
+  flex-direction: row-reverse;
+  writing-mode: vertical-rl;
+  transform: rotate(90deg);
+
+  .tricornRotate {
+    transform: rotate(0deg);
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+
+.tricornRotate {
+  background-image: url("/7/ca/destiny/bgs/season10/tricorn.png");
+  transform: rotate(90deg);
+  height: 2rem;
+  width: 2rem;
+  display: inline-block;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.dash {
+  border-top: 10px solid whitesmoke;
+  width: 4rem;
+  margin: 3.5rem 0;
+
+  &.gearDash {
+    margin: 0 0 0 24vw;
+  }
+}
+
+.storyImage {
+  background-image: url(/7/ca/destiny/bgs/season10/story_city_desktop.jpg);
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  position: relative;
+  height: 44rem;
+  width: 80vw;
+
+  &:before {
+    content: "";
+    width: 12vw;
+    height: 0.3rem;
+    background: whitesmoke;
+    position: absolute;
+    top: -0.3rem;
+    left: 0;
+    transform: translateX(3rem);
+  }
+
+  &.inView:before {
+    transform: translateX(0);
+    transition-duration: 650ms;
+    transition-timing-function: ease;
+  }
+}
+
+.storySection {
+  padding: 6rem 0 0 0;
+  background-color: #100902;
+  position: relative;
+
+  .titleSection {
+    bottom: -10.5rem;
+  }
+
+  .squares {
+    position: absolute;
+
+    :global(html.r-mobile) & {
+      position: unset;
+    }
+  }
+
+  :global(html.r-mobile) & {
+    padding: 0;
+
+    .smallTitle {
+      margin-top: 10rem;
+    }
+  }
+
+  .videoContainer {
+    height: 45rem;
+    width: 99rem;
+    max-width: 80vw;
+    margin: 0 auto;
+    position: relative;
+
+    video {
+      margin-top: unset;
+    }
+
+    &:before {
+      content: "";
+      width: 12vw;
+      height: 0.3rem;
+      background: whitesmoke;
+      position: absolute;
+      top: -0.3rem;
+      left: 0;
+    }
+  }
+}
+
+.pvpTopSection {
+  background-image: url(/7/ca/destiny/bgs/season10/trials_top_desktop.jpg);
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  padding-bottom: 2vw;
+  background-color: #c78a33;
+  position: relative;
+
+  .square {
+    background-image: url(/7/ca/destiny/bgs/season10/s10_trials_rewards_mobile.png);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
+  .bungieRewards {
+    background-image: url(/7/ca/destiny/bgs/season10/s10_trials_rewards_mobile.png);
+    background-size: contain;
+    background-position: center -2rem;
+    background-repeat: no-repeat;
+  }
+
+  :global(html.r-mobile) & {
+    border-top: 4px solid #c78a33;
+    padding-bottom: 82vw;
+
+    .thumbnailPlayButton {
+      top: calc(50vw - 3.5rem);
+      width: 7rem;
+      height: 7rem;
+      left: calc(50% - 3.5rem);
+    }
+  }
+}
+
+.pvpSection {
+  background-image: url(/7/ca/destiny/bgs/season10/trials_bottom.jpg);
+  background-size: contain;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  padding: 6rem 0 27rem;
+  background-color: #7e5212;
+  position: relative;
+  border-bottom: 4px solid #c78a33;
+
+  *:not(.pvpBottomBackground, .thumbnailPlayButton) {
+    z-index: 10;
+  }
+
+  video {
+    margin-top: unset;
+    height: 45rem;
+    width: auto;
+    max-width: 80vw;
+  }
+
+  .titleSection {
+    bottom: -27.4rem;
+  }
+
+  .squares {
+    margin-top: 32rem;
+  }
+
+  :global(html.r-mobile) & {
+    .thumbnailPlayButton {
+      display: none;
+    }
+  }
+}
+
+.eyeBackground {
+  position: absolute;
+  background-image: url(/7/ca/destiny/bgs/season10/trials_bottom_mobile_bg.jpg);
+  background-size: contain;
+  background-position: center bottom;
+  width: 100vw;
+  height: 217vw;
+  bottom: 8px;
+  background-repeat: no-repeat;
+}
+
+.pvpBottomBackground {
+  background-image: url(/7/ca/destiny/bgs/season10/s10_trials_eye_bg.png);
+  background-size: contain;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: 1;
+  top: 28rem;
+  left: 5px;
+  right: 0;
+  bottom: 0;
+}
+
+.bungieRewardsSection {
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .dash {
+    align-self: flex-start;
+    margin-left: calc(50vw - 37rem);
+    margin-bottom: 1.5rem;
+    width: 5rem;
+  }
+
+  .textBox {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.bungieRewardsButton {
+  text-transform: uppercase;
+  max-width: 13rem;
+  margin-bottom: 0.5rem;
+
+  :global(html.r-mobile) & {
+    width: 100%;
+    max-width: unset;
+  }
+}
+
+.smallText {
+  font-size: 1rem;
+  margin: 0.5rem 0 1rem;
+  color: rgba(245, 245, 245, 0.5);
+}
+
+.gearTopSection {
+  background-image: url(/7/ca/destiny/bgs/season10/s10_tommys_noise.jpg);
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 26vw;
+  max-height: 500px;
+  margin: 0;
+  background-color: #1f1f1f;
+  position: relative;
+
+  :global(html.r-mobile) & {
+    height: 76rem;
+    max-height: unset;
+    margin-bottom: -3rem;
+    background-color: #151515;
+  }
+}
+
+.gearTopBackground {
+  background-image: url(/7/ca/destiny/bgs/season10/tommys_matchbook_bg_icon.png);
+  background-size: contain;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 6vw;
+  width: 44vw;
+  max-width: 844px;
+  height: 43vw;
+  max-height: 826px;
+  right: 9%;
+}
+
+.tommys {
+  background-image: url(/7/ca/destiny/bgs/season10/exotic_tommys_matchbook.png);
+  background-size: contain;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 85vw;
+  max-width: 1632px;
+  height: 82vw;
+  max-height: 1574px;
+  right: 3%;
+  bottom: -16vw;
+}
+
+.gearMidSection {
+  padding: 8rem 0 9rem;
+  background-color: #151515;
+}
+
+.gearMidContent {
+  padding: 11vw 0 5vw 24vw;
+}
+
+.gearBottomSection {
+  background-image: url(/7/ca/destiny/bgs/season10/artifact_background_desktop.jpg);
+  background-size: contain;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  padding-top: 6vw;
+  background-color: #171e25;
+  position: relative;
+  border-top: 4px solid #285a6f;
+
+  :global(html.r-mobile) & {
+    border-top: none;
+    padding-top: 0;
+  }
+}
+
+.gearBottomContent {
+  padding: 23vw 0 9vw 24vw;
+}
+
+.artifact {
+  background-image: url(/7/ca/destiny/bgs/season10/artifact_dagger.png);
+  background-size: contain;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 85vw;
+  max-width: 1632px;
+  height: 52vw;
+  max-height: 998px;
+  right: 9%;
+  top: -16vw;
+}
+
+.rewardsSection {
+  background-color: #b9bec6;
+  position: relative;
+  height: calc(46rem + 52vw);
+
+  .titleSection {
+    .dash {
+      border-top-color: #4f5053;
+
+      :global(.r-mobile) & {
+        display: none;
+      }
+    }
+
+    color: #4f5053;
+    padding-left: 6rem;
+    bottom: 0;
+    top: 7vw;
+  }
+
+  :global(.r-mobile) & {
+    height: unset;
+    color: #4f5053;
+  }
+
+  .textBox {
+    max-width: 42rem;
+  }
+}
+
+.rewardsMobile {
+  background-color: rgb(245, 245, 245);
+  color: rgba($color-text-dark, 0.8);
+
+  &.titleSection {
+    max-width: unset;
+    width: 100vw;
+    padding: 3rem 4rem;
+  }
+
+  .sectionTitle {
+    font-size: 2.5rem;
+  }
+
+  .mediumBlurb {
+    font-size: 18px;
+    line-height: 2rem;
+  }
+}
+
+.rewardsBackground {
+  background-image: url(/7/ca/destiny/bgs/season10/gear_rasputin_icon_bg.png);
+  background-size: contain;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 60rem;
+  height: 83rem;
+  top: 8rem;
+  right: 2rem;
+
+  :global(.r-mobile) & {
+    display: none;
+  }
+}
+
+.seasonPassSection {
+  padding: 4rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #1a1c23;
+  position: relative;
+  background-size: contain;
+  background-position: center top;
+  background-repeat: no-repeat;
+
+  .verticalSubtitle {
+    align-self: flex-start;
+  }
+
+  .mediumTitle {
+    margin: 1.5rem 0 1.5rem;
+  }
+
+  .textBox {
+    text-align: center;
+    margin-bottom: 4vw;
+    max-width: 30rem;
+  }
+
+  .thumbnailPlayButton {
+    position: unset;
+  }
+}
+
+.buySection {
+  padding-top: 4rem;
+  display: flex;
+  flex-direction: column;
+
+  :global(.r-mobile) & {
+    margin-top: 0;
+  }
+}
+
+.calendarSection {
+  background-image: url(/7/ca/destiny/bgs/season10/calendar_bg.jpg);
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  text-align: center;
+  background-color: #1e2329;
+
+  h1 {
+    margin: 3rem 0 0rem;
+  }
+
+  :global(.r-mobile) & {
+    background-image: url("");
+    width: 100%;
+    padding: 4rem 0;
+  }
+}
+
+.storyAnchor {
+  position: absolute;
+  top: -11rem;
+
+  :global(.r-mobile) & {
+    top: -9rem;
+  }
+}
+
+.pvpAnchor {
+  position: absolute;
+  top: -15rem;
+
+  :global(.r-mobile) & {
+    top: -7rem;
+  }
+}
+
+.gearAnchor {
+  position: absolute;
+  top: -15rem;
+
+  :global(.r-mobile) & {
+    top: -9rem;
+  }
+}
+
+.artifactAnchor {
+  position: absolute;
+  top: -19rem;
+
+  :global(.r-mobile) & {
+    top: -9rem;
+  }
+}
+
+.rewardsAnchor {
+  position: absolute;
+  top: -5rem;
+
+  :global(.r-mobile) & {
+    top: -rem;
+  }
+}
+
+.calendarAnchor {
+  position: absolute;
+  top: -10rem;
+}
+
+.rasputin {
+  position: absolute;
+  bottom: 2rem;
+  max-width: 90vw;
+  height: auto;
+  width: 58rem;
+}
+
+.textBox {
+  font-size: 1.3rem;
+  max-width: 42rem;
+  line-height: 1.8rem;
+
+  &.gray {
+    color: rgba($color-primary, 0.5);
+  }
+}
+
+.videoContainer {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: 10;
+  top: -28rem;
+  height: 45rem;
+  width: 99rem;
+  max-width: 80vw;
+  margin: 0 auto;
+
+  :global(.r-mobile) & {
+    position: relative;
+    background-size: contain;
+    width: calc(100vw - 4rem);
+    max-width: 88vw;
+    height: 26rem;
+    top: unset;
+  }
+}
+
+.thumbnailPlayButton {
+  background-image: url("/7/ca/destiny/bgs/shadowkeep/play_button.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  width: 5rem;
+  height: 5rem;
+  position: absolute;
+  top: calc(50% - 2.5rem);
+  left: calc(50% - 2.5rem);
+  z-index: 12;
+
+  :global(.r-mobile) & {
+    width: 4rem;
+    height: 4rem;
+    position: absolute;
+    top: calc(50% - 2rem);
+    left: calc(50% - 2rem);
+  }
+}
+
+.squares {
+  display: flex;
+  justify-content: center;
+
+  :global(.r-mobile) & {
+    .square:before {
+      transform: translateX(0);
+    }
+
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &.inView .square:before {
+    transform: translateX(0);
+    transition-duration: 650ms;
+    transition-timing-function: ease;
+  }
+
+  &.inView .square:after {
+    transform: translateX(0);
+    transition-duration: 650ms;
+    transition-timing-function: ease;
+  }
+}
+
+.square {
+  width: 29vw;
+  max-width: 25rem;
+  height: 25rem;
+  margin: 1.3vw;
+  display: flex;
+  min-width: 19.5rem;
+  flex-direction: column;
+  justify-content: flex-end;
+  border: 2px solid #c78a33;
+  background-color: rgba(33, 40, 51, 0.7);
+  position: relative;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  :global(.r-mobile) & {
+    width: calc(100vw - 4rem);
+    margin: 2rem;
+  }
+
+  &.square1 {
+    background-image: url("/7/ca/destiny/bgs/season10/s10_story_callout_1_desktop.jpg");
+  }
+
+  &.square2 {
+    background-image: url("/7/ca/destiny/bgs/season10/story_callout_2_desktop.jpg");
+  }
+
+  &.square3 {
+    background-image: url("/7/ca/destiny/bgs/season10/story_callout_3_desktop.jpg");
+  }
+
+  &.square4 {
+    background-image: url("/7/ca/destiny/bgs/season10/trials_callout_1_desktop.jpg");
+  }
+
+  &.square5 {
+    background-image: url("/7/ca/destiny/bgs/season10/trials_callout_2_desktop.jpg");
+  }
+
+  &.square6 {
+    background-image: url("/7/ca/destiny/bgs/season10/trials_callout_3_desktop.jpg");
+  }
+
+  &.bungieRewards {
+    height: 35rem;
+  }
+
+  .innerSquare {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: absolute;
+    padding: 1.3vw;
+    top: 51%;
+
+    :global(.r-mobile) & {
+      justify-content: flex-end;
+      position: unset;
+      padding: 2rem;
+      top: unset;
+    }
+  }
+
+  .squareTitle {
+    font-weight: bold;
+    margin-bottom: 0.7rem;
+    font-size: 1.4rem;
+  }
+
+  &:before {
+    content: "";
+    width: 6vw;
+    height: 0.2rem;
+    background: #c78a33;
+    position: absolute;
+    top: -0.3rem;
+    left: -2px;
+    transform: translateX(3vw);
+  }
+
+  &:after {
+    content: "";
+    width: 3vw;
+    height: 0.2rem;
+    background: #c78a33;
+    position: absolute;
+    bottom: -0.3rem;
+    right: -2px;
+    transform: translateX(-1.5vw);
+  }
+}
+
+.mediumTitle {
+  font-weight: bold;
+  font-size: 3.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.smallTitle {
+  font-weight: bold;
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+
+  :global(.r-mobile) & {
+    max-width: 90%;
+    margin: 0 auto 1rem;
+  }
+}
+
+.bungieRewardsLogo {
+  background-image: url(/7/ca/bungie/icons/logos/bungie_rewards_logo.png);
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 22rem;
+  height: 6rem;
+
+  :global(.r-mobile) & {
+    width: 22rem;
+    height: 3rem;
+    margin-bottom: 1rem;
+    max-width: 66vw;
+  }
+}
+
+.rewardsHat {
+  background-image: url(/7/ca/destiny/bgs/season10/s10_trials_rewards_hat_pin.png);
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 37rem;
+  max-width: 41%;
+  height: 35rem;
+  left: 40rem;
+  top: -10rem;
+}
+
+.bungieRewardsContent {
+  border: 2px solid #c78a33;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 8%;
+  margin: 5rem auto 2rem;
+  width: 82rem;
+  max-width: 93.7%;
+  height: 15rem;
+  background-color: rgba(33, 40, 51, 0.7);
+  position: relative;
+
+  .textBox {
+    width: 34rem;
+    font-size: 1.2rem;
+    max-width: 42rem;
+    line-height: 1.4rem;
+  }
+
+  &:before {
+    content: "";
+    width: 6vw;
+    height: 0.2rem;
+    background: #c78a33;
+    position: absolute;
+    top: -0.3rem;
+    left: -2px;
+    transform: translateX(3vw);
+  }
+
+  &:after {
+    content: "";
+    width: 3vw;
+    height: 0.2rem;
+    background: #c78a33;
+    position: absolute;
+    bottom: -0.3rem;
+    right: -2px;
+    transform: translateX(-1.5vw);
+  }
+
+  &.inView:before {
+    transform: translateX(0);
+    transition-duration: 650ms;
+    transition-timing-function: ease;
+    transition-delay: 1s;
+  }
+
+  &.inView:after {
+    transform: translateX(0);
+    transition-duration: 650ms;
+    transition-timing-function: ease;
+    transition-delay: 1s;
+  }
+}
+
+.itemContainer {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background-color: rgb(245, 245, 245);
+  position: relative;
+
+  :global(.r-mobile) & {
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 4rem;
+  }
+
+  .flexContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-size: 1rem;
+    text-transform: uppercase;
+    margin: 0 0.5vw;
+    color: #8a8d96;
+    font-style: italic;
+    font-weight: 600;
+    padding: 6vw 0;
+    flex: 1 0;
+
+    .gearTitle {
+      color: rgba($color-text-dark, 0.9);
+      font-size: 1.3rem;
+      letter-spacing: 3px;
+      font-style: initial;
+      padding-bottom: 0.3rem;
+      max-width: 90%;
+    }
+
+    :global(.r-mobile) & {
+      padding: 2vw 0;
+    }
+  }
+
+  .mediaBg {
+    width: 25vw;
+    min-height: 100%;
+
+    :global(.r-mobile) & {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.largeImage {
+  max-width: 80vw;
+  display: block;
+}
+
+.mediaBox {
+  display: flex;
+  align-items: center;
+}
+
+.rewardsContent {
+  .smallTitle {
+    text-align: center;
+  }
+}
+
+.buyButton {
+  margin: 0.5rem auto 6rem;
+  text-transform: uppercase;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+
+  :global(.r-tiny) & {
+    width: calc(100% - 2rem);
+  }
+}
+
+.carouselSection {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  text-align: center;
+  padding: 0.5rem 0 6rem;
+  position: relative;
+
+  :global(.r-mobile) & {
+    background-size: cover;
+    background-position: center top;
+    width: 100%;
+    margin-top: 6rem;
+  }
+}
+
+.carouselContainer {
+  margin: 0 auto;
+  width: 72vw;
+  max-width: 1382px;
+
+  :global(.r-mobile) & {
+    width: 90%;
+  }
+}
+
+.carouselText {
+  text-align: center;
+  width: 100%;
+  letter-spacing: 5px;
+  font-size: 1rem;
+
+  &:last-of-type {
+    margin-bottom: 1rem;
+  }
+}
+
+.FAQ {
+  display: flex;
+  flex-direction: column;
+
+  .smallTitle {
+    margin: 4rem 2rem 2rem;
+    text-align: center;
+    letter-spacing: 3px;
+
+    :global(.r-mobile) & {
+      text-align: left;
+    }
+  }
+
+  p {
+    line-height: 27px;
+    font-size: 1.25rem;
+  }
+
+  h4 {
+    border-top: 1px #027476 solid;
+    padding-top: 2rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+
+  a,
+  a:visited {
+    color: rgba($color-season-teal, 0.8);
+
+    &:hover {
+      color: $color-season-teal;
+    }
+  }
+}
+
+.rewardsSmallTitle {
+  margin-bottom: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+}
+
+.rewardsLists {
+  display: flex;
+  margin-top: 2rem;
+
+  li {
+    list-style-image: url(/7/ca/destiny/bgs/seasons/teal_bullet.png);
+    line-height: 28px;
+    margin-left: 1rem;
+    font-size: 1.2rem;
+    padding-bottom: 0.5rem;
+  }
+
+  :global(.r-mobile) & {
+    flex-direction: column;
+    margin: 0 2rem;
+  }
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    max-width: 33rem;
+    padding: 3rem 4rem;
+    font-size: $font-size-h6;
+
+    :global(.r-mobile) & {
+      max-width: unset;
+    }
+  }
+}
+
+.passRewardsList {
+  background-color: rgba(#027476, 0.7);
+  border-top: 0.5rem solid $color-season-teal;
+  border-bottom: 3px solid $color-season-teal;
+  position: relative;
+}
+
+.freeRewardsList {
+  background-color: rgba(#5b5d62, 0.5);
+  border-top: 0.5rem solid #83878f;
+  position: relative;
+}
+
+.thumbnail {
+  width: 25vw;
+  padding: 0;
+  position: relative;
+  margin: 1vw;
+  background-color: $color-background;
+  cursor: pointer;
+  transition: 0.25s;
+  min-height: 8rem;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &:after {
+    display: none;
+  }
+
+  &:hover {
+    z-index: 2;
+    transform: translateY(-2px);
+    box-shadow: 0 60px 90px -40px rgba(0, 0, 0, 0.6);
+  }
+
+  :global(.r-mobile) & {
+    width: 100%;
+    height: 100%;
+    margin: 3rem 0 1rem;
+  }
+}
+
+.almightyBackground {
+  background-image: url(/7/ca/destiny/bgs/season10/story_almighty_middle_desktop.jpg);
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  width: 1920px;
+  height: 59rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.bunkerBackground {
+  background-image: url(/7/ca/destiny/bgs/season10/story_bunker_bottom_desktop.jpg);
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  margin-top: 6rem;
+  width: 1920px;
+  height: 73rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  :global(.r-mobile) & {
+    background-image: url(/7/ca/destiny/bgs/season10/s10_story_rasputin_mobile_bg.jpg);
+    background-size: contain;
+    background-position: center bottom;
+    width: 100vw;
+    height: 92vw;
+    margin: 0 0 -5rem -2rem;
+  }
+}
+
+.trialsGuardians {
+  height: 49vw;
+}
+
+.guardian {
+  background-size: contain;
+  background-position: center top;
+  background-repeat: no-repeat;
+  position: absolute;
+}
+
+.trialsHunter {
+  background-image: url("/7/ca/destiny/bgs/season10/S10_trials_hunter.png");
+  left: 11.5%;
+  top: 5rem;
+  height: 55vw;
+  width: 31vw;
+  max-height: 1056px;
+  max-width: 595px;
+}
+
+.trialsWarlock {
+  background-image: url("/7/ca/destiny/bgs/season10/trials_warlock.png");
+  left: 27%;
+  top: -1rem;
+  height: 71vw;
+  width: 43vw;
+  max-height: 1363px;
+  max-width: 825px;
+}
+
+.trialsTitan {
+  background-image: url(/7/ca/destiny/bgs/season10/S10_trials_titan.png);
+  left: 49%;
+  top: 2rem;
+  height: 62vw;
+  width: 40vw;
+  max-height: 1190px;
+  max-width: 768px;
+}
+
+.gearGuardians {
+  height: 33vw;
+
+  :global(.r-mobile) & {
+    background-image: url(/7/ca/destiny/bgs/season10/gear_hero_mobile_bg.jpg);
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 122vw;
+    position: relative;
+  }
+}
+
+.gearTitan {
+  background-image: url(/7/ca/destiny/bgs/season10/gear_titan.png);
+  left: 49%;
+  top: 47rem;
+  height: 68vw;
+  width: 58vw;
+  max-height: 1305px;
+  max-width: 953px;
+
+  :global(.r-mobile) & {
+    display: none;
+  }
+}
+
+.gearHunter {
+  background-image: url(/7/ca/destiny/bgs/season10/gear_hunter.png);
+  left: 27%;
+  top: 37rem;
+  height: 85vw;
+  width: 39vw;
+  max-height: 1632px;
+  max-width: 748px;
+
+  :global(.r-mobile) & {
+    display: none;
+  }
+}
+
+.gearWarlock {
+  background-image: url(/7/ca/destiny/bgs/season10/gear_warlock1.png);
+  left: 3%;
+  top: 38rem;
+  height: 93vw;
+  width: 37vw;
+  max-height: 1768px;
+  max-width: 710px;
+
+  :global(.r-mobile) & {
+    display: none;
+  }
+}
+
+.rankRow {
+  width: 100%;
+  height: 0;
+  padding-bottom: 21%;
+  margin: 0.5rem 0.5rem 0.5rem 0.3rem;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @for $i from 1 through 10 {
+    &.rankRow#{$i} {
+      background-image: url("/7/ca/destiny/bgs/season10/ranks_#{$i}.png");
+    }
+  }
+}
+
+.mobileRankRow {
+  width: 100%;
+  height: 0;
+  padding-bottom: 41.283%;
+  margin: 0.2rem;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @for $i from 1 through 20 {
+    &.mobileRankRow#{$i} {
+      background-image: url("/7/ca/destiny/bgs/season10/ranks_#{$i}_mobile.png");
+    }
+  }
+}
+
+.calendar {
+  height: 32rem;
+  width: 100%;
+  margin: 2rem auto 6rem;
+  align-self: center;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  position: relative;
+
+  :global(.r-mobile) & {
+    background-image: none;
+    height: 53vw;
+  }
+}
+
+.cornerIcon {
+  height: 5.5rem;
+  width: 5.5rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: contain;
+  background-position: center center;
+}
+
+.seasonIcon {
+  height: 2.23rem;
+  width: 2rem;
+  margin-right: 0.5rem;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.gearTitle {
+}
+
+.notEnglish {
+  .square {
+    .textBox {
+      font-size: 1rem;
+      max-width: 42rem;
+      line-height: 1.4rem;
+    }
+  }
+}
+
+@media all and (min-width: 1940px) {
+  .trialsHunter {
+    left: calc(50vw - 48rem);
+  }
+
+  .trialsWarlock {
+    left: calc(50vw - 28rem);
+  }
+
+  .trialsTitan {
+    left: calc(50vw);
+  }
+
+  .trialsGuardians {
+    height: 70rem;
+  }
+
+  .gearTitan {
+    left: calc(50vw + 2rem);
+  }
+
+  .gearHunter {
+    left: calc(50vw - 25rem);
+  }
+
+  .gearWarlock {
+    left: calc(50vw - 53rem);
+  }
+
+  .rewardsSection {
+    height: 112rem;
+  }
+
+  .gearTopBackground {
+    right: 31rem;
+  }
+
+  .tommys {
+    right: 22rem;
+  }
+
+  .artifact {
+    right: 25rem;
+    top: -17rem;
+  }
+}

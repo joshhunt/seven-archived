@@ -1,0 +1,329 @@
+@import "../../ui/uikit/_base/ui_base";
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+      180deg,
+      rgba(24, 28, 37, 0) 0,
+      rgba(29, 36, 44, 0.1)
+    ),
+    url("/7/ca/destiny/bgs/destiny_space.jpg");
+  padding-top: 5.5rem;
+  padding-bottom: 0;
+  width: 100%;
+  min-height: 75vh;
+  position: relative;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  padding-left: 2rem;
+  padding-right: 2rem;
+  background-position: center;
+  overflow: hidden;
+  background-position-x: center;
+
+  :global(.r-medium) & {
+    padding-top: 8rem;
+    text-align: center;
+  }
+
+  .logoContainer {
+    position: relative;
+    align-self: center;
+  }
+
+  img.logo {
+    padding-bottom: 2rem;
+    align-self: center;
+    max-width: 22vw;
+
+    :global(.r-medium) & {
+      max-width: 280px;
+      margin-top: 1rem;
+    }
+  }
+
+  img.logoDetail {
+    position: absolute;
+    align-self: center;
+    top: 50%;
+    left: 50%;
+    max-width: 900px;
+    transform-origin: 0 0;
+    animation: spin 350s linear infinite;
+
+    :global(.r-medium) & {
+      max-width: 550px;
+    }
+
+    :global(.r-mobile) & {
+      max-width: 500px;
+    }
+  }
+
+  h2 {
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 2rem;
+
+    span {
+      color: gold;
+    }
+  }
+
+  p {
+    margin-top: 0.5rem;
+  }
+}
+
+.darkBackground {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.buttonContainer {
+  text-align: center;
+
+  p {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.buttons {
+  text-align: center;
+  margin-bottom: 6rem;
+
+  :global(.r-mobile) & {
+    min-width: 100%;
+    margin: 3rem 0 2rem;
+  }
+}
+
+.activationButton {
+  padding: 15px 30px;
+
+  :global(.r-mobile) & {
+    min-width: 100%;
+    margin-bottom: 4rem;
+  }
+}
+
+.setupTopText {
+  max-width: 28rem;
+  margin: 0px auto;
+  padding-top: 7rem;
+  text-align: center;
+
+  .setupSubtitle {
+    font-size: 1.5rem;
+    margin: 7rem auto 0px auto;
+  }
+
+  :global(.r-medium) & {
+    max-width: 26rem;
+  }
+
+  :global(.r-mobile) & {
+    max-width: 20rem;
+  }
+}
+
+.title {
+  font-size: 1.8rem;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: rgba($color-primary, 0.6);
+  margin-top: 0.5rem;
+  line-height: 20px;
+}
+
+.stepText {
+  margin: 2rem auto 0px auto;
+  color: rgba($color-primary, 0.6);
+  text-align: center;
+
+  span {
+    color: $color-primary;
+    font-weight: 700;
+    margin-right: 0.2rem;
+  }
+}
+
+.stepImage {
+  height: 19rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-top: -2rem;
+
+  &.choose {
+    background-image: url("/7/ca/destiny/images/cross_save/choose.png");
+  }
+
+  &.link {
+    background-image: url("/7/ca/destiny/images/cross_save/link.png");
+  }
+
+  &.profit {
+    background-image: url("/7/ca/destiny/images/cross_save/profit.png");
+  }
+}
+
+.textByImage {
+  margin-top: 5.75rem;
+
+  :global(.r-medium) & {
+    align-self: center;
+    justify-content: center;
+    display: inline-grid;
+  }
+
+  :global(.r-mobile) & {
+    margin-top: 2rem;
+  }
+}
+
+.textAndImage {
+  margin: 4rem auto;
+
+  .textOne {
+    order: 1;
+  }
+
+  .imageOne {
+    order: 2;
+
+    img {
+      max-width: 32rem;
+      margin-bottom: 3.5rem;
+    }
+  }
+
+  .textTwo {
+    order: 4;
+  }
+
+  .imageTwo {
+    order: 3;
+
+    video {
+      width: 32rem;
+      margin-bottom: 3.5rem;
+    }
+  }
+
+  :global(.r-medium) & {
+    align-self: center;
+    justify-content: center;
+    display: inline-grid;
+    text-align: center;
+
+    .textOne {
+      margin-bottom: 3rem;
+    }
+
+    .textTwo {
+      order: 3;
+      margin-bottom: 3rem;
+    }
+
+    .imageOne {
+      img {
+        max-width: 25rem;
+        margin-bottom: 3.5rem;
+      }
+    }
+
+    .imageTwo {
+      order: 4;
+
+      video {
+        max-width: 25rem;
+        margin-bottom: 3.5rem;
+      }
+    }
+  }
+
+  :global(.r-mobile) & {
+    margin: 2rem auto 0rem;
+
+    .textOne {
+      margin-bottom: 1rem;
+    }
+
+    .textTwo {
+      margin-bottom: 1rem;
+    }
+
+    .imageOne {
+      img {
+        max-width: 100%;
+        margin-bottom: 2rem;
+      }
+    }
+
+    .imageTwo {
+      video {
+        max-width: 100%;
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.FAQHeader {
+  text-align: center;
+  max-width: 28rem;
+  margin: 0 auto;
+  padding-top: 7rem;
+
+  .FAQdescription {
+    opacity: 0.8;
+  }
+
+  .forumLink {
+    color: $color-accent;
+  }
+}
+
+.questions {
+  padding-bottom: 3rem;
+  text-align: left;
+  max-width: 100%;
+  line-height: 27px;
+  color: rgba($color-primary, 0.7);
+
+  a {
+    color: $color-accent;
+  }
+
+  h3 > span {
+    display: none;
+  }
+
+  :global(.r-medium) & {
+    line-height: 20px;
+  }
+
+  h2,
+  h3 {
+    font-weight: 500;
+    color: $color-primary;
+    margin: 1rem auto;
+    line-height: normal;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg) translateX(-50%) translateY(-50%);
+  }
+
+  100% {
+    transform: rotate(360deg) translateX(-50%) translateY(-50%);
+  }
+}

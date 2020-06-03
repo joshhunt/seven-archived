@@ -1,0 +1,121 @@
+div.newsCallouts {
+  padding-top: 113px;
+  padding-bottom: 240px;
+  max-height: 882px;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  h2 {
+    text-align: center;
+    width: 100%;
+    font-weight: 600;
+    font-size: 2.6rem;
+    margin-bottom: 72px;
+  }
+
+  .newsCalloutsWrap {
+    max-width: 1295px;
+    display: flex;
+    margin: 0 auto;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+  }
+
+  .newsCallout {
+    color: #e6e6e6;
+    flex-shrink: 1;
+    text-align: center;
+    margin: 0 0.5rem;
+    height: 407px;
+    flex-basis: 407px;
+    max-width: 407px;
+    max-height: 407px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-end;
+    padding: 0 1rem 3rem;
+    background-repeat: no-repeat;
+    background-position: center center;
+    transition: 0.25s;
+    border-radius: 4px;
+
+    &:hover {
+      z-index: 2;
+      transform: translateY(-2px);
+      box-shadow: 0 60px 90px -40px rgba(0, 0, 0, 0.6);
+    }
+  }
+}
+
+.bgImage {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+
+.textArea {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 5em 2em 2em;
+  color: #f5f5f5;
+  border-radius: 0 0 4px 4px;
+  background: #181c25;
+  background: linear-gradient(
+    to bottom,
+    rgba(24, 28, 37, 0) 0%,
+    rgba(24, 28, 37, 0.8) 100%
+  );
+  flex: none;
+}
+
+.title {
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 0.25rem 0;
+  border-top: 2px solid rgba(245, 245, 245, 0.2);
+  color: #f5f5f5;
+  text-align: left;
+  padding-top: 0.5rem;
+}
+
+:global(.r-medium) {
+  div.newsCallouts {
+    max-height: none;
+    background-size: cover !important;
+  }
+
+  div.newsCalloutsWrap {
+    align-items: center;
+    flex-flow: column nowrap;
+  }
+
+  a.newsCallout {
+    margin: 1rem 0;
+    min-width: 407px;
+  }
+}
+
+:global(.r-mobile) {
+  .newsCallouts {
+    padding: 86px 2rem;
+
+    h2 {
+      margin-bottom: 50px;
+    }
+  }
+}
+
+:global(.r-tiny) {
+  a.newsCallout {
+    margin: 1rem 0;
+    min-width: 100%;
+  }
+}

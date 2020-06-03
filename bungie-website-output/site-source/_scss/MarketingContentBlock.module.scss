@@ -1,0 +1,210 @@
+@import "../_base/ui_base";
+
+.section {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  padding-bottom: 5rem;
+
+  :global(html.r-mobile) & {
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    padding-top: 15rem;
+    padding-bottom: 2rem;
+  }
+
+  :global(html.r-tiny) & {
+    background-size: contain;
+    background-repeat: no-repeat;
+    text-align: left;
+    padding: 0;
+  }
+
+  &.left,
+  &.right {
+    padding: 1rem 0;
+  }
+
+  video {
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin-top: unset;
+  }
+
+  .bg > div {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
+  .mobileBg > div {
+    :global(html.r-mobile) & {
+      position: absolute;
+      z-index: 2;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+    }
+
+    :global(html.r-mobile) .splitScreen & {
+      background-size: cover;
+    }
+
+    :global(html.r-tiny) & {
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+  }
+
+  .sectionContent {
+    position: relative;
+    z-index: 3;
+    padding: 0 2rem;
+    margin: 0 auto;
+
+    :global(.r-mobile) & {
+      padding-bottom: 3rem;
+    }
+  }
+
+  &.center .sectionContent {
+    text-align: center;
+  }
+
+  .sectionTextContent {
+    max-width: 40rem;
+
+    :global(html.r-mobile) & {
+      margin: 0;
+    }
+
+    :global(html.r-tiny) & {
+      margin: 24rem auto 0;
+      max-width: unset;
+    }
+  }
+
+  .callout {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-top: 1rem;
+  }
+
+  &.left .sectionTextContent,
+  &.right .sectionTextContent {
+    max-width: 32rem;
+    margin: 0;
+
+    .smallTitle {
+      padding: 0.5rem 0;
+      margin-bottom: 2rem;
+    }
+  }
+
+  &.left .italicCallout div {
+    justify-content: flex-start;
+  }
+
+  &.right .italicCallout div {
+    justify-content: flex-end;
+  }
+
+  &.centerTop .sectionTextContent {
+    margin: 7rem auto 0;
+    text-align: center;
+  }
+
+  p.mediumBlurb {
+    font-size: 18px;
+    line-height: 2rem;
+  }
+}
+
+.boxes {
+  display: flex;
+  max-width: 73rem;
+  margin: 2rem auto 0;
+
+  .box {
+    padding: 1.5rem;
+    text-align: left;
+    font-size: 18px;
+    min-width: calc(33% - 1rem);
+    line-height: 23px;
+
+    + .box {
+      margin-left: 2rem;
+    }
+  }
+
+  .boxTitle {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+
+  :global(html.r-mobile) & {
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+
+    .box {
+      min-width: calc(100%-4rem);
+      margin: 1rem 2rem;
+
+      + .box {
+        margin-left: 2rem;
+      }
+    }
+  }
+}
+
+.sectionTitle {
+  font-size: 3.375rem;
+
+  .splitScreen & {
+    font-size: 2.375rem;
+
+    :global(.r-mobile) & {
+      font-size: 2rem;
+    }
+  }
+
+  :global(.r-mobile) & {
+    font-size: 2.5rem;
+  }
+}
+
+.splitScreen .sectionContent {
+  padding: 0 10rem;
+
+  :global(.r-mobile) & {
+    padding: 0 2rem;
+  }
+}
+
+:global(html:not(.r-mobile)) .mobileBg {
+  display: none;
+}
+
+:global(.r-mobile) .bg {
+  display: none;
+}

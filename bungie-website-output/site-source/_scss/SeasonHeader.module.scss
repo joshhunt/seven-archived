@@ -1,0 +1,21 @@
+@import "../../../ui/uikit/_base/ui_base";
+
+.seasonHeader {
+  text-align: center;
+  padding: 3rem 0 4rem;
+  padding-bottom: 1rem;
+
+  h2 {
+    text-transform: uppercase;
+    font-size: 3rem;
+    font-weight: 600;
+  }
+
+  p {
+    font-weight: 600;
+    font-size: 1.75rem;
+    color: $color-subtitle;
+    margin-top: 0;
+    text-transform: capitalize;
+  }
+}

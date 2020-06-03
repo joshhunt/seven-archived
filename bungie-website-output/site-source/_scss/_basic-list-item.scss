@@ -1,0 +1,168 @@
+﻿@import "../_Base/ui_base.scss";
+
+%basic-list-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 1em;
+  transition: 0.25s;
+  color: $color-text-body;
+  font-size: 1em;
+
+  @at-root a#{&}:hover {
+    background: $color-background-alt-1;
+  }
+
+  &.clickable,
+  a > & {
+    cursor: pointer;
+
+    &:hover {
+      background: $color-background-alt-1;
+    }
+  }
+
+  &.basicSizeSmall {
+    padding: 0.5em 1em;
+  }
+
+  .textContent {
+    min-width: 0;
+    flex: auto;
+
+    .title {
+      overflow: hidden;
+      margin-top: -0.125rem;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      font-size: 1em;
+    }
+
+    .subtitle {
+      overflow: hidden;
+      margin-top: 0.25rem;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      opacity: 0.5;
+      font-size: 0.85em;
+
+      :global(.r-mobile) & {
+        font-size: 0.95em;
+      }
+    }
+
+    .detailSlot {
+      font-size: 0.85em;
+    }
+  }
+
+  &.allowWrap .textContent {
+    .title,
+    .subtitle {
+      white-space: initial;
+      text-overflow: initial;
+    }
+  }
+
+  &.hidePadding {
+    padding: 0;
+  }
+
+  .iconSlot {
+    align-self: flex-start;
+    font-size: 2em;
+  }
+
+  .icon {
+    @extend %basic-list-item-icon;
+  }
+
+  .flairSlot {
+    justify-self: flex-end;
+    flex: auto;
+    text-align: right;
+
+    .flairTwoLine {
+      text-align: right;
+
+      .flairLineOne {
+        margin-bottom: 0.25rem;
+      }
+    }
+  }
+
+  a:not(.button) {
+    color: rgba($color-accent, 0.8);
+
+    &:hover {
+      color: $color-accent;
+    }
+  }
+}
+
+%basic-list-item-icon {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 1.375em;
+  height: 1.375em;
+  margin-right: 0.5em;
+  color: $color-text-body;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  &[style] {
+    background-color: transparent;
+  }
+
+  &.iconFont,
+  & .iconFont {
+    i {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      font-size: 0.5em;
+    }
+  }
+
+  & .iconFont {
+    width: 100%;
+    height: 100%;
+  }
+
+  &.iconText .text {
+    font-size: 1em;
+    font-weight: bold;
+  }
+}
+
+.iconCoin {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.basicSize {
+  &Small {
+    font-size: 0.875rem;
+
+    .icon {
+      width: 1.75rem;
+      height: 2rem;
+    }
+  }
+
+  &Medium {
+    font-size: 1rem;
+  }
+
+  &Large {
+    font-size: 1.25rem;
+  }
+}

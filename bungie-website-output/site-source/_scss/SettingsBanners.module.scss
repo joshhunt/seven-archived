@@ -1,0 +1,55 @@
+.postValidationBanner {
+  display: flex;
+  flex-flow: row nowrap;
+  align-content: center;
+  background: rgba(33, 40, 51, 0.5);
+  padding: 1.5rem;
+
+  &.optInRewards i {
+    font-size: 5rem;
+    margin-right: 1.5rem;
+  }
+
+  &:first-of-type {
+    margin-bottom: 1.5rem;
+  }
+
+  span {
+    flex: 0 1 5rem;
+  }
+
+  .text {
+    flex: 1 1 auto;
+
+    strong {
+      margin-bottom: 1rem;
+      display: block;
+    }
+  }
+
+  .buttons {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1 1 auto;
+    margin-left: auto;
+
+    a {
+      white-space: nowrap;
+    }
+  }
+
+  .URIcon {
+    background: url(/7/ca/bungie/bgs/registration/logo-UR-light.png) no-repeat
+      center;
+    background-size: contain;
+    display: block;
+    width: 5rem;
+    height: 5rem;
+    margin-right: 1.5rem;
+  }
+
+  .rewardsIcon {
+  }
+}

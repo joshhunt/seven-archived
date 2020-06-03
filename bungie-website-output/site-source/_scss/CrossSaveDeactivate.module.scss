@@ -1,0 +1,46 @@
+@import "../../UI/UIKit/_Base/ui_base.scss";
+
+.prettyConfirmationInput {
+  display: flex;
+  margin-bottom: 2rem;
+
+  .confirmLetter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 4rem;
+    margin-right: 0.25rem;
+    border-bottom: 5px solid rgba($color-primary, 0.1);
+    font-size: $font-size-h1;
+    transition: 0.25s;
+
+    &.next {
+      border-color: $color-primary;
+    }
+  }
+
+  .predicted {
+    opacity: 0.3;
+  }
+
+  .actual {
+    opacity: 1;
+  }
+
+  .mismatch {
+    color: red;
+  }
+}
+
+.confirmationInput {
+  opacity: 0;
+  pointer-events: none;
+  outline: none;
+}
+
+.description {
+  font-size: 1.25rem;
+  color: $color-primary-alt-2;
+  margin-top: -1.75rem;
+}

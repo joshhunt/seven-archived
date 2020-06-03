@@ -1,0 +1,25 @@
+@import "../../../ui/uikit/_base/ui_base";
+
+.flexContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+
+  img {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+
+  .wordContainer {
+    margin-left: 1rem;
+
+    .title {
+      color: $color-text-dark;
+      font-weight: bold;
+    }
+
+    .subtitle {
+      color: rgba($color-text-dark, 0.7);
+    }
+  }
+}

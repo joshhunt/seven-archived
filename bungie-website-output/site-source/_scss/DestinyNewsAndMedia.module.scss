@@ -1,0 +1,405 @@
+@import "../../../ui/uikit/_base/ui_base";
+
+.section {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+
+  .bg {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    video {
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .sectionContent {
+    position: relative;
+    z-index: 3;
+    max-width: 89rem;
+    padding: 0 2rem;
+    margin: 0 auto;
+  }
+
+  .sectionTextContent {
+    max-width: 50rem;
+    margin: 0 auto;
+  }
+
+  &.center .sectionContent {
+    text-align: center;
+  }
+
+  &.left .sectionTextContent {
+    max-width: 35rem;
+    margin: 0;
+
+    .smallTitle {
+      padding: 0.5rem 0;
+      margin-bottom: 2rem;
+    }
+  }
+
+  p {
+    font-size: 2rem;
+    line-height: 3rem;
+  }
+
+  p.loreTitle {
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 0.5rem 0 0.25rem 1.25rem;
+    color: #f5f5f5;
+    text-align: left;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    line-height: unset;
+  }
+
+  .videoTitle {
+    padding: 0.5rem 0.5rem 2rem 0.25rem;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+  }
+
+  p.mediumBlurb {
+    font-size: 1.25rem;
+    line-height: 2rem;
+    margin-bottom: 6rem;
+
+    :global(.r-mobile) & {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .gray {
+    background: #14171a;
+  }
+}
+
+.thumbnail {
+  width: calc(25% - 2rem);
+  padding: 0;
+  position: relative;
+  margin-right: 2rem;
+  background-color: $color-background;
+  cursor: pointer;
+  transition: 0.25s;
+  margin-bottom: 2rem;
+
+  .playButton {
+    @include webPBackgroundImage(
+      "/7/ca/destiny/bgs/shadowkeep/play_button.png"
+    );
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 5rem;
+    height: 5rem;
+    position: absolute;
+    top: calc(50% - 2.5rem);
+    left: calc(50% - 2.5rem);
+  }
+
+  &:after {
+    border-color: rgba($color-primary, 0.2) !important;
+  }
+
+  &:hover {
+    &:after {
+      border-color: $color-primary !important;
+    }
+  }
+
+  :global(.r-mobile) & {
+    width: 40%;
+    height: 40%;
+    margin: 1rem;
+  }
+
+  :global(.r-tiny) & {
+    width: 100%;
+    height: 100%;
+    margin: 1rem 0;
+  }
+
+  &.four {
+    width: 23%;
+    height: 23%;
+
+    :global(.r-medium) & {
+      width: 40%;
+      height: 40%;
+      margin: 1rem;
+    }
+
+    :global(.r-tiny) & {
+      width: 100%;
+      height: 100%;
+      margin: 1rem 0;
+    }
+  }
+}
+
+.mediaBg {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+
+  &.four {
+    width: 100%;
+    height: 100%;
+  }
+
+  :global(.r-mobile) & {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.mediaContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 12.5rem;
+  position: relative;
+
+  &.left {
+    justify-content: flex-start;
+  }
+
+  &.four {
+    flex-wrap: wrap;
+  }
+
+  :global(.r-medium) & {
+    width: 100%;
+  }
+
+  :global(.r-mobile) & {
+    align-items: center;
+  }
+}
+
+.videoContainer {
+  width: calc(25% - 2rem);
+  margin: 0 1rem;
+  display: flex;
+  flex-direction: column;
+
+  .thumbnail {
+    width: 100%;
+    margin-right: unset;
+    margin-bottom: 1rem;
+  }
+
+  :global(.r-mobile) & {
+    width: 100%;
+  }
+}
+
+.largeImage {
+  width: 80vw;
+  height: auto;
+
+  :global(.r-mobile) & {
+    width: 95vw;
+  }
+}
+
+.sectionTitle {
+  font-size: 3.375rem;
+
+  &.small {
+    letter-spacing: 15px;
+    font-size: 44px;
+    font-weight: 200;
+    text-transform: uppercase;
+    text-align: center;
+  }
+}
+
+.smallTitle {
+  display: inline-block;
+  font-size: 0.875rem;
+  padding: 0.5rem 2rem;
+  opacity: 0.75;
+  letter-spacing: 3px;
+  border-bottom: 1px solid rgba($color-primary, 0.75);
+  margin: 0 auto 2rem;
+  text-transform: uppercase;
+}
+
+.tabs {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+  a {
+    text-transform: uppercase;
+    display: inline-block;
+    margin-right: 1rem;
+    padding: 0.5rem 0.5rem;
+    border: 1px solid $color-primary;
+    opacity: 1;
+    font-size: 1rem;
+  }
+
+  &.media {
+    justify-content: center;
+    margin: 1rem auto;
+
+    a {
+      opacity: 0.3;
+    }
+
+    a.selected {
+      opacity: 1;
+    }
+  }
+
+  &.dde {
+    .standardTab {
+      opacity: 0.3;
+    }
+  }
+
+  &.std {
+    .deluxeTab {
+      opacity: 0.3;
+    }
+  }
+}
+
+.sectionLatestNews {
+  padding: 4rem 0 5rem;
+
+  .bg {
+    background: #14171a;
+  }
+}
+
+.newsContainer {
+  display: flex;
+  justify-content: center;
+
+  :global(html.r-mobile) & {
+    width: 100%;
+    flex-direction: column;
+    align-content: center;
+  }
+
+  a {
+    width: 24rem;
+    margin: 2rem 1rem 0;
+    position: relative;
+    display: flex;
+    float: left;
+    height: 14rem;
+    border-radius: 4px;
+    background-color: #263f55;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+    transition: 0.25s;
+    box-sizing: border-box;
+    transition: 0.25s;
+
+    :global(html.r-mobile) & {
+      align-self: center;
+      width: 100%;
+      height: 16rem;
+    }
+
+    &:hover {
+      z-index: 2;
+      transform: translateY(-2px);
+      box-shadow: 0 60px 90px -40px rgba(0, 0, 0, 0.6);
+    }
+  }
+
+  .newsBg1 {
+    background-image: url("/7/ca/destiny/bgs/seasons/FOTL_ArticleBanner.jpg");
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
+  .newsBg2 {
+    background-image: url("/7/ca/destiny/bgs/seasons/fotl_wallpaper_ornaments_4k.jpg");
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+  }
+
+  .newsBg3 {
+    background-image: url("/7/ca/destiny/bgs/seasons/S8_keyArt.jpg");
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+  }
+
+  .textArea {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: 5em 2em 2em;
+    color: #f5f5f5;
+    border-radius: 0 0 4px 4px;
+    background: #181c25;
+    background: linear-gradient(
+      to bottom,
+      rgba(24, 28, 37, 0) 0%,
+      rgba(24, 28, 37, 0.8) 100%
+    );
+    flex: none;
+  }
+
+  .title {
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 0.25rem 0;
+    border-top: 2px solid rgba(245, 245, 245, 0.2);
+    color: #f5f5f5;
+    text-align: left;
+    padding-top: 0.5rem;
+  }
+}
+
+.sectionMedia {
+  padding: 4rem 0 8rem;
+}

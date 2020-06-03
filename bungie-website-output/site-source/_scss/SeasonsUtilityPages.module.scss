@@ -1,0 +1,23 @@
+@import "../../ui/uikit/_base/ui_base";
+
+.wrapper {
+  padding-top: 8rem;
+  position: relative;
+  padding-bottom: 2rem;
+}
+
+.background {
+  position: absolute;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  opacity: 0.5;
+}
+
+.toast {
+  margin-bottom: 1rem;
+  border-top: 3px solid $color-season-teal;
+}

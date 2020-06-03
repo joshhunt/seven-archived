@@ -1,0 +1,50 @@
+@import "../../ui/uikit/_base/ui_base";
+
+.header {
+  background: url(/7/ca/bungie/bgs/header_registration.png) no-repeat center
+    center;
+  background-size: cover;
+  height: 550px;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+  padding-bottom: 1rem;
+
+  h2 {
+    font-size: 4.5rem;
+    font-weight: 600;
+    display: inline-block;
+    width: auto;
+    margin: 0 auto;
+
+    &:before {
+      content: "";
+      width: 6.7rem;
+      border-top: 0.4rem #fff solid;
+      color: #fff;
+      display: block;
+      margin-bottom: 0;
+    }
+  }
+
+  p {
+    margin: 0 auto;
+    font-size: 1.3rem;
+    font-weight: 600;
+    max-width: 60%;
+    line-height: 26px;
+  }
+
+  & > div {
+    margin: 2rem auto;
+    font-size: 1rem !important;
+    font-weight: 600;
+    padding: 1rem 6rem !important;
+  }
+}
+
+.bodyContent {
+  max-width: 1200px;
+}

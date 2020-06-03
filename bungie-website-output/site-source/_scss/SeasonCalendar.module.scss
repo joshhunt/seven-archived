@@ -1,0 +1,53 @@
+// Need access to ui_base? Find ui_base.scss in the solution explorer, and drag it into this file to automatically import it.
+
+.calendarContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 8rem 0;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: relative;
+  text-align: center;
+
+  h2 {
+    letter-spacing: 20px;
+    font-size: 44px;
+    text-align: center;
+    position: relative;
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: -2rem;
+      left: calc(50% - 3.25rem);
+      width: 6.5rem;
+      transform: translateX(-0.6rem);
+      height: 1.5rem;
+      border-top: 2.6px solid rgba(245, 245, 245, 0.5);
+    }
+  }
+}
+
+.calendar {
+  height: 39rem;
+  width: 100%;
+  margin: 4rem auto 0;
+  align-self: center;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  position: relative;
+
+  :global(.r-mobile) & {
+    background-size: contain;
+    height: 53vw;
+  }
+}
+
+.largeImage {
+  width: 80vw;
+}

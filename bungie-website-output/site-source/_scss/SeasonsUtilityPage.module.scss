@@ -1,0 +1,290 @@
+@import "../../ui/uikit/_base/ui_base";
+
+.seasonInfoContainer {
+  padding: 0rem 2rem 2rem 2rem;
+  text-align: center;
+}
+
+.itemDetailModal {
+  padding: 0;
+  width: 40rem;
+  max-width: 95%;
+}
+
+.itemModal {
+  :global(.gear-item-summary) {
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    width: 100%;
+
+    :global(*) {
+      box-sizing: border-box;
+    }
+
+    :global(hr) {
+      width: 100%;
+      max-width: 40rem;
+    }
+
+    :global(.detail-pane) {
+      position: relative;
+      display: flex;
+      z-index: 2;
+      flex-direction: column;
+      width: 100%;
+      padding: 0;
+      transition: 1s;
+      color: $color-text-body;
+    }
+
+    & :global(.background) {
+      position: relative;
+      height: 20vw;
+      width: 100%;
+      background-repeat: no-repeat;
+      background-position: 80% 60%;
+      background-size: cover;
+      background-color: $color-background-alt-2;
+
+      :global(.react-medium) & {
+        height: 30vw;
+      }
+    }
+
+    :global(.item-header) {
+      padding: 2rem;
+
+      :global(.title) {
+        text-transform: uppercase;
+        color: $color-primary;
+        font-size: $font-size-xxl;
+        font-weight: 700;
+      }
+
+      :global(.subtitle) {
+        letter-spacing: 1px;
+        color: $color-primary-alt-2;
+        font-size: $font-size-l;
+        font-weight: 500;
+      }
+    }
+
+    &:global([data-rarity="Unknown"] .item-header),
+    &:global([data-rarity="Basic"] .item-header) {
+      background: $color-destiny-rarity-basic;
+    }
+
+    &[data-rarity="Common"] :global(.item-header) {
+      background: $color-destiny-rarity-common;
+    }
+
+    &[data-rarity="Rare"] :global(.item-header) {
+      background: $color-destiny-rarity-rare;
+    }
+
+    &[data-rarity="Superior"] :global(.item-header) {
+      background: $color-destiny-rarity-superior;
+    }
+
+    &:global([data-rarity="Exotic"] .item-header) {
+      background: $color-destiny-rarity-exotic;
+    }
+
+    :global(.item-body) {
+      padding: 2rem;
+      background-color: $color-background-alt-1;
+
+      & > div {
+        margin-bottom: 15px;
+      }
+    }
+
+    :global(.item-description) {
+      color: $color-primary-alt-2;
+    }
+
+    :global(.source) {
+      font-style: italic;
+      opacity: 0.5;
+    }
+
+    :global(.item-stats-primary) {
+      display: flex;
+
+      :global(img) {
+        max-height: 2rem;
+        margin: 1rem;
+      }
+
+      :global(.item-primary-stat) {
+        :global(.item-primary-stat-value) {
+          color: $color-primary-alt-2;
+          font-size: 3.25rem;
+          font-weight: 700;
+        }
+
+        :global(.item-primary-stat-name) {
+          text-transform: uppercase;
+          color: $color-primary-alt-3;
+        }
+      }
+    }
+
+    :global(.detail-mode-wrapper) {
+      display: flex;
+      overflow: hidden;
+      width: 200%;
+
+      :global(.detail-mode-content) {
+        width: 50%;
+        transition: transform 0.25s, opacity 0.25s;
+        transform: translateY(20px);
+        pointer-events: none;
+        opacity: 0;
+
+        &:global(.active) {
+          transform: translateY(0);
+          opacity: 1;
+        }
+
+        &:global(:first-child:not(.active)) {
+          margin-left: -50%;
+        }
+      }
+    }
+
+    :global(.item-stats) {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+
+      :global(.stat-item) {
+        width: 100%;
+        max-width: 40rem;
+        padding: 0.5rem 0;
+
+        :global(.stat-header) {
+          display: flex;
+          font-weight: bold;
+
+          :global(.stat-title) {
+            color: $color-primary-alt-2;
+            flex-grow: 1;
+          }
+
+          :global(.stat-value) {
+            color: $color-primary-alt-2;
+          }
+        }
+
+        :global(.stat-number) {
+          margin-top: 0.25rem;
+          opacity: 0.75;
+          font-size: $font-size-l;
+        }
+      }
+
+      :global(.stat-name) {
+        font-size: 1rem;
+      }
+
+      :global(.stat-bar) {
+        width: 100%;
+        height: 10px;
+        margin-top: 0.25rem;
+        background: rgba(black, 0.15);
+
+        :global(.main-width) {
+          height: 10px;
+          background-color: $color-primary-alt-2;
+        }
+      }
+    }
+
+    :global(.item-sockets) {
+      display: flex;
+
+      :global(.react-mobile) & {
+        display: block;
+      }
+
+      :global(.detail-item-plug-item) {
+        width: 30%;
+        min-width: 25rem;
+      }
+    }
+
+    .two-line-item-perk.hide-padding {
+      padding: 1rem 0;
+    }
+
+    &.will-animate {
+      .background {
+        transition: transform 12s ease, opacity 2s !important;
+      }
+
+      &:not(.on) {
+        .background {
+          transform: scale(1.2);
+        }
+      }
+    }
+  }
+
+  #modal-explore-detail.DestinyItem.ItemSummary {
+    .modal {
+      margin: 8vh auto;
+      width: 95%;
+      height: 90%;
+      max-height: 90vh !important;
+      max-width: 40rem;
+    }
+
+    .modal-content {
+      padding: 0;
+      margin-bottom: 8vh;
+    }
+
+    .gear-item-summary {
+      .detail-pane {
+        padding: 0;
+      }
+    }
+
+    &.ItemSummary .modal {
+      padding: 0;
+    }
+  }
+
+  body.Explore.Detail.DestinyItem.ItemSummary {
+    .gear-item-detail .background {
+      position: fixed;
+      transition: 0s;
+
+      .react-mobile & {
+        opacity: 0.5;
+      }
+    }
+
+    .detail-pane {
+      padding-right: 0;
+      padding-left: 0;
+    }
+  }
+  /* special */
+  :global(.button-weapon-stats),
+  :global(.button-weapon-sockets) {
+    display: none;
+  }
+}
+
+.itemDetailModalContent {
+  padding: 0;
+  max-width: 40rem;
+}
+
+.buttonHolder {
+  padding: 1rem;
+  text-align: center;
+}
