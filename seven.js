@@ -361,7 +361,7 @@ async function run() {
   const pageResp = await axios.get(BASE_URL);
 
   if (previousIndex === pageResp.data) {
-    console.log("Page has not changed, aborting");
+    console.log("Page has not changed, stopping.");
     return;
   }
 

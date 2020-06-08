@@ -1,0 +1,41 @@
+name: Scheduled checks
+
+on:
+  push:
+  schedule:
+    - cron: "*/1 * * * *"
+
+jobs:
+  check-run-commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+
+      - run: yarn install
+      - run: yarn run check
+
+      - name: Check if there were changes
+        id: changes-check
+        run: echo ::set-output name=dirty::"$(git status --porcelain)"
+
+      - name: Commit everything
+        if: steps.changes-check.outputs.dirty
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -m "Site changed from automated check" -a
+
+      - name: Push changes
+        if: steps.changes-check.outputs.dirty
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
