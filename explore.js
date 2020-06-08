@@ -1,8 +1,13 @@
 const fs = require("fs");
 const ts = require("typescript");
 const _ = require("lodash");
+const path = require("path");
 
 function extractUrlsFromNode(node, collectionArr) {
+  function pushUrl(u) {
+    path.parse(u).ext && collectionArr(u);
+  }
+
   switch (node.kind) {
     case ts.SyntaxKind.StringLiteral:
       if (node.text.match(/^\/?7\/ca/)) {
@@ -34,7 +39,6 @@ function extractUrlsFromNode(node, collectionArr) {
       );
 
       if (fnName === "GetContentByTagAndType") {
-        console.log("$$$$$ GetContentByTagAndType call");
         if (_.isString(args[0]) && _.isString(args[1])) {
           collectionArr.push({
             type: "fn",
@@ -45,8 +49,6 @@ function extractUrlsFromNode(node, collectionArr) {
       }
 
       if (fnName === "Img") {
-        console.log("$$$$$ found Img call");
-
         if (args[0]) collectionArr.push(`/7/ca/${args[0]}`);
       }
 

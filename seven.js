@@ -25,6 +25,7 @@ const CSS_CHUNKS_RE = /var cssChunks = ([{}"\w:,-]+)/;
 const NAMED_CSS_CHUNKS_RE = /"static\/css\/" \+ \(([{}"\w:,-]+)/;
 const LIMIT = 1;
 const DEBUG = false;
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 mkdirp.sync(path.join(IMAGES_ROOT, "_flat"));
 
@@ -34,14 +35,18 @@ function bungieUrl(path) {
   if (path.match(/^https?:/)) {
     url = path;
   } else {
-    url = `https://www.bungie.net/${path}`.replace("net//", "net/");
+    url = `https://www.bungie.net/${path}`
+      .replace("net//", "net/")
+      .replace(/ca\/\//g, "ca/");
   }
 
   return url.replace(urlLib.parse(url).search, "");
 }
 
 async function mapUrlFromSourceUrl(sourceUrl) {
+  console.log("-> requesting source map for url", sourceUrl);
   const source = await axios.get(bungieUrl(sourceUrl));
+  console.log("<- axios call is back", sourceUrl);
 
   const match = SOURCE_MAP_RE.exec(source.data);
 
@@ -200,6 +205,7 @@ async function getAllSourceMapUrls(indexPageUrl) {
   console.log("initialChunkSrc", initialChunkSrc);
 
   const runtimeSourceMapUrl = await mapUrlFromSourceUrl(runtimeSrc);
+  console.log("mapUrlFromSourceUrl done");
   const bootstrapSource = await getBootstrapSource(runtimeSourceMapUrl);
 
   const urls = await getSourceMapUrlsFromBootstrap(
@@ -235,7 +241,9 @@ async function downloadImageActual(url, outPath) {
 }
 
 async function downloadImage(toDownload) {
-  if (path.parse(toDownload).ext === ".webp") {
+  const { ext } = path.parse(toDownload);
+
+  if (!ext || ext === "" || ext === ".webp") {
     return;
   }
 
@@ -265,7 +273,12 @@ async function downloadImage(toDownload) {
 
   console.log("Downloading", downloadUrl);
 
-  await mkdirp(outFolder);
+  try {
+    await mkdirp(outFolder);
+  } catch (err) {
+    console.error(`mkdirp failed for ${outFolder} because ${err.toString()}`);
+  }
+
   try {
     await downloadImageActual(downloadUrl, fullOutPath);
   } catch (err) {
@@ -387,6 +400,7 @@ run();
 downloadQueue.error(function (err, task) {
   console.error("task experienced an error");
   console.error(err);
+  process.exit(0);
 });
 
 // downloadQueue.push({
