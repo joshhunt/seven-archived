@@ -6,8 +6,6 @@ const cheerio = require("cheerio");
 const asyncLib = require("async");
 const mkdirp = require("mkdirp");
 const prettier = require("prettier");
-const slugify = require("slugify");
-const _ = require("lodash");
 const extractFromTypescript = require("./explore");
 const extractFromCss = require("./parseCss");
 
@@ -352,6 +350,23 @@ async function downloadWorker(toDownload) {
 const downloadQueue = asyncLib.queue(downloadWorker, 1);
 
 async function run() {
+  const indexHtmlPath = path.join(".", "bungie-website-output", "index.html");
+
+  let previousIndex = "";
+
+  try {
+    previousIndex = (await fs.readFile(indexHtmlPath)).toString();
+  } catch {}
+
+  const pageResp = await axios.get(BASE_URL);
+
+  if (previousIndex === pageResp.data) {
+    console.log("Page has not changed, aborting");
+    return;
+  }
+
+  await fs.writeFile(indexHtmlPath, pageResp.data);
+
   const { sourceMapUrls, cssUrls } = await getAllSourceMapUrls(BASE_URL);
 
   asyncLib.eachLimit(sourceMapUrls, LIMIT, (sourceMapUrl, cb) => {
@@ -400,7 +415,7 @@ run();
 downloadQueue.error(function (err, task) {
   console.error("task experienced an error");
   console.error(err);
-  process.exit(0);
+  // process.exit(0);
 });
 
 // downloadQueue.push({
