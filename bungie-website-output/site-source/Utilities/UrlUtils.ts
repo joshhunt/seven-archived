@@ -369,7 +369,12 @@ export class UrlUtils {
         "bungie.net",
         StringCompareOptions.IgnoreCase
       ) ||
-      StringUtils.equals(endUrl, "bng.local", StringCompareOptions.IgnoreCase)
+      StringUtils.equals(
+        endUrl,
+        "bng.local",
+        StringCompareOptions.IgnoreCase
+      ) ||
+      StringUtils.equals(hrefLocation.host, "firehose")
     );
   }
 }

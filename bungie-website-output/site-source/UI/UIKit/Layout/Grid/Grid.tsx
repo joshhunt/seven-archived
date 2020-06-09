@@ -4,7 +4,7 @@ import styles from "./Grid.module.scss";
 
 export type ValidCols = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
 
-export interface IGridColProps extends DOMAttributes<HTMLDivElement> {
+export interface IGridColProps extends React.HTMLProps<HTMLDivElement> {
   className?: string;
   /** Number of columns by default. 0 = hidden. */
   cols: ValidCols;

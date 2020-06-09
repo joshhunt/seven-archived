@@ -118,7 +118,7 @@ class BeyondLight extends React.Component<BeyondLightProps, IBeyondLightState> {
                 muted={true}
                 loop={true}
                 poster={
-                  "/7/ca/destiny/products/beyondlight/bl_hero_bg_mobile.jpg"
+                  "/7/ca/destiny/products/beyondlight/bl_hero_video_FPO.jpg"
                 }
               >
                 <source

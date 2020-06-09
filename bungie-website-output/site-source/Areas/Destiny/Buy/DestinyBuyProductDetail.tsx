@@ -397,11 +397,13 @@ class DestinyBuyProductDetailInternal extends React.Component<
                 strictMode={true}
               >
                 {destinyProductFamily.preorderBanner && (
-                  <GridCol cols={12} className={styles.preorderBanner}>
-                    <img
-                      className={styles.preorderBannerBackground}
-                      src={destinyProductFamily.preorderBanner}
-                    />
+                  <GridCol
+                    cols={12}
+                    className={styles.preorderBanner}
+                    style={{
+                      backgroundImage: `url(${destinyProductFamily.preorderBanner})`,
+                    }}
+                  >
                     <div
                       className={styles.preorderText}
                       dangerouslySetInnerHTML={{

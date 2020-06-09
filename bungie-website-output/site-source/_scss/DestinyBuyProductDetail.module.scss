@@ -99,15 +99,20 @@
 }
 
 .preorderBanner {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
   position: relative;
   height: 10rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 
   :global(.r-mobile) & {
     width: 100vw;
     overflow: hidden;
     margin: 2rem auto;
-    height: unset;
-    display: flex;
+    height: 10rem;
     flex-direction: column;
   }
 }
@@ -134,9 +139,8 @@
   font-size: 12px;
   line-height: 16px;
   font-weight: bold;
-  position: absolute;
-  left: 50%;
-  bottom: 45%;
+  width: 50%;
+  padding-left: 2rem;
 
   :global(.r-mobile) & {
     position: relative;
