@@ -6,6 +6,7 @@ const cheerio = require("cheerio");
 const asyncLib = require("async");
 const mkdirp = require("mkdirp");
 const prettier = require("prettier");
+const _ = require("lodash");
 const extractFromTypescript = require("./explore");
 const extractFromCss = require("./parseCss");
 
@@ -113,7 +114,7 @@ async function extractFilesFromSourceMapUrl(_sourceMapUrl, onFile = () => {}) {
 
       const prettierFileContent = tryPrettier(sourcePath, fileContent);
 
-      fs.outputFile(outFilePath, prettierFileContent);
+      return fs.outputFile(outFilePath, prettierFileContent);
     });
 
   return Promise.all(files);
@@ -302,8 +303,12 @@ async function getContentByTagAndType(callObj) {
     "FrontPageBanner",
   ];
 
-  const url = `https://www.bungie.net/Platform/Content/GetContentByTagAndType/${callObj.args[0]}/${callObj.args[1]}/en/?lc=en&fmt=true&lcin=true&&head=true`;
+  const url = _.isString(callObj)
+    ? callObj
+    : `https://www.bungie.net/Platform/Content/GetContentByTagAndType/${callObj.args[0]}/${callObj.args[1]}/en/?lc=en&fmt=true&lcin=true&&head=true`;
+
   console.log("CMS call", url);
+
   const resp = await axios(url, {
     headers: {
       "x-api-key": BUNGIES_API_KEY,
@@ -312,6 +317,13 @@ async function getContentByTagAndType(callObj) {
 
   if (resp.data.Response.properties.Path) {
     downloadQueue.push(resp.data.Response.properties.Path);
+  }
+
+  console.log("resp.data.Response.properties:", resp.data.Response.properties);
+
+  if (resp.data.Response.properties.LargeImage) {
+    console.log("pushing", resp.data.Response.properties.LargeImage);
+    downloadQueue.push(resp.data.Response.properties.LargeImage);
   }
 
   resp.data.Response.properties.ContentItems &&
@@ -338,6 +350,13 @@ async function downloadWorker(toDownload) {
   if (toDownload.type === "fn") {
     if (toDownload.fnName == "GetContentByTagAndType") {
       await getContentByTagAndType(toDownload);
+      return;
+    }
+
+    if (toDownload.fnName == "GetContentById") {
+      await getContentByTagAndType(
+        `https://www.bungie.net/Platform/Content/GetContentById/${toDownload.args[0]}/en/?lc=en&fmt=true&lcin=true&&head=false`
+      );
       return;
     }
 

@@ -28,6 +28,30 @@ function extractUrlsFromNode(node, collectionArr) {
 
       break;
 
+    case ts.SyntaxKind.PropertyDeclaration:
+      // console.log("\n\n\n#####\n##SyntaxKind.PropertyDeclaration\n#####");
+      // console.log(node);
+
+      if (
+        node.name.escapedText === "calendarContentItem" &&
+        node.initializer &&
+        node.initializer.kind == ts.SyntaxKind.StringLiteral
+      ) {
+        console.log("FOUND IT", {
+          type: "fn",
+          fnName: "GetContentById",
+          args: [node.initializer.text],
+        });
+
+        collectionArr.push({
+          type: "fn",
+          fnName: "GetContentById",
+          args: [node.initializer.text],
+        });
+      }
+
+      break;
+
     case ts.SyntaxKind.CallExpression:
       const fnName =
         node.expression.text ??

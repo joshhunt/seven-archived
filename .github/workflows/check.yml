@@ -32,7 +32,8 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git commit -m "Site changed from automated check" -a
+          git add .
+          git commit -am "Site changed from automated check"
 
       - name: Push changes
         if: steps.changes-check.outputs.dirty

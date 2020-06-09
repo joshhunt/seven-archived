@@ -1,9 +1,0 @@
-@import "../_base/ui_base";
-
-styles.affix {
-  crop: initial;
-}
-
-:global(.affix)[data-fixed="true"] {
-  position: fixed;
-}
