@@ -1,0 +1,93 @@
+@import "../../ui/uikit/_base/ui_base";
+
+.cardNeedsAuth {
+  background: rgba($color-primary, 0.1);
+  max-width: none;
+  margin: 0px;
+}
+
+/* selects body of card which includes add button */
+.cardNeedsAuth :nth-child(4) {
+  padding: 7.35rem 0;
+
+  div {
+    font-size: $font-size-s;
+    text-transform: uppercase;
+  }
+}
+
+.connectedAccounts {
+  font-size: 1.25rem;
+
+  :global(.r-mobile) & {
+    margin-left: 13%;
+  }
+}
+
+.deactivateButton {
+  display: flex;
+  margin-bottom: 2rem;
+
+  :global(.r-mobile) & {
+    justify-content: center;
+    align-items: center;
+    * {
+      width: 100%;
+    }
+  }
+}
+
+.description {
+  font-size: 1.25rem;
+  color: $color-primary-alt-2;
+  margin-top: -1.75rem;
+}
+
+.displayName {
+  text-align: center;
+  padding: 2rem 0 1rem 0;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: $color-text-dark;
+}
+
+.entitlementsContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.centerWhenSmall {
+  margin-bottom: 1.5rem;
+
+  :global(.r-mobile) & {
+    margin: 0 auto 1.5rem auto;
+  }
+}
+
+.notOwnedButton {
+  margin: 0.25rem 0px;
+}
+
+.owned {
+  margin: 0.875rem auto;
+  color: rgba($color-text-dark, 0.4);
+  font-size: $font-size-s;
+}
+
+.ownedIcon {
+  margin-right: 0.25rem;
+  opacity: 0.5;
+}
+
+.silverContainer {
+  margin: 0 auto;
+}
+
+.silverContainer > div > div {
+  display: flex;
+  justify-content: center;
+}
+
+.entitlementAccountCard {
+  height: 100%;
+}

@@ -1,0 +1,21 @@
+﻿@import "../../UI/UIKit/_Base/ui_base.scss";
+
+$color-cross-save-error: #f6313e;
+
+%accountItem {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  flex: 1 0;
+  background: $color-primary;
+  color: $color-text-dark;
+  align-content: center;
+  justify-content: center;
+  transition: 0.25s;
+
+  .buttonWrapper {
+    display: flex;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,95 @@
+﻿$_base-color-night: rgb(33, 40, 51);
+$_base-color-night-alt-1: rgb(29, 34, 45);
+$_base-color-night-alt-2: rgb(24, 28, 37);
+$_base-color-night-alt-3: rgb(18, 23, 28);
+$_base-color-snow: rgb(245, 245, 245);
+$_base-color-snow-alt-1: rgb(255, 255, 255);
+$_base-color-snow-alt-2: rgb(228, 231, 233);
+$_base-color-snow-alt-3: #9eaaad;
+$_base-color-schoolbus: rgb(255, 206, 31);
+$_base-color-schoolbus-alt-1: rgb(245, 220, 86);
+$_base-color-schoolbus-alt-2: rgb(237, 192, 29);
+$_base-color-tuba: rgb(183, 140, 37);
+$_base-color-tuba-alt-1: rgb(160, 122, 30);
+$_base-color-tuba-alt-2: rgb(145, 110, 24);
+$_base-color-tuba-alt-3: rgb(217, 160, 28);
+$_base-color-sky: rgb(71, 156, 228);
+$_base-color-sky-alt-1: rgb(90, 171, 240);
+$_base-color-sky-alt-2: rgb(51, 136, 208);
+$_base-color-fireengine: rgb(244, 67, 54);
+$_base-color-fireengine-alt-1: rgb(235, 85, 74);
+$_base-color-fireengine-alt-2: rgb(208, 60, 49);
+$_base-color-forest: rgb(117, 183, 129);
+$_base-color-forest-alt-1: rgb(87, 190, 97);
+$_base-color-forest-alt-2: rgb(64, 117, 77);
+
+// Bungie/Destiny UI
+// Styleguide: /en/Styleguide
+$color-background: $_base-color-night;
+$color-background-alt-1: $_base-color-night-alt-1;
+$color-background-alt-2: $_base-color-night-alt-2;
+$color-background-alt-3: $_base-color-night-alt-3;
+$color-primary: $_base-color-snow;
+$color-primary-alt-1: $_base-color-snow-alt-1;
+$color-primary-alt-2: $_base-color-snow-alt-2;
+$color-primary-alt-3: $_base-color-snow-alt-3;
+$color-accent: $_base-color-schoolbus;
+$color-accent-alt-1: $_base-color-schoolbus-alt-1;
+$color-accent-alt-2: $_base-color-schoolbus-alt-2;
+$color-accent2: $_base-color-sky;
+$color-accent2-alt-1: $_base-color-sky-alt-1;
+$color-accent2-alt-2: $_base-color-sky-alt-2;
+$color-accent3: $_base-color-tuba;
+$color-accent3-alt-1: $_base-color-tuba-alt-1;
+$color-accent3-alt-2: $_base-color-tuba-alt-2;
+$color-accent3-alt-3: $_base-color-tuba-alt-3;
+$color-error: $_base-color-fireengine;
+$color-error-alt-1: $_base-color-fireengine-alt-1;
+$color-error-alt-2: $_base-color-fireengine-alt-2;
+$color-success: $_base-color-forest;
+$color-success-alt-1: $_base-color-forest-alt-1;
+$color-success-alt-2: $_base-color-forest-alt-2;
+$color-bungie-blue: #0096db;
+$color-destiny-power: #ddcb59;
+$color-destiny-gold: rgb(245, 220, 86);
+$color-destiny-powerblue: rgb(45, 226, 217);
+$color-destiny-legendary: rgba(82, 47, 101, 1);
+
+// TEXT
+$color-text-header: $color-accent;
+$color-text-body: $color-primary;
+$color-text-body-link: rgba($color-accent, 0.8);
+$color-text-body-link-hover: $color-accent;
+$color-text-body-link-dark: rgba($color-background, 0.8);
+$color-text-body-link-dark-hover: $color-background;
+$color-section-header: $color-primary;
+$color-subtitle: $color-primary-alt-3;
+$color-text-list-link: rgba($color-primary, 0.8);
+$color-text-list-link-hover: $color-primary;
+$color-text-input-placeholder: rgba($color-primary, 0.2);
+$color-text-dark: $_base-color-night;
+
+//Box Colors
+$color-card-box: $color-background-alt-2;
+
+// Destiny
+$color-destiny-item-icon-border: rgb(221, 221, 221);
+$color-destiny-item-icon-border-complete: rgb(245, 220, 86);
+$color-destiny-progress-bar-background: $color-background-alt-3;
+$color-destiny-progress-bar-fill: $color-success;
+$color-destiny-progress-bar-text: $color-primary;
+$color-season-teal: #1cb8bb;
+
+$color-destiny-progress-bar-fill: $color-success;
+$color-destiny-progress-bar-text: $color-primary;
+$color-destiny-power: #ddcb59;
+$color-destiny-gold: rgb(245, 220, 86);
+$color-destiny-powerblue: rgb(45, 226, 217);
+$color-destiny-rarity-basic: #c3bcb4;
+$color-destiny-rarity-common: #366f42;
+$color-destiny-rarity-rare: #5076a3;
+$color-destiny-rarity-superior: #522f65;
+$color-destiny-rarity-exotic: #edc01d;
+
+// Backgrounds
+$color-body-background: $color-background-alt-3;

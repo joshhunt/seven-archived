@@ -1,0 +1,101 @@
+.infoBlockContainer > div h1,
+.infoBlockContainer > div h2,
+.infoBlockContainer > div h3,
+.infoBlockContainer > div h4,
+.infoBlockContainer > div h5 {
+  color: #fff;
+  margin-top: 24px;
+}
+
+.infoBlockContainer > div h1:first-child,
+.infoBlockContainer > div h2:first-child,
+.infoBlockContainer > div h3:first-child,
+.infoBlockContainer > div h4:first-child,
+.infoBlockContainer > div h5:first-child {
+  margin-top: 0;
+}
+
+.infoBlockContainer {
+  background: rgba(245, 245, 245, 0.05) none repeat scroll 0 0;
+  color: rgba(245, 245, 245, 0.65);
+  font-size: 16px;
+  padding: 18px;
+}
+
+.infoBlockContainer h3 {
+  border-bottom: 1px solid rgba(245, 245, 245, 0.1);
+  margin-bottom: 0;
+  padding-bottom: 15px;
+  color: rgb(255, 206, 31);
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 19px;
+  position: relative;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+  width: 100%;
+}
+
+.infoBlockContainer a {
+  color: rgb(255, 206, 31);
+}
+
+.infoBlockContainer ul,
+.infoBlockContainer ol {
+  margin: 24px 0;
+}
+
+.infoBlockContainer ul li,
+.infoBlockContainer ol li {
+  margin-left: 24px;
+  margin-bottom: 12px;
+}
+
+.infoBlockContainer ul li {
+  list-style-type: circle;
+}
+
+.infoBlockContainer ol li {
+  list-style-type: decimal;
+}
+
+.infoBlockContainer ol li li {
+  list-style-type: lower-alpha;
+}
+
+.infoBlockContainer ol li li li {
+  list-style-type: lower-roman;
+}
+
+.infoBlockContainer > div {
+  font-size: 15px;
+  line-height: 24px;
+  margin-top: 0;
+  order: 3;
+  padding-top: 18px;
+  width: 100%;
+}
+
+.infoBlockContainer table {
+  background: rgba(0, 0, 0, 0.2) none repeat scroll 0 0;
+  border-collapse: collapse;
+  margin-top: 18px;
+  width: 100%;
+}
+
+.infoBlockContainer table th {
+  background: #101010 none repeat scroll 0 0;
+  border: 1px solid #101010;
+  color: #fff;
+  padding: 5px;
+  text-shadow: none;
+}
+
+.infoBlockContainer table td {
+  border: 1px solid black;
+  padding: 5px 10px;
+}
+
+.infoBlockContainer table td.status {
+  text-align: center;
+}

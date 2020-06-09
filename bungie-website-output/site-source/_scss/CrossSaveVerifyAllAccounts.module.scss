@@ -1,0 +1,33 @@
+.linkableAccounts {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+
+  :global(.r-mobile) & {
+    display: block;
+    max-width: none;
+  }
+
+  .accountLinkItem {
+    :global(.r-large) & {
+      margin-bottom: 1rem;
+      max-width: 50%;
+      min-width: 48%;
+    }
+
+    :global(.r-mobile) & {
+      display: block;
+      max-width: none;
+    }
+  }
+}
+
+.accountLinkItem:last-of-type {
+  margin-right: 0;
+}
+
+.accountLinkItem:nth-last-of-type(3) {
+  :global(.r-large) & {
+    margin-right: 0;
+  }
+}

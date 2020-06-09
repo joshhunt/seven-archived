@@ -1,0 +1,66 @@
+@import "../_Base/ui_base.scss";
+
+.subNav {
+  $color-sub-nav-offset-1: rgba($color-primary, 0.5);
+
+  $color-sub-nav-offset-2: rgba($color-primary, 0.2);
+
+  $color-sub-nav-foreground-active: $color-primary;
+  display: flex;
+  padding: 1rem 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+
+  &:not(.useMobileDropdown) {
+    overflow: auto;
+    white-space: nowrap;
+  }
+
+  a,
+  .fauxLink {
+    position: relative;
+    display: inline-block;
+    padding: 1.5em 1.75em;
+    cursor: pointer;
+    text-transform: uppercase;
+    color: $color-sub-nav-offset-1;
+    transition: 0.25s;
+
+    &.current,
+    &:hover {
+      color: $color-sub-nav-foreground-active;
+
+      &:after {
+        left: 0;
+        width: 100%;
+        background: rgba($color-primary, 1);
+      }
+    }
+
+    &[data-offset="2"] {
+      color: $color-sub-nav-offset-2;
+    }
+
+    &:after {
+      position: absolute;
+      bottom: 0;
+      left: 25%;
+      width: 50%;
+      height: 4px;
+      content: "";
+      transition: 0.25s;
+      background: rgba($color-primary, 0);
+    }
+  }
+
+  :global(html.r-medium) &.useMobileDropdown {
+    display: block;
+  }
+
+  .form-kit.dropdown-item .selectOptions,
+  .form-kit.dropdown-item .currentOption {
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+}

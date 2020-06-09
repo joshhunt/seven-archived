@@ -1,0 +1,1056 @@
+@import "../../../../ui/uikit/_base/ui_base";
+
+.contentWrapper {
+  overflow: hidden;
+}
+
+.smallTitle {
+  color: rgba($color-primary, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 8px;
+}
+
+.title {
+  letter-spacing: 20px;
+  font-size: 44px;
+  text-transform: uppercase;
+  text-align: center;
+
+  :global(html.r-mobile) & {
+    text-align: left;
+    font-size: 32px;
+    letter-spacing: unset;
+    font-weight: 600;
+  }
+}
+
+.blurb {
+  font-size: 1.25rem;
+  line-height: 35px;
+  max-width: 60rem;
+
+  :global(html.r-mobile) & {
+    text-align: left;
+    font-size: 1.5rem;
+    max-width: 40rem;
+  }
+}
+
+.toast {
+  border-top: 3px solid $color-season-teal;
+}
+
+.hero {
+  @include webPBackgroundImage(
+    "/7/ca/destiny/bgs/season_of_dawn/hero_desktop_bg.jpg"
+  );
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 27rem;
+
+  :global(html.r-mobile) & {
+    padding-top: 24rem;
+    padding-bottom: 4rem;
+    width: 100%;
+
+    @include webPBackgroundImage(
+      "/7/ca/destiny/bgs/season_of_dawn/mobile/s9_dawn_hero_mobile_bg.jpg"
+    );
+  }
+
+  .playButton {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .playCircle {
+    @include webPBackgroundImage(
+      "/7/ca/destiny/bgs/seasons/play_button_bg.png"
+    );
+    height: 6rem;
+    width: 6rem;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 0.655rem;
+    transition: 0.25s;
+
+    &:hover {
+      height: 6.5rem;
+      width: 6.5rem;
+      margin: -0.25rem 0;
+    }
+  }
+
+  .playIcon {
+    background-image: url("/7/ca/destiny/bgs/seasons/play_button_triangle.svg");
+    height: 3rem;
+    width: 3rem;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
+  .heroLogo {
+    height: 12rem;
+    width: 43rem;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin-bottom: 1rem;
+
+    :global(html.r-mobile) & {
+      width: 90%;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.date {
+  color: rgba($color-primary, 0.85);
+  font-size: 1.75rem;
+  letter-spacing: 3px;
+  margin-bottom: 14rem;
+
+  :global(html.r-mobile) & {
+    font-size: 1.25rem;
+  }
+}
+
+.storySection {
+  @include webPBackgroundImage(
+    "/7/ca/destiny/bgs/season_of_dawn/timeline_desktop_bg.jpg"
+  );
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  width: 100%;
+  padding: 7rem 0 53rem;
+  position: center;
+  clip-path: polygon(0 0, 100% 0%, 100% calc(100% - 8vw), 0% 100%);
+  position: relative;
+  z-index: 10;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+
+  .smallTitle {
+    text-align: center;
+  }
+
+  .fadeInContent {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+  }
+
+  .blurb {
+    text-align: center;
+  }
+
+  :global(html.r-mobile) & {
+    background-size: contain;
+    background-position: center top;
+    padding: 107vw 2rem 4rem 2rem;
+    width: 100%;
+    @include webPBackgroundImage(
+      "/7/ca/destiny/bgs/season_of_dawn/mobile/timeline_mobile_bg.png"
+    );
+    background-color: #2a1a17;
+  }
+}
+
+.storySundialSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  z-index: 8;
+  position: relative;
+  background-color: rgba(#040403, 0.95);
+
+  .blurb {
+    text-align: center;
+  }
+
+  .smallTitle {
+    text-align: center;
+  }
+}
+
+.fadeInContent {
+  opacity: 0;
+  transition-duration: 400ms;
+  transition-timing-function: ease-in;
+
+  :global(html.r-mobile) & {
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  &.inView {
+    opacity: 1;
+  }
+}
+
+.videoOverlay {
+  @include webPBackgroundImage(
+    "/7/ca/destiny/bgs/season_of_dawn/sundial_top_overlay2.png"
+  );
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center bottom;
+  height: 24vw;
+  width: 100%;
+  overflow: hidden;
+  top: -23.9vw;
+  position: absolute;
+
+  :global(html.r-mobile) & {
+    display: none;
+  }
+}
+
+.sundialSection {
+  width: 100%;
+  @include webPBackgroundImage(
+    "/7/ca/destiny/bgs/season_of_dawn/sundial_bg.jpg"
+  );
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+  padding: 10rem 0 51rem;
+  position: relative;
+
+  .fadeInContent {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+    top: -8rem;
+    left: 1%;
+    right: 1%;
+    margin: 0 auto;
+    position: absolute;
+
+    :global(html.r-mobile) & {
+      position: relative;
+      margin: 60vw 2rem 0rem 2rem;
+      justify-content: center;
+      align-items: center;
+
+      .title {
+        text-align: center;
+      }
+    }
+  }
+
+  :global(html.r-mobile) & {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center top;
+    padding: 105vw 2rem 4rem 2rem;
+    margin-top: -11vw;
+    width: 100%;
+    @include webPBackgroundImage(
+      "/7/ca/destiny/bgs/season_of_dawn/mobile/sundial_mobile_bg.jpg"
+    );
+  }
+}
+
+video {
+  width: 100%;
+  margin-top: -8.5vw;
+}
+
+.artifactSection {
+  @include webPBackgroundImage(
+    "/7/ca/destiny/bgs/season_of_dawn/artifact_desktop_bg.jpg"
+  );
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center bottom;
+  padding-bottom: 69rem;
+  width: 100%;
+  position: relative;
+  margin-top: 8rem;
+
+  .fadeInContent {
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    display: flex;
+    top: -9rem;
+    left: 20%;
+    margin: 0 auto;
+    position: absolute;
+
+    :global(.r-large) & {
+      left: 15%;
+    }
+
+    :global(.r-mobile) & {
+      padding-top: 44rem;
+    }
+  }
+
+  :global(html.r-mobile) & {
+    background-size: cover;
+    background-position: center top;
+    width: 100%;
+    margin-top: 0;
+    @include webPBackgroundImage(
+      "/7/ca/destiny/bgs/season_of_dawn/mobile/artifact_mobile_bg.jpg"
+    );
+  }
+
+  .title {
+    text-align: left;
+  }
+
+  .blurb {
+    max-width: 35rem;
+    text-align: left;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: -10rem;
+    left: 0;
+    width: 100%;
+    height: 12rem;
+    background: linear-gradient(
+      to bottom,
+      rgba(#040404, 0.1) 0%,
+      rgba(#030303, 0.5) 40%,
+      #030303 100%
+    );
+    opacity: 0.5;
+
+    :global(html.r-mobile) & {
+      display: none;
+    }
+  }
+}
+
+.lantern {
+  @include webPBackgroundImage("/7/ca/destiny/bgs/season_of_dawn/artifact.png");
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 60rem;
+  height: 60rem;
+  top: -20rem;
+  left: 38%;
+
+  :global(.r-large) & {
+    left: 54%;
+    top: -18rem;
+    width: 50rem;
+    height: 50rem;
+  }
+
+  :global(.r-mobile) & {
+    top: -16rem;
+    left: 0;
+    width: 100%;
+  }
+}
+
+.unskewRight {
+  transform: rotate(4deg);
+}
+
+.rankRow {
+  width: 100%;
+  height: 0;
+  padding-bottom: 21%;
+  margin: 0.5rem 0.5rem 0.5rem 0.3rem;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @for $i from 1 through 10 {
+    &.rankRow#{$i} {
+      background-image: url("/7/ca/destiny/bgs/season_of_dawn/ranks_#{$i}.png");
+    }
+  }
+}
+
+.mobileRankRow {
+  width: 100%;
+  height: 0;
+  padding-bottom: 41.283%;
+  margin: 0.2rem;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @for $i from 1 through 20 {
+    &.mobileRankRow#{$i} {
+      background-image: url("/7/ca/destiny/bgs/season_of_dawn/mobile/ranks_#{$i}_mobile.png");
+    }
+  }
+}
+
+.seasonPassMarker {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  line-height: 2rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  max-width: 22rem;
+
+  i {
+    margin-right: 0.5rem;
+  }
+}
+
+.sundialItemContainer {
+  margin-top: 3rem;
+}
+
+.itemTitle {
+  margin-top: 1rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+
+  :global(.r-mobile) & {
+    font-size: 1.75rem;
+    margin-top: 1.5rem;
+    line-height: 22px;
+  }
+}
+
+.itemDesc {
+  font-size: 1.25rem;
+  line-height: 35px;
+  max-width: 24rem;
+  margin-top: 0.8rem;
+
+  :global(.r-mobile) & {
+    font-size: 1.5rem;
+    margin: 0 0 4rem;
+    line-height: 22px;
+  }
+}
+
+.itemContainer {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+
+  :global(.r-mobile) & {
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .flexContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-size: $font-size-s;
+    margin: 0 0.5rem;
+
+    .icon {
+      width: 14rem;
+      height: 12rem;
+      background-size: contain;
+      background-position: center center;
+      background-repeat: no-repeat;
+
+      :global(.r-tiny) & {
+        width: 13rem;
+        height: 15rem;
+      }
+    }
+
+    .itemName {
+      font-size: 1.25rem;
+      width: 14rem;
+    }
+  }
+}
+
+.thumbnailPlayButton {
+  background-image: url("/7/ca/destiny/bgs/shadowkeep/play_button.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 5rem;
+  height: 5rem;
+  position: absolute;
+  top: calc(50% - 2.5rem);
+  left: calc(50% - 2.5rem);
+}
+
+.gearSection {
+  background-image: url("/7/ca/destiny/bgs/season_of_dawn/gear_desktop_body_bg.jpg");
+  background-size: contain;
+  background-position: center top;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center top;
+  align-items: center;
+  padding: 23vw 0 10vw;
+  min-height: 54vw;
+  position: relative;
+  width: 100%;
+  background-color: #100e1c;
+
+  .fadeInContent {
+    text-align: center;
+
+    :global(.r-mobile) & {
+      padding-top: 10rem;
+    }
+  }
+
+  :global(.r-mobile) & {
+    background-image: url("/7/ca/destiny/bgs/season_of_dawn/mobile/gear_mobile_bg.jpg");
+    clip-path: polygon(0 0, 100% 8vw, 100% 100%, 0% 100%);
+    margin-top: -11vw;
+    z-index: 12;
+    padding: 94vw 2rem 8rem;
+  }
+}
+
+.gearHeads {
+  @include webPBackgroundImage(
+    "/7/ca/destiny/bgs/season_of_dawn/gear_desktop_heads_bg.png"
+  );
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  position: absolute;
+  width: 100%;
+  height: 14.36vw;
+  top: -14.31vw;
+  z-index: 12;
+
+  :global(.r-mobile) & {
+    display: none;
+  }
+}
+
+.rewardsSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url("/7/ca/destiny/bgs/season_of_dawn/pass_overview_desktop_bg1.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: relative;
+
+  .smallHeader {
+    margin-top: 6rem;
+
+    :global(.r-mobile) & {
+      margin: 6rem 2rem 3rem 2rem;
+    }
+  }
+}
+
+.calendarSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 8rem 0;
+  background-image: url("/7/ca/destiny/bgs/season_of_dawn/calendar_desktop_bg.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: relative;
+  text-align: center;
+
+  .fadeInContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    :global(.r-mobile) & {
+      padding-left: 2rem;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  :global(.r-mobile) & {
+    background-size: cover;
+    background-position: center top;
+    width: 100%;
+    padding: 4rem 0;
+    @include webPBackgroundImage(
+      "/7/ca/destiny/bgs/season_of_dawn/mobile/calendar_mobile_bg.png"
+    );
+  }
+}
+
+.calendar {
+  height: 39rem;
+  width: 100%;
+  margin: 4rem auto 0;
+  align-self: center;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  position: relative;
+
+  :global(.r-mobile) & {
+    background-size: contain;
+    height: 53vw;
+  }
+}
+
+.tagContainer {
+  display: inline-flex;
+  flex-direction: column;
+  margin: 1rem 0;
+
+  .rectContainer {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .rect {
+    height: 4px;
+    width: 2.3rem;
+    border: 1px solid rgba($color-primary, 0.5);
+    margin: 0.4rem 0;
+  }
+
+  .tag {
+    padding: 0.5rem 1.3rem;
+    border: 1px solid rgba($color-primary, 0.5);
+  }
+}
+
+.arrowOne {
+  i {
+    opacity: 0.3;
+    color: black;
+    margin-bottom: -1.5rem;
+    animation: arrowslide 1.1s linear infinite running;
+  }
+}
+
+@keyframes arrowslide {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  5% {
+    opacity: 0.85;
+    transform: translateY(0);
+  }
+
+  15% {
+    opacity: 0.85;
+    transform: translateY(0);
+  }
+
+  25% {
+    opacity: 0.85;
+    transform: translateY(100%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(100%);
+  }
+}
+
+.largeImage {
+  width: 80vw;
+}
+
+.thumbnail {
+  width: 18rem;
+  padding: 0;
+  position: relative;
+  margin: 1rem;
+  background-color: $color-background;
+  cursor: pointer;
+  transition: 0.25s;
+  min-height: 8rem;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &:after {
+    border-color: rgba($color-primary, 0.2) !important;
+  }
+
+  &:hover {
+    &:after {
+      border-color: $color-primary !important;
+    }
+  }
+
+  :global(.r-mobile) & {
+    width: 100%;
+    height: 100%;
+    margin: 3rem 0 1rem;
+  }
+}
+
+.rewardsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  :global(.r-tiny) & {
+    div {
+      background-size: cover !important;
+    }
+  }
+}
+
+.greenRewardsBox {
+  background-color: rgba(#027476, 0.7);
+  border: 1px solid $color-season-teal;
+  border-top: 4px solid $color-season-teal;
+  max-width: 972px;
+  margin: 2rem auto 0;
+  padding: 1rem 2rem 0;
+  text-align: center;
+
+  h3 {
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    line-height: 22px;
+
+    :global(.r-tiny) & {
+      letter-spacing: 6px;
+    }
+  }
+
+  p {
+    font-size: 1.25rem;
+    line-height: 26px;
+  }
+
+  :global(.r-mobile) & {
+    h3 {
+      font-size: 1.75rem;
+    }
+
+    p {
+      font-size: 1.5rem;
+      line-height: 24px;
+    }
+  }
+}
+
+.rewardsTitle {
+  font-weight: bold;
+  margin: 10rem auto 3rem;
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+}
+
+.rewardsSmallTitle {
+  margin-bottom: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+
+  :global(.r-mobile) & {
+    font-size: 1.5rem;
+  }
+}
+
+.rewardsLists {
+  display: flex;
+
+  li {
+    list-style-image: url("/7/ca/destiny/bgs/seasons/teal_bullet.png");
+    line-height: 22px;
+    margin-left: 1rem;
+    font-size: 1.1rem;
+    padding-bottom: 0.5rem;
+
+    :global(.r-mobile) & {
+      font-size: 1.4rem;
+    }
+  }
+
+  :global(.r-mobile) & {
+    flex-direction: column;
+    margin: 0 2rem;
+  }
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    max-width: 30rem;
+    padding: 3rem 4rem;
+    font-size: $font-size-h6;
+
+    :global(.r-mobile) & {
+      max-width: unset;
+    }
+  }
+}
+
+.passRewardsList {
+  background-color: rgba(#027476, 0.7);
+  border-top: 0.5rem solid $color-season-teal;
+  border-bottom: 3px solid $color-season-teal;
+  position: relative;
+}
+
+.freeRewardsList {
+  background-color: rgba(#1c1c1c, 0.7);
+  border-top: 0.5rem solid #282828;
+  position: relative;
+}
+
+.cornerIcon {
+  height: 5.5rem;
+  width: 5.5rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: contain;
+  background-position: center center;
+}
+
+.gear.itemContainer {
+  .mediaBg {
+    width: 18rem;
+    min-height: 100%;
+
+    :global(.r-mobile) & {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .itemName {
+    margin: 0 1rem;
+    width: auto;
+    font-style: italic;
+    font-size: 16px;
+  }
+}
+
+.smallHeader {
+  font-size: 2rem;
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  margin: 0.5rem 0 2rem;
+  letter-spacing: 9px;
+  text-transform: uppercase;
+
+  :global(.r-mobile) & {
+    letter-spacing: unset;
+  }
+}
+
+.buySection {
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+
+  .smallHeader {
+    font-size: 2rem;
+  }
+
+  :global(.r-mobile) & {
+    margin-top: 0;
+  }
+}
+
+.buyButton {
+  margin: 0 auto 6rem;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+
+  :global(.r-tiny) & {
+    width: calc(100% - 2rem);
+  }
+}
+
+.carouselSection {
+  background-image: url("/7/ca/destiny/bgs/season_of_dawn/rank_rewards_bg1.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  text-align: center;
+  padding: 4.5rem 0;
+  position: relative;
+
+  :global(.r-mobile) & {
+    background-size: cover;
+    background-position: center top;
+    width: 100%;
+    @include webPBackgroundImage(
+      "/7/ca/destiny/bgs/season_of_dawn/mobile/rewards_mobile_bg.jpg"
+    );
+  }
+}
+
+.carouselContainer {
+  margin: 4.5rem auto 0;
+  width: 76%;
+
+  :global(.r-mobile) & {
+    width: 90vw;
+  }
+}
+
+.carouselText {
+  text-align: center;
+  width: 100%;
+  letter-spacing: 7px;
+  font-size: 1.2rem;
+}
+
+.FAQ {
+  display: flex;
+  flex-direction: column;
+
+  .smallHeader {
+    margin-top: 4rem;
+
+    :global(.r-mobile) & {
+      text-align: left;
+    }
+  }
+
+  p {
+    line-height: 27px;
+    font-size: 1.25rem;
+  }
+
+  h4 {
+    border-top: 1px #027476 solid;
+    padding-top: 2rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+
+  a,
+  a:visited {
+    color: rgba($color-season-teal, 0.8);
+
+    &:hover {
+      color: $color-season-teal;
+    }
+  }
+}
+
+.innerSectionTitle {
+  font-size: 3.375rem;
+  text-align: center;
+}
+
+.seasonsButtonMore {
+  margin: 3rem auto 6rem;
+
+  :global(.r-tiny) & {
+    width: 100%;
+  }
+}
+
+.tricorn {
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-top: 0.15rem;
+  background-image: url("/7/ca/destiny/logos/tricorn.png");
+  background-size: contain;
+  background-position: center top;
+  background-repeat: no-repeat;
+  align-self: flex-start;
+}
+
+.hawkIcon {
+  height: 2rem;
+  width: 2rem;
+  margin-top: 0.25rem;
+  @include webPBackgroundImage(
+    "/7/ca/destiny/bgs/season_of_dawn/sundial_hawk_icon.png"
+  );
+  background-size: contain;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+
+.item1 {
+  @include webPBackgroundImage(
+    "/7/ca/destiny/bgs/season_of_dawn/sundial_14_icon.png"
+  );
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 4rem;
+  width: 4rem;
+}
+
+.item2 {
+  @include webPBackgroundImage(
+    "/7/ca/destiny/bgs/season_of_dawn/sundial_eye_icon.png"
+  );
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 4rem;
+  width: 4rem;
+}
+
+.item3 {
+  @include webPBackgroundImage(
+    "/7/ca/destiny/bgs/season_of_dawn/sundial_hawk_icon.png"
+  );
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 4.5rem;
+  width: 4.5rem;
+  margin-bottom: -0.5rem;
+}
+
+.underline {
+  width: 6.5rem;
+  transform: translateX(-0.6rem);
+  height: 1.5rem;
+  border-top: 2.6px solid rgba($color-primary, 0.5);
+
+  :global(.r-mobile) & {
+    transform: translateX(0);
+  }
+}

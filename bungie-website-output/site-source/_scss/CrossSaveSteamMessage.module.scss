@@ -1,0 +1,50 @@
+@import "../../../ui/uikit/_base/ui_base";
+
+.wrapper {
+  max-width: 20rem;
+  margin-bottom: 2rem;
+  margin-top: 0.5rem;
+  background: $color-primary;
+  color: $color-background;
+  padding: 1rem;
+}
+
+.learnMoreLink {
+  @extend %dark-link;
+}
+
+.message {
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.logos {
+  display: flex;
+  font-size: 3rem;
+  line-height: 2rem;
+  max-width: 10rem;
+  margin: 0 auto;
+  padding-top: 1rem;
+  align-items: center;
+}
+
+.arrowIcon {
+  height: 2rem;
+}
+
+.iconBattleNet,
+.iconSteam {
+  flex: 1 0;
+  height: 2rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.iconBattleNet {
+  background-image: url("/7/ca/bungie/icons/logos/blizzard/icon-dark.png");
+}
+
+.iconSteam {
+  background-image: url("/7/ca/bungie/icons/logos/steam/icon-dark.png");
+}

@@ -1,0 +1,82 @@
+@import "../uikit/_base/ui_base";
+
+.titlesContainer {
+  max-width: 57rem;
+
+  :global(html.r-mobile) & {
+    margin: 0;
+    max-width: 40rem;
+  }
+
+  :global(html.r-tiny) & {
+    margin: 24rem auto 0;
+    max-width: unset;
+  }
+
+  &.center {
+    text-align: center;
+  }
+
+  &.left,
+  &.right {
+    max-width: 32rem;
+    margin: 0;
+
+    .smallTitle {
+      padding: 0.5rem 0;
+      margin-bottom: 1rem;
+    }
+  }
+
+  &.left {
+    .callout {
+      div {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        text-align: left;
+      }
+    }
+  }
+}
+
+.smallTitle {
+  display: inline-block;
+  font-size: 0.875rem;
+  padding: 0.5rem 2rem;
+  color: rgba($color-primary, 0.75);
+  letter-spacing: 3px;
+  border-bottom: 1px solid rgba($color-primary, 0.75);
+  margin: 0 auto 0.5rem;
+  text-transform: uppercase;
+
+  .splitScreen & {
+    border-bottom: none;
+    margin-bottom: 0;
+    font-size: 1rem;
+    padding-bottom: 0;
+    opacity: 1;
+  }
+}
+
+.sectionTitle {
+  font-size: 3.1rem;
+
+  :global(.r-mobile) & {
+    font-size: 2.5rem;
+  }
+
+  .splitScreen & {
+    font-size: 2rem;
+
+    :global(.r-mobile) & {
+      font-size: 2rem;
+    }
+  }
+}
+
+.callout {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-top: 1rem;
+}

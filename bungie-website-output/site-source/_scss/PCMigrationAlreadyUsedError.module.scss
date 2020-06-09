@@ -1,0 +1,78 @@
+.alreadyUsedErrorView {
+  background-color: #181d25;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  padding: 2rem;
+  text-align: center;
+
+  p {
+    margin-bottom: 2rem;
+  }
+
+  :global(.button) {
+    min-width: 250px;
+    margin-bottom: 2rem;
+  }
+
+  i {
+    font-size: 6rem;
+  }
+
+  .transferStatus {
+    width: 100%;
+    margin-bottom: 2rem;
+
+    & > div:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+.resolve {
+  font-size: 1.2rem;
+  width: 100%;
+
+  strong {
+    float: left;
+  }
+
+  .unlinkInstructions {
+    padding-top: 1rem;
+    text-align: left;
+    margin-bottom: 2rem;
+    clear: both;
+
+    p {
+      margin-left: 2rem;
+      margin-bottom: 0;
+    }
+
+    & + a {
+      text-align: center;
+    }
+  }
+}
+
+.sourceBlizzardUser {
+  font-weight: 600;
+  color: red;
+}
+
+.currentBlizzardUser {
+  font-weight: 600;
+  color: orchid;
+}
+
+.steamCurrentUser {
+  font-weight: 600;
+  color: aqua;
+}
+
+.steamDestinationUser {
+  font-weight: 600;
+  color: darkkhaki;
+}

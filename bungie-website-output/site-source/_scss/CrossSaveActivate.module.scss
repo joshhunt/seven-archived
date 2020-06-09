@@ -1,0 +1,195 @@
+@import "_CrossSaveBase.scss";
+@import "activate/buttoncontainer";
+
+.animatedWrapper {
+  position: relative;
+
+  > * {
+  }
+}
+
+.wrapperGrid {
+  // Hide overflow so the animations don't show a scrollbar
+  overflow: hidden;
+  padding: 0 1rem 1rem 1rem;
+  max-width: 1475px;
+}
+
+.crossSaveContent {
+}
+
+.accountPair {
+  position: relative;
+
+  .linkableHoverLeft,
+  .linkableHoverRight {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    cursor: pointer;
+
+    &.invalid {
+      pointer-events: none;
+    }
+  }
+
+  .linkableHoverLeft {
+    left: 0;
+  }
+
+  .linkableHoverRight {
+    right: 0;
+  }
+}
+
+.accountItem {
+  @extend %accountItem;
+}
+
+@keyframes choice {
+  0% {
+    border: 10px solid $color-primary;
+    top: -40px;
+    left: -40px;
+    right: -40px;
+    bottom: -40px;
+    opacity: 0;
+  }
+
+  50% {
+    border: 5px solid $color-primary;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    opacity: 1;
+  }
+
+  100% {
+    border: 1px solid $color-primary;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes unavailableAccount {
+  0% {
+    opacity: 1;
+    flex: 1 0;
+  }
+
+  100% {
+    opacity: 0;
+    overflow: hidden;
+    flex: 0;
+  }
+}
+
+.stepWrapper {
+  display: flex;
+  font-size: $font-size-s;
+  font-weight: normal;
+
+  :global(.r-mobile) & {
+    flex-direction: column;
+  }
+
+  .step {
+    position: relative;
+    display: flex;
+    opacity: 0.35;
+    pointer-events: none;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    transition: 0.25s;
+    color: $color-primary;
+
+    span {
+      position: relative;
+      z-index: 2;
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      height: 100%;
+      width: 0;
+      background: $color-primary;
+      transition: 0.25s;
+    }
+
+    &.activeStep {
+      opacity: 1;
+      color: $color-text-dark;
+      pointer-events: auto;
+
+      &:before {
+        width: 100%;
+      }
+    }
+
+    &.prevStep:before {
+      left: 0;
+      right: auto;
+    }
+
+    &.prevStep:before {
+      right: 0;
+      left: auto;
+    }
+
+    > span:first-child {
+      display: inline-flex;
+      margin-right: 0.25rem;
+      font-weight: 700;
+
+      &:before {
+        content: "0";
+      }
+    }
+  }
+}
+
+.reviewErrors {
+  margin-bottom: 2rem;
+}
+
+.reviewSettingsMessage {
+  margin-top: 2rem;
+
+  a {
+    color: $color-accent;
+    font-weight: bold;
+
+    &:hover {
+      color: $color-accent-alt-2;
+    }
+  }
+}
+
+.dottedLine {
+  display: flex;
+  align-items: center;
+  flex: 1 0;
+
+  div {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed $color-primary;
+  }
+}
+
+.buttonDisabledDesc {
+  margin: 2rem 0 -1.25rem 0;
+
+  :global(.r-mobile) & {
+    margin-bottom: 0;
+  }
+}

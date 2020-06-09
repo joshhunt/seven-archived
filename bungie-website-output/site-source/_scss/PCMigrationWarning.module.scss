@@ -1,0 +1,41 @@
+.warningContainer {
+  background-color: rgba(224, 0, 0, 0.32);
+  display: flex;
+  flex-direction: row;
+  padding: 0.7rem;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+
+  i {
+    margin-right: 1rem;
+    font-size: 28px;
+    margin-left: 0.5rem;
+    margin-top: 5px;
+  }
+
+  .textContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .warning {
+      font-weight: 600;
+    }
+
+    p {
+      margin: 0;
+      font-size: 0.9rem;
+      line-height: 20px;
+      text-align: start;
+    }
+  }
+
+  &.false {
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background-color: rgba(57, 64, 78, 0.2);
+  }
+
+  &.true {
+    background-color: rgba(224, 0, 0, 0.32);
+  }
+}
