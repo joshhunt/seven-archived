@@ -40,3 +40,12 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Slack Notification
+        if: steps.changes-check.outputs.dirty
+        uses: rtCamp/action-slack-notify@v2.0.2
+        env:
+          SLACK_CHANNEL: "#destiny-plumbing"
+          SLACK_USERNAME: seven-action
+          SLACK_TITLE: Github Action has commit a change to the Bungie website
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
