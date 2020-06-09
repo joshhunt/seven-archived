@@ -95,7 +95,7 @@ class UserResearchCanTravel extends React.Component<
         >
           <body className={SpecialBodyClasses(BodyClasses.NoSpacer)} />
         </BungieHelmet>
-        <FullPageLoadingBar loading={true} />
+        <FullPageLoadingBar />
       </React.Fragment>
     );
   }

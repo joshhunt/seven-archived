@@ -1,10 +1,10 @@
 import { RouteDefs } from "./RouteDefs";
 import { ActionRoute } from "./ActionRoute";
-import { IDestinyBuyDetailRouteParams } from "@Areas/Destiny/DestinyBuyDetail";
 import { ICrossSaveActivateParams } from "@Areas/CrossSave/CrossSaveActivate";
 import { IDestinyBuyRouteParams } from "@Areas/Destiny/DestinyBuy";
 import { BungieCredentialType } from "@Enum";
 import { UrlUtils } from "@Utilities/UrlUtils";
+import { BuyDetailRouteParams } from "@Routes/RouteParams";
 
 /**
  * Allows us to create links between the Renderer site and the Renderer.Core site more easily.
@@ -153,7 +153,7 @@ export class RouteHelper {
   public static DestinyBuy = BasicReactPath<IDestinyBuyRouteParams>(
     RouteDefs.Areas.Destiny.getAction("Buy")
   );
-  public static DestinyBuyDetail = BasicReactPath<IDestinyBuyDetailRouteParams>(
+  public static DestinyBuyDetail = BasicReactPath<BuyDetailRouteParams>(
     RouteDefs.Areas.Destiny.getAction("BuyDetail")
   );
   public static Sku = (sku: string, store: string, region: string) =>
@@ -198,6 +198,9 @@ export class RouteHelper {
   );
   public static SeasonOfTheWorthy = BasicReactPath(
     RouteDefs.Areas.Seasons.getAction("SeasonOfTheWorthy")
+  );
+  public static Season11 = BasicReactPath(
+    RouteDefs.Areas.Seasons.getAction("SeasonOfArrivals")
   );
   public static Seasons = BasicReactPath(RouteDefs.Areas.Seasons.getAction());
   public static SeasonsProgress = BasicReactPath(

@@ -13,7 +13,6 @@ import { DestroyCallback } from "@Global/DataStore";
 import { Platform } from "@Platform";
 import { DestinySkuUtils } from "./DestinySkuUtils";
 import { Spinner } from "@UI/UIKit/Controls/Spinner";
-import { DiscountLabel } from "@Areas/Destiny/Buy/DestinyBuyProductSummary";
 
 interface IDestinySkuSelectorProps {
   skuTag: string;
@@ -91,22 +90,21 @@ export default class DestinySkuSelector extends React.Component<
 
     return (
       <div className={styles.buyModalContent}>
-        {productIsOnSale && (
-          <div className={styles.discountLabel}>
-            <DiscountLabel definition={def} showAsterisk={showDisclaimer} />
+        <div
+          className={styles.modalHeader}
+          style={{ backgroundImage: `url(${def.modalHeaderImage})` }}
+        >
+          <img
+            className={styles.tricorn2}
+            src={"7/ca/destiny/logos/tricorn_2_icon.svg"}
+          />
+          <div className={styles.modalTitle}>
+            <div className={styles.title}>{def.title}</div>
+            <div className={styles.subtitle}>{def.subtitle}</div>
+            <div className={styles.edition}>{def.edition}</div>
           </div>
-        )}
-        <div className={styles.modalSkuImage}>
-          <img src={def.imagePath} />
         </div>
         <div className={styles.storeOptions}>
-          <div className={styles.modalTitle}>
-            <span>
-              {def.title}
-              <br />
-              {def.subtitle}
-            </span>
-          </div>
           <DestinySkuSelectorOptions
             definition={def}
             skuConfig={skuConfig}

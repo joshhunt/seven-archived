@@ -5,27 +5,22 @@ import Helmet from "react-helmet";
 import { SwitchWithErrors } from "@UI/Navigation/SwitchWithErrors";
 import { RouteDefs } from "@Routes/RouteDefs";
 import AppLayout from "@Boot/AppLayout";
-import { DestroyCallback, DataStore } from "@Global/DataStore";
+import { DataStore, DestroyCallback, useDataStore } from "@Global/DataStore";
 import {
-  GlobalStateDataStore,
   GlobalState,
+  GlobalStateDataStore,
 } from "@Global/DataStore/GlobalStateDataStore";
 import { FullPageLoadingBar } from "@UI/UIKit/Controls/FullPageLoadingBar";
-import { AppLoadingDataStore } from "@Global/DataStore/AppLoadingDataStore";
 import { Modal } from "@UI/UIKit/Controls/Modal/Modal";
 import { ToastContainer } from "@UI/UIKit/Controls/Toast/ToastContainer";
 import { ToastContent } from "@UI/UIKit/Controls/Toast/Toast";
-import {
-  IGlobalElementDataStorePayload,
-  GlobalElementDataStore,
-} from "@Global/DataStore/GlobalElementDataStore";
+import { GlobalElementDataStore } from "@Global/DataStore/GlobalElementDataStore";
 import { UrlUtils } from "@Utilities/UrlUtils";
 import { BuildVersion } from "@Helpers";
 
 interface IAppProps {}
 
 interface IAppState {
-  globalElements: IGlobalElementDataStorePayload;
   globalState: GlobalState<any>;
   isLoading: boolean;
 }
@@ -44,23 +39,12 @@ export class App extends React.Component<IAppProps, IAppState> {
 
     this.state = {
       isLoading: false,
-      globalElements: GlobalElementDataStore.state,
       globalState: GlobalStateDataStore.state,
     };
   }
 
   public componentDidMount() {
     this.monitors.push(
-      GlobalElementDataStore.observe((globalElements) => {
-        this.setState({
-          globalElements,
-        });
-      }),
-      AppLoadingDataStore.observe((loadingData) => {
-        this.setState({
-          isLoading: loadingData.loading,
-        });
-      }),
       GlobalStateDataStore.observe((globalState) => {
         this.setState({
           globalState,
@@ -76,16 +60,6 @@ export class App extends React.Component<IAppProps, IAppState> {
   public render() {
     const AppBaseUrl = UrlUtils.AppBaseUrl;
 
-    // Gather the globalElements that are modals
-    const modals = this.state.globalElements.elements.filter(
-      (a) => a.el.type === Modal
-    );
-
-    // Gather the globalElements that are toasts, because these are dealt with differently in ToastContainer
-    const toasts = this.state.globalElements.elements.filter(
-      (a) => a.el.type === ToastContent
-    );
-
     return (
       <Router basename={AppBaseUrl}>
         <BasicErrorBoundary>
@@ -93,7 +67,7 @@ export class App extends React.Component<IAppProps, IAppState> {
             <Helmet titleTemplate="%s | Bungie.net" />
             {this.state.globalState.coreSettings && (
               <React.Fragment>
-                <FullPageLoadingBar loading={this.state.isLoading} />
+                <FullPageLoadingBar />
                 <SwitchWithErrors>
                   <Route exact={true} path="/version">
                     {
@@ -106,10 +80,28 @@ export class App extends React.Component<IAppProps, IAppState> {
               </React.Fragment>
             )}
           </AppLayout>
-          {modals.map((m) => m.el)}
-          <ToastContainer toasts={toasts} />
+          <GlobalElements />
         </BasicErrorBoundary>
       </Router>
     );
   }
 }
+
+const GlobalElements = () => {
+  const globalElements = useDataStore(GlobalElementDataStore);
+
+  // Gather the globalElements that are modals
+  const modals = globalElements.elements.filter((a) => a.el.type === Modal);
+
+  // Gather the globalElements that are toasts, because these are dealt with differently in ToastContainer
+  const toasts = globalElements.elements.filter(
+    (a) => a.el.type === ToastContent
+  );
+
+  return (
+    <>
+      {modals.map((m) => m.el)}
+      <ToastContainer toasts={toasts} />
+    </>
+  );
+};

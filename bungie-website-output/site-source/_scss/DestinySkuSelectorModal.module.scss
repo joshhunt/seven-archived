@@ -1,5 +1,8 @@
+@import "../../uikit/_base/ui_base";
+
 .buyModal {
-  padding: 1rem;
-  width: 60rem;
+  padding: 0;
+  width: 36rem;
   max-width: 90vw;
+  background-color: $color-background-alt-3;
 }

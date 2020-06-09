@@ -60,14 +60,14 @@ var installedModules = {};
 
 // object to store loaded CSS chunks
 var installedCssChunks = {
-  17: 0,
+  19: 0,
 };
 
 // object to store loaded and loading chunks
 // undefined = chunk not loaded, null = chunk preloaded/prefetched
 // Promise = chunk loading, 0 = chunk loaded
 var installedChunks = {
-  17: 0,
+  19: 0,
 };
 
 var deferredModules = [];
@@ -81,35 +81,39 @@ function jsonpScriptSrc(chunkId) {
       "4": "Codes",
       "5": "CrossSave",
       "6": "Destiny",
-      "7": "Destiny-Forsaken",
-      "8": "Destiny-NewLight",
-      "9": "Destiny-Shadowkeep",
-      "10": "Legal",
-      "11": "PCMigration",
-      "12": "Registration",
-      "13": "Seasons",
-      "14": "Static",
-      "15": "UserResearch",
+      "7": "Destiny-Buy",
+      "8": "Destiny-BuyDetail",
+      "9": "Destiny-Forsaken",
+      "10": "Destiny-NewLight",
+      "11": "Destiny-Shadowkeep",
+      "12": "Legal",
+      "13": "PCMigration",
+      "14": "Registration",
+      "15": "Seasons",
+      "16": "Static",
+      "17": "UserResearch",
     }[chunkId] || chunkId) +
     ".chunk.js?v=" +
     {
-      "0": "cf8aca07",
-      "1": "42adb59e",
-      "2": "f154998b",
-      "3": "282c3eed",
-      "4": "399e2ebb",
-      "5": "daa184e7",
-      "6": "f75756fc",
-      "7": "e6056c81",
-      "8": "55c0ac1f",
-      "9": "ed323d4f",
-      "10": "5a614a67",
-      "11": "9daeda0e",
-      "12": "b8501165",
-      "13": "968cdbb4",
-      "14": "84deb29c",
-      "15": "bc51745e",
-      "19": "431950f0",
+      "0": "dd3433b6",
+      "1": "2a5ead2d",
+      "2": "9e76d525",
+      "3": "a26c5261",
+      "4": "c441b4cb",
+      "5": "defc7dbe",
+      "6": "85489e10",
+      "7": "021eb119",
+      "8": "f08d80c4",
+      "9": "ce8cb3c6",
+      "10": "5d2198a6",
+      "11": "a77649a6",
+      "12": "812007df",
+      "13": "49f61292",
+      "14": "8e75430b",
+      "15": "ae0ed8c6",
+      "16": "36a1e672",
+      "17": "f067b327",
+      "21": "9ce581d0",
     }[chunkId] +
     ""
   );
@@ -162,8 +166,10 @@ __webpack_require__.e = function requireEnsure(chunkId) {
     "11": 1,
     "12": 1,
     "13": 1,
+    "14": 1,
     "15": 1,
-    "19": 1,
+    "17": 1,
+    "21": 1,
   };
   if (installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
   else if (installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
@@ -175,35 +181,39 @@ __webpack_require__.e = function requireEnsure(chunkId) {
             "4": "Codes",
             "5": "CrossSave",
             "6": "Destiny",
-            "7": "Destiny-Forsaken",
-            "8": "Destiny-NewLight",
-            "9": "Destiny-Shadowkeep",
-            "10": "Legal",
-            "11": "PCMigration",
-            "12": "Registration",
-            "13": "Seasons",
-            "14": "Static",
-            "15": "UserResearch",
+            "7": "Destiny-Buy",
+            "8": "Destiny-BuyDetail",
+            "9": "Destiny-Forsaken",
+            "10": "Destiny-NewLight",
+            "11": "Destiny-Shadowkeep",
+            "12": "Legal",
+            "13": "PCMigration",
+            "14": "Registration",
+            "15": "Seasons",
+            "16": "Static",
+            "17": "UserResearch",
           }[chunkId] || chunkId) +
           ".chunk.css?v=" +
           {
             "0": "31d6cfe0",
             "1": "31d6cfe0",
-            "2": "398ce21f",
+            "2": "68429a78",
             "3": "889ce7ae",
             "4": "1cacae67",
-            "5": "1dd5c338",
-            "6": "fe9934e1",
-            "7": "0b84091f",
-            "8": "983ac23d",
-            "9": "8f394d54",
-            "10": "8a12ce3e",
-            "11": "bee130aa",
-            "12": "24a41f62",
-            "13": "fc166656",
-            "14": "31d6cfe0",
-            "15": "26fc59e2",
-            "19": "cb5a526d",
+            "5": "838c67fe",
+            "6": "e54dfbc8",
+            "7": "d711b5f9",
+            "8": "a6efd64c",
+            "9": "c1a6d43b",
+            "10": "983ac23d",
+            "11": "9fae60c9",
+            "12": "8a12ce3e",
+            "13": "7e2659c7",
+            "14": "24a41f62",
+            "15": "74929694",
+            "16": "31d6cfe0",
+            "17": "26fc59e2",
+            "21": "cb5a526d",
           }[chunkId] +
           "";
         var fullhref = __webpack_require__.p + href;

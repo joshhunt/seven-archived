@@ -1,24 +1,11 @@
 // Created by jlauer, 2019
 // Copyright Bungie, Inc.
 
-import * as React from "react";
 import styles from "./FullPageLoadingBar.module.scss";
 import classNames from "classnames";
-
-// Required props
-interface IFullPageLoadingBarProps {
-  loading: boolean;
-}
-
-// Default props - these will have values set in FullPageLoadingBar.defaultProps
-interface DefaultProps {}
-
-type Props = IFullPageLoadingBarProps & DefaultProps;
-
-interface IFullPageLoadingBarState {
-  loading: boolean;
-  loaded: boolean;
-}
+import { AppLoadingDataStore } from "@Global/DataStore/AppLoadingDataStore";
+import { useDataStore } from "@Utilities/ReactUtils";
+import React, { useEffect } from "react";
 
 /**
  * FullPageLoadingBar - Replace this description
@@ -26,44 +13,17 @@ interface IFullPageLoadingBarState {
  * @param {IFullPageLoadingBarProps} props
  * @returns
  */
-export class FullPageLoadingBar extends React.Component<
-  Props,
-  IFullPageLoadingBarState
-> {
-  constructor(props: Props) {
-    super(props);
+export const FullPageLoadingBar = () => {
+  const [loaded, setLoaded] = React.useState(false);
 
-    this.state = {
-      loading: props.loading,
-      loaded: false,
-    };
-  }
+  const appLoadingData = useDataStore(AppLoadingDataStore);
 
-  public static defaultProps: DefaultProps = {};
+  useEffect(() => setLoaded(!appLoadingData.loading), [appLoadingData.loading]);
 
-  public componentWillUnmount() {
-    this.setState({
-      loaded: true,
-    });
-  }
+  const classes = classNames(styles.loadingBar, {
+    [styles.loading]: !loaded && appLoadingData.loading,
+    [styles.loaded]: loaded,
+  });
 
-  public static getDerivedStateFromProps(
-    props: Props,
-    state: IFullPageLoadingBarState
-  ): IFullPageLoadingBarState {
-    return {
-      ...state,
-      loading: props.loading,
-      loaded: state.loading && !props.loading,
-    };
-  }
-
-  public render() {
-    const classes = classNames(styles.loadingBar, {
-      [styles.loading]: this.props.loading && !this.state.loaded,
-      [styles.loaded]: this.state.loaded,
-    });
-
-    return <div className={classes} />;
-  }
-}
+  return <div className={classes} />;
+};

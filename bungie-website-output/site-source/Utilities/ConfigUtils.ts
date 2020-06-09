@@ -2,6 +2,7 @@ import { GlobalStateDataStore } from "@Global/DataStore/GlobalStateDataStore";
 import { DetailedError } from "@CustomErrors";
 import { Logger } from "@Global/Logger";
 import { Environment } from "@Helpers";
+import { ValidSystemNames } from "@Global/SystemNames";
 
 export class ConfigUtils {
   /** Gets the current site environment */
@@ -38,7 +39,7 @@ export class ConfigUtils {
    * @param coreSettings
    * @param systemName
    */
-  public static SystemStatus(systemName: string) {
+  public static SystemStatus(systemName: ValidSystemNames) {
     const coreSettings = ConfigUtils.coreSettings;
 
     const system = coreSettings.systems[systemName];
@@ -54,7 +55,7 @@ export class ConfigUtils {
    * @param defaultValue If no value is found, use this one instead
    */
   public static GetParameter<T>(
-    systemName: string,
+    systemName: ValidSystemNames,
     parameterName: string,
     defaultValue: T
   ): T {

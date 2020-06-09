@@ -252,7 +252,7 @@ export class UrlUtils {
 
     const finalMultiLink = isString
       ? ({
-          legacy: this.isLegacy(originalUrl.toString(), legacy),
+          legacy: this.isLegacy(originalUrl?.toString() ?? "", legacy),
           url: originalUrl,
         } as IMultiSiteLink)
       : (originalUrl as IMultiSiteLink);
@@ -280,10 +280,13 @@ export class UrlUtils {
    * @param url
    */
   public static isLegacy(url: string, legacy?: boolean) {
+    if (!url) {
+      return true;
+    }
+
     const anchorUrl = this.getHrefAsLocation(url);
-    const isReact =
-      anchorUrl.pathname.startsWith("/7/") ||
-      (typeof legacy === "boolean" && !legacy);
+    const nonStatic7Path = !!anchorUrl.pathname.match(/^\/7(?!\/ca\/).*/gi);
+    const isReact = nonStatic7Path || (typeof legacy === "boolean" && !legacy);
 
     return !isReact;
   }

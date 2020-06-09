@@ -18,6 +18,9 @@ import styles from "./DestinySkuSelectorOptions.module.scss";
 import classNames from "classnames";
 import { DestinySkuUtils } from "./DestinySkuUtils";
 import moment from "moment/moment";
+import { ConfigUtils } from "@Utilities/ConfigUtils";
+import { SystemNames } from "@Global/SystemNames";
+import { StringUtils } from "@Utilities/StringUtils";
 
 // Required props
 interface IDestinySkuSelectorOptionsProps extends RouteComponentProps {
@@ -161,66 +164,90 @@ class DestinySkuSelectorOptionsInternal extends React.Component<
     const subtitle = Localizer.Format(Localizer.Buyflow.ChooseAPlatformToOpen, {
       productName: def.title,
     });
+    const regexString = ConfigUtils.GetParameter(
+      SystemNames.BuyFlow,
+      "DisabledPSNSkus",
+      ""
+    );
+    const disabledPSNSkusRegex = new RegExp(regexString, "gi");
+    const isPlaystation = (store) => store.stringKey === "StorePlaystation";
+    const isDisabled = (skuTag) => disabledPSNSkusRegex.test(skuTag);
 
     const outerClasses = classNames(styles.options, className);
 
     return (
       <div className={outerClasses}>
-        {!this.state.selectedStore && (
-          <React.Fragment>
+        {!this.state.selectedStore ? (
+          <>
             <div className={styles.modalSubtitle}>{subtitle}</div>
             <div className={styles.modalButtons}>
               {stores.map((store) => {
-                const url = DestinySkuUtils.tryGetGlobalRegionUrl(
-                  def.skuTag,
-                  store.key,
-                  this.props.skuConfig
-                );
-                const activeSale =
-                  DestinySkuUtils.getSaleForProductAndStore(
+                if (
+                  !isDisabled(def.skuTag) ||
+                  (isDisabled(def.skuTag) && !isPlaystation(store))
+                ) {
+                  const url = DestinySkuUtils.tryGetGlobalRegionUrl(
                     def.skuTag,
                     store.key,
                     this.props.skuConfig
-                  ) || null;
-                let activeSaleString = "";
+                  );
+                  const activeSale =
+                    DestinySkuUtils.getSaleForProductAndStore(
+                      def.skuTag,
+                      store.key,
+                      this.props.skuConfig
+                    ) || null;
+                  let activeSaleString = "";
 
-                if (activeSale) {
-                  activeSaleString = this.getSaleDateString(activeSale);
+                  if (activeSale) {
+                    activeSaleString = this.getSaleDateString(activeSale);
 
-                  if (def.disclaimer) {
-                    activeSaleString += "*";
+                    if (def.disclaimer) {
+                      activeSaleString += "*";
+                    }
                   }
-                }
 
-                return (
-                  <div
-                    key={store.key}
-                    className={classNames(styles.buttonContainer, {
-                      [styles.activeSale]: activeSale,
-                    })}
-                  >
-                    <Button
-                      buttonType={"white"}
-                      className={styles.storeButton}
-                      url={url}
-                      sameTab={false}
-                      onClick={(e) => this.onStoreSelected(e, store)}
-                      analyticsId={`${store}|${def.skuTag}`}
+                  return (
+                    <div
+                      key={store.key}
+                      className={classNames(styles.buttonContainer, {
+                        [styles.activeSale]: activeSale,
+                      })}
                     >
-                      {Localizer.SkuDestinations[store.stringKey]}
-                    </Button>
-                    {activeSale && def.discountText && (
-                      <p className={styles.endDate}>{activeSaleString}</p>
-                    )}
-                  </div>
-                );
+                      {activeSale && def.discountText && (
+                        <div className={styles.saleInfo}>
+                          <p className={styles.endDate}>{activeSaleString}</p>
+                          <div className={styles.saleTag}>
+                            {def.discountText}
+                          </div>
+                        </div>
+                      )}
+                      <Button
+                        buttonType={"gold"}
+                        className={styles.storeButton}
+                        url={url}
+                        sameTab={false}
+                        onClick={(e) => this.onStoreSelected(e, store)}
+                        analyticsId={`${store}|${def.skuTag}`}
+                      >
+                        {Localizer.SkuDestinations[store.stringKey]}
+                      </Button>
+                    </div>
+                  );
+                }
               })}
+              {isDisabled(def.skuTag) && (
+                <>
+                  <div className={styles.endDate}>{def.disclaimer}</div>
+                  <Button disabled={true} className={styles.selectedStore}>
+                    {stores.find((s) => isPlaystation(s)).key}
+                  </Button>
+                </>
+              )}
             </div>
-          </React.Fragment>
-        )}
-
-        {this.state.selectedStore && (
-          <React.Fragment>
+          </>
+        ) : (
+          <>
             <Button disabled={true} className={styles.selectedStore}>
               {this.state.selectedStore.key}
             </Button>
@@ -255,7 +282,7 @@ class DestinySkuSelectorOptionsInternal extends React.Component<
                 </DestinySkuStoreButton>
               </div>
             )}
-          </React.Fragment>
+          </>
         )}
       </div>
     );

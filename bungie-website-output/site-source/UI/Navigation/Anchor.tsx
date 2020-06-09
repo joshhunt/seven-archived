@@ -57,7 +57,7 @@ export class Anchor extends React.Component<IAnchorProps, IAnchorState> {
   }
 
   public render() {
-    const { children, legacy, url, ...rest } = this.props;
+    const { children, legacy, url, sameTab, ...rest } = this.props;
 
     const { shouldOpenNewTab, resolvedUrl, isLegacy } = this.state;
 

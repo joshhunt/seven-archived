@@ -1,16 +1,9 @@
 /* tslint:disable member-ordering */
 import { ActionRoute } from "./ActionRoute";
 import { Area } from "./Area";
-import React from "react";
-import {
-  SpinnerContainer,
-  SpinnerDisplayMode,
-} from "@UI/UIKit/Controls/Spinner";
 import { SystemNames } from "@Global/SystemNames";
-import { Logger } from "@Global/Logger";
-import { FullPageLoadingBar } from "@UI/UIKit/Controls/FullPageLoadingBar";
-import { AppLoadingDataStore } from "@Global/DataStore/AppLoadingDataStore";
 import { ConfigUtils } from "@Utilities/ConfigUtils";
+import { createAsyncComponent } from "./AsyncRoute";
 
 export interface ILocaleParams {
   locale?: string;
@@ -33,7 +26,7 @@ export class RouteDefs {
   public static Areas = {
     CrossSave: new Area({
       name: RouteDefs.AreaNames.CrossSave,
-      lazyComponent: RouteDefs.createAsyncComponent(() =>
+      lazyComponent: createAsyncComponent(() =>
         import(
           "@Areas/CrossSave/CrossSaveArea" /* webpackChunkName: "CrossSave" */
         )
@@ -49,7 +42,7 @@ export class RouteDefs {
     }),
     Codes: new Area({
       name: RouteDefs.AreaNames.Codes,
-      lazyComponent: RouteDefs.createAsyncComponent(() =>
+      lazyComponent: createAsyncComponent(() =>
         import("@Areas/Codes/CodesArea" /* webpackChunkName: "Codes" */)
       ),
       routes: [
@@ -60,16 +53,16 @@ export class RouteDefs {
     }),
     Destiny: new Area({
       name: RouteDefs.AreaNames.Destiny,
-      lazyComponent: RouteDefs.createAsyncComponent(() =>
+      lazyComponent: createAsyncComponent(() =>
         import("@Areas/Destiny/DestinyArea" /* webpackChunkName: "Destiny" */)
       ),
       routes: [
         (area) => new ActionRoute(area, "index"),
         (area) => new ActionRoute(area, "ProductPage"),
-        (area) => new ActionRoute(area, "Buy", { path: ":version?/:target?" }),
+        (area) => new ActionRoute(area, "Buy"),
         (area) =>
           new ActionRoute(area, "BuyDetail", {
-            path: "Buy/Detail/:skuName",
+            path: "Buy/:productFamilyTag",
             isOverride: true,
           }),
         (area) => new ActionRoute(area, "NewLight"),
@@ -78,13 +71,15 @@ export class RouteDefs {
         (area) => new ActionRoute(area, "SeasonPass"),
         (area) => new ActionRoute(area, "PcRegister"),
         (area) => new ActionRoute(area, "StadiaRegister"),
+        (area) => new ActionRoute(area, "Media"),
+        (area) => new ActionRoute(area, "Reveal"),
         (area) => new ActionRoute(area, "Info", { path: ":eventTag" }),
         (area) => new ActionRoute(area, "Reveal"),
       ],
     }),
     Direct: new Area({
       name: RouteDefs.AreaNames.Direct,
-      lazyComponent: RouteDefs.createAsyncComponent(() =>
+      lazyComponent: createAsyncComponent(() =>
         import("@Areas/Direct/DirectArea")
       ),
       routes: [
@@ -93,7 +88,7 @@ export class RouteDefs {
     }),
     Legal: new Area({
       name: RouteDefs.AreaNames.Legal,
-      lazyComponent: RouteDefs.createAsyncComponent(() =>
+      lazyComponent: createAsyncComponent(() =>
         import("@Areas/Legal/LegalArea" /* webpackChunkName: "Legal" */)
       ),
       routes: [
@@ -107,7 +102,7 @@ export class RouteDefs {
     }),
     PCMigration: new Area({
       name: RouteDefs.AreaNames.PCMigration,
-      lazyComponent: RouteDefs.createAsyncComponent(() =>
+      lazyComponent: createAsyncComponent(() =>
         import(
           "@Areas/PCMigration/PCMigrationArea" /* webpackChunkName: "PCMigration" */
         )
@@ -116,7 +111,7 @@ export class RouteDefs {
     }),
     Seasons: new Area({
       name: RouteDefs.AreaNames.Seasons,
-      lazyComponent: RouteDefs.createAsyncComponent(() =>
+      lazyComponent: createAsyncComponent(() =>
         import("@Areas/Seasons/SeasonsArea" /* webpackChunkName: "Seasons" */)
       ),
       routes: [
@@ -124,15 +119,18 @@ export class RouteDefs {
         (area) => new ActionRoute(area, "SeasonOfTheUndying"),
         (area) => new ActionRoute(area, "SeasonOfDawn"),
         (area) => new ActionRoute(area, "SeasonOfTheWorthy"),
+        (area) => new ActionRoute(area, "SeasonOfArrivals"),
         (area) => new ActionRoute(area, "Progress"),
         (area) => new ActionRoute(area, "PreviousSeason"),
         (area) => new ActionRoute(area, "Events", { path: ":eventTag" }),
+        (area) => new ActionRoute(area, "Contentful"),
+        (area) => new ActionRoute(area, "News"),
       ],
       webmasterSystem: SystemNames.CoreAreaSeasons,
     }),
     UserResearch: new Area({
       name: RouteDefs.AreaNames.UserResearch,
-      lazyComponent: RouteDefs.createAsyncComponent(() =>
+      lazyComponent: createAsyncComponent(() =>
         import(
           "@Areas/UserResearch/UserResearchArea" /* webpackChunkName: "UserResearch" */
         )
@@ -145,7 +143,7 @@ export class RouteDefs {
     }),
     Static: new Area({
       name: RouteDefs.AreaNames.Static,
-      lazyComponent: RouteDefs.createAsyncComponent(() =>
+      lazyComponent: createAsyncComponent(() =>
         import("@Areas/Static/StaticArea" /* webpackChunkName: "Static" */)
       ),
       indexParams: { path: ":page?" },
@@ -153,7 +151,7 @@ export class RouteDefs {
     }),
     Registration: new Area({
       name: RouteDefs.AreaNames.Registration,
-      lazyComponent: RouteDefs.createAsyncComponent(() =>
+      lazyComponent: createAsyncComponent(() =>
         import(
           "@Areas/Registration/RegistrationArea" /* webpackChunkName: "Registration" */
         )
@@ -184,56 +182,5 @@ export class RouteDefs {
     const areaRoutes = allAreas.map((area) => area.areaRoute);
 
     return areaRoutes;
-  }
-
-  public static createAsyncComponent(
-    componentPromise: () => Promise<{ default: React.ComponentType<any> }>
-  ) {
-    const LazyComponent = React.lazy(() => this.retry(componentPromise));
-
-    return (props) => (
-      <React.Suspense fallback={<LoadingFallback />}>
-        <LazyComponent {...props} />
-      </React.Suspense>
-    );
-  }
-
-  // An attempt at fixing chunk load failures
-  // https://dev.to/goenning/how-to-retry-when-react-lazy-fails-mb5
-  private static retry(
-    fn,
-    retriesLeft = 5,
-    interval = 500
-  ): Promise<{ default: React.ComponentType<any> }> {
-    return new Promise((resolve, reject) => {
-      fn()
-        .then(resolve)
-        .catch((error) => {
-          setTimeout(() => {
-            if (retriesLeft === 1) {
-              reject(error);
-
-              return;
-            }
-
-            // Passing on "reject" is the important part
-            this.retry(fn, retriesLeft - 1, interval).then(resolve, reject);
-          }, interval);
-        });
-    });
-  }
-}
-
-class LoadingFallback extends React.PureComponent {
-  public componentDidMount() {
-    AppLoadingDataStore.update({ loading: true });
-  }
-
-  public componentWillUnmount() {
-    AppLoadingDataStore.update({ loading: false });
-  }
-
-  public render() {
-    return <FullPageLoadingBar loading={true} />;
   }
 }

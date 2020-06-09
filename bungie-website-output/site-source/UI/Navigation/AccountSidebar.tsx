@@ -9,10 +9,10 @@ import { Localizer } from "@Global/Localizer";
 import { BasicSize } from "@UI/UIKit/UIKitUtils";
 import { Anchor } from "./Anchor";
 import { GlobalState } from "@Global/DataStore/GlobalStateDataStore";
-import { Icon } from "@UI/UIKit/Controls/Icon";
-import moment from "moment";
 import { EnumerableUtils } from "@Utilities/EnumerableUtils";
 import { ConfigUtils } from "@Utilities/ConfigUtils";
+import moment from "moment";
+import { Icon } from "@UIKit/Controls/Icon";
 
 interface IAccountSidebarProps {
   /** The global state */
@@ -257,7 +257,9 @@ export class AccountSidebar extends React.Component<
 
   private renderNewUserLink() {
     if (
-      !this.props.globalState.coreSettings.systems["RegistrationUI"].enabled
+      !this.props.globalState.coreSettings.systems[
+        "RegistrationBenefitsEnabled"
+      ].enabled
     ) {
       return null;
     }
@@ -284,7 +286,7 @@ export class AccountSidebar extends React.Component<
     }
 
     return (
-      <React.Fragment>
+      <>
         <Anchor
           className={styles.newUserLink}
           url={RouteHelper.RegistrationBenefits()}
@@ -296,7 +298,7 @@ export class AccountSidebar extends React.Component<
           <Icon iconType={"material"} iconName={"keyboard_arrow_right"} />
         </Anchor>
         <div className={styles.divider} />
-      </React.Fragment>
+      </>
     );
   }
 }

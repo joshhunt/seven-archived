@@ -248,9 +248,7 @@ class SeasonOfTheUndyingInternal extends React.Component<
           buttonProps={
             this.state.responsive.mobile && {
               children: Localizer.Seasons.MenuCTALabel,
-              url: RouteHelper.DestinyBuyDetail({
-                skuName: "shadowkeepdigitaldeluxe",
-              }),
+              url: RouteHelper.DestinyBuy(),
               buttonType: "teal",
             }
           }

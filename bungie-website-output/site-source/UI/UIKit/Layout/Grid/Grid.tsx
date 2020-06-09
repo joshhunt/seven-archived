@@ -2,9 +2,9 @@ import classNames from "classnames";
 import React, { DOMAttributes } from "react";
 import styles from "./Grid.module.scss";
 
-type ValidCols = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+export type ValidCols = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
 
-interface IGridColProps extends DOMAttributes<HTMLDivElement> {
+export interface IGridColProps extends DOMAttributes<HTMLDivElement> {
   className?: string;
   /** Number of columns by default. 0 = hidden. */
   cols: ValidCols;
@@ -22,9 +22,11 @@ interface IGridColProps extends DOMAttributes<HTMLDivElement> {
   gridmax?: ValidCols;
 }
 
-interface IGridProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface IGridProps extends React.HTMLAttributes<HTMLDivElement> {
   /** If true, this grid will contain a large text body (like an article). The max-width will be narrower to allow for easier reading. */
   isTextContainer?: boolean;
+  /** If true, this grid will take up the full width of its container instead of including gutters on either side */
+  noPadding?: boolean;
 }
 
 interface DefaultGridProps {
@@ -39,11 +41,18 @@ export class Grid extends React.Component<IGridProps & DefaultGridProps> {
   };
 
   public render() {
-    const { className, isTextContainer, strictMode, ...rest } = this.props;
+    const {
+      className,
+      isTextContainer,
+      strictMode,
+      noPadding,
+      ...rest
+    } = this.props;
 
     const classes = classNames(className || "", styles.grid, {
       [styles.textMode]: isTextContainer,
       [styles.strictMode]: strictMode,
+      [styles.nopadding]: noPadding,
     });
 
     return (

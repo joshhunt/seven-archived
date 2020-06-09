@@ -46,12 +46,14 @@ export interface IMarketingMediaAsset {
   loopingVideoThumbnail: string;
   videoThumbnail: string;
   videoMp4: string;
+  videoTitle: string;
   imageThumbnail: string;
   largeImage: string;
   title: string;
   subtitle: string;
   hyperlink: string;
   fontColor: "white" | "black";
+  textBlock: string;
   buttonLink: string;
   buttonSku: string;
   buttonLabel: string;

@@ -1,17 +1,18 @@
-import { IDestinyProductDefinition } from "./DestinyProductDefinitions";
+import {
+  IDestinyProductDefinition,
+  IDestinyProductFamilyDefinition,
+} from "./DestinyProductDefinitions";
 import { Content, Platform } from "@Platform";
 import {
   IDestinySkuConfig,
   IDestinySkuProduct,
-  IDestinySkuProductStore,
 } from "./DestinySkuConfigDataStore";
 import { DetailedError } from "@CustomErrors";
 import { RouteHelper, IMultiSiteLink } from "@Routes/RouteHelper";
 import { RouteComponentProps } from "react-router";
 import { GlobalStateDataStore } from "@Global/DataStore/GlobalStateDataStore";
 import DestinySkuSelectorModal from "./DestinySkuSelectorModal";
-import { UserUtils, CookieConsentValidity } from "@Utilities/UserUtils";
-import { AnalyticsUtils } from "@Utilities/AnalyticsUtils";
+import { UserUtils } from "@Utilities/UserUtils";
 import { UrlUtils } from "@Utilities/UrlUtils";
 
 export class DestinySkuUtils {
@@ -45,7 +46,8 @@ export class DestinySkuUtils {
 
     return {
       title: contentItem.properties["ProductTitle"],
-      subtitle: contentItem.properties["ProductEdition"],
+      subtitle: contentItem.properties["ProductSubtitle"],
+      edition: contentItem.properties["ProductEdition"],
       buttonLabel: contentItem.properties["ButtonLabel"],
       blurb: contentItem.properties["Blurb"],
       bigblurb: contentItem.properties["BigBlurb"],
@@ -56,7 +58,45 @@ export class DestinySkuUtils {
       disclaimer: contentItem.properties["Disclaimer"],
       finalPrice: contentItem.properties["BungieStoreDiscountFinalPrice"],
       relatedPage: contentItem.properties["LearnMoreUrl"],
+      modalHeaderImage: contentItem.properties["ModalHeaderImage"],
       skuTag: sku,
+    };
+  }
+
+  public static productFamilyDefinitionFromContent(
+    contentItem: Content.ContentItemPublicContract
+  ): IDestinyProductFamilyDefinition {
+    return {
+      /* Listen, I know this first one is a bad idea, but it is technically very safe. Since which product family data to use
+			 is pulled from the firehose by adding the final part of the url to "product-family-" to create the tag, here we just pull
+			 that final part of the url FROM that tag */
+      productFamilyTag: contentItem?.tags[0]?.substring(15),
+      pageTitle: contentItem.properties["PageTitle"],
+      coverTitle: contentItem.properties["CoverTitle"],
+      coverTopText: contentItem.properties["CoverTopText"],
+      tagline: contentItem.properties["Tagline"],
+      imagePath: contentItem.properties["Image"],
+      skuList: contentItem.properties["SkuList"],
+      heroLogo: contentItem.properties["HeroLogo"],
+      heroBackgroundMobile: contentItem.properties["HeroBackgroundMobile"],
+      herobackgroundVideo: contentItem.properties["HeroBackgroundVideo"],
+      heroBackground: contentItem.properties["HeroBackground"],
+      expansionSelectorButtonLabel:
+        contentItem.properties["ExpansionSelectorButtonLabel"],
+      expansionSelectorDisclaimer:
+        contentItem.properties["ExpansionSelectorDisclaimer"],
+      bannerText: contentItem.properties["BannerText"],
+      preorderBanner: contentItem.properties["PreorderBanner"],
+      preorderText: contentItem.properties["PreorderText"],
+      mediaDetailSection: contentItem.properties["MediaDetailSection"],
+      detailSectionTitle: contentItem.properties["DetailSectionTitle"],
+      detailSection: contentItem.properties["DetailSection"],
+      comparisonSectionTitle: contentItem.properties["ComparisonSectionTitle"],
+      comparisonSection: contentItem.properties["ComparisonSection"],
+      collectorsEditionSectionTitle:
+        contentItem.properties["CollectorsEditionSectionTitle"],
+      collectorsEditionSkuTag:
+        contentItem.properties["CollectorsEditionSkuTag"],
     };
   }
 
@@ -68,7 +108,7 @@ export class DestinySkuUtils {
     const allProducts = DestinySkuUtils.getAllProducts(skuConfig);
     const product = allProducts.find((p) => p.key === skuTag);
 
-    return !!product;
+    return product !== undefined;
   }
 
   public static getProduct(skuTag: string, skuConfig: IDestinySkuConfig) {
@@ -211,4 +251,49 @@ export class DestinySkuUtils {
       Platform.ActivityService.LogProductBuyButtonActivity(sku, store, region);
     }
   };
+
+  public static getSkuItemsForProductFamilySkuTagLists(
+    productFamily: IDestinyProductFamilyDefinition,
+    skuItems: IDestinyProductDefinition[]
+  ) {
+    if (!productFamily || !skuItems) {
+      return null;
+    }
+
+    const cachedSkuMapping = {};
+
+    const tryCache = (skuTag) => {
+      if (cachedSkuMapping[skuTag]) {
+        return cachedSkuMapping[skuTag];
+      } else {
+        const sku = skuItems.find((si) => si.skuTag === skuTag);
+        cachedSkuMapping[skuTag] = sku;
+
+        return sku;
+      }
+    };
+
+    /* Sometimes there won't be a comparison section, but we still need skus for the edition selector */
+    const allSkus = productFamily.skuList
+      .map((x) => x.SkuTag)
+      .map((st) => tryCache(st));
+
+    /* Create an array that only includes the skus we want to compare on this page in the order the product family has them */
+    const comparisonSkus = Array.isArray(productFamily.comparisonSection)
+      ? productFamily.comparisonSection
+          .map((x) => x.SkuTag)
+          .map((st) => tryCache(st))
+      : [];
+
+    /* See if this product family has a collector's edition to show */
+    const collectorsEdition = skuItems.find(
+      (sku) => sku.skuTag === productFamily.collectorsEditionSkuTag
+    );
+
+    return {
+      allSkus,
+      comparisonSkus,
+      collectorsEdition,
+    };
+  }
 }

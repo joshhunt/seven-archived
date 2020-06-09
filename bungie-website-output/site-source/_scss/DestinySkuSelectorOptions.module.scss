@@ -1,4 +1,5 @@
 // Need access to ui_base? Find ui_base.scss in the solution explorer, and drag it into this file to automatically import it.
+@import "../../uikit/_base/ui_base";
 
 .options {
   display: flex;
@@ -40,15 +41,12 @@
   width: 100%;
 }
 
-.activeSale {
-  .storeButton {
-    margin-bottom: 0rem;
-  }
-}
-
 .storeButton {
   display: flex;
   margin-bottom: 1rem;
+  flex-direction: column;
+  padding: 1rem;
+  font-weight: bold;
 }
 
 .changeStore {
@@ -57,60 +55,39 @@
 }
 
 .modalSubtitle {
-  font-weight: 600;
-  opacity: 0.5;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  line-height: 1.1rem;
+}
+
+.saleInfo {
+  display: flex;
+  justify-content: space-between;
 }
 
 .endDate {
-  font-size: 0.7rem;
-  margin-bottom: 1rem;
-  margin-top: 0.45rem;
+  font-size: 0.75rem;
+  margin-top: 1rem;
+  margin-bottom: 0.45rem;
+  color: $color-primary-alt-3;
 }
 
-@keyframes sheen {
-  0% {
-    transform: translateX(100%);
-  }
-
-  100% {
-    transform: translateX(-100%);
-  }
+.saleTag {
+  text-align: center;
+  padding: 0.25rem 0.5rem;
+  margin-bottom: 0.45rem;
+  color: black;
+  background: whitesmoke;
+  font-weight: bold;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  align-self: flex-end;
 }
 
-%sheen {
-  content: "";
+.disclaimer {
+  color: $color-primary-alt-3;
   position: absolute;
-  width: 200%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0) 15%,
-    rgba(255, 255, 255, 1) 50%,
-    rgba(255, 255, 255, 0) 85%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  opacity: 1;
-}
-
-.sheen {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  overflow: hidden;
-  mix-blend-mode: overlay;
-
-  &:before {
-    @extend %sheen;
-    animation: sheen 10s infinite ease-out;
-  }
-
-  &:after {
-    @extend %sheen;
-    animation: sheen 10s infinite 5s ease-out;
-  }
+  bottom: 1rem;
+  text-transform: uppercase;
+  font-size: 0.75rem;
 }

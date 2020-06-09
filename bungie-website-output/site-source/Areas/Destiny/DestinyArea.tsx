@@ -9,15 +9,14 @@ import PcRegister from "./PcRegister";
 import { RouteHelper } from "@Routes/RouteHelper";
 import StadiaRegister from "./StadiaRegister";
 import EventsRouter from "@Areas/Seasons/Events/EventsRouter";
+import { AsyncRoute } from "@Routes/AsyncRoute";
 import Reveal from "./Reveal";
 
 class DestinyArea extends React.Component<RouteComponentProps> {
   public render() {
     const indexPath = RouteDefs.Areas.Destiny.getAction().path;
-    const buyFlowIndex = RouteHelper.DestinyBuy().url;
-    const buyFlowUrl = RouteDefs.Areas.Destiny.getAction("Buy").path;
-    const buyFlowDetailUrl = RouteDefs.Areas.Destiny.getAction("BuyDetail")
-      .path;
+    const buyFlowPath = RouteDefs.Areas.Destiny.getAction("Buy").path;
+    const buyDetailPath = RouteDefs.Areas.Destiny.getAction("BuyDetail").path;
     const newLightPath = RouteDefs.Areas.Destiny.getAction("NewLight").path;
     const newLightUrl = RouteDefs.Areas.Destiny.getAction("NewLight").resolve()
       .url;
@@ -33,34 +32,47 @@ class DestinyArea extends React.Component<RouteComponentProps> {
     return (
       <React.Fragment>
         <AnimatedRouter>
-          <Route
+          <AsyncRoute
             path={newLightPath}
-            component={RouteDefs.createAsyncComponent(() =>
+            component={() =>
               import(
                 "@Areas/Destiny/DestinyNewLight" /* webpackChunkName: "Destiny-NewLight" */
               )
-            )}
+            }
           />
-          <Route
+          <AsyncRoute
             path={forsakenPath}
-            component={RouteDefs.createAsyncComponent(() =>
+            component={() =>
               import(
                 "@Areas/Destiny/Forsaken" /* webpackChunkName: "Destiny-Forsaken" */
               )
-            )}
+            }
           />
-          <Route
+          <AsyncRoute
             path={shadowkeepPath}
-            component={RouteDefs.createAsyncComponent(() =>
+            component={() =>
               import(
                 "@Areas/Destiny/DestinyShadowkeep" /* webpackChunkName: "Destiny-Shadowkeep" */
               )
-            )}
+            }
           />
-          <Route path={buyFlowDetailUrl}>
-            <Redirect to={buyFlowIndex} />
-          </Route>
-          <Route path={buyFlowUrl} component={DestinyBuy} />
+          <AsyncRoute
+            exact={true}
+            path={buyFlowPath}
+            component={() =>
+              import(
+                "@Areas/Destiny/Buy/DestinyBuyIndex" /* webpackChunkName: "Destiny-Buy" */
+              )
+            }
+          />
+          <AsyncRoute
+            path={buyDetailPath}
+            component={() =>
+              import(
+                "@Areas/Destiny/Buy/DestinyBuyProductDetail" /* webpackChunkName: "Destiny-BuyDetail" */
+              )
+            }
+          />
           <Route path={seasonPassPath} component={DestinySeasonPass} />
           <Route path={pcRegister} component={PcRegister} />
           <Route path={stadiaRegister} component={StadiaRegister} />

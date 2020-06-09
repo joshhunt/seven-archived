@@ -1,0 +1,251 @@
+@import "../../../UI/UIKit/_Base/ui_base.scss";
+
+.hero {
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  height: 750px;
+
+  .heroContent {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 78vw;
+    max-width: 78rem;
+
+    :global(html.r-mobile) & {
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+    }
+  }
+
+  .heroLogo {
+    height: 12rem;
+    width: 35rem;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin: 26rem 2rem 1rem 0;
+
+    :global(html.r-mobile) & {
+      height: 8rem;
+      width: 80%;
+      margin: 20rem 2rem 1rem 0;
+    }
+
+    :global(html.r-tiny) & {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.banner {
+  background-color: rgba($color-background, 0.4);
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .contentFrame {
+    width: 80vw;
+    max-width: 80rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.25rem;
+
+    :global(.r-medium) & {
+      flex-direction: column;
+    }
+  }
+
+  .bannerText {
+    :global(.r-medium) & {
+      margin: 1rem 0 0;
+    }
+  }
+
+  .platformText {
+    font-size: 11px;
+    color: rgba($color-primary, 0.3);
+    margin-right: 0.5rem;
+
+    :global(.r-mobile) & {
+      margin-left: 0.5rem;
+    }
+  }
+
+  .platforms {
+    display: flex;
+
+    div {
+      background-position: center center;
+      background-repeat: no-repeat;
+      margin: 0 0.5rem;
+      background-size: contain;
+      height: 2rem;
+      width: 5rem;
+      align-self: center;
+    }
+  }
+
+  &.lockedNavPlaceholder {
+    margin-top: 4rem;
+  }
+}
+
+.preorderBanner {
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 10rem;
+  display: flex;
+  align-items: center;
+
+  .preorderText {
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: bold;
+    margin-left: calc(50% + 2rem);
+    max-width: 34rem;
+  }
+}
+
+.borderTop {
+  border-top: 1px solid rgba(245, 245, 245, 0.1);
+  font-weight: bold;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  width: calc(100% - 2rem);
+  margin: 2rem auto 1rem;
+}
+
+.sectionTitle {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  background: whitesmoke;
+  color: $color-text-dark;
+}
+
+.collectorsEditionSection {
+  margin-bottom: 8rem;
+}
+
+.contentFrame {
+  width: 80vw;
+  max-width: 80rem;
+  margin: 0 auto;
+
+  :global(.r-medium) & {
+    width: 100%;
+  }
+}
+
+.flexwrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.stickyNavContent {
+  display: flex;
+  width: 80vw;
+  max-width: 80rem;
+  justify-content: space-between;
+  align-items: center;
+
+  :global(.r-medium) & {
+    width: 100%;
+  }
+
+  .heroLogo {
+    width: 15rem;
+    height: 4rem;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin: 1rem;
+  }
+}
+
+.CTAButton {
+  text-transform: uppercase;
+  margin: 1rem 1rem 1rem 7rem;
+}
+
+.rightNavContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scrollToTop {
+  display: flex;
+  padding: 1rem 1rem 1rem 2rem;
+  align-items: center;
+  font-size: 2rem;
+  cursor: pointer;
+
+  span {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+  }
+}
+
+.editionBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.identifier {
+  color: #a9a9a9;
+}
+
+.playstation {
+  background-image: url("/7/ca/bungie/icons/logos/playstation/ps4_logo.svg");
+}
+
+.xbox {
+  background-image: url("/7/ca/bungie/icons/logos/xbox/xbox_one_logo.svg");
+}
+
+.steam {
+  background-image: url("/7/ca/bungie/icons/logos/steam/steam_logo.svg");
+}
+
+.stadia {
+  background-image: url("/7/ca/bungie/icons/logos/stadia/stadia_logo.svg");
+}
+
+.backButton {
+  position: absolute;
+  top: 6rem;
+  left: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+  font-size: 2rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  padding: 0 1.55rem 0 1rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+
+  .backIcon {
+    margin-right: 0.2rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}

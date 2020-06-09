@@ -3,6 +3,7 @@ import { Route } from "react-router-dom";
 import React from "react";
 import { DetailedError } from "@UI/Errors/CustomErrors";
 import { StringUtils, StringCompareOptions } from "@Utilities/StringUtils";
+import { ValidSystemNames } from "@Global/SystemNames";
 
 export interface IAreaParams {
   /** The name of the area. This defines the path as well. */
@@ -12,7 +13,7 @@ export interface IAreaParams {
   /** The valid routes within the area */
   routes: ((area: string) => ActionRoute)[];
   /** If defined, we will check whether this system is enabled before rendering the area. */
-  webmasterSystem?: string;
+  webmasterSystem?: ValidSystemNames;
   /** If the index path has params, add them here */
   indexParams?: IActionRouteParams;
 }
