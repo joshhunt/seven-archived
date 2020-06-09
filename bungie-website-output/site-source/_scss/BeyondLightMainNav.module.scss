@@ -1,0 +1,255 @@
+@import "../../../ui/uikit/_base/ui_base";
+
+.topNav {
+  $header-background-noscroll: rgba($color-body-background, 0.75);
+
+  $header-background-scroll: rgba($color-body-background, 1);
+
+  position: fixed;
+  display: flex;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 78px;
+  -webkit-transition: top 0.25s, -webkit-transform 0.25s;
+  transition: top 0.25s, -webkit-transform 0.25s;
+  transition: top 0.25s, transform 0.25s;
+  transition: top 0.25s, transform 0.25s, -webkit-transform 0.25s;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(rgba(18, 23, 28, 0.75)),
+    to(transparent)
+  );
+  background: linear-gradient(to bottom, rgba(18, 23, 28, 0.75), transparent);
+
+  &:before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    content: "";
+    transition: 0.5s;
+    opacity: 0;
+    background: $header-background-scroll;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+
+  .headerContents {
+    display: flex;
+    width: 100%;
+    align-content: center;
+    align-items: center;
+    padding: 0 1rem;
+    z-index: 1;
+  }
+
+  .topNavLeft {
+    margin-right: auto;
+    flex: 1 1 33%;
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+    height: 100%;
+
+    :global(.r-medium) & {
+      flex: 0;
+    }
+
+    .mobileNavArrow {
+      display: none;
+
+      :global(.r-medium) & {
+        display: inline-flex;
+        color: #fff;
+        font-size: 2rem;
+      }
+    }
+
+    a {
+      background: url(/7/ca/destiny/products/beyondlight/nav_bng_shield.png)
+        no-repeat left center;
+      background-size: 40px auto;
+      padding-left: 56px;
+      color: $_base-color-schoolbus;
+      display: block;
+      font-size: 0.8rem;
+      height: 100%;
+      text-align: left;
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+
+      :global(.r-medium) & {
+        background-position: right center;
+        padding-left: 0;
+        padding-right: 36px;
+      }
+
+      span {
+        color: #fff;
+        display: block;
+        font-size: 0.7rem;
+
+        &:nth-child(2n + 1) {
+          color: $_base-color-schoolbus;
+        }
+
+        :global(.r-medium) & {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .navTitle {
+    flex: 1 1 auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    height: 100%;
+
+    :global(.r-mobile) & {
+      flex: 2;
+    }
+
+    a {
+      background: url(/7/ca/destiny/products/beyondlight/logo_en.png) no-repeat
+        center center;
+      background-size: contain;
+      text-indent: -9999px;
+      overflow: hidden;
+      display: block;
+      width: 164px;
+
+      :global(.r-medium) & {
+        width: 50%;
+        margin: 1.5rem auto;
+      }
+    }
+  }
+
+  .topNavRight {
+    display: flex;
+    margin-left: auto;
+    flex: 1 1 33%;
+    justify-content: flex-end;
+
+    :global(.r-medium) & {
+      position: absolute;
+      display: block;
+      z-index: 99;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+      top: 78px;
+      right: -100%;
+      width: 100%;
+      height: calc(100vh - 4rem);
+      -webkit-transition: all 0.25s ease 0s;
+      transition: all 0.25s ease 0s;
+      background: #2a333e none repeat scroll 0 0;
+
+      a {
+        margin: 0 1rem;
+      }
+
+      &.open {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        right: 0;
+        width: 100%;
+        background: #12161b none repeat scroll 0 0;
+
+        & + .smallMenu {
+          right: 2rem;
+        }
+      }
+    }
+
+    a {
+      line-height: 50px;
+    }
+
+    a.on {
+      border-bottom: 2px solid rgba(255, 206, 31, 1);
+    }
+
+    a + a {
+      margin-left: 1rem;
+
+      &:after {
+        border: 1px solid #29a7ff;
+      }
+    }
+
+    .mobileToRightNav {
+      display: none;
+
+      :global(.r-medium) & {
+        display: block;
+
+        & + a {
+          text-align: left;
+          font-size: 1.6rem;
+          margin-bottom: 2rem;
+
+          border: none !important;
+        }
+      }
+
+      & > :first-child {
+        font-size: 1.6rem;
+      }
+
+      a {
+        text-align: left !important;
+      }
+
+      li {
+        padding-left: 2rem;
+        text-align: left;
+
+        a {
+          line-height: 2rem;
+        }
+      }
+    }
+  }
+
+  a {
+    display: block;
+    box-sizing: border-box;
+    padding: 0 1vw;
+    text-align: center;
+    color: rgba(245, 245, 245, 0.75);
+
+    &:hover {
+      color: rgba(245, 245, 245, 1);
+    }
+  }
+
+  &.solid,
+  &.navOpen {
+    &:before {
+      opacity: 1;
+    }
+  }
+}
+
+.smallMenu {
+  display: none;
+  z-index: 10;
+  width: 4rem;
+  height: 100%;
+  cursor: pointer;
+  background: url(/img/theme/bungienet/menu.png) 50% no-repeat;
+
+  :global(.r-medium) & {
+    display: inline-flex;
+  }
+}

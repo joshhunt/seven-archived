@@ -1,20 +1,27 @@
 @import "../../../UI/UIKit/_Base/ui_base.scss";
 
 .carousel {
-  height: 30vw;
-  background-size: contain;
+  height: 30rem;
+  background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  :global(html.r-tiny) & {
+    height: 20rem;
+  }
 }
 
 .contents {
   display: flex;
   flex-direction: column;
-  padding-left: 1rem;
-  position: absolute;
-  bottom: 6rem;
-  left: 40rem;
+  padding: 1rem 0 6rem 1rem;
+
+  :global(html.r-tiny) & {
+    padding-bottom: 1rem;
+  }
 }
 
 .contentFrame {
@@ -106,6 +113,10 @@
 .carouselTitle {
   font-size: 2.25rem;
   font-weight: bold;
+
+  :global(html.r-mobile) & {
+    font-size: 2rem;
+  }
 }
 
 .carouselBlurb {

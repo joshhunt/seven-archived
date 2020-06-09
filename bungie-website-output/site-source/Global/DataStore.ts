@@ -1,5 +1,6 @@
 import { DetailedError } from "@CustomErrors";
 import { useState, useEffect } from "react";
+import deepEqual from "deep-equal";
 
 export type DestroyCallback = () => void;
 
@@ -28,10 +29,9 @@ export class DataStoreObserver<TDataType, TInputType = any> {
 
   public update(newData: TDataType) {
     clearTimeout(this.updateTimer);
-    this.updateTimer = setTimeout(
-      () => this.callback(newData),
-      this.updateDelayMs
-    );
+    this.updateTimer = setTimeout(() => {
+      this.callback(newData);
+    }, this.updateDelayMs);
   }
 }
 
@@ -74,9 +74,21 @@ export class DataStore<
    * @param data
    */
   public update(data: Partial<TDataType>) {
-    this._internalState = { ...this._internalState, ...data };
+    const newState = { ...(this._internalState ?? {}), ...data } as TDataType;
+    const equal = deepEqual(newState, this._internalState);
+
+    if (equal) {
+      return false;
+    }
+
+    this._internalState = {
+      ...(this._internalState ?? {}),
+      ...data,
+    } as TDataType;
 
     this.updateObservers(data);
+
+    return true; //
   }
 
   protected get allObservers(): TObserverType[] {

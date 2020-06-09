@@ -224,12 +224,12 @@
 
 .sectionTitle {
   font-size: 3.375rem;
+  text-transform: uppercase;
 
   &.small {
     letter-spacing: 15px;
     font-size: 44px;
     font-weight: 200;
-    text-transform: uppercase;
     text-align: center;
   }
 }
@@ -318,7 +318,6 @@
     overflow: hidden;
     transition: 0.25s;
     box-sizing: border-box;
-    transition: 0.25s;
 
     :global(html.r-mobile) & {
       align-self: center;
@@ -402,4 +401,22 @@
 
 .sectionMedia {
   padding: 4rem 0 8rem;
+}
+
+h2 {
+  font-weight: 600;
+  font-size: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  text-align: left;
+  margin: 2rem 1rem 1rem;
+  width: calc(100% - 2rem);
+
+  &:empty {
+    display: none;
+  }
+
+  & + div:empty {
+    display: none;
+  }
 }

@@ -1,0 +1,256 @@
+@import "../../../../../UI/UIKit/_Base/ui_base";
+
+.wrapper {
+  position: relative;
+  background-size: cover;
+  padding-top: 5rem;
+
+  :global(.r-mobile) & {
+    padding-top: 0;
+  }
+}
+
+.seasonalRanks {
+  display: flex;
+  padding: 3rem 0;
+  width: 90vw;
+  max-width: 1382px;
+
+  :global(.r-mobile) & {
+    width: 100vw;
+    max-width: none;
+    padding-top: 0;
+  }
+}
+
+.seasonalRanksImage {
+  position: relative;
+
+  img {
+    max-width: 100%;
+
+    :global(.r-mobile) & {
+      height: 50vh;
+      width: auto;
+      max-width: none;
+      margin-left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  :global(.r-mobile) & {
+    max-width: 100%;
+    margin: 0;
+  }
+}
+
+.seasonalRanksText {
+  position: relative;
+
+  &:before {
+    position: absolute;
+    content: "";
+    width: 4rem;
+    height: 0.75rem;
+    background: rgba(245, 245, 245, 1);
+    left: 0;
+    top: -5rem;
+  }
+
+  :global(.r-mobile) &:before {
+    display: none;
+  }
+
+  .title {
+    font-size: 6rem;
+    font-weight: bold;
+    line-height: 5.45rem;
+
+    :global(.r-mobile) & {
+      font-size: 3rem;
+    }
+  }
+
+  .desc {
+    padding-top: 0.5rem;
+    font-size: 1.25rem;
+  }
+
+  .ata {
+    padding-top: 1.5rem;
+  }
+}
+
+.rankRow {
+  width: 100%;
+  height: 0;
+  padding-bottom: 21%;
+  margin: 0.5rem 0.5rem 0.5rem 0.3rem;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @for $i from 1 through 10 {
+    &.rankRow#{$i} {
+      background-image: url("/7/ca/destiny/bgs/season11/ranks/ranks_#{$i}.png");
+    }
+  }
+
+  :global(.r-mobile) & {
+    padding-bottom: 41.283%;
+    margin: 0.2rem;
+
+    @for $i from 1 through 20 {
+      &.rankRow#{$i} {
+        background-image: url("/7/ca/destiny/bgs/season11/ranks/mobile_ranks_#{$i}.png");
+      }
+    }
+  }
+}
+
+.carouselText {
+  display: flex;
+  text-align: center;
+  width: 100%;
+  letter-spacing: 5px;
+  font-size: 1rem;
+  justify-content: center;
+  align-items: center;
+
+  &:before {
+    content: "";
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-image: url("/7/ca/destiny/bgs/season11/S11_SeasonalRanks_D2_Icon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-top: 0.4rem;
+  }
+
+  &:last-of-type {
+    margin-bottom: 1rem;
+
+    &:before {
+      margin-top: 0;
+      background-image: url("/7/ca/destiny/bgs/season11/S11_SeasonalRanks_Icon.png");
+    }
+  }
+}
+
+.rewardsContent {
+  & h2 {
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+
+  .rewardsLists {
+    display: flex;
+    margin: 3rem 0;
+    justify-content: center;
+
+    li {
+      list-style-image: url(/7/ca/destiny/bgs/seasons/teal_bullet.png);
+      line-height: 28px;
+      margin-left: 1rem;
+      font-size: 1.2rem;
+      padding-bottom: 0.5rem;
+    }
+
+    :global(.r-mobile) & {
+      flex-direction: column;
+      margin: 0 2rem;
+    }
+
+    & > div {
+      display: flex;
+      flex-direction: column;
+      max-width: 33rem;
+      padding: 3rem 4rem;
+      font-size: $font-size-h6;
+
+      :global(.r-mobile) & {
+        max-width: unset;
+      }
+    }
+  }
+
+  .passRewardsList {
+    background-color: rgba(#027476, 0.7);
+    border-top: 0.5rem solid $color-season-teal;
+    border-bottom: 3px solid $color-season-teal;
+    position: relative;
+  }
+
+  .freeRewardsList {
+    background-color: rgba(#5b5d62, 0.5);
+    border-top: 0.5rem solid #83878f;
+    position: relative;
+  }
+
+  .cornerIcon {
+    height: 5.5rem;
+    width: 5.5rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: contain;
+    background-position: center center;
+  }
+
+  .seasonIcon {
+    height: 2.23rem;
+    width: 2rem;
+    margin-right: 0.5rem;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+}
+
+.smallTitle {
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 4rem;
+
+  :global(.r-mobile) & {
+    padding-bottom: 1rem;
+    font-size: 2.5rem;
+  }
+}
+
+.smallerTitle {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 2rem;
+
+  :global(.r-mobile) & {
+    font-size: 2.5rem;
+  }
+}
+
+.buySection {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.buttonWrapper {
+  margin: 2rem auto 5rem;
+}
+
+.carouselContainer {
+  margin: 0 auto;
+  width: 90vw;
+  max-width: 1382px;
+
+  :global(.r-mobile) & {
+    width: 90%;
+  }
+}

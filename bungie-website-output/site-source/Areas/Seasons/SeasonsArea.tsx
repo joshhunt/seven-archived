@@ -7,11 +7,9 @@ import EventsRouter from "./Events/EventsRouter";
 import SeasonsProgress from "./SeasonsProgress";
 import PreviousSeason from "./PreviousSeason";
 import { SwitchWithErrors } from "@UI/Navigation/SwitchWithErrors";
-import SeasonOfDawn from "./ProductPages/Season9/SeasonOfDawn";
-import { SeasonOfTheUndying } from "./ProductPages/Season8/SeasonOfTheUndying";
 import { ConfigUtils } from "@Utilities/ConfigUtils";
-import SeasonOfTheWorthy from "./ProductPages/Season10/SeasonOfTheWorthy";
 import { SeasonsDefinitions } from "./SeasonsDefinitions";
+import { AsyncRoute } from "@Routes/AsyncRoute";
 
 class SeasonsArea extends React.Component<RouteComponentProps> {
   public render() {
@@ -27,6 +25,39 @@ class SeasonsArea extends React.Component<RouteComponentProps> {
 
     return (
       <SwitchWithErrors>
+        <AsyncRoute
+          path={RouteDefs.Areas.Seasons.getAction("SeasonOfTheUndying").path}
+          component={() =>
+            import(
+              "./ProductPages/Season8/SeasonOfTheUndying" /* webpackChunkName: "SeasonOfTheUndying" */
+            )
+          }
+        />
+        <AsyncRoute
+          path={RouteDefs.Areas.Seasons.getAction("SeasonOfDawn").path}
+          component={() =>
+            import(
+              "./ProductPages/Season9/SeasonOfDawn" /* webpackChunkName: "SeasonOfDawn" */
+            )
+          }
+        />
+        <AsyncRoute
+          path={RouteDefs.Areas.Seasons.getAction("SeasonOfTheWorthy").path}
+          component={() =>
+            import(
+              "./ProductPages/Season10/SeasonOfTheWorthy" /* webpackChunkName: "SeasonOfTheWorthy" */
+            )
+          }
+        />
+        <AsyncRoute
+          path={RouteDefs.Areas.Seasons.getAction("SeasonOfArrivals").path}
+          component={() =>
+            import(
+              "./ProductPages/Season11/Season11" /* webpackChunkName: "Season11" */
+            )
+          }
+        />
+
         <Route
           path={RouteDefs.Areas.Seasons.getAction("Events").path}
           component={EventsRouter}
@@ -34,18 +65,6 @@ class SeasonsArea extends React.Component<RouteComponentProps> {
         <Route
           path={RouteDefs.Areas.Seasons.getAction("PreviousSeason").path}
           component={PreviousSeason}
-        />
-        <Route
-          path={RouteDefs.Areas.Seasons.getAction("SeasonOfTheUndying").path}
-          component={SeasonOfTheUndying}
-        />
-        <Route
-          path={RouteDefs.Areas.Seasons.getAction("SeasonOfDawn").path}
-          component={SeasonOfDawn}
-        />
-        <Route
-          path={RouteDefs.Areas.Seasons.getAction("SeasonOfTheWorthy").path}
-          component={SeasonOfTheWorthy}
         />
         <Route
           path={RouteDefs.Areas.Seasons.getAction("Progress").path}

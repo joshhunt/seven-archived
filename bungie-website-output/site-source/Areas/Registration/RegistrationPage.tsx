@@ -143,7 +143,7 @@ class RegistrationPage extends React.Component<Props, IRegistrationPageState> {
       if (benefitsEnabled) {
         return <Redirect to={RouteHelper.RegistrationBenefits().url} />;
       } else {
-        location.href = RouteHelper.Companion().url;
+        location.href = RouteHelper.Home.url;
       }
     }
 

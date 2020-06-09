@@ -1,0 +1,61 @@
+@import "../../../../../UI/UIKit/_Base/ui_base";
+
+.wrapper {
+  background: $color-background-alt-3;
+  padding-bottom: 6rem;
+}
+
+.FAQ {
+  display: flex;
+  flex-direction: column;
+  line-height: 27px;
+  font-size: 1.25rem;
+
+  .smallTitle {
+    margin: 2rem 0 0;
+    text-align: center;
+    letter-spacing: 3px;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-weight: bold;
+
+    :global(.r-mobile) & {
+      font-size: 2.5rem;
+      text-align: left;
+    }
+  }
+
+  p {
+    line-height: 27px;
+    font-size: 1.25rem;
+  }
+
+  h4 {
+    border-top: 1px solid #027476;
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin: 1rem 0;
+    padding-top: 1rem;
+  }
+
+  a,
+  a:visited {
+    color: rgba($color-season-teal, 0.8);
+
+    &:hover {
+      color: $color-season-teal;
+    }
+  }
+}
+
+.buyButton {
+  margin: 2.5rem auto 0;
+  text-transform: uppercase;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+
+  :global(.r-tiny) & {
+    width: calc(100% - 2rem);
+  }
+}

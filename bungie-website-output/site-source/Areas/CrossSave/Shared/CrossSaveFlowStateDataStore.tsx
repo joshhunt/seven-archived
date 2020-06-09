@@ -87,9 +87,11 @@ class CrossSaveFlowStateDataStoreInternal extends DataStore<
   }
 
   public update(data: Partial<ICrossSaveFlowState>) {
-    super.update(data);
+    const result = super.update(data);
 
     this.updateAckStorage(this._internalState.acknowledged);
+
+    return result;
   }
 
   private isActive(pairingStatus: CrossSave.CrossSavePairingStatus): boolean {

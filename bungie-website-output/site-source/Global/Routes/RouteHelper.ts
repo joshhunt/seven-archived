@@ -86,7 +86,7 @@ export class RouteHelper {
   public static Join = LegacyPathWithQuery(`/User/JoinUp`);
   public static SignOut = LegacyPathWithQuery(
     `/User/SignOut?bru=${encodeURIComponent(
-      location.pathname + location.search
+      window.location.pathname + window.location.search
     )}`
   );
   public static Messages = (iframeMode = false) => {
@@ -185,6 +185,17 @@ export class RouteHelper {
   );
   public static PreviousSeason = BasicReactPath(
     RouteDefs.Areas.Seasons.getAction("PreviousSeason")
+  );
+  public static BeyondLight = (hash?: string) => {
+    const resolved = BasicReactPath(
+      RouteDefs.Areas.Destiny.getAction("BeyondLight")
+    )();
+    resolved.url += hash ? `#${hash}` : "";
+
+    return resolved;
+  };
+  public static BeyondLightMedia = BasicReactPath(
+    RouteDefs.Areas.Destiny.getAction("Media")
   );
 
   //Seasons

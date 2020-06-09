@@ -7,6 +7,7 @@ import YouTube, { Options } from "react-youtube";
 import styles from "./YoutubeModal.module.scss";
 import { createCustomModal, CustomModalProps } from "./CreateCustomModal";
 import { ReactUtils } from "@Utilities/ReactUtils";
+import { Responsive } from "@Boot/Responsive";
 
 interface IYoutubeModalProps extends CustomModalProps {
   /** The ID of a video on YouTube */
@@ -84,7 +85,19 @@ class YoutubeModal extends React.Component<
   }
 }
 
-export default createCustomModal<IYoutubeModalProps>(YoutubeModal, {
-  className: styles.youtubeModal,
-  contentClassName: styles.content,
-});
+export default createCustomModal<IYoutubeModalProps>(
+  YoutubeModal,
+  {
+    className: styles.youtubeModal,
+    contentClassName: styles.content,
+  },
+  (props) => {
+    if (Responsive.state.mobile) {
+      window.location.href = `https://www.youtube.com/watch?v=${props.videoId}`;
+
+      return false;
+    }
+
+    return true;
+  }
+);

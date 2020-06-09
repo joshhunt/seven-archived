@@ -21,6 +21,7 @@ export class RouteDefs {
     Seasons: "Seasons",
     Static: "Static",
     Registration: "Registration",
+    BeyondLight: "BeyondLight",
   };
 
   public static Areas = {
@@ -71,10 +72,14 @@ export class RouteDefs {
         (area) => new ActionRoute(area, "SeasonPass"),
         (area) => new ActionRoute(area, "PcRegister"),
         (area) => new ActionRoute(area, "StadiaRegister"),
-        (area) => new ActionRoute(area, "Media"),
+        (area) => new ActionRoute(area, "BeyondLight"),
+        (area) =>
+          new ActionRoute(area, "Media", {
+            path: "BeyondLight/Media",
+            isOverride: true,
+          }),
         (area) => new ActionRoute(area, "Reveal"),
         (area) => new ActionRoute(area, "Info", { path: ":eventTag" }),
-        (area) => new ActionRoute(area, "Reveal"),
       ],
     }),
     Direct: new Area({

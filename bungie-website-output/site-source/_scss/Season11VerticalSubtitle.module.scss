@@ -1,0 +1,44 @@
+.wrapper {
+  position: absolute;
+  top: 5rem;
+  left: 0;
+  width: 100%;
+  max-width: 1800px;
+  padding: 0 2rem;
+
+  :global(.r-mobile) & {
+    position: relative;
+    top: auto;
+    left: auto;
+    padding: 2rem 0 0;
+  }
+}
+
+.subtitle {
+  position: relative;
+  left: 0;
+  transform: rotateZ(-90deg) translateX(-100%);
+  display: inline-block;
+  transform-origin: 0 0;
+  font-weight: bold;
+  letter-spacing: 0.25rem;
+
+  &:after {
+    content: url("/7/ca/destiny/bgs/season11/destiny_icon_transparent.png");
+    transform: rotateZ(90deg);
+    vertical-align: -0.5rem;
+    display: inline-block;
+    margin-left: 1rem;
+  }
+
+  :global(.r-mobile) & {
+    transform: none;
+    font-weight: normal;
+    opacity: 0.5;
+    font-size: 1.25rem;
+
+    &:after {
+      display: none;
+    }
+  }
+}

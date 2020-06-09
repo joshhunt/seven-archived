@@ -244,7 +244,7 @@ class SeasonOfTheUndyingInternal extends React.Component<
           onChange={this.onMenuLock}
           idToElementsMapping={this.idToElementsMapping}
           stringFinder={(id) => Localizer.Destiny[`Submenu_${id}`]}
-          relockUnder={this.heroRef}
+          relockUnder={this.heroRef.current}
           buttonProps={
             this.state.responsive.mobile && {
               children: Localizer.Seasons.MenuCTALabel,
@@ -632,7 +632,7 @@ const SeasonPassMarker = (props: ISeasonPassMarkerProps) => {
   );
 };
 
-export const SeasonOfTheUndying = withGlobalState(SeasonOfTheUndyingInternal, [
+export default withGlobalState(SeasonOfTheUndyingInternal, [
   "responsive",
   "loggedInUser",
 ]);

@@ -48,6 +48,11 @@ export class ParallaxContainer extends React.Component<ParallaxDomProps> {
             this.props.backgroundOffset,
         };
 
+    this.props.style &&
+      Object.keys(this.props.style).forEach(
+        (k) => (style[k] = this.props.style[k])
+      );
+
     return (
       <div
         className={classNames(styles.parallaxContainer, this.props.className)}

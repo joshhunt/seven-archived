@@ -204,7 +204,7 @@ export class DestinySkuUtils {
 
     if (
       regions.length <= 1 &&
-      regions[0].key === DestinySkuUtils.REGION_GLOBAL_KEY
+      regions[0]?.key === DestinySkuUtils.REGION_GLOBAL_KEY
     ) {
       url = RouteHelper.Sku(sku, store, regions[0].key);
     }

@@ -39,6 +39,7 @@
     background: url("/7/ca/destiny/bgs/reveal/reveal_radial_2_static.png")
       no-repeat center center;
     pointer-events: none;
+    overflow: hidden;
 
     &::before {
       display: block;

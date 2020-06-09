@@ -1,0 +1,46 @@
+.witherhoard {
+  background-size: contain !important;
+
+  :global(.r-mobile) & {
+    transform: rotateZ(35deg) translateX(-2rem) translateY(1rem);
+  }
+}
+
+.wrapper {
+  position: relative;
+  background: url("/7/ca/destiny/bgs/season11/S11_Artfiact_background_desktop.jpg"),
+    url("/7/ca/destiny/bgs/season11/S11_ExoticGear_witherhoard_background_desktop.jpg");
+  background-position: center 22vw, center top;
+  background-repeat: no-repeat, no-repeat;
+  background-size: cover, 100%;
+  padding-top: 3rem;
+  border-top: 8px solid #9ca3aa;
+
+  :global(.r-mobile) & {
+    background-size: cover, 300vw;
+  }
+}
+
+.witherhoardWrapper {
+  position: relative;
+  z-index: 5;
+}
+
+.artifactWrapper {
+  position: relative;
+}
+
+.artifactImage {
+  position: absolute;
+  top: -15rem;
+  width: 100%;
+  height: 50rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.artifactOverlap {
+  padding-bottom: 9rem;
+  margin-bottom: 0;
+}

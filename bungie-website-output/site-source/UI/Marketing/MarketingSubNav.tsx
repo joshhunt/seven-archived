@@ -11,18 +11,16 @@ import { Anchor } from "@UI/Navigation/Anchor";
 import { BasicSize } from "@UI/UIKit/UIKitUtils";
 import { BrowserUtils } from "@Utilities/BrowserUtils";
 
-export type NavPrimaryColors = "taupe" | "ash" | "purple";
-export type NavAccentColors = "gold" | "teal";
+export type NavPrimaryColors = "taupe" | "ash" | "purple" | "darkgray";
+export type NavAccentColors = "gold" | "teal" | "s11green";
 
 interface IMarketingSubNavProps {
-  /** Runs when fixed changes */
-  onChange: (fixed: boolean) => void;
   /** The anchors from which we're creating the menu */
-  idToElementsMapping: { [key: string]: HTMLDivElement };
+  idToElementsMapping: { [key: string]: HTMLElement };
   /** A function that describes how to get the Nav Labels from a given id */
-  stringFinder: (id: string) => any;
+  stringFinder?: (id: string) => any;
   /** Locks under this element */
-  relockUnder: React.RefObject<HTMLDivElement>;
+  relockUnder: HTMLElement;
   /** Props for the call to action button in the subnav, if not provided, there will be no button */
   buttonProps?: ButtonProps;
   /** Classname for menu items (not including the call to action button) */
@@ -31,7 +29,10 @@ interface IMarketingSubNavProps {
   accentColor?: NavAccentColors;
 }
 
-interface DefaultProps {}
+interface DefaultProps {
+  /** Runs when fixed changes */
+  onChange: (fixed: boolean) => void;
+}
 
 type Props = IMarketingSubNavProps & DefaultProps;
 
@@ -48,7 +49,7 @@ interface IMarketingSubNavState {
  * @returns
  */
 export class MarketingSubNav extends React.Component<
-  IMarketingSubNavProps,
+  Props,
   IMarketingSubNavState
 > {
   constructor(props: Props) {
@@ -61,14 +62,18 @@ export class MarketingSubNav extends React.Component<
     };
   }
 
-  public static defaultProps: DefaultProps = {};
+  public static defaultProps: DefaultProps = {
+    onChange: () => {
+      //
+    },
+  };
 
   public componentDidMount() {
     window.addEventListener("scroll", this.setCurrentId);
 
     setTimeout(() => {
-      if (location.hash) {
-        this.scrollToId(location.hash.substr(1));
+      if (window.location.hash) {
+        this.scrollToId(window.location.hash.substr(1));
       }
     }, 1000);
   }
@@ -82,8 +87,8 @@ export class MarketingSubNav extends React.Component<
 
     Object.keys(this.props.idToElementsMapping).forEach((key) => {
       const el = this.props.idToElementsMapping[key];
-      const rect = el.getBoundingClientRect();
-      const center = rect.top;
+      const rect = el?.getBoundingClientRect();
+      const center = rect?.top ?? 0;
       result[key] = center;
     });
 
@@ -189,16 +194,6 @@ export class MarketingSubNav extends React.Component<
       ? "keyboard_arrow_up"
       : "keyboard_arrow_down";
 
-    const {
-      className: buttonPropsClassName,
-      buttonType: buttonPropsType,
-      children: buttonPropsLabel,
-      ...buttonPropsRest
-    } = buttonProps;
-
-    const buttonClasses = classNames(styles.CTAButton, buttonPropsClassName);
-    const buttonType = buttonPropsType || "gold";
-
     return (
       <React.Fragment>
         <MainNavAffix
@@ -212,16 +207,7 @@ export class MarketingSubNav extends React.Component<
             </div>
             <div className={styles.menuItems}>{menuItems}</div>
 
-            {buttonProps && (
-              <Button
-                className={buttonClasses}
-                buttonType={buttonType}
-                {...buttonPropsRest}
-                size={BasicSize.Small}
-              >
-                {buttonPropsLabel}
-              </Button>
-            )}
+            {buttonProps && <SubNavButton buttonProps={buttonProps} />}
           </div>
         </MainNavAffix>
 
@@ -234,3 +220,44 @@ export class MarketingSubNav extends React.Component<
     );
   }
 }
+
+interface SubNavButtonProps {
+  buttonProps: ButtonProps;
+}
+
+const SubNavButton: React.FC<SubNavButtonProps> = (props) => {
+  const {
+    className: buttonPropsClassName,
+    buttonType: buttonPropsType,
+    children: buttonPropsLabel,
+    ...buttonPropsRest
+  } = props.buttonProps;
+
+  const buttonClasses = classNames(styles.CTAButton, buttonPropsClassName);
+  const buttonType = buttonPropsType || "gold";
+
+  return (
+    <Button
+      className={buttonClasses}
+      buttonType={buttonType}
+      {...buttonPropsRest}
+      size={BasicSize.Small}
+    >
+      {buttonPropsLabel}
+    </Button>
+  );
+};
+
+interface SubNavSectionProps extends React.HTMLProps<HTMLDivElement> {
+  id: string;
+  useRef: (ref: HTMLElement, id: string) => void;
+}
+export const SubNavSection: React.FC<SubNavSectionProps> = (props) => {
+  const { id, useRef, ...rest } = props;
+
+  return (
+    <div id={props.id} ref={(ref) => props.useRef(ref, props.id)} {...rest}>
+      {props.children}
+    </div>
+  );
+};

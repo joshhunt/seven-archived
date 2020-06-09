@@ -4,8 +4,8 @@ export type ValidSystemNames = typeof SystemNames[SystemNamesKeys];
 export const SystemNames = {
   Applications: "Applications",
   Authentication: "Authentication",
-  BungieTokens: "BungieTokens",
   BuyFlow: "BuyFlow",
+  BungieTokens: "BungieTokens",
   Clans: "Clans",
   CodeRedemptionReact: "CodeRedemptionReact",
   CoreAreaSeasons: "CoreAreaSeasons",
@@ -51,4 +51,6 @@ export const SystemNames = {
   RegistrationBenefitsEnabled: "RegistrationBenefitsEnabled",
   RegistrationUI: "RegistrationUI",
   RegistrationNavVersion2: "RegistrationNavVersion2",
+  BeyondLightRevealYoutube: "BeyondLightRevealYoutube",
+  BeyondLightGamePlayYoutube: "BeyondLightGamePlayYoutube",
 } as const;

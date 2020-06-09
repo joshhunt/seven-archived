@@ -182,10 +182,10 @@ class DestinySkuSelectorOptionsInternal extends React.Component<
             <div className={styles.modalSubtitle}>{subtitle}</div>
             <div className={styles.modalButtons}>
               {stores.map((store) => {
-                if (
-                  !isDisabled(def.skuTag) ||
-                  (isDisabled(def.skuTag) && !isPlaystation(store))
-                ) {
+                const disabled = isDisabled(def.skuTag);
+                const ps = isPlaystation(store);
+
+                if (!disabled || !ps) {
                   const url = DestinySkuUtils.tryGetGlobalRegionUrl(
                     def.skuTag,
                     store.key,

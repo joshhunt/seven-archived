@@ -1,0 +1,249 @@
+@import "../../../ui/uikit/_base/ui_base";
+
+.content {
+  width: 70%;
+  margin: 0 auto;
+
+  :global(.r-medium) & {
+    width: 100%;
+  }
+}
+
+.buttons {
+  > div {
+    font-weight: 600;
+  }
+
+  > div + div {
+    margin-left: 1rem;
+  }
+
+  .on {
+    background: rgba(245, 245, 245, 0.4);
+  }
+
+  .on::after {
+    border-width: 2px;
+    border-color: #fff;
+  }
+}
+
+.textContent {
+  text-align: left;
+  width: 33%;
+  display: flex;
+  flex-flow: column;
+
+  :global(.r-medium) & {
+    width: 100%;
+  }
+}
+
+h5 {
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  font-weight: 600;
+  white-space: normal;
+
+  :global(.r-medium) & {
+  }
+
+  span {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: 600;
+
+    :global(.r-medium) & {
+    }
+
+    :global(.r-medium) .collectorsEdition & {
+      letter-spacing: 0.7rem;
+      white-space: normal;
+    }
+
+    &:first-child {
+      font-size: 0.75rem;
+
+      :global(.r-medium) .collectorsEdition & {
+        display: none;
+      }
+
+      :global(.r-medium) & {
+      }
+    }
+  }
+}
+
+.imageContainer {
+  flex: 1 1 66%;
+
+  .img {
+    width: 100%;
+    padding-top: 56%;
+    //width: 741px;
+    //height:415px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-size: cover;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+  }
+}
+
+.blurb {
+  font-size: 0.75rem;
+
+  :global(.r-medium) & {
+    font-size: 1rem;
+  }
+
+  > p:first-child {
+    font-size: 0.85rem;
+
+    :global(.r-medium) & {
+      font-size: 1rem;
+    }
+  }
+
+  p {
+    font-size: 0.75rem;
+
+    :global(.r-medium) & {
+      font-size: 1rem;
+    }
+  }
+
+  > li > p {
+    font-size: 0.85rem;
+
+    :global(.r-medium) & {
+      font-size: 1rem;
+    }
+  }
+
+  li {
+    list-style: none;
+
+    li li {
+      position: relative;
+
+      &::before {
+        display: block;
+        position: absolute;
+        content: "";
+        width: 1px;
+        height: 1px;
+        background: $_base-color-snow-alt-3;
+        top: 50%;
+        left: 0;
+      }
+
+      padding-left: 1rem;
+      color: $_base-color-snow-alt-3;
+
+      & + li {
+        margin-top: 0.5rem;
+      }
+    }
+  }
+}
+
+.smallBlurb {
+  font-size: 0.75rem;
+  margin: 1rem 0;
+
+  :global(.r-medium) & {
+    font-size: 1rem;
+  }
+
+  p {
+    font-size: 0.75rem;
+
+    :global(.r-medium) & {
+      font-size: 1rem;
+    }
+  }
+
+  li {
+    list-style: none;
+    position: relative;
+
+    &::before {
+      display: block;
+      position: absolute;
+      content: "";
+      width: 1px;
+      height: 1px;
+      background: $_base-color-snow-alt-3;
+      top: 50%;
+      left: 0;
+    }
+
+    padding-left: 1rem;
+    color: $_base-color-snow-alt-3;
+
+    & + li {
+      margin-top: 0.5rem;
+    }
+  }
+}
+
+.edition {
+  width: 100%;
+  margin: 0 auto;
+  padding: 5rem;
+  margin-top: 5rem;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  display: none;
+
+  :global(.r-medium) & {
+    display: block;
+    padding: 1rem;
+  }
+
+  &.showing {
+    display: flex;
+    flex-flow: row;
+  }
+
+  .imageContainer {
+    margin-right: 3rem;
+
+    :global(.r-medium) & {
+      margin-right: 0;
+    }
+  }
+}
+
+.collectorsEdition {
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 5rem 0;
+  display: flex;
+  flex-flow: row;
+  margin-top: 5rem;
+
+  :global(.r-medium) & {
+    display: block;
+    padding: 1rem;
+  }
+
+  .imageContainer {
+    margin-left: 3rem;
+
+    :global(.r-medium) & {
+      margin-left: 0;
+    }
+  }
+
+  .textContent {
+    justify-content: center;
+
+    a {
+      &:after {
+        border: 1px solid #29a7ff;
+      }
+    }
+  }
+}

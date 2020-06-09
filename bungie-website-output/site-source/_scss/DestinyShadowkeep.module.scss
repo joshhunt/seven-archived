@@ -729,23 +729,19 @@
 .sectionSeasons {
   padding-top: 64vh;
   padding-bottom: 6rem;
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-color: #1d1a15;
 
-  .bg {
-    background-image: url("/7/ca/destiny/bgs/shadowkeep/shadowkeep_season10_desktop_bg.jpg");
-    background-size: cover;
-    background-position: center bottom;
+  :global(html.r-mobile) & {
+    background-size: contain;
+    background-position: center top;
     background-repeat: no-repeat;
-
-    :global(html.r-mobile) & {
-      background-image: url("/7/ca/destiny/bgs/shadowkeep/mobile/shadowkeep_season10_mobile_bg.jpg");
-      background-size: contain;
-      background-position: center top;
-      background-repeat: no-repeat;
-    }
   }
 
   :global(html.r-mobile) & {
-    padding-top: 40rem;
+    padding-top: 30rem;
   }
 
   :global(html.r-tiny) & {
@@ -760,7 +756,7 @@
     line-height: 2rem !important;
   }
 
-  p.mediumBlurb {
+  .mediumBlurb {
     margin-bottom: 2rem;
   }
 

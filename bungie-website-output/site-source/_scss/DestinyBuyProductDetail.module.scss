@@ -2,7 +2,7 @@
 
 .hero {
   background-size: cover;
-  background-position: center bottom;
+  background-position: center top;
   background-repeat: no-repeat;
   display: flex;
   justify-content: center;
@@ -34,11 +34,11 @@
     :global(html.r-mobile) & {
       height: 8rem;
       width: 80%;
-      margin: 20rem 2rem 1rem 0;
+      margin: 5rem 0 1rem 0;
     }
 
     :global(html.r-tiny) & {
-      margin-bottom: 0;
+      margin-bottom: 2rem;
     }
   }
 }
@@ -65,7 +65,7 @@
 
   .bannerText {
     :global(.r-medium) & {
-      margin: 1rem 0 0;
+      margin: 1rem 0 1rem;
     }
   }
 
@@ -99,20 +99,52 @@
 }
 
 .preorderBanner {
-  background-size: contain;
-  background-position: center center;
-  background-repeat: no-repeat;
-  width: 100%;
+  position: relative;
   height: 10rem;
-  display: flex;
-  align-items: center;
 
-  .preorderText {
-    font-size: 12px;
-    line-height: 16px;
-    font-weight: bold;
-    margin-left: calc(50% + 2rem);
-    max-width: 34rem;
+  :global(.r-mobile) & {
+    width: 100vw;
+    overflow: hidden;
+    margin: 2rem auto;
+    height: unset;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.preorderBannerBackground {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+  :global(.r-mobile) & {
+    position: relative;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 200%;
+    margin-left: -2rem;
+  }
+}
+
+.preorderText {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: bold;
+  position: absolute;
+  left: 50%;
+  bottom: 45%;
+
+  :global(.r-mobile) & {
+    position: relative;
+    margin: 0 1rem;
+    width: calc(100% - 2rem);
+    text-align: center;
+    left: 0;
+    bottom: 0;
   }
 }
 
@@ -231,7 +263,7 @@
   align-items: center;
   z-index: 3;
   font-size: 2rem;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.2);
   border-radius: 3px;
   padding: 0 1.55rem 0 1rem;
   text-transform: uppercase;

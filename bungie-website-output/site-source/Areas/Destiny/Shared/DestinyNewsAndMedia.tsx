@@ -38,6 +38,7 @@ interface IDestinyNewsAndMediaProps
   wallpapers: IDestinyNewsMedia[];
   titleIsSmall?: boolean;
   sectionTitleNews?: string;
+  showAll?: boolean;
 }
 
 interface IDestinyNewsAndMediaState {
@@ -134,108 +135,127 @@ class DestinyNewsAndMediaInternal extends React.Component<
           this.props.screenshots ||
           this.props.wallpapers) && (
           <Section className={styles.sectionMedia}>
-            <TextContainer>
-              <SectionTitle isSmall={this.props.titleIsSmall || false}>
-                {Localizer.Shadowkeep.MediaLargeTitle}
-              </SectionTitle>
-              <div className={classNames(styles.tabs, styles.media)}>
-                {this.props.videos && (
-                  <a
-                    className={classNames(styles.mediaTab2, {
-                      [styles.selected]: selectedMediaTab === "videos",
-                    })}
-                    onClick={() => this.selectMediaTab("videos")}
-                  >
-                    {Localizer.Shadowkeep.MediaTab2}
-                  </a>
-                )}
-                {this.props.screenshots && (
-                  <a
-                    className={classNames(styles.mediaTab3, {
-                      [styles.selected]: selectedMediaTab === "screenshots",
-                    })}
-                    onClick={() => this.selectMediaTab("screenshots")}
-                  >
-                    {Localizer.Shadowkeep.MediaTab3}
-                  </a>
-                )}
-                {this.props.lore && (
-                  <a
-                    className={classNames(styles.mediaTab1, {
-                      [styles.selected]: selectedMediaTab === "lore",
-                    })}
-                    onClick={() => this.selectMediaTab("lore")}
-                  >
-                    {Localizer.Shadowkeep.MediaTab1}
-                  </a>
-                )}
-                {this.props.wallpapers && (
-                  <a
-                    className={classNames(styles.mediaTab4, {
-                      [styles.selected]: selectedMediaTab === "wallpapers",
-                    })}
-                    onClick={() => this.selectMediaTab("wallpapers")}
-                  >
-                    {Localizer.Shadowkeep.MediaTab4}
-                  </a>
-                )}
-              </div>
-            </TextContainer>
-            {selectedMediaTab === "videos" && (
-              <div className={classNames(styles.mediaContainer, styles.four)}>
-                {this.props.videos &&
-                  this.props.videos.map((a, i) => (
-                    <div key={i} className={styles.videoContainer}>
+            {!this.props.showAll && (
+              <TextContainer>
+                <SectionTitle isSmall={this.props.titleIsSmall || false}>
+                  {Localizer.Shadowkeep.MediaLargeTitle}
+                </SectionTitle>
+                <div className={classNames(styles.tabs, styles.media)}>
+                  {this.props.videos && (
+                    <a
+                      className={classNames(styles.mediaTab2, {
+                        [styles.selected]: selectedMediaTab === "videos",
+                      })}
+                      onClick={() => this.selectMediaTab("videos")}
+                    >
+                      {Localizer.Shadowkeep.MediaTab2}
+                    </a>
+                  )}
+                  {this.props.screenshots && (
+                    <a
+                      className={classNames(styles.mediaTab3, {
+                        [styles.selected]: selectedMediaTab === "screenshots",
+                      })}
+                      onClick={() => this.selectMediaTab("screenshots")}
+                    >
+                      {Localizer.Shadowkeep.MediaTab3}
+                    </a>
+                  )}
+                  {this.props.lore && (
+                    <a
+                      className={classNames(styles.mediaTab1, {
+                        [styles.selected]: selectedMediaTab === "lore",
+                      })}
+                      onClick={() => this.selectMediaTab("lore")}
+                    >
+                      {Localizer.Shadowkeep.MediaTab1}
+                    </a>
+                  )}
+                  {this.props.wallpapers && (
+                    <a
+                      className={classNames(styles.mediaTab4, {
+                        [styles.selected]: selectedMediaTab === "wallpapers",
+                      })}
+                      onClick={() => this.selectMediaTab("wallpapers")}
+                    >
+                      {Localizer.Shadowkeep.MediaTab4}
+                    </a>
+                  )}
+                </div>
+              </TextContainer>
+            )}
+            {(selectedMediaTab === "videos" || this.props.showAll) && (
+              <>
+                {this.props.showAll && <h2>{Localizer.Beyondlight.videos}</h2>}
+                <div className={classNames(styles.mediaContainer, styles.four)}>
+                  {this.props.videos &&
+                    this.props.videos.map((a, i) => (
+                      <div key={i} className={styles.videoContainer}>
+                        <MediaButton
+                          isVideo={a.isVideo}
+                          onClick={() => this.showMedia(a)}
+                          thumbnail={a.thumbnail}
+                        />
+                        <div className={styles.videoTitle}>{a.title}</div>
+                      </div>
+                    ))}
+                </div>
+              </>
+            )}
+
+            {(selectedMediaTab === "lore" || this.props.showAll) && (
+              <>
+                {this.props.showAll && <h2>{Localizer.Beyondlight.lore}</h2>}
+                <div className={classNames(styles.mediaContainer, styles.four)}>
+                  {this.props.lore &&
+                    this.props.lore.map((a, i) => (
                       <MediaButton
+                        key={i}
+                        isVideo={a.isVideo}
+                        onClick={() => this.goToLink(a.lorePath)}
+                        thumbnail={a.thumbnail}
+                      >
+                        <p className={styles.loreTitle}>{a.title}</p>
+                      </MediaButton>
+                    ))}
+                </div>
+              </>
+            )}
+            {(selectedMediaTab === "screenshots" || this.props.showAll) && (
+              <>
+                {this.props.showAll && (
+                  <h2>{Localizer.Beyondlight.screenshots}</h2>
+                )}
+                <div className={classNames(styles.mediaContainer, styles.four)}>
+                  {this.props.screenshots &&
+                    this.props.screenshots.map((a, i) => (
+                      <MediaButton
+                        key={i}
                         isVideo={a.isVideo}
                         onClick={() => this.showMedia(a)}
                         thumbnail={a.thumbnail}
                       />
-                      <div className={styles.videoTitle}>{a.title}</div>
-                    </div>
-                  ))}
-              </div>
+                    ))}
+                </div>
+              </>
             )}
-            {selectedMediaTab === "lore" && (
-              <div className={classNames(styles.mediaContainer, styles.four)}>
-                {this.props.lore &&
-                  this.props.lore.map((a, i) => (
-                    <MediaButton
-                      key={i}
-                      isVideo={a.isVideo}
-                      onClick={() => this.goToLink(a.lorePath)}
-                      thumbnail={a.thumbnail}
-                    >
-                      <p className={styles.loreTitle}>{a.title}</p>
-                    </MediaButton>
-                  ))}
-              </div>
-            )}
-            {selectedMediaTab === "screenshots" && (
-              <div className={classNames(styles.mediaContainer, styles.four)}>
-                {this.props.screenshots &&
-                  this.props.screenshots.map((a, i) => (
-                    <MediaButton
-                      key={i}
-                      isVideo={a.isVideo}
-                      onClick={() => this.showMedia(a)}
-                      thumbnail={a.thumbnail}
-                    />
-                  ))}
-              </div>
-            )}
-            {selectedMediaTab === "wallpapers" && (
-              <div className={classNames(styles.mediaContainer, styles.four)}>
-                {this.props.wallpapers &&
-                  this.props.wallpapers.map((a, i) => (
-                    <MediaButton
-                      key={i}
-                      isVideo={a.isVideo}
-                      onClick={() => this.openInNewTab(a.detail)}
-                      thumbnail={a.thumbnail}
-                    />
-                  ))}
-              </div>
+            {(selectedMediaTab === "wallpapers" || this.props.showAll) && (
+              <>
+                {this.props.showAll && (
+                  <h2>{Localizer.Beyondlight.Wallpapers4k}</h2>
+                )}
+                <div className={classNames(styles.mediaContainer, styles.four)}>
+                  {this.props.wallpapers &&
+                    this.props.wallpapers.map((a, i) => (
+                      <MediaButton
+                        key={i}
+                        isVideo={a.isVideo}
+                        onClick={() => this.openInNewTab(a.detail)}
+                        thumbnail={a.thumbnail}
+                      />
+                    ))}
+                </div>
+              </>
             )}
           </Section>
         )}

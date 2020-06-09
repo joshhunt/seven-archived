@@ -1,7 +1,7 @@
-import React, { CSSProperties } from "react";
+import React from "react";
 import { Anchor } from "@UI/Navigation/Anchor";
 import { IMultiSiteLink } from "@Routes/RouteHelper";
-import styles from "../../Destiny/Shared/DestinyNewsCallouts.module.scss";
+import styles from "./DestinyNewsCallouts.module.scss";
 
 export interface IDestinyNewsCalloutProps {
   bgPath: string;

@@ -43,7 +43,11 @@ export class BungieHelmet extends React.Component<
   };
 
   public render() {
-    const { title, description, image, children } = this.props;
+    const { title, description, children } = this.props;
+
+    const image = this.props.image
+      ? this.props.image
+      : BungieHelmet.DefaultBoringMetaImage;
 
     let imageWithHostname = image;
     if (image.indexOf(location.hostname) === -1) {

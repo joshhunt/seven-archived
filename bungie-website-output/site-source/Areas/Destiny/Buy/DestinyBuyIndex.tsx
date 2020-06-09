@@ -51,7 +51,7 @@ interface IDestinyBuyIndexState {
  * @param {IDestinyBuyIndexProps} props
  * @returns
  */
-export default class DestinyBuyIndex extends React.Component<
+export default class DestinyBuyInternal extends React.Component<
   IDestinyBuyIndexProps,
   IDestinyBuyIndexState
 > {
@@ -213,6 +213,7 @@ export default class DestinyBuyIndex extends React.Component<
                 size={BasicSize.Small}
                 url={carouselItem.buttonLink}
                 className={styles.button}
+                analyticsId={`carousel-pre-order-500`}
               >
                 {carouselItem.buttonLabel}
               </Button>
@@ -256,7 +257,7 @@ export default class DestinyBuyIndex extends React.Component<
 
           <div className={styles.coverCards}>
             {expansions.map((productFamily, i) => (
-              <GridCol cols={3} medium={6} mobile={6} key={i}>
+              <GridCol cols={3} mobile={6} key={i}>
                 <DestinyBuyCoverCard
                   productFamily={productFamily}
                   key={i}

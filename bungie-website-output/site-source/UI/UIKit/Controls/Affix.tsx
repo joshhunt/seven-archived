@@ -106,16 +106,22 @@ export class Affix extends React.Component<Props, IAffixState> {
   private getElementFromUnknownRef(
     ref: React.RefObject<HTMLElement> | HTMLElement
   ) {
-    return "current" in ref ? ref?.current : ref;
+    return (
+      ((ref ?? {}) as React.RefObject<HTMLElement>).current ??
+      (ref as HTMLElement)
+    );
   }
 
   private updateLocking() {
-    if (this.throttleTimer) {
+    if (this.throttleTimer || !this.ref) {
       return;
     }
 
     const to = this.getElementFromUnknownRef(this.props.to);
     const from = this.getElementFromUnknownRef(this.props.from);
+    if (!to || !from || !this.ref) {
+      return;
+    }
 
     const toBounding = to.getBoundingClientRect();
     const thisBounding = this.ref.getBoundingClientRect();

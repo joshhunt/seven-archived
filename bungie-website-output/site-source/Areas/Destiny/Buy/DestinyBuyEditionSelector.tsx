@@ -121,6 +121,7 @@ export const DestinyBuyEditionSelector: React.FC<IDestinyBuyEditionSelectorProps
             !collectorsEditionSelected &&
             DestinySkuUtils.showStoreModal(selectedSkuTag)
           }
+          analyticsId={selectedSkuTag}
         >
           {props.buttonLabel}
         </Button>

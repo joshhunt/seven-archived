@@ -18,14 +18,23 @@ interface IReactChildrenProps {
   children?: React.ReactNode;
 }
 
+type Interceptor<P> = (
+  props: ChildPropsOnly<P, CustomModalProps> & IReactChildrenProps
+) => boolean | void;
+
 /**
  * Allows other classes to create modals that have preset behaviors. Includes a 'show' static function that accepts only the custom modal's props, but renders the entire modal.
  * The custom modal class only needs to render the stuff INSIDE the modal, not including the modal itself.
  * @param BoundComponent
+ * @param defaultProps
+ * @param showInterceptor Run this before anything else, and return a boolean. If true, the function will continue.
  */
 export const createCustomModal = <P extends CustomModalProps>(
   BoundComponent: React.ComponentClass<ChildPropsOnly<P, ModalProps>>,
-  defaultProps: Partial<ModalProps> = {}
+  defaultProps: Partial<ModalProps> = {},
+  showInterceptor: Interceptor<P> = () => {
+    /**/
+  }
 ) =>
   class extends React.Component<P> {
     private readonly modalRef: React.RefObject<Modal> = React.createRef();
@@ -34,6 +43,11 @@ export const createCustomModal = <P extends CustomModalProps>(
       props: ChildPropsOnly<P, CustomModalProps> & IReactChildrenProps,
       baseModalProps: Partial<ModalProps> = {}
     ) {
+      const continueFunction = showInterceptor?.(props);
+      if (continueFunction === false) {
+        return;
+      }
+
       // Make the reference up here so we have it before we create the children
       let modalRef: React.RefObject<Modal> = React.createRef();
 

@@ -1,0 +1,127 @@
+.gearWrapper {
+  position: relative;
+  height: 100rem;
+  background-image: url("/7/ca/destiny/bgs/season11/S11_GearRewards_Guardians_desktop.jpg");
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  border-top: 4px solid #9ca3aa;
+
+  :global(.r-mobile) & {
+    background-size: 75vh;
+    background-color: rgb(245, 245, 245);
+    height: auto;
+  }
+}
+
+.gearMedia {
+  display: none;
+}
+
+.gear {
+  padding-top: 15rem;
+
+  :global(.r-mobile) & {
+    padding-top: 67vh;
+    color: #4f5053 !important;
+
+    * {
+      color: #4f5053 !important;
+    }
+
+    > div {
+      margin: 0;
+    }
+  }
+}
+
+.gearTitle {
+  position: relative;
+
+  :global(.r-mobile) &:before {
+    display: none;
+  }
+}
+
+.tripleBoxWrapper {
+  background: #eceef1;
+}
+
+.tripleBox {
+  margin-bottom: 0;
+  color: #4f5053;
+  padding: 4rem 0;
+}
+
+.tbTitle {
+  font-style: italic;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.tbDesc {
+  color: #4f5053;
+  text-align: center;
+}
+
+.tbBox {
+  background-size: contain !important;
+  padding: 16rem 1rem 1rem !important;
+  background-position: center 2rem !important;
+
+  :global(.r-mobile) & {
+    padding-top: 62% !important;
+    text-align: center;
+  }
+}
+
+.videoBox {
+  position: relative;
+  width: calc(33.33% - 1.33rem);
+  padding: 16rem 1rem 1rem;
+  background-position: center 2rem;
+  font-size: 1.125rem;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("/7/ca/destiny/bgs/season11/S11_GearRewards_thumbnail_exotic.jpg");
+  margin-right: 2rem;
+  background-size: contain;
+
+  .tbBox {
+    padding-top: 0 !important;
+  }
+
+  :global(.r-mobile) & {
+    width: 100%;
+    padding-top: 62% !important;
+  }
+}
+
+.videoButton {
+  top: 6rem;
+}
+
+.tbDescSpan {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.passIcon,
+.freeIcon {
+  display: inline-block;
+  height: 1.5em;
+  width: 1.5em;
+  margin-right: 0.5em;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.passIcon {
+  background-image: url("/7/ca/destiny/bgs/season11/S11_SeasonalRanks_Icon_grey.png");
+}
+
+.freeIcon {
+  background-image: url("/7/ca/destiny/bgs/season11/S11_SeasonalRanks_D2_icon_Grey.png");
+}

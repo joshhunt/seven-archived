@@ -1,4 +1,5 @@
 import { DataStore, DataStoreObserver } from "@Global/DataStore";
+import { createContext } from "react";
 
 export interface ResponsiveUpdatedData {
   ResponsiveSize: ResponsiveSize;
@@ -189,3 +190,4 @@ class ResponsiveInternal extends DataStore<
 }
 
 export const Responsive = ResponsiveInternal.Instance;
+export const ResponsiveContext = createContext(Responsive.state);

@@ -1,0 +1,113 @@
+.title {
+  position: relative;
+  font-size: 4.25rem;
+  letter-spacing: 3px;
+  font-weight: bold;
+
+  :global(.r-mobile) & {
+    font-size: 2.25rem;
+    padding-top: 1rem;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -6rem;
+    width: 4rem;
+    height: 0.75rem;
+    background: whitesmoke;
+
+    :global(.r-mobile) & {
+      display: none;
+    }
+  }
+}
+
+.media {
+  position: relative;
+  width: 90%;
+  margin: auto;
+  height: 0;
+  padding-bottom: 44.05%;
+
+  :global(.r-mobile) & {
+    padding-bottom: 86%;
+  }
+}
+
+.asset {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  :global(.r-mobile) & {
+    left: -2rem;
+    right: -2rem;
+  }
+}
+
+.overlap {
+  margin-top: -2.25rem;
+  padding-bottom: 2.25rem;
+  margin-bottom: 4rem;
+
+  &.noOverlap {
+    margin-top: 0;
+  }
+
+  :global(.r-mobile) & {
+    margin-top: 0;
+  }
+}
+
+.children {
+  max-width: 36rem;
+  line-height: 1.25;
+  font-size: 1.0625rem;
+  padding-top: 0.75rem;
+  color: rgb(245, 245, 245);
+
+  :global(.r-mobile) & {
+    font-size: 1.6rem;
+    color: rgb(245, 245, 245) !important;
+    line-height: 1.25;
+  }
+}
+
+.fade .children {
+  color: rgba(245, 245, 245, 0.5);
+}
+
+.media:not(.hideLine):before {
+  content: "";
+  position: absolute;
+  height: 6px;
+  width: 8rem;
+  top: -6px;
+  left: 0;
+  background: white;
+
+  :global(.r-mobile) & {
+    display: none;
+  }
+}
+
+.imageAsset {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.small {
+  .title {
+    font-size: 3.04rem;
+  }
+}

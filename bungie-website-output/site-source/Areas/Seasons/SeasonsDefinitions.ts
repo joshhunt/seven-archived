@@ -5,6 +5,7 @@ import { RouteHelper, IMultiSiteLink } from "@Routes/RouteHelper";
 
 abstract class SeasonDefinition {
   public abstract get title(): string;
+  public abstract get toastSubtitle(): string;
   public abstract image: string;
   public abstract productPageLink: IMultiSiteLink;
   public abstract progressPageImage: string;
@@ -12,7 +13,6 @@ abstract class SeasonDefinition {
   public abstract calendarBackgroundImage: string;
   public abstract seasonNumber: number;
   public abstract actionRouteString: string;
-  public abstract get toastSubtitle(): string;
   public abstract smallIcon: string;
 }
 
@@ -74,15 +74,37 @@ class SeasonOfTheWorthy extends SeasonDefinition {
   public smallIcon = "7/ca/destiny/bgs/season10/gear_rasputin_icon.png";
 }
 
+class Season11 extends SeasonDefinition {
+  public static instance = new Season11();
+  public get title(): string {
+    return Localizer.Season11.SeasonOfArrivals;
+  }
+  public image = "/7/ca/destiny/bgs/season11/S11_hero_desktop_bg.jpg";
+  public progressPageImage =
+    "/7/ca/destiny/bgs/season11/season_progress_bg.jpg";
+  public productPageLink = RouteHelper.Season11();
+  public calendarContentItem;
+  public calendarBackgroundImage =
+    "/7/ca/destiny/bgs/season11/S11_Calendar_bg.png";
+  public seasonNumber = 11;
+  public actionRouteString = "SeasonOfArrivals";
+  public get toastSubtitle(): string {
+    return Localizer.Seasons.LearnMoreSeason11;
+  }
+  public smallIcon = "7/ca/destiny/bgs/season11/icon_season11_full.png";
+}
+
 export class SeasonsDefinitions {
-  public static currentSeason = SeasonOfTheWorthy.instance;
+  public static currentSeason = Season11.instance;
   public static previousSeason = SeasonOfDawn.instance;
   public static seasonOfTheWorthy = SeasonOfTheWorthy.instance;
   public static seasonOfDawn = SeasonOfDawn.instance;
   public static seasonOfTheUndying = SeasonOfTheUndying.instance;
+  public static season11 = Season11.instance;
 }
 
 export const SeasonsArray = [
+  Season11.instance,
   SeasonOfTheWorthy.instance,
   SeasonOfDawn.instance,
   SeasonOfTheUndying.instance,

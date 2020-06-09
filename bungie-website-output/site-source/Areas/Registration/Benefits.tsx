@@ -10,20 +10,17 @@ import {
   GlobalStateComponentProps,
 } from "@Global/DataStore/GlobalStateDataStore";
 import { Anchor } from "@UI/Navigation/Anchor";
-import { RouteHelper, IMultiSiteLink } from "@Routes/RouteHelper";
+import { RouteHelper } from "@Routes/RouteHelper";
 import { Button } from "@UI/UIKit/Controls/Button/Button";
-import { EmailValidationStatus, OptInFlags } from "@Enum";
+import { EmailValidationStatus } from "@Enum";
 import { UserUtils } from "@Utilities/UserUtils";
 import { Redirect } from "react-router";
 import { Platform, Content, Contract } from "@Platform";
 import { Localizer } from "@Global/Localizer";
 import { ContentItem } from "./Shared/ContentItem";
-import classNames from "classnames";
 import { Spinner } from "@UI/UIKit/Controls/Spinner";
 import { GridCol, Grid } from "@UI/UIKit/Layout/Grid/Grid";
 import { Icon } from "@UI/UIKit/Controls/Icon";
-import { Checkbox } from "@UI/UIKit/Forms/Checkbox";
-import { Toast } from "@UI/UIKit/Controls/Toast/Toast";
 import { ConvertToPlatformError } from "@ApiIntermediary";
 import { Modal } from "@UI/UIKit/Controls/Modal/Modal";
 import { RewardsBanner } from "./Banners/RewardsBanner";

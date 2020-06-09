@@ -10,7 +10,10 @@ export enum BodyClasses {
   /** Hides Service Alerts (mostly used for product pages) */
   HideServiceAlert = 1 << 1,
 
-  // Follow this format for future entries: https://basarat.gitbooks.io/typescript/content/docs/enums.html#number-enums-as-flags
+  /** Hides Main Top Nav */
+  HideMainNav = 1 << 2,
+
+  // Follow this format for future entries: https://basarat.gitbook.io/typescript/type-system/enums#number-enums-as-flags
 }
 
 /**
@@ -26,6 +29,10 @@ export const SpecialBodyClasses = (classes: BodyClasses) => {
 
   if (classes & BodyClasses.HideServiceAlert) {
     classList.push("hide-service-alert");
+  }
+
+  if (classes & BodyClasses.HideMainNav) {
+    classList.push("hide-main-nav");
   }
 
   return classList.join(" ");

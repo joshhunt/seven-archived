@@ -1,0 +1,212 @@
+.wrapper {
+  position: relative;
+  padding-top: 5rem;
+  background-size: cover;
+  background-position: center;
+  padding-bottom: 14rem;
+
+  :global(.r-mobile) & {
+    padding-top: 0;
+    background: #2a072b !important;
+  }
+}
+
+.daitoBoxWrapper {
+  width: 95vw;
+  max-width: 83.25rem;
+  margin: auto;
+
+  :global(.r-mobile) & {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.daito {
+  background-size: contain;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  padding-top: 31rem;
+
+  :global(.r-mobile) & {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-top: 27rem;
+    height: 27rem;
+    margin-top: 3rem;
+  }
+}
+
+.daitoBox {
+  text-align: center;
+  border: 1px solid #ffb8f4;
+  background: rgba(#522654, 0.75);
+  padding: 3rem 5rem;
+  width: 100%;
+  max-width: 63rem;
+  margin: 0 auto 4rem;
+
+  :global(.r-mobile) & {
+    margin-bottom: 0;
+    padding: 2rem 2.5rem;
+  }
+
+  .line1 {
+    letter-spacing: 2px;
+    font-size: 1.5rem;
+    font-weight: bold;
+
+    :global(.r-mobile) & {
+      font-size: 1.1rem;
+    }
+  }
+
+  .line2 {
+    font-size: 3.5rem;
+    font-weight: bold;
+
+    :global(.r-mobile) & {
+      font-size: 2rem;
+      margin: 0.5rem 0;
+    }
+  }
+
+  .line3 {
+    letter-spacing: 2px;
+    font-size: 1.5rem;
+    font-weight: bold;
+
+    :global(.r-mobile) & {
+      font-size: 1.1rem;
+    }
+  }
+}
+
+.rewards {
+  background-size: cover;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  padding-top: 9rem;
+}
+
+.gradient {
+  :global(.r-mobile) & {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    background: linear-gradient(
+      180deg,
+      rgba(78, 35, 80, 0) 25%,
+      rgba(78, 35, 80, 1) 60%,
+      rgba(78, 35, 80, 1) 100%
+    );
+  }
+}
+
+.rewardsBox {
+  position: relative;
+  display: flex;
+  text-align: center;
+  border: 1px solid #ffb8f4;
+  background: rgba(#522654, 0.75);
+  padding: 3rem;
+
+  :global(.r-mobile) & {
+    flex-direction: column;
+    border: 2px solid #ffb8f4;
+    width: 95vw;
+    margin: auto;
+
+    &:after,
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 27.7%;
+      height: 4px;
+      background: #ffb8f4;
+    }
+
+    &:after {
+      bottom: -6px;
+      right: -2px;
+    }
+
+    &:before {
+      top: -6px;
+      left: -2px;
+    }
+  }
+}
+
+.rewardsLogo {
+  position: relative;
+  flex: 26 0;
+  margin: 0 2rem 0 1rem;
+  background-image: url("/7/ca/destiny/bgs/season11/S11_Dungeon_bungie_rewards_logo.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  :global(.r-mobile) & {
+    z-index: 5;
+    order: 1;
+    width: 100%;
+    height: 6rem;
+    margin: 0;
+    flex: none;
+  }
+}
+
+.rewardsImage {
+  position: relative;
+  width: 26rem;
+
+  .innerImage {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    z-index: 2;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 29.5rem;
+    background-image: url("/7/ca/destiny/bgs/season11/S11_Dungeon_Hoodie.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  :global(.r-mobile) & {
+    height: 13rem;
+    width: 100%;
+    margin-bottom: 3rem;
+    order: 0;
+  }
+}
+
+.rewardsDesc {
+  flex: 25 0;
+  text-align: left;
+  font-size: 1.125rem;
+
+  :global(.r-mobile) & {
+    position: relative;
+    z-index: 10;
+    font-size: 1.5rem;
+    order: 2;
+  }
+}
+
+.prochecyWrapper {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.asterisk {
+  display: inline-block;
+  margin-top: 1rem;
+}

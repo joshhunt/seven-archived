@@ -612,7 +612,7 @@
   }
 
   :global(.r-mobile) & {
-    background-image: url("");
+    background-image: none;
     width: 100%;
     padding: 4rem 0;
   }

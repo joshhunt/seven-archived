@@ -32,6 +32,10 @@
     background-color: #2a2b28;
   }
 
+  &.darkgray {
+    background-color: #252525;
+  }
+
   &.purple {
     background-color: #2f1942;
   }
@@ -82,6 +86,10 @@
       background-color: rgba(156, 140, 110, 0.2);
     }
 
+    &.darkgray {
+      background-color: rgba(#252525, 0.2);
+    }
+
     &.purple {
       background-color: rgba(#2f1942, 0.2);
     }
@@ -121,6 +129,10 @@
 
   &.gold:after {
     background: $color-accent3;
+  }
+
+  &.s11green:after {
+    background: rgba(#24ca44, 0.67);
   }
 
   &:after {

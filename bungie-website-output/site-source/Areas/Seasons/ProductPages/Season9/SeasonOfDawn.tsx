@@ -316,7 +316,7 @@ class SeasonOfDawnInternal extends React.Component<
           onChange={this.onMenuLock}
           idToElementsMapping={this.idToElementsMapping}
           stringFinder={(id) => Localizer.Destiny[`Submenu_${id}`]}
-          relockUnder={this.heroRef}
+          relockUnder={this.heroRef.current}
           buttonProps={{
             children: Localizer.Seasons.MenuCTALabel,
             url: RouteHelper.DestinyBuy(),

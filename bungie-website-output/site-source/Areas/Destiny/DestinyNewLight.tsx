@@ -231,7 +231,7 @@ class DestinyNewLightInternal extends React.Component<
               return Localizer.Destiny[`Submenu_${id}`];
             }
           }}
-          relockUnder={this.heroRef}
+          relockUnder={this.heroRef.current}
           buttonProps={{
             children: Localizer.Destiny.LaunchPadTitle,
             onClick: () =>

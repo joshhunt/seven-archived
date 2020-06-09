@@ -120,7 +120,7 @@ class AppLayout extends React.Component<
       }),
       this.props.history.listen(() => {
         this.onHistoryUpdate();
-        this.checkMetaTags(3000);
+        //this.checkMetaTags(3000);
       }),
       DestinyDefinitions.observe(
         ({ isLoading: definitionsLoading }: ManifestPayload) =>
@@ -152,7 +152,7 @@ class AppLayout extends React.Component<
 
     this.onHistoryUpdate();
 
-    this.checkMetaTags(3000);
+    // this.checkMetaTags(3000);
   }
 
   public componentWillUnmount() {

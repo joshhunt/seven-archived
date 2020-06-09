@@ -1,16 +1,15 @@
-import { RouteComponentProps, Route, Redirect } from "react-router-dom";
+import { Redirect, Route, RouteComponentProps } from "react-router-dom";
 import React from "react";
 import { WithRouteData } from "@UI/Navigation/WithRouteData";
 import { RouteDefs } from "@Routes/RouteDefs";
-import { DestinyBuy } from "./DestinyBuy";
 import { AnimatedRouter } from "@UI/Routing/AnimatedRouter";
 import { DestinySeasonPass } from "./DestinySeasonPass";
 import PcRegister from "./PcRegister";
-import { RouteHelper } from "@Routes/RouteHelper";
 import StadiaRegister from "./StadiaRegister";
 import EventsRouter from "@Areas/Seasons/Events/EventsRouter";
 import { AsyncRoute } from "@Routes/AsyncRoute";
 import Reveal from "./Reveal";
+import BeyondLight from "./BeyondLight/BeyondLight";
 
 class DestinyArea extends React.Component<RouteComponentProps> {
   public render() {
@@ -28,6 +27,10 @@ class DestinyArea extends React.Component<RouteComponentProps> {
       .path;
     const infoFlowUrl = RouteDefs.Areas.Destiny.getAction("Info").path;
     const revealPath = RouteDefs.Areas.Destiny.getAction("Reveal").path;
+    const beyondLightPath = RouteDefs.Areas.Destiny.getAction("BeyondLight")
+      .path;
+    const beyondLightMediaPath = RouteDefs.Areas.Destiny.getAction("Media")
+      .path;
 
     return (
       <React.Fragment>
@@ -52,7 +55,7 @@ class DestinyArea extends React.Component<RouteComponentProps> {
             path={shadowkeepPath}
             component={() =>
               import(
-                "@Areas/Destiny/DestinyShadowkeep" /* webpackChunkName: "Destiny-Shadowkeep" */
+                "@Areas/Destiny/Destiny_Shadowkeep" /* webpackChunkName: "Destiny-Shadowkeep" */
               )
             }
           />
@@ -70,6 +73,22 @@ class DestinyArea extends React.Component<RouteComponentProps> {
             component={() =>
               import(
                 "@Areas/Destiny/Buy/DestinyBuyProductDetail" /* webpackChunkName: "Destiny-BuyDetail" */
+              )
+            }
+          />
+          <AsyncRoute
+            path={beyondLightMediaPath}
+            component={() =>
+              import(
+                "@Areas/Destiny/BeyondLight/Media" /* webpackChunkName: "Destiny-BeyondLightMedia" */
+              )
+            }
+          />
+          <AsyncRoute
+            path={beyondLightPath}
+            component={() =>
+              import(
+                "@Areas/Destiny/BeyondLight/BeyondLight" /* webpackChunkName: "Destiny-BeyondLight" */
               )
             }
           />

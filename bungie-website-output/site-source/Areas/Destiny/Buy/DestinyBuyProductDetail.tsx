@@ -130,6 +130,7 @@ class DestinyBuyProductDetailInternal extends React.Component<
   public componentWillUnmount() {
     DataStore.destroyAll(...this.subs);
     window.removeEventListener("scroll", this.onScroll);
+    DestinyBuyDataStore.update({ selectedSkuIndex: 0 });
   }
 
   private readonly onSkuConfigLoaded = () => {
@@ -396,20 +397,17 @@ class DestinyBuyProductDetailInternal extends React.Component<
                 strictMode={true}
               >
                 {destinyProductFamily.preorderBanner && (
-                  <GridCol cols={12}>
+                  <GridCol cols={12} className={styles.preorderBanner}>
+                    <img
+                      className={styles.preorderBannerBackground}
+                      src={destinyProductFamily.preorderBanner}
+                    />
                     <div
-                      className={styles.preorderBanner}
-                      style={{
-                        backgroundImage: `url(${destinyProductFamily.preorderBanner})`,
+                      className={styles.preorderText}
+                      dangerouslySetInnerHTML={{
+                        __html: destinyProductFamily.preorderText,
                       }}
-                    >
-                      <div
-                        className={styles.preorderText}
-                        dangerouslySetInnerHTML={{
-                          __html: destinyProductFamily.preorderText,
-                        }}
-                      />
-                    </div>
+                    />
                   </GridCol>
                 )}
 
