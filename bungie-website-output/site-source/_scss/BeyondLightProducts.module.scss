@@ -124,7 +124,22 @@ h5 {
 
   li {
     list-style: none;
+    position: relative;
+    padding-left: 1rem;
+    color: $_base-color-snow-alt-3;
 
+    &::before {
+      display: block;
+      position: absolute;
+      content: "";
+      width: 2px;
+      height: 2px;
+      background: $_base-color-snow-alt-3;
+      top: 7px;
+      left: 0;
+    }
+
+    /* not used anymore but could come back */
     li li {
       position: relative;
 
