@@ -3,7 +3,7 @@ name: Scheduled checks
 on:
   push:
   schedule:
-    - cron: "*/1 * * * *"
+    - cron: "*/60 * * * *"
 
 jobs:
   check-run-commit:
