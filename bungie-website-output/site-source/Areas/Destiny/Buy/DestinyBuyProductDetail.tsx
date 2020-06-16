@@ -335,11 +335,11 @@ class DestinyBuyProductDetailInternal extends React.Component<
                     />
                     <div className={styles.rightNavContent}>
                       {allSkus.length > 1 && (
-                        <>
-                          <div
-                            className={styles.scrollToTop}
-                            onClick={this.scrollToTop}
-                          >
+                        <div
+                          className={styles.toTopClickable}
+                          onClick={this.scrollToTop}
+                        >
+                          <div className={styles.scrollToTop}>
                             <Icon iconType={"material"} iconName={icon} />
                           </div>
                           <div className={styles.editionBox}>
@@ -350,7 +350,7 @@ class DestinyBuyProductDetailInternal extends React.Component<
                               {selectedSkuName}
                             </div>
                           </div>
-                        </>
+                        </div>
                       )}
                       <Button
                         className={styles.CTAButton}
