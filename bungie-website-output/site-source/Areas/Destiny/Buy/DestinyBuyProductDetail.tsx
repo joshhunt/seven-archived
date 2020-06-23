@@ -188,7 +188,7 @@ class DestinyBuyProductDetailInternal extends React.Component<
   };
 
   private readonly onScroll = () => {
-    let isVisible = false;
+    let isVisible = true;
     const el = document.getElementById("hero");
     if (el) {
       const rect = el.getBoundingClientRect();

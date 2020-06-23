@@ -602,6 +602,7 @@ export declare namespace DestinyDefinitions {
     SetDiscount = 1024,
     PriceDrop = 2048,
     DailyOffer = 4096,
+    Charity = 8192,
   }
 
   enum DestinySocketCategoryStyle {
@@ -1946,6 +1947,16 @@ export declare namespace DestinyDefinitions {
     infusionCategoryHashes: number[];
 
     progressionLevelRequirementHash: number;
+
+    currentVersion: number;
+
+    versions: DestinyItemVersionDefinition[];
+
+    displayVersionWatermarkIcons: string[];
+  }
+
+  export interface DestinyItemVersionDefinition {
+    powerCapHash: number;
   }
 
   export interface DestinyItemValueBlockDefinition {
@@ -3518,6 +3529,8 @@ export declare namespace DestinyDefinitions {
     rewardSiteHash?: number;
 
     socketOverrides: DestinyVendorItemSocketOverride[];
+
+    unpurchasable?: boolean;
   }
 
   export interface DestinyVendorItemQuantity {
@@ -5118,6 +5131,22 @@ export declare namespace DestinyDefinitions {
     blacklisted: boolean;
   }
 
+  export interface DestinyPowerCapDefinition {
+    powerCap: number;
+
+    boundToRelease: string;
+
+    hash: number;
+
+    index: number;
+
+    contentIdentifier: string;
+
+    redacted: boolean;
+
+    blacklisted: boolean;
+  }
+
   export interface DestinyEntitlementOfferDefinition {
     offerIdentifier: string;
 
@@ -5835,6 +5864,9 @@ export interface DestinyWorldDefinitionsGenerated {
   DestinyPlugSetDefinition: {
     [key: string]: DestinyDefinitions.DestinyPlugSetDefinition;
   };
+  DestinyPowerCapDefinition: {
+    [key: string]: DestinyDefinitions.DestinyPowerCapDefinition;
+  };
   DestinyPresentationNodeDefinition: {
     [key: string]: DestinyDefinitions.DestinyPresentationNodeDefinition;
   };
@@ -5917,6 +5949,9 @@ export interface DestinyWorldDefinitionsGenerated {
   DestinyUnlockEventDefinition: {
     [key: string]: DestinyDefinitions.DestinyUnlockEventDefinition;
   };
+  DestinyUnlockExpressionDefinition: {
+    [key: string]: DestinyDefinitions.DestinyUnlockExpressionDefinition;
+  };
   DestinyUnlockExpressionMappingDefinition: {
     [key: string]: DestinyDefinitions.DestinyUnlockExpressionMappingDefinition;
   };
@@ -5968,6 +6003,7 @@ export interface DestinyWorldDefinitionsTypeMap {
   DestinyTalentGridDefinition: DestinyDefinitions.DestinyTalentGridDefinition;
   DestinyTalentNodeDefinition: DestinyDefinitions.DestinyTalentNodeDefinition;
   DestinyUnlockDefinition: DestinyDefinitions.DestinyUnlockDefinition;
+  DestinyUnlockExpressionDefinition: DestinyDefinitions.DestinyUnlockExpressionDefinition;
   DestinyVendorDefinition: DestinyDefinitions.DestinyVendorDefinition;
   DestinyItemCategoryDefinition: DestinyDefinitions.DestinyItemCategoryDefinition;
   DestinyMilestoneDefinition: DestinyDefinitions.DestinyMilestoneDefinition;
@@ -5987,6 +6023,7 @@ export interface DestinyWorldDefinitionsTypeMap {
   DestinyRecordDefinition: DestinyDefinitions.DestinyRecordDefinition;
   DestinyProgressionLevelRequirementDefinition: DestinyDefinitions.DestinyProgressionLevelRequirementDefinition;
   DestinyPresentationNodeDefinition: DestinyDefinitions.DestinyPresentationNodeDefinition;
+  DestinyPowerCapDefinition: DestinyDefinitions.DestinyPowerCapDefinition;
   DestinyEntitlementOfferDefinition: DestinyDefinitions.DestinyEntitlementOfferDefinition;
   DestinyMetricDefinition: DestinyDefinitions.DestinyMetricDefinition;
   DestinyLoreDefinition: DestinyDefinitions.DestinyLoreDefinition;
@@ -6042,6 +6079,7 @@ export const DestinyWorldDefinitionsTypeNameList = [
   "DestinyTalentGridDefinition",
   "DestinyTalentNodeDefinition",
   "DestinyUnlockDefinition",
+  "DestinyUnlockExpressionDefinition",
   "DestinyVendorDefinition",
   "DestinyItemCategoryDefinition",
   "DestinyMilestoneDefinition",
@@ -6061,6 +6099,7 @@ export const DestinyWorldDefinitionsTypeNameList = [
   "DestinyRecordDefinition",
   "DestinyProgressionLevelRequirementDefinition",
   "DestinyPresentationNodeDefinition",
+  "DestinyPowerCapDefinition",
   "DestinyEntitlementOfferDefinition",
   "DestinyMetricDefinition",
   "DestinyLoreDefinition",

@@ -252,7 +252,11 @@ class SignInTriggers extends React.Component<{
         {useAltVersion && (
           <div className={styles.registrationNavFooter}>
             <Button
-              url={RouteHelper.Registration()}
+              onClick={() => {
+                const signInModal = Modal.signIn(() => {
+                  signInModal.current.close();
+                });
+              }}
               buttonType={"gold"}
               size={BasicSize.Small}
             >

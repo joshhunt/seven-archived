@@ -348,6 +348,26 @@ export declare namespace User {
   }
 
   /**
+	The Bnet Anonymous Identifer has three components. All are required.
+	*/
+  export interface AnonymousIdentifier {
+    /**
+		The Source designates where the identifier was created.  0 is for bnet code, for example.  Other values are reserved for future use.
+		*/
+    Source: number;
+
+    /**
+		The seed value allows a web farm to generate a sequence of identifiers without having to communicate with other instances on that farm.
+		*/
+    Seed: string;
+
+    /**
+		The sequential identifier that forms a unique designation when combined with the Source and the Seed.
+		*/
+    Identifier: string;
+  }
+
+  /**
 	The set of all email subscription/opt-in settings and definitions.
 	*/
   export interface EmailSettings {
@@ -5486,6 +5506,8 @@ export declare namespace Core {
     IsLocalBuild: boolean;
 
     DestinyContentVersionString: string;
+
+    AnonIdentifier: User.AnonymousIdentifier;
   }
 
   export interface GlobalAlert {
@@ -5775,6 +5797,84 @@ export declare namespace Tokens {
     QuantityApplied: number;
 
     ApplyDate?: string;
+  }
+}
+
+export declare namespace Admin {
+  export interface GiftSubscriptionBountyHistoryResponse {
+    requestingUser: User.GeneralUser;
+
+    twitchName: string;
+
+    twitchId: string;
+
+    isTwitchLinked: boolean;
+
+    broadcasterTwitchId?: string;
+
+    selectedRewardPlatform: Globals.BungieMembershipType;
+
+    history: Admin.GiftSubscriptionEntry[];
+
+    unclaimed: Admin.GiftSubscriptionUnclaimed[];
+
+    adminGrantHistory: Admin.GiftSubscriptionAdminEntry[];
+  }
+
+  export interface GiftSubscriptionEntry {
+    giftSubscriptionId: string;
+
+    receiverTwitchId?: string;
+
+    broadcasterTwitchId?: string;
+
+    broadcasterTwitchName: string;
+
+    isCompleted: boolean;
+
+    dateGranted?: string;
+
+    admin: Admin.GiftSubscriptionAdminDetail;
+  }
+
+  export interface GiftSubscriptionAdminDetail {
+    grantReason: string;
+
+    adminMembershipId: string;
+  }
+
+  export interface GiftSubscriptionUnclaimed {
+    receiverTwitchId: string;
+
+    receiverTwitchName: string;
+  }
+
+  export interface GiftSubscriptionAdminEntry {
+    giftSubscriptionId: string;
+
+    dateGranted: string;
+
+    receiverTwitchId?: string;
+
+    broadcasterTwitchId?: string;
+
+    admin: Admin.GiftSubscriptionAdminDetail;
+  }
+
+  export interface GiftSubscriptionGrantResponse {
+    grantedSubscription: Admin.GiftSubscriptionEntry;
+  }
+
+  export interface GiftSubscriptionGrantRequest {
+    giftSubscriptionId?: string;
+
+    grantReason: string;
+
+    grantedToBnetMembershipId: string;
+
+    broadcasterTwitchId?: string;
+
+    receiverTwitchId?: string;
   }
 }
 
@@ -7645,6 +7745,17 @@ export declare namespace Definitions {
     redirectToSaleIndexes: number[];
 
     socketOverrides: Definitions.DestinyVendorItemSocketOverride[];
+
+    /**
+		If true, this item is some sort of dummy sale item that cannot actually be purchased.  It may be a display only item,
+		or some fluff left by a content designer for testing purposes, or something that got disabled because it was
+		a terrible idea.  You get the picture.  We won't know *why* it can't be purchased, only that it can't be.  Sorry.
+		
+		This is also only whether it's unpurchasable as a static property according to game content.  There are other 
+		reasons why an item may or may not be purchasable at runtime, so even if this isn't set to True you should trust
+		the runtime value for this sale item over the static definition if this is unset.
+		*/
+    unpurchasable?: boolean;
   }
 
   /**
@@ -9343,6 +9454,31 @@ export declare namespace Definitions {
 		and you can use this hash to find the appropriate definition.
 		*/
     progressionLevelRequirementHash: number;
+
+    /**
+		The latest version available for this item.
+		*/
+    currentVersion: number;
+
+    /**
+		The list of versions available for this item.
+		*/
+    versions: Definitions.DestinyItemVersionDefinition[];
+
+    /**
+		Icon overlays to denote the item version and power cap status.
+		*/
+    displayVersionWatermarkIcons: string[];
+  }
+
+  /**
+	The version definition currently just holds a reference to the power cap.
+	*/
+  export interface DestinyItemVersionDefinition {
+    /**
+		A reference to the power cap for this item version.
+		*/
+    powerCapHash: number;
   }
 
   /**
@@ -11474,6 +11610,11 @@ export declare namespace Items {
 		The objective progress for the currently-selected metric definition, to be displayed on the emblem nameplate.
 		*/
     metricObjective: Quests.DestinyObjectiveProgress;
+
+    /**
+		The version of this item, used to index into the versions list in the item definition quality block.
+		*/
+    versionNumber?: number;
   }
 
   /**
@@ -12924,8 +13065,6 @@ export declare namespace Vendors {
   export interface DestinyVendorComponent {
     /**
 		If True, you can purchase from the Vendor.
-		
-		Theoretically, Vendors can be restricted from selling items.  In practice, none do that (yet?).
 		*/
     canPurchase: boolean;
 
@@ -23846,6 +23985,49 @@ class AdminServiceInternal {
       undefined,
       clientState
     );
+
+  /**
+   * Allows support staff to see the status of a user's Twitch Gift Subscription bounties, optionally filtered by broadcaster.
+   * @param membershipId The BungieNet Membership ID of the user for whom we want giftsub history.
+   * @param broadcasterTwitchName (optional) if provided, this is the name of the broadcaster for whom results should be filtered, and whose actual current gift subscriptions should be examined.
+   * @param optionalQueryAppend Segment to append to query string. May be null.
+   * @param clientState Object returned to the provided success and error callbacks.
+   */
+  public static GetGiftSubscriptionBountyHistory = (
+    membershipId: string,
+    broadcasterTwitchName: string,
+    optionalQueryAppend?: string,
+    clientState?: any
+  ): Promise<Admin.GiftSubscriptionBountyHistoryResponse> =>
+    ApiIntermediary.doGetRequest(
+      `/Admin/Twitch/GiftSubscriptions/${e(membershipId)}/`,
+      [["broadcasterTwitchName", broadcasterTwitchName]],
+      optionalQueryAppend,
+      "Admin",
+      "GetGiftSubscriptionBountyHistory",
+      undefined,
+      clientState
+    );
+
+  /**
+   * Grants a gift subscription reward to a user.
+   * @param optionalQueryAppend Segment to append to query string. May be null.
+   * @param clientState Object returned to the provided success and error callbacks.
+   */
+  public static GrantGiftSubscription = (
+    input: Admin.GiftSubscriptionGrantRequest,
+    optionalQueryAppend?: string,
+    clientState?: any
+  ): Promise<Admin.GiftSubscriptionGrantResponse> =>
+    ApiIntermediary.doPostRequest(
+      `/Admin/Twitch/GiftSubscriptions/Grant/`,
+      [],
+      optionalQueryAppend,
+      "Admin",
+      "GrantGiftSubscription",
+      input,
+      clientState
+    );
 }
 
 class TokensServiceInternal {
@@ -24780,6 +24962,7 @@ class Destiny2ServiceInternal {
    * @param destinyMembershipId Destiny membership ID of another user. You may be denied.
    * @param characterId The Destiny Character ID of the character for whom we're getting vendor info.
    * @param components A comma separated list of components to return (as strings or numeric values).  See the DestinyComponentType enum for valid components to request.  You must request at least one component to receive results.
+   * @param filter The filter of what vendors and items to return, if any.
    * @param optionalQueryAppend Segment to append to query string. May be null.
    * @param clientState Object returned to the provided success and error callbacks.
    */
@@ -24788,6 +24971,7 @@ class Destiny2ServiceInternal {
     destinyMembershipId: string,
     characterId: string,
     components: Globals.DestinyComponentType[],
+    filter: Globals.DestinyVendorFilter,
     optionalQueryAppend?: string,
     clientState?: any
   ): Promise<Responses.DestinyVendorsResponse> =>
@@ -24795,7 +24979,10 @@ class Destiny2ServiceInternal {
       `/Destiny2/${e(membershipType)}/Profile/${e(
         destinyMembershipId
       )}/Character/${e(characterId)}/Vendors/`,
-      [["components", components]],
+      [
+        ["components", components],
+        ["filter", filter],
+      ],
       optionalQueryAppend,
       "Destiny2",
       "GetVendors",
@@ -26797,3 +26984,9 @@ export class Platform {
   public static CoreService = CoreServiceInternal;
   platformSettings: any;
 }
+
+window["BungieGCPCaptureActivity"] = function (input, onSuccess, onFailure) {
+  ActivityServiceInternal.CaptureActivity(input)
+    .then(onSuccess)
+    .catch(onFailure);
+};

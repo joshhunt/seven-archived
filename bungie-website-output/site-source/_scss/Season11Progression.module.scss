@@ -66,6 +66,11 @@
     font-weight: bold;
     line-height: 5.45rem;
 
+    :global(.r-large) & {
+      font-size: 4rem;
+      line-height: 3.45rem;
+    }
+
     :global(.r-mobile) & {
       font-size: 3rem;
     }

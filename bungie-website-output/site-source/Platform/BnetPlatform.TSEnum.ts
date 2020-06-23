@@ -1189,6 +1189,8 @@ export enum PlatformErrorCodes {
   TwitchCouldNotLoadDestinyInfo = 2502,
   TwitchCouldNotRegisterUser = 2503,
   TwitchCouldNotUnregisterUser = 2504,
+  TwitchRequiresRelinking = 2505,
+  TwitchNoPlatformChosen = 2506,
   TrendingCategoryNotFound = 2600,
   TrendingEntryTypeNotSupported = 2601,
   ReportOffenderNotInPgcr = 2700,
@@ -2106,6 +2108,13 @@ export enum DestinyTalentNodeState {
   Hidden = 13,
 }
 
+/**
+	Indicates the type of filter to apply to Vendor results.
+	*/
+export enum DestinyVendorFilter {
+  None = 0,
+}
+
 export enum VendorItemStatus {
   Success = 0,
   NoInventorySpace = 1,
@@ -2189,6 +2198,10 @@ export enum DestinyVendorItemState {
 		This indicates that the item is a daily offer.
 		*/
   DailyOffer = 4096,
+  /**
+		This indicates that the item is for charity.
+		*/
+  Charity = 8192,
 }
 
 export enum TierType {

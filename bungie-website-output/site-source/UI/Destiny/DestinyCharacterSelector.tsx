@@ -61,7 +61,10 @@ class DestinyCharacterSelector extends React.Component<
         characterOptions.push({
           iconPath: charComponent.emblemPath,
           style: {
-            backgroundColor: `rgb(${charComponent.emblemColor.red}, ${charComponent.emblemColor.blue}, ${charComponent.emblemColor.green})`,
+            backgroundColor:
+              typeof charComponent.emblemColor !== "undefined"
+                ? `rgb(${charComponent.emblemColor.red}, ${charComponent.emblemColor.blue}, ${charComponent.emblemColor.green})`
+                : `none`,
           },
           label: (
             <React.Fragment>

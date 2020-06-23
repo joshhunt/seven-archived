@@ -44,6 +44,7 @@ import {
   IFirehoseDebuggerItemData,
 } from "Platform/FirehoseDebuggerDataStore";
 import { FirehoseDebugger } from "@UI/Content/FirehoseDebugger";
+import { VaultingGlobalAlertsBar } from "@UI/GlobalAlerts/VaultingGlobalAlertsBar";
 
 interface IInternalAppLayoutState {
   currentPath: string;
@@ -330,8 +331,7 @@ class AppLayout extends React.Component<
           )}
 
           <EmailValidationGlobalAlertsBar />
-          <PCMigrationGlobalAlertBar />
-          <BlizzardPCMigrationModalOpener />
+          <VaultingGlobalAlertsBar />
           <MainNavigation
             history={this.props.history}
             currentPath={this.state.currentPath}
