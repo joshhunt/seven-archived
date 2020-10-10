@@ -110,7 +110,7 @@ function run() {
             }
 
             img, video {
-              max-width: calc(50vw - 30px);
+              max-width: calc(50vw - 45px)
               height: auto;
             }
 

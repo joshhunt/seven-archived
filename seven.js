@@ -413,7 +413,7 @@ async function run() {
 
   if (previousIndex === pageResp.data) {
     console.log("Page has not changed, stopping.");
-    // return;
+    return;
   }
 
   await fs.writeFile(indexHtmlPath, pageResp.data);
