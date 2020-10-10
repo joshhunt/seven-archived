@@ -1,3 +1,6 @@
 #hello
 node_modules
 bungie-website-output/crawled-images/_flat
+html-build/*
+!html-build/.gitkeep
+!html-build/files/.gitkeep
