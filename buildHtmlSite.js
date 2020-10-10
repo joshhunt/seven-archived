@@ -2,6 +2,7 @@ const fs = require("fs-extra");
 const path = require("path");
 const mkdirp = require("mkdirp");
 const klaw = require("klaw");
+const axios = require("axios");
 
 const IMAGES_ROOT = path.join(".", "bungie-website-output", "crawled-images");
 const fullImagesPath = path.resolve(IMAGES_ROOT);
@@ -21,43 +22,73 @@ const VIDEOS = [".mp4"];
 const EXTENSIONS = [...IMAGES, ...VIDEOS];
 
 function run() {
-  getFiles().then((files) => {
-    const validFiles = files.filter((f) =>
-      EXTENSIONS.includes(path.extname(f).toLowerCase())
-    );
+  getFiles()
+    .then((files) => {
+      const validFiles = files
+        .filter((f) => EXTENSIONS.includes(path.extname(f).toLowerCase()))
+        .map((file) => {
+          const ext = path.extname(file).toLowerCase();
+          const bungiePath = file
+            .replace(fullImagesPath, "")
+            .replace(/\\/g, "/");
 
-    const srcs = validFiles.map((file) => {
-      const src = file.replace(fullImagesPath, "").replace(/\\/g, "/");
-      const ext = path.extname(src).toLowerCase();
-      const friendlyExt = ext.replace(".", "");
+          return {
+            fsPath: file,
+            bungiePath,
+            bungieUrl: `https://www.bungie.net${bungiePath}`,
+            ext,
+            friendlyExt: ext.replace(".", ""),
+          };
+        });
 
-      let html = "";
+      const promises = validFiles.map((fileObj) => {
+        console.log("checking", fileObj.bungieUrl);
 
-      if (IMAGES.includes(ext)) {
-        html = `<img src="/files${src}" loading=lazy />`;
-      }
+        return imageStillOnBungie(fileObj.bungieUrl).then((isStillHosted) => {
+          return {
+            ...fileObj,
+            htmlSrc: isStillHosted
+              ? fileObj.bungieUrl
+              : `/files${fileObj.bungiePath}`,
+          };
+        });
+      });
 
-      if (VIDEOS.includes(ext)) {
-        html = `<video src="/files${src}" controls loading=lazy></video>`;
-      }
+      return Promise.all(promises);
+    })
+    .then((files) => {
+      const srcs = files.map((file) => {
+        // const src = file.replace(fullImagesPath, "").replace(/\\/g, "/");
+        // const ext = path.extname(src).toLowerCase();
+        // const friendlyExt = ext.replace(".", "");
 
-      return `<div class="file-container ${friendlyExt}">${html} <div class="path">${src}</div></div>`;
-    });
+        let html = "";
 
-    const copyPromises = validFiles.map((file) => {
-      const dest = path.join(
-        ".",
-        "html-build",
-        "files",
-        file.replace(fullImagesPath, "")
-      );
+        if (IMAGES.includes(file.ext)) {
+          html = `<img src="${file.htmlSrc}" loading=lazy />`;
+        }
 
-      const destFolder = path.dirname(dest);
+        if (VIDEOS.includes(file.ext)) {
+          html = `<video src="${file.htmlSrc}" controls loading=lazy></video>`;
+        }
 
-      return mkdirp(destFolder).then(() => fs.copyFile(file, dest));
-    });
+        return `<div class="file-container ${file.friendlyExt}">${html} <div class="path">${file.bungiePath}</div></div>`;
+      });
 
-    const html = `
+      const copyPromises = files.map((file) => {
+        const dest = path.join(
+          ".",
+          "html-build",
+          "files",
+          file.fsPath.replace(fullImagesPath, "")
+        );
+
+        const destFolder = path.dirname(dest);
+
+        return mkdirp(destFolder).then(() => fs.copyFile(file.fsPath, dest));
+      });
+
+      const html = `
         <html>
           <style>
             * { box-sizing: border-box; }
@@ -93,10 +124,24 @@ function run() {
         </html>
       `;
 
-    const htmlPromise = fs.writeFile("./html-build/index.html", html);
+      const htmlPromise = fs.writeFile("./html-build/index.html", html);
 
-    return Promise.all([htmlPromise, ...copyPromises]);
-  });
+      return Promise.all([htmlPromise, ...copyPromises]);
+    });
 }
 
 run();
+
+function imageStillOnBungie(src) {
+  return axios
+    .head(src)
+    .catch((err) => Promise.resolve(null))
+    .then((resp) => {
+      if (!resp || !resp.headers) {
+        return false;
+      }
+
+      const contentLength = resp.headers["content-length"] || "0";
+      return parseInt(contentLength) > 0;
+    });
+}
