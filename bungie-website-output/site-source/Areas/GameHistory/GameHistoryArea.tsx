@@ -1,8 +1,10 @@
+// Created by larobinson, 2020
+// Copyright Bungie, Inc.
 import { RouteDefs } from "@Routes/RouteDefs";
 import { AnimatedRouter } from "@UI/Routing/AnimatedRouter";
 import React from "react";
 import { Route } from "react-router-dom";
-import { GameHistory } from "./GameHistory";
+import GameHistory from "./GameHistory";
 
 interface IGameHistoryRouterProps {}
 

@@ -47,6 +47,7 @@
     z-index: 1;
     display: block;
     flex: 1 1;
+    white-space: nowrap;
 
     :global(.r-medium) & {
       display: flex;

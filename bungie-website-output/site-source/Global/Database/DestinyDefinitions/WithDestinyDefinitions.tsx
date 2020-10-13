@@ -39,7 +39,7 @@ export const withDestinyDefinitions = <
   T extends DestinyDefinitionType,
   P extends D2DatabaseComponentProps<T>
 >(
-  BoundComponent: React.ComponentClass<P>,
+  BoundComponent: React.ComponentClass<P> | React.FC<P>,
   observerProps: IDestinyDefinitionsObserverProps<T>,
   acknowledgeItemDefinitionsAreHeavy = false
 ) => {

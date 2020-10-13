@@ -1,6 +1,7 @@
 // Created by atseng, 2019
 // Copyright Bungie, Inc.
 
+import { EnumUtils } from "@Utilities/EnumUtils";
 import * as React from "react";
 import styles from "./DestinyPlatformSelector.module.scss";
 import { User, CrossSave } from "@Platform";
@@ -81,7 +82,10 @@ export class DestinyPlatformSelector extends React.Component<
             return {
               iconPath: value.iconPath,
               label: `${value.displayName} : ${Localizer.Platforms[bMembershipTypeString]}`,
-              value: value.membershipType.toString(),
+              value: EnumUtils.getStringValue(
+                value.membershipType,
+                BungieMembershipType
+              ),
             };
           });
 

@@ -1,11 +1,9 @@
 import { BeyondLightFlickerWrapper } from "@Areas/Destiny/BeyondLight/BeyondLightFlickerWrapper";
-import { GameHistory } from "@Areas/Destiny/GameHistory/GameHistory";
 import { SwitchWithErrors } from "@UI/Navigation/SwitchWithErrors";
 import { Redirect, Route, RouteComponentProps } from "react-router-dom";
 import React from "react";
 import { WithRouteData } from "@UI/Navigation/WithRouteData";
 import { RouteDefs } from "@Routes/RouteDefs";
-import { AnimatedRouter } from "@UI/Routing/AnimatedRouter";
 import { DestinySeasonPass } from "./DestinySeasonPass";
 import PcRegister from "./PcRegister";
 import StadiaRegister from "./StadiaRegister";
@@ -25,8 +23,6 @@ class DestinyArea extends React.Component<RouteComponentProps> {
     const forsakenPath = RouteDefs.Areas.Destiny.getAction("Forsaken").path;
     const shadowkeepPath = RouteDefs.Areas.Destiny.getAction("Shadowkeep").path;
     const seasonPassPath = RouteDefs.Areas.Destiny.getAction("SeasonPass").path;
-    const gameHistoryPath = RouteDefs.Areas.Destiny.getAction("GameHistory")
-      .path;
     const pcRegister = RouteDefs.Areas.Destiny.getAction("PcRegister").path;
     const stadiaRegister = RouteDefs.Areas.Destiny.getAction("StadiaRegister")
       .path;
@@ -83,7 +79,6 @@ class DestinyArea extends React.Component<RouteComponentProps> {
           <Route path={beyondLightPath} component={BeyondLightFlickerWrapper} />
           <Route path={companionPath} component={Companion} />
           <Route path={seasonPassPath} component={DestinySeasonPass} />
-          <Route path={gameHistoryPath} component={GameHistory} />
           <Route path={pcRegister} component={PcRegister} />
           <Route path={stadiaRegister} component={StadiaRegister} />
           <Route path={infoFlowUrl} component={EventsRouter} />

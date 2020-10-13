@@ -57,9 +57,7 @@ export default class CodesPlatformSelectModal extends React.Component<
     DataStore.destroyAll(...this.subs);
   }
 
-  private readonly updatePlatform = (
-    selectedPlatform: BungieMembershipType
-  ) => {
+  private readonly updatePlatform = (selectedPlatform) => {
     const codesDataStoreCopy = this.state.CodesDataStorePayload;
     codesDataStoreCopy.selectedPlatform = selectedPlatform;
 

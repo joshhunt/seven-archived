@@ -113,7 +113,6 @@ export class BeyondLightNav extends React.Component<
     const { idToElementsMapping } = this.props;
 
     const menuItems = Object.keys(idToElementsMapping).map((id) => {
-      console.log(id);
       const classes = classNames(styles.menuItem, {
         [styles.current]: this.state.currentId === id,
       });

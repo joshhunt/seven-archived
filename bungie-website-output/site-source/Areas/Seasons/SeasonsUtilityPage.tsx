@@ -321,7 +321,7 @@ class SeasonsUtilityPage extends React.Component<
     let targetCharacterId = "";
 
     if (typeof membership === "undefined") {
-      // rare instance of bnet users without destiny membership, show the annoymous view
+      // rare instance of bnet users without destiny membership, show the anonymous view
 
       this.setState({
         isLoading: false,

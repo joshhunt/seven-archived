@@ -5,7 +5,6 @@ import {
   D2DatabaseComponentProps,
   withDestinyDefinitions,
 } from "@Database/DestinyDefinitions/WithDestinyDefinitions";
-import { Localizer } from "@Global/Localizer";
 import { Dropdown, IDropdownOption } from "@UI/UIKit/Forms/Dropdown";
 import * as React from "react";
 
@@ -17,16 +16,7 @@ interface IDestinyActivityModesSelectorProps
     | "DestinyActivityDefinition"
   > {
   className?: string;
-}
-
-// Default props - these will have values set in DestinyActivityModesSelector.defaultProps
-interface DefaultProps {}
-
-export type DestinyActivityModesSelectorProps = IDestinyActivityModesSelectorProps &
-  DefaultProps;
-
-interface IDestinyActivityModesSelectorState {
-  selectedValue: string;
+  onChange?: (value) => void;
 }
 
 /**
@@ -36,43 +26,34 @@ interface IDestinyActivityModesSelectorState {
  * @returns
  */
 class DestinyActivityModesSelector extends React.Component<
-  DestinyActivityModesSelectorProps,
-  IDestinyActivityModesSelectorState
+  IDestinyActivityModesSelectorProps
 > {
-  constructor(props: DestinyActivityModesSelectorProps) {
-    super(props);
-
-    this.state = {
-      selectedValue: Localizer.Profile.All,
-    };
-  }
-
-  public static defaultProps: DefaultProps = {};
-
   private readonly createActivityOptions = () => {
     const parentModes = [];
     const childModes = [];
     const activityOptions: IDropdownOption[] = [];
-    const { selectedValue } = this.state;
 
     const allModes = this.props.definitions.DestinyActivityModeDefinition.all();
+    const allModeHashes = Object.keys(allModes);
 
     // Separate into modes without parents and modes with parents
-    Object.keys(allModes).forEach((hash) => {
+    allModeHashes.forEach((hash) => {
+      const modeDefinition = allModes[hash];
+      const hasParent = modeDefinition.parentHashes?.length >= 1;
+      const parentMode = modeDefinition.parentHashes?.[0];
+      const isNested = hasParent && allModes[parentMode].parentHashes;
+
       if (
-        !allModes[hash].redacted &&
-        allModes[hash].friendlyName !== "social"
+        !modeDefinition.redacted &&
+        modeDefinition.friendlyName !== "social"
       ) {
-        if (
-          allModes[hash].parentHashes?.length >= 1 &&
-          !allModes[allModes[hash].parentHashes[0]].parentHashes
-        ) {
-          childModes.push(allModes[hash]);
+        if (hasParent && !isNested) {
+          childModes.push(modeDefinition);
         } else if (
-          !allModes[hash].parentHashes ||
-          allModes[hash].parentHashes.length === 0
+          !modeDefinition.parentHashes ||
+          modeDefinition.parentHashes.length === 0
         ) {
-          parentModes.push(allModes[hash]);
+          parentModes.push(modeDefinition);
         }
       }
     });
@@ -84,7 +65,7 @@ class DestinyActivityModesSelector extends React.Component<
     // Assemble family
     const familyArray = parentModes.map((parent) => {
       return {
-        rootMode: parent,
+        parentMode: parent,
         childModes: childModes.filter(
           (child) => child.parentHashes[0] === parent.hash
         ),
@@ -94,17 +75,17 @@ class DestinyActivityModesSelector extends React.Component<
     // Create options
     familyArray.forEach((obj) => {
       activityOptions.push({
-        label: obj.rootMode.displayProperties.name,
-        value: obj.rootMode.hash,
-        iconPath: obj.rootMode.displayProperties.icon,
+        label: obj.parentMode.displayProperties.name,
+        value: obj.parentMode.modeType,
+        iconPath: obj.parentMode.displayProperties.icon,
       });
 
       obj.childModes.forEach((child) => {
         activityOptions.push({
           label: child.displayProperties.name,
-          value: child.hash,
+          value: child.modeType,
           iconPath: child.displayProperties.icon,
-          style: { paddingLeft: `${child.hash !== selectedValue && "3rem"}` },
+          style: { paddingLeft: "3rem" },
         });
       });
     });
@@ -117,6 +98,7 @@ class DestinyActivityModesSelector extends React.Component<
       <Dropdown
         options={this.createActivityOptions()}
         className={this.props.className}
+        onChange={(value) => this.props.onChange?.(value)}
       />
     );
   }
