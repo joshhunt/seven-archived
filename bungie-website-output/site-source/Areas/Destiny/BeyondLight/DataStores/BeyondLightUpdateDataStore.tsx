@@ -15,6 +15,7 @@ export interface BeyondLightUpdateDataStorePayload {
   phaseOneB: { [key: string]: string };
   phaseOneC: { [key: string]: string };
   homepage: { [key: string]: string };
+  loaded: boolean;
 }
 
 class _BeyondLightUpdateDataStore extends DataStore<
@@ -30,6 +31,7 @@ class _BeyondLightUpdateDataStore extends DataStore<
     phaseOneB: {},
     phaseOneC: {},
     homepage: {},
+    loaded: false,
   });
 
   /**
@@ -90,6 +92,7 @@ class _BeyondLightUpdateDataStore extends DataStore<
         phaseOneB: transformed[2] ?? {},
         phaseOneC: transformed[3] ?? {},
         homepage: transformed[4] ?? {},
+        loaded: true,
       });
     });
   }

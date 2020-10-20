@@ -176,4 +176,6 @@ class DirectVideoInternal extends React.Component<
   }
 }
 
-export const DirectVideo = withRouter(DirectVideoInternal);
+const DirectVideo = withRouter(DirectVideoInternal);
+
+export default DirectVideo;

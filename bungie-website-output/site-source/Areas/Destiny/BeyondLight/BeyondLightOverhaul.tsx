@@ -2,6 +2,10 @@
 // Copyright Bungie, Inc.
 
 import {
+  BeyondLightPhaseFourDataStore,
+  BeyondLightPhaseFourDataStorePayload,
+} from "@Areas/Destiny/BeyondLight/DataStores/BeyondLightPhaseFourDataStore";
+import {
   BeyondLightPhaseThreeDataStore,
   BeyondLightPhaseThreeDataStorePayload,
 } from "@Areas/Destiny/BeyondLight/DataStores/BeyondLightPhaseThreeDataStore";
@@ -11,6 +15,7 @@ import {
 } from "@Areas/Destiny/BeyondLight/DataStores/BeyondLightPhaseTwoDataStore";
 import { IResponsiveState, Responsive } from "@Boot/Responsive";
 import { DestroyCallback } from "@Global/DataStore";
+import { Spinner } from "@UIKit/Controls/Spinner";
 import * as React from "react";
 import styles from "./BeyondLightOverhaul.module.scss";
 import {
@@ -38,6 +43,7 @@ interface IBeyondLightPropsOverhaul
   extends GlobalStateComponentProps<"responsive"> {
   phaseThreeActive?: boolean;
   phaseTwoActive?: boolean;
+  phaseFourActive?: boolean;
 }
 
 // Default props - these will have values set in BeyondLight.defaultProps
@@ -50,6 +56,7 @@ interface IBeyondLightState {
   BeyondLightUpdateData: BeyondLightUpdateDataStorePayload;
   BeyondLightPhaseTwoData: BeyondLightPhaseTwoDataStorePayload;
   BeyondLightPhaseThreeData: BeyondLightPhaseThreeDataStorePayload;
+  BeyondLightPhaseFourData: BeyondLightPhaseFourDataStorePayload;
   responsive: IResponsiveState;
 }
 
@@ -77,6 +84,7 @@ class BeyondLightOverhaul extends React.Component<
       BeyondLightUpdateData: BeyondLightUpdateDataStore.state,
       BeyondLightPhaseTwoData: BeyondLightPhaseTwoDataStore.state,
       BeyondLightPhaseThreeData: BeyondLightPhaseThreeDataStore.state,
+      BeyondLightPhaseFourData: BeyondLightPhaseFourDataStore.state,
     };
   }
 
@@ -93,6 +101,9 @@ class BeyondLightOverhaul extends React.Component<
       ),
       BeyondLightPhaseThreeDataStore.observe((BeyondLightPhaseThreeData) =>
         this.setState({ BeyondLightPhaseThreeData })
+      ),
+      BeyondLightPhaseFourDataStore.observe((BeyondLightPhaseFourData) =>
+        this.setState({ BeyondLightPhaseFourData })
       )
     );
   }
@@ -119,11 +130,17 @@ class BeyondLightOverhaul extends React.Component<
 
     const { phaseThree } = this.state.BeyondLightPhaseThreeData;
 
+    const { phaseFour } = this.state.BeyondLightPhaseFourData;
+
     const { medium, mobile } = this.state.responsive;
 
-    const { phaseOne, homepage } = this.state.BeyondLightUpdateData;
+    const { homepage } = this.state.BeyondLightUpdateData;
 
-    if (phaseOne === null) {
+    if (!this.state.BeyondLightUpdateData.loaded) {
+      return <Spinner />;
+    }
+
+    if (homepage === null) {
       return null;
     }
 
@@ -139,11 +156,9 @@ class BeyondLightOverhaul extends React.Component<
           }.png`}
           videoPlayButtonText={homepage.videoPlayButtonText}
           videoPlayButtonType={"white"}
-          youTubeVideoId={!mobile && phaseThree.heroButtonOneLink}
-          buttonOneLink={RouteHelper.BeyondLightPhases("gear")}
-          buttonOneText={
-            phaseThreeActive ? phaseThree.exploreButton : phaseTwo.exploreButton
-          }
+          youTubeVideoId={!mobile && phaseFour.heroTrailerButtonVideoId}
+          buttonOneLink={RouteHelper.BeyondLightPhases("story")}
+          buttonOneText={phaseFour?.exploreButton}
           buttonOneType={"white"}
           buttonTwoLink={RouteHelper.DestinyBuyDetail({
             productFamilyTag: "beyondlight",
@@ -213,7 +228,11 @@ class BeyondLightOverhaul extends React.Component<
               <h2>{homepage.sectionThreeHeading}</h2>
               <span className={styles.shortBorder} />
               <p>{homepage.sectionThreeBodyCopy}</p>
-              <Button buttonType={"white"} url={homepage.exploreButtonLink}>
+              <Button
+                caps
+                buttonType={"white"}
+                url={homepage.exploreButtonLink}
+              >
                 {homepage.exploreButtonText}
               </Button>
             </div>
@@ -240,7 +259,7 @@ class BeyondLightOverhaul extends React.Component<
               <p>{beyondlightLoc.europaAwaitsDesc}</p>
             </div>
 
-            {!phaseTwoActive ? (
+            {!phaseTwoActive && phaseTwo.exploreButton ? (
               <div className={styles.screenshotWrapper}>
                 <ScreenShotBlock
                   screenshotPath={
@@ -266,6 +285,7 @@ class BeyondLightOverhaul extends React.Component<
               </div>
             ) : (
               <Button
+                caps
                 buttonType={"white"}
                 url={RouteHelper.BeyondLightPhases("europa")}
               >
@@ -295,7 +315,7 @@ class BeyondLightOverhaul extends React.Component<
               <p>{homepage.sectionSixBodyCopy}</p>
             </div>
 
-            {!phaseThreeActive ? (
+            {!phaseThreeActive && phaseThree.exploreButton ? (
               <div className={styles.screenshotWrapper}>
                 <ScreenShotBlock
                   screenshotPath={homepage.sectionFiveScreenshot1}
@@ -315,6 +335,7 @@ class BeyondLightOverhaul extends React.Component<
               </div>
             ) : (
               <Button
+                caps
                 buttonType={"white"}
                 url={RouteHelper.BeyondLightPhases("gear")}
               >

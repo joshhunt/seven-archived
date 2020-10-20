@@ -2,6 +2,8 @@
 // Copyright Bungie, Inc.
 
 import BeyondLightMedia from "@Areas/Destiny/BeyondLight/BeyondLightMedia";
+import BeyondLightPhaseFour from "@Areas/Destiny/BeyondLight/BeyondLightPhaseFour";
+import { BeyondLightPhaseFourDataStore } from "@Areas/Destiny/BeyondLight/DataStores/BeyondLightPhaseFourDataStore";
 import { BeyondLightUpdateDataStore } from "@Areas/Destiny/BeyondLight/DataStores/BeyondLightUpdateDataStore";
 import { BeyondLightPhaseTwoDataStore } from "@Areas/Destiny/BeyondLight/DataStores/BeyondLightPhaseTwoDataStore";
 import { BeyondLightPhaseThreeDataStore } from "@Areas/Destiny/BeyondLight/DataStores/BeyondLightPhaseThreeDataStore";
@@ -32,6 +34,7 @@ interface IBeyondLightState {
   phaseOneActive: boolean;
   phaseTwoActive: boolean;
   phaseThreeActive: boolean;
+  phaseFourActive: boolean;
 }
 
 enum blockType {
@@ -53,6 +56,7 @@ class BeyondLight extends React.Component<BeyondLightProps, IBeyondLightState> {
       phaseOneActive: BeyondLightUpdateDataStore.state.phaseOneActive,
       phaseTwoActive: BeyondLightPhaseTwoDataStore.state.phaseTwoActive,
       phaseThreeActive: BeyondLightPhaseThreeDataStore.state.phaseThreeActive,
+      phaseFourActive: BeyondLightPhaseFourDataStore.state.phaseFourActive,
       transparentMode: true,
     };
   }
@@ -74,12 +78,19 @@ class BeyondLight extends React.Component<BeyondLightProps, IBeyondLightState> {
       })
     );
 
-    ConfigUtils.SystemStatus("BeyondLightPhase3") &&
-      BeyondLightPhaseThreeDataStore.initialize();
-    ConfigUtils.SystemStatus("BeyondLightPhase3") &&
-      BeyondLightPhaseThreeDataStore.observe((d) =>
+    BeyondLightPhaseThreeDataStore.initialize();
+    BeyondLightPhaseThreeDataStore.observe((d) =>
+      this.setState({
+        phaseThreeActive: d.phaseThreeActive,
+      })
+    );
+
+    ConfigUtils.SystemStatus("BeyondLightPhase4") &&
+      BeyondLightPhaseFourDataStore.initialize();
+    ConfigUtils.SystemStatus("BeyondLightPhase4") &&
+      BeyondLightPhaseFourDataStore.observe((d) =>
         this.setState({
-          phaseThreeActive: d.phaseThreeActive,
+          phaseThreeActive: d.phaseFourActive,
         })
       );
   }
@@ -89,9 +100,11 @@ class BeyondLight extends React.Component<BeyondLightProps, IBeyondLightState> {
       .path;
     const beyondLightPhase2 = RouteDefs.Areas.Destiny.getAction("PhaseTwo")
       .path;
-    const beyondLightPhase3 =
-      ConfigUtils.SystemStatus("BeyondLightPhase3") &&
-      RouteDefs.Areas.Destiny.getAction("PhaseThree").path;
+    const beyondLightPhase3 = RouteDefs.Areas.Destiny.getAction("PhaseThree")
+      .path;
+    const beyondLightPhase4 =
+      ConfigUtils.SystemStatus("BeyondLightPhase4") &&
+      RouteDefs.Areas.Destiny.getAction("BeyondLightPhaseFour").path;
     const beyondLightPath = RouteDefs.Areas.Destiny.getAction("BeyondLight")
       .path;
     const beyondLightMediaPath = RouteDefs.Areas.Destiny.getAction("Media")
@@ -99,6 +112,7 @@ class BeyondLight extends React.Component<BeyondLightProps, IBeyondLightState> {
     const phaseOneActive = this.state.phaseOneActive;
     const phaseTwoActive = this.state.phaseTwoActive;
     const phaseThreeActive = this.state.phaseThreeActive;
+    const phaseFourActive = this.state.phaseFourActive;
 
     return (
       <React.Fragment>
@@ -108,6 +122,7 @@ class BeyondLight extends React.Component<BeyondLightProps, IBeyondLightState> {
               <BeyondLightOverhaul
                 phaseTwoActive={phaseTwoActive}
                 phaseThreeActive={phaseThreeActive}
+                phaseFourActive={phaseFourActive}
               />
             ) : (
               <BeyondLightOriginal />
@@ -120,6 +135,9 @@ class BeyondLight extends React.Component<BeyondLightProps, IBeyondLightState> {
           )}
           {phaseThreeActive && (
             <Route path={beyondLightPhase3} component={PhaseThree} />
+          )}
+          {phaseFourActive && (
+            <Route path={beyondLightPhase4} component={BeyondLightPhaseFour} />
           )}
         </Switch>
       </React.Fragment>

@@ -2,6 +2,7 @@
 // Copyright Bungie, Inc.
 
 import { Localizer } from "@Global/Localizer";
+import { Spinner } from "@UIKit/Controls/Spinner";
 import classNames from "classnames";
 import styles from "./BeyondLightPhaseTwo.module.scss";
 import { IResponsiveState, Responsive } from "@Boot/Responsive";
@@ -69,6 +70,10 @@ class PhaseTwo extends React.Component<PhaseTwoProps, PhaseTwoState> {
     const { medium, mobile } = this.state.responsive;
 
     const { phaseTwo } = this.state.BeyondLightPhaseTwoData;
+
+    if (!this.state.BeyondLightPhaseTwoData.loaded) {
+      return <Spinner />;
+    }
 
     if (phaseTwo === null) {
       return null;

@@ -11,6 +11,7 @@ import { DataStore } from "@Global/DataStore";
 export interface BeyondLightPhaseTwoDataStorePayload {
   phaseTwoActive: boolean;
   phaseTwo: { [key: string]: string };
+  loaded: boolean;
 }
 
 class _BeyondLightPhaseTwoDataStore extends DataStore<
@@ -22,6 +23,7 @@ class _BeyondLightPhaseTwoDataStore extends DataStore<
   public static Instance = new _BeyondLightPhaseTwoDataStore({
     phaseTwoActive: false,
     phaseTwo: {},
+    loaded: false,
   });
 
   /**
@@ -64,6 +66,7 @@ class _BeyondLightPhaseTwoDataStore extends DataStore<
 
       this.update({
         phaseTwo: data,
+        loaded: true,
       });
     });
   }

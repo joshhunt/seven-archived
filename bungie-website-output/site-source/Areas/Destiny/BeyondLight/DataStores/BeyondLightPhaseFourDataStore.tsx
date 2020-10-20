@@ -8,21 +8,21 @@ import { ConfigUtils } from "@Utilities/ConfigUtils";
 import { LocalizerUtils } from "@Utilities/LocalizerUtils";
 import { DataStore } from "@Global/DataStore";
 
-export interface BeyondLightPhaseThreeDataStorePayload {
-  phaseThreeActive: boolean;
-  phaseThree: { [key: string]: string };
+export interface BeyondLightPhaseFourDataStorePayload {
+  phaseFourActive: boolean;
+  phaseFour: { [key: string]: string };
   loaded: boolean;
 }
 
-class _BeyondLightPhaseThreeDataStore extends DataStore<
-  BeyondLightPhaseThreeDataStorePayload
+class _BeyondLightPhaseFourDataStore extends DataStore<
+  BeyondLightPhaseFourDataStorePayload
 > {
   private initialized = false;
   private initialLocale = "";
 
-  public static Instance = new _BeyondLightPhaseThreeDataStore({
-    phaseThreeActive: false,
-    phaseThree: {},
+  public static Instance = new _BeyondLightPhaseFourDataStore({
+    phaseFourActive: false,
+    phaseFour: {},
     loaded: false,
   });
 
@@ -30,7 +30,7 @@ class _BeyondLightPhaseThreeDataStore extends DataStore<
    * Returns true if the requested phase has strings
    * @param phase
    */
-  public phaseActive(phase: keyof BeyondLightPhaseThreeDataStorePayload) {
+  public phaseActive(phase: keyof BeyondLightPhaseFourDataStorePayload) {
     return Object.keys(this.state[phase]).length > 0;
   }
 
@@ -46,7 +46,7 @@ class _BeyondLightPhaseThreeDataStore extends DataStore<
     this.initialLocale = Localizer.CurrentCultureName;
 
     this.update({
-      phaseThreeActive: ConfigUtils.SystemStatus("BeyondLightPhase3"),
+      phaseFourActive: ConfigUtils.SystemStatus("BeyondLightPhase4"),
     });
 
     this.fetchStrings();
@@ -55,7 +55,7 @@ class _BeyondLightPhaseThreeDataStore extends DataStore<
   private fetchStrings() {
     // Load all items, and if they fail, just ignore it.
     const promise: Promise<Content.ContentItemPublicContract> = Platform.ContentService.GetContentByTagAndType(
-      "bl-phase-three",
+      "bl-phase-four",
       "StringCollection",
       Localizer.CurrentCultureName,
       false
@@ -65,12 +65,12 @@ class _BeyondLightPhaseThreeDataStore extends DataStore<
       const data = LocalizerUtils.stringCollectionToObject(rawAllPhaseData);
 
       this.update({
-        phaseThree: data,
+        phaseFour: data ?? {},
         loaded: true,
       });
     });
   }
 }
 
-export const BeyondLightPhaseThreeDataStore =
-  _BeyondLightPhaseThreeDataStore.Instance;
+export const BeyondLightPhaseFourDataStore =
+  _BeyondLightPhaseFourDataStore.Instance;

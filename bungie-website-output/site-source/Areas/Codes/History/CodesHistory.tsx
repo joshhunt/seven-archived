@@ -1,23 +1,19 @@
 // Created by a-larobinson, 2019
 // Copyright Bungie, Inc.
 
-import * as React from "react";
-import styles from "../Redemption/CodesRedemption.module.scss";
-import { Localizer } from "@Global/Localizer";
 import {
-  withGlobalState,
   GlobalStateComponentProps,
+  withGlobalState,
 } from "@Global/DataStore/GlobalStateDataStore";
-import { Grid, GridCol } from "@UI/UIKit/Layout/Grid/Grid";
+import { Localizer } from "@Global/Localizer";
+import { BodyClasses, SpecialBodyClasses } from "@UI/HelmetUtils";
 import { BungieHelmet } from "@UI/Routing/BungieHelmet";
 import { RequiresAuth } from "@UI/User/RequiresAuth";
-import { CodesHistoryForm } from "./CodesHistoryForm";
 import { UserUtils } from "@Utilities/UserUtils";
-import { SpecialBodyClasses, BodyClasses } from "@UI/HelmetUtils";
-import { CodesDataStore } from "../CodesDataStore";
-import { RouterProps } from "react-router";
+import * as React from "react";
 import { RouteComponentProps, withRouter } from "react-router-dom";
-import { AclEnum } from "@Enum";
+import { CodesDataStore } from "../CodesDataStore";
+import { CodesHistoryForm } from "./CodesHistoryForm";
 
 interface ICodesHistoryRouteParams {
   membershipId: string;

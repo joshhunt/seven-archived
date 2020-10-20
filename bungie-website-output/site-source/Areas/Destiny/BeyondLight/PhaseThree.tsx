@@ -7,6 +7,7 @@ import {
   BeyondLightUpdateDataStorePayload,
 } from "@Areas/Destiny/BeyondLight/DataStores/BeyondLightUpdateDataStore";
 import { Localizer } from "@Global/Localizer";
+import { Spinner } from "@UIKit/Controls/Spinner";
 import classNames from "classnames";
 import styles from "./PhaseThree.module.scss";
 import { IResponsiveState, Responsive } from "@Boot/Responsive";
@@ -84,6 +85,10 @@ class PhaseThree extends React.Component<PhaseThreeProps, PhaseThreeState> {
     const { phaseThree } = this.state.BeyondLightPhaseThreeData;
 
     const { homepage } = this.state.BeyondLightUpdateData;
+
+    if (!this.state.BeyondLightPhaseThreeData.loaded) {
+      return <Spinner />;
+    }
 
     if (phaseThree === null) {
       return null;

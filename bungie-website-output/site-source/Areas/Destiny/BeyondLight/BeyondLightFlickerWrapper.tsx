@@ -5,6 +5,7 @@ import {
 import { BeyondLightUpdateDataStore } from "@Areas/Destiny/BeyondLight/DataStores/BeyondLightUpdateDataStore";
 import { BeyondLightPhaseTwoDataStore } from "@Areas/Destiny/BeyondLight/DataStores/BeyondLightPhaseTwoDataStore";
 import { BeyondLightPhaseThreeDataStore } from "@Areas/Destiny/BeyondLight/DataStores/BeyondLightPhaseThreeDataStore";
+import { BeyondLightPhaseFourDataStore } from "@Areas/Destiny/BeyondLight/DataStores/BeyondLightPhaseFourDataStore";
 
 import { useDataStore } from "@Global/DataStore";
 import { Localizer } from "@Global/Localizer";
@@ -24,6 +25,7 @@ export const BeyondLightFlickerWrapper = React.memo(() => {
   const beyondLightPhaseThreeData = useDataStore(
     BeyondLightPhaseThreeDataStore
   );
+  const beyondLightPhaseFourData = useDataStore(BeyondLightPhaseFourDataStore);
 
   return (
     <>
@@ -49,6 +51,10 @@ export const BeyondLightFlickerWrapper = React.memo(() => {
           ConfigUtils.SystemStatus("BeyondLightPhase3") &&
           beyondLightPhaseThreeData.phaseThreeActive
         }
+        phaseFourActive={
+          ConfigUtils.SystemStatus("BeyondLightPhase4") &&
+          beyondLightPhaseFourData.phaseFourActive
+        }
       />
       <AsyncRoute
         component={() =>
@@ -65,18 +71,23 @@ interface INavWrapperProps {
   phaseOneActive: boolean;
   phaseTwoActive?: boolean;
   phaseThreeActive?: boolean;
+  phaseFourActive?: boolean;
 }
 
 const NavWrapper: React.FC<INavWrapperProps> = ({
   phaseOneActive,
   phaseTwoActive,
   phaseThreeActive,
+  phaseFourActive,
 }) => {
   const history = useHistory();
   const beyondLightPhase1 = RouteDefs.Areas.Destiny.getAction("PhaseOne").path;
   const beyondLightPhase2 = RouteDefs.Areas.Destiny.getAction("PhaseTwo").path;
   const beyondLightPhase3 = RouteDefs.Areas.Destiny.getAction("PhaseThree")
     .path;
+  const beyondLightPhase4 = RouteDefs.Areas.Destiny.getAction(
+    "BeyondLightPhaseFour"
+  ).path;
   const beyondLightPath = RouteDefs.Areas.Destiny.getAction("BeyondLight").path;
   const beyondLightMediaPath = RouteDefs.Areas.Destiny.getAction("Media").path;
 
@@ -86,6 +97,7 @@ const NavWrapper: React.FC<INavWrapperProps> = ({
     stasis: beyondLightPhase1,
     europa: beyondLightPhase2,
     gear: beyondLightPhase3,
+    story: beyondLightPhase4,
   };
 
   const matchingPath: BeyondLightPage = Object.keys(pagePaths).find((p) =>
@@ -98,6 +110,7 @@ const NavWrapper: React.FC<INavWrapperProps> = ({
       phaseOne={phaseOneActive}
       phaseTwo={phaseTwoActive}
       phaseThree={phaseThreeActive}
+      phaseFour={phaseFourActive}
       history={history}
     />
   );

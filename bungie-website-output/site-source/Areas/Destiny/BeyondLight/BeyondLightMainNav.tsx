@@ -14,7 +14,13 @@ import { DestroyCallback } from "@Global/DataStore";
 import LocaleSwitcher from "@UI/Navigation/LocaleSwitcher";
 import * as H from "history";
 
-export type BeyondLightPage = "index" | "media" | "stasis" | "europa" | "gear";
+export type BeyondLightPage =
+  | "index"
+  | "media"
+  | "stasis"
+  | "europa"
+  | "gear"
+  | "story";
 
 // Required props
 interface IBeyondLightMainNavProps {
@@ -23,6 +29,7 @@ interface IBeyondLightMainNavProps {
   phaseOne?: boolean;
   phaseTwo?: boolean;
   phaseThree?: boolean;
+  phaseFour?: boolean;
 }
 
 // Default props - these will have values set in BeyondLightMainNav.defaultProps
@@ -210,6 +217,19 @@ export class BeyondLightMainNav extends React.Component<
                   }
                 >
                   {Localizer.Beyondlight.Submenu_Gear}
+                  {!this.props.phaseFour && (
+                    <span>{Localizer.Registration.new}</span>
+                  )}
+                </Anchor>
+              )}
+              {this.props.phaseFour && (
+                <Anchor
+                  url={RouteHelper.BeyondLightPhases("story")}
+                  className={
+                    this.props.page === "story" ? styles.on : styles.off
+                  }
+                >
+                  {Localizer.Beyondlight.Submenu_Story}
                   <span>{Localizer.Registration.new}</span>
                 </Anchor>
               )}

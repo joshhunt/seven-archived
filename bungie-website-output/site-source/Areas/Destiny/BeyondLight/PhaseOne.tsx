@@ -11,6 +11,7 @@ import { DestroyCallback } from "@Global/DataStore";
 import { Localizer } from "@Global/Localizer";
 import { RouteHelper } from "@Routes/RouteHelper";
 import { BungieHelmet } from "@UI/Routing/BungieHelmet";
+import { Spinner } from "@UIKit/Controls/Spinner";
 import classNames from "classnames";
 import * as React from "react";
 import {
@@ -89,6 +90,10 @@ class PhaseOne extends React.Component<IPhaseOneProps, IPhaseOneState> {
       phaseOneB,
       phaseOneC,
     } = this.state.BeyondLightUpdateData;
+
+    if (!this.state.BeyondLightUpdateData.loaded) {
+      return <Spinner />;
+    }
 
     if (phaseOne === null) {
       return null;

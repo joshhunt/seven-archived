@@ -1,0 +1,622 @@
+@import "../../../ui/uikit/_base/ui_base";
+@import "./Components/_BLmixins.scss";
+
+body {
+  font-family: $font-family-neue-haas;
+}
+
+.overflowWrapper {
+  overflow: hidden;
+}
+
+.heroHeading {
+  max-width: 50rem;
+  text-align: center;
+}
+
+.heroSubheading {
+  :global(.r-mobile) & {
+    max-width: 68%;
+  }
+}
+
+.sectionOneWrapper {
+  margin: 0 auto;
+
+  .sectionOneBackgroundWrapper {
+    padding: 10rem 0 25rem 0;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    position: relative;
+
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(2, 10, 22, 1));
+      width: 100%;
+      height: 16rem;
+
+      :global(.r-mobile) & {
+        height: 0;
+      }
+    }
+
+    .textContainer {
+      max-width: 60rem;
+      margin: 0 auto;
+
+      h2 {
+        font-size: 3.95rem;
+        margin: 0;
+        @include bottomBorder;
+        padding: 0 0 1rem 0;
+        text-transform: uppercase;
+        letter-spacing: 0;
+        width: 100%;
+
+        :global(.r-mobile) & {
+          font-size: 3rem;
+          max-width: 43rem;
+        }
+
+        :global(.r-tiny) & {
+          text-align: center;
+          max-width: 100%;
+          display: flex;
+        }
+      }
+
+      p {
+        font-size: 1.85rem;
+        line-height: 1.5;
+        margin: 1rem 0 0 0;
+        max-width: 55rem;
+
+        :global(.r-mobile) & {
+          max-width: 43rem;
+        }
+
+        :global(.r-tiny) & {
+          max-width: 100%;
+        }
+      }
+
+      .subText {
+        font-weight: bold;
+        margin-bottom: 2rem;
+      }
+
+      :global(.r-mobile) & {
+        max-width: 90%;
+      }
+
+      :global(.r-tiny) & {
+        max-width: 90%;
+      }
+    }
+
+    .videoWrapper {
+      max-width: 56rem;
+      margin: 0 auto;
+
+      :global(.r-mobile) & {
+        max-width: 56rem;
+      }
+
+      :global(.r-tiny) & {
+        max-width: 100%;
+      }
+    }
+
+    :global(.r-gridmax) & {
+      padding: 10rem 0 14rem 0;
+      background-size: 100%;
+    }
+
+    :global(.r-large) & {
+      padding: 8rem 0 15rem 0;
+    }
+
+    :global(.r-mobile) & {
+      padding: 26rem 0 5rem 0;
+    }
+
+    :global(.r-tiny) & {
+      padding: 26rem 0 5rem 0;
+    }
+  }
+}
+
+// river parallax wrapper
+.characterBackgroundParallaxWrapper {
+  height: 100%;
+  padding: 16rem 0 6rem 0;
+  background-size: cover;
+  position: relative;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    background-image: linear-gradient(rgba(2, 10, 22, 1), rgba(0, 0, 0, 0));
+    width: 100%;
+    height: 16rem;
+
+    :global(.r-mobile) & {
+      height: 10rem;
+      background-image: linear-gradient(rgba(1, 9, 28, 1), rgba(0, 0, 0, 0));
+    }
+  }
+
+  :global(.r-gridmax) & {
+    padding: 8rem 0 4rem 0;
+  }
+
+  :global(.r-large) & {
+    padding: 0 0 4rem 0;
+  }
+
+  :global(.r-mobile) & {
+    background-position: top;
+    background-size: cover;
+  }
+}
+
+.characterBackgroundLayerThreeParallax {
+  background-size: cover;
+  bottom: auto !important;
+  height: 100%;
+  pointer-events: none;
+  top: 0;
+}
+
+.characterBackgroundLayerTwoParallax {
+  background-size: cover;
+  bottom: auto !important;
+  height: 100%;
+  pointer-events: none;
+  top: 0;
+}
+
+.characterBackgroundLayerFourParallax {
+  background-size: cover;
+  bottom: auto !important;
+  height: 116%;
+  pointer-events: none;
+  top: 0;
+  background-position: top !important;
+}
+
+// river content
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  height: 20vw;
+  margin-top: 10rem;
+
+  h2 {
+    font-size: 3rem;
+    line-height: 1.13;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    @include bottomBorder;
+    padding: 0 0 1rem 0;
+    margin: 0;
+    width: 100%;
+
+    :global(.r-mobile) & {
+      font-size: 2.75rem;
+      line-height: 1;
+      text-align: center;
+      width: 100%;
+    }
+  }
+
+  p {
+    @include bodyCopy;
+
+    :global(.r-mobile) & {
+      text-align: left;
+    }
+  }
+
+  :global(.r-mobile) & {
+    height: 100%;
+  }
+}
+
+// river items
+.riverRight {
+  max-width: 60vw;
+  margin: 0 auto;
+  padding: 10rem 0 8rem 0;
+  position: relative;
+
+  :global(.r-mobile) & {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    padding-bottom: 2rem;
+  }
+
+  .rightBackground {
+    height: 50vw;
+    width: 40vw;
+    position: absolute;
+    left: -3rem;
+    bottom: 50%;
+    transform: translateY(50%);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    @media only screen and (min-width: 2560px) {
+      height: 35vw;
+      width: 30vw;
+      left: 13rem;
+      bottom: 65%;
+    }
+
+    :global(.r-mobile) & {
+      position: relative;
+      width: 100%;
+      background-size: 100%;
+      height: 120vw;
+      background-position: center;
+      left: 0;
+      bottom: 0;
+      transform: translateY(0%);
+    }
+  }
+
+  .contentContainer {
+    margin: 0 0 0 auto;
+    max-width: 23vw;
+
+    .contentVideoWrapper {
+      margin: 0;
+    }
+
+    @media only screen and (min-width: 2560px) {
+      max-width: 16vw;
+    }
+
+    :global(.r-mobile) & {
+      margin: 0 auto;
+      max-width: 90%;
+    }
+  }
+
+  :global(.r-gridmax) & {
+    padding: 10rem 0 4rem 0;
+  }
+
+  :global(.r-large) & {
+    padding: 8rem 0 4rem 0;
+  }
+
+  :global(.r-mobile) & {
+    padding: 5rem 0 4rem 0;
+  }
+
+  :global(.r-tiny) & {
+    padding: 4rem 0;
+  }
+}
+
+.riverLeft {
+  max-width: 60vw;
+  margin: 15rem auto 10rem auto;
+  position: relative;
+
+  :global(.r-mobile) & {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    margin: 5rem auto 0 auto;
+  }
+
+  .leftBackground {
+    position: absolute;
+    left: 8rem;
+    bottom: -2rem;
+    transform: translateY(50%);
+    height: 50vw;
+    width: 70vw;
+    background-size: 100%;
+    background-repeat: no-repeat;
+
+    @media only screen and (min-width: 2560px) {
+      bottom: 30%;
+    }
+
+    :global(.r-mobile) & {
+      position: relative;
+      width: 100%;
+      background-size: 200%;
+      height: 80vw;
+      background-position: center;
+      left: 0;
+      bottom: 0;
+      transform: translateY(0%);
+    }
+  }
+
+  .contentContainer {
+    margin: 0 auto 0 0;
+    max-width: 23vw;
+
+    .contentVideoWrapper {
+      margin: 0;
+    }
+
+    @media only screen and (min-width: 2560px) {
+      max-width: 16vw;
+    }
+
+    :global(.r-mobile) & {
+      padding: 0 0 0 1rem;
+      margin: 0 auto;
+      max-width: 90%;
+    }
+  }
+}
+
+.riverCenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  position: relative;
+  padding: 10rem 0 0 0;
+
+  :global(.r-tiny) & {
+    padding: 10rem 0 0 0;
+  }
+
+  @media only screen and (min-width: 2560px) {
+    padding: 12rem 0;
+  }
+
+  .centerBackground {
+    height: 35vw;
+    width: 60vw;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    position: absolute;
+    bottom: 0;
+
+    @media only screen and (min-width: 2560px) {
+      bottom: 25%;
+    }
+
+    :global(.r-mobile) & {
+      padding-bottom: 2rem;
+      width: 100vw;
+      height: 85vw;
+      background-size: 130%;
+      background-position: center top;
+      left: 0;
+      bottom: 0;
+      transform: translateY(0%);
+    }
+
+    :global(.r-tiny) & {
+      bottom: 20%;
+      height: 105vw;
+    }
+  }
+
+  .contentContainer {
+    text-align: center;
+    padding-top: 20rem;
+    max-width: 57rem;
+
+    h2 {
+      text-align: center;
+      font-size: 2.9rem;
+      line-height: 1.13;
+      letter-spacing: 0;
+
+      :global(.r-mobile) & {
+        font-size: 3rem;
+        line-height: 1;
+      }
+      border: none;
+
+      &::before,
+      &::after {
+        width: 0;
+      }
+    }
+
+    p {
+      @include bodyCopy;
+      margin-top: 0;
+    }
+
+    .contentVideoWrapper {
+      margin: 0 auto;
+    }
+
+    :global(.r-mobile) & {
+      max-width: 90%;
+      padding-top: 16rem;
+    }
+
+    :global(.r-tiny) & {
+      max-width: 90%;
+      padding-top: 5rem;
+    }
+  }
+}
+
+.riverDouble {
+  .riverDoubleBackgroundWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 70vw;
+    margin: 0 auto;
+
+    :global(.r-gridmax) & {
+      padding-top: 10rem;
+    }
+
+    :global(.r-mobile) & {
+      max-width: 90%;
+      flex-direction: column;
+    }
+
+    .itemOne {
+      img {
+        width: 100%;
+      }
+
+      width: 50%;
+      padding-right: 6rem;
+
+      :global(.r-mobile) & {
+        width: 100%;
+        padding: 0;
+      }
+
+      .contentContainer {
+        margin-top: 0;
+
+        h2 {
+          text-align: center;
+          font-size: 2.9rem;
+          line-height: 1.13;
+          letter-spacing: 0;
+
+          :global(.r-mobile) & {
+            font-size: 3rem;
+            line-height: 1;
+          }
+          border: none;
+
+          &::before,
+          &::after {
+            width: 0;
+          }
+        }
+
+        p {
+          margin-top: 0;
+          text-align: center;
+
+          :global(.r-mobile) & {
+            text-align: left;
+          }
+        }
+      }
+    }
+
+    .itemTwo {
+      img {
+        width: 100%;
+      }
+
+      width: 50%;
+      padding-left: 6rem;
+
+      :global(.r-mobile) & {
+        width: 100%;
+        padding: 0;
+      }
+
+      .contentContainer {
+        margin-top: 0;
+
+        h2 {
+          text-align: center;
+          font-size: 2.9rem;
+          line-height: 1.13;
+          letter-spacing: 0;
+
+          :global(.r-mobile) & {
+            font-size: 3rem;
+            line-height: 1;
+          }
+          border: none;
+
+          &::before,
+          &::after {
+            width: 0;
+          }
+        }
+
+        p {
+          margin-top: 0;
+          text-align: center;
+
+          :global(.r-mobile) & {
+            text-align: left;
+          }
+        }
+      }
+    }
+  }
+}
+
+.preorder {
+  background: url("/7/ca/destiny/products/beyondlight/bl_editions_bg_desktop.jpg")
+    no-repeat top center #04040e;
+  min-height: 1220px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 5rem;
+  position: relative;
+
+  .contentBlock {
+    margin: 0 auto;
+
+    &.centered {
+      flex-flow: column;
+      align-content: center;
+      align-items: center;
+      text-align: center;
+      width: 575px;
+
+      h2 {
+        white-space: nowrap;
+        font-size: 3rem;
+        padding-bottom: 2rem;
+        margin-bottom: 0.5rem;
+        text-align: center;
+        border-bottom: none;
+
+        &::before {
+          content: "";
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          height: 0.5rem;
+          width: 100%;
+          position: absolute;
+          top: calc(50% - 1.3rem);
+          left: -0.25rem;
+        }
+      }
+
+      :global(.r-mobile) & {
+        width: 100%;
+        max-width: 85%;
+      }
+    }
+  }
+
+  :global(.r-mobile) & {
+    background: url("/7/ca/destiny/products/beyondlight/bl_editions_bg_mobile.jpg")
+      no-repeat top center #04040e;
+    background-size: 100% auto;
+    height: auto;
+    padding: 2rem;
+    padding-top: 19%;
+  }
+}
